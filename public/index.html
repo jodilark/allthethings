@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Salubrity</title>
+    <link rel="stylesheet" href="./dist/styles.css">
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/angular-ui-grid/4.0.4/ui-grid.css' />
+</head>
+
+<body ng-controller="mainCtrl">
+    <!-- ========== TESTS-->
+    <div class="test-results">
+        <!-- .......... controller test-->
+        {{controllerTest}}
+    </div>
+    <!-- .......... hello world test-->
+    <h1>Hello World</h1>
+    <a ui-sref='home'>Home</a>
+    <a href="http://localhost:3000/auth">login</a>
+    <a href="https://jodilark.auth0.com/v2/logout?returnTo=http://localhost:3000/&client_id=hQcU4t5VREA4rCBj8h3onZMNBSRA28sT">logout</a>
+    <button ui-sref="dashboard">Dashboard</button>
+    <button ui-sref="global_search">Global Search Results</button>
+    <button ui-sref="settings">Settings</button>
+
+    <!-- ========== MAKE A DIRECTIVE FOR SIDE MENU-->
+    <button ui-sref="user_create">Create a User</button>
+    <button ui-sref="user_manage">Manage Users</button>
+
+
+
+
+    <h4>Ui router is below this line</h4>
+    <ui-view></ui-view>
+
+    <!-- ========== SCRIPTS-->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.js"></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/1.0.3/angular-ui-router.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/angular-ui-grid/4.0.4/ui-grid.js'></script>
+    <script src="./dist/js/bundle.js"></script>
+
+</body>
+
+</html>

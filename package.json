@@ -1,0 +1,38 @@
+{
+  "name": "personal-project",
+  "version": "1.0.0",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "babel-preset-es2015": "^6.24.1",
+    "body-parser": "^1.17.2",
+    "cors": "^2.8.3",
+    "express": "^4.15.3",
+    "express-session": "^1.15.3",
+    "express-sessions": "^1.0.6",
+    "gulp-babel": "^6.1.2",
+    "gulp-cachebust": "0.0.6",
+    "gulp-concat": "^2.6.1",
+    "gulp-print": "^2.0.1",
+    "gulp-sass": "^3.1.0",
+    "gulp-sourcemaps": "^2.6.0",
+    "gulp-uglify": "^3.0.0",
+    "massive": "^3.0.0-rc1",
+    "passport": "^0.3.2",
+    "passport-auth0": "^0.6.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jodilark/allthethings.git"
+  },
+  "bugs": {
+    "url": "https://github.com/jodilark/allthethings/issues"
+  },
+  "homepage": "https://github.com/jodilark/allthethings#readme",
+  "description": ""
+}

@@ -1,0 +1,12 @@
+// =============== FONTS
+
+// =============== VARIABLES
+
+// =============== MIXINS
+// ............... all pages
+@mixin test-format {
+    color: green;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 20px;
+    font-style: italic;
+}

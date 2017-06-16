@@ -1,0 +1,32 @@
+<h1>Create a User</h1>
+<!--=============== TESTS-->
+<div class="test-results">
+    <ul>
+        <li>1. {{userCreateTest}}</li>
+        <li>2. {{stateListSrvTest}}</li>
+        <li>3. {{postUserInfoSrvTest}}</li>
+        <li>4. {{userServiceTest}}</li>
+        <li>5. {{deleteAllUsersServiceTest}}</li>
+        <li>6. {{dobServiceTest}}</li>
+    </ul>
+    <button ng-click="deleteUsers()" style="background: red; color: white; cursor: pointer">Delete All Users</button>
+</div>
+
+<form id="userCreateForm">
+    <input type="text" placeholder="first name" ng-model="userInfo.firstName" required />
+    <input type="text" placeholder="last name" ng-model="userInfo.lastName" />
+    <input type="email" placeholder="email" ng-model="userInfo.email"  required/>
+    <input type="tel" placeholder="phone number" ng-model="userInfo.phone" />
+    <input type="text" class="form-control" placeholder="D.O.B." onfocus="(this.type='date')" ng-model="userInfo.dob"/>
+    <input type="text" placeholder="street address" ng-model="userInfo.address1"/>
+    <input type="text" placeholder="suite, building, apt #..." ng-model="userInfo.address2"/>
+    <input type="text" placeholder="city / township" ng-model="userInfo.city"/>
+    <select id="stateList" ng-options="state as state.name for state in stateName" ng-model="stateObj">
+        <option id="stateList" value="" disabled selected>State</option>
+    </select>
+    <input type="text" placeholder="United States of America" disabled />
+    <input type="number" placeholder="postal code" ng-model="userInfo.zip"/>
+    <input type="checkbox"> allow medical history to be seen by non-healthcare users
+    <input type="submit" value="Submit" ng-click="submit()" />
+    <input type="reset">
+</form>
