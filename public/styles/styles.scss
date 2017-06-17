@@ -11,10 +11,21 @@ div.test-results {
     background: rgba(0, 0, 0, .1);
 }
 // create users page
-.stars {
-    display: inline-block;
-    width: 20px;
-    height: 20px;
-    border: 1px, solid #b6b6b6;
-    background: gold;
+.rating{
+  color: #a9a9a9;
+  margin: 0;
+  padding: 0;
+
+}
+
+ul.rating {
+  display: inline-block;
+}
+
+.rating li {
+  @include star-styles;
+}
+
+.rating .filled {
+  color: gold;
 }

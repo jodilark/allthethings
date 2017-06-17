@@ -92,11 +92,25 @@ div.test-results {
   border: 1px dashed red;
   background: rgba(0, 0, 0, 0.1); }
 
-.stars {
+.rating {
+  color: #a9a9a9;
+  margin: 0;
+  padding: 0; }
+
+ul.rating {
+  display: inline-block; }
+
+.rating li {
+  list-style-type: none;
   display: inline-block;
-  width: 20px;
-  height: 20px;
-  border: 1px, solid #b6b6b6;
-  background: gold; }
+  padding: 1px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 30px;
+  line-height: 30px;
+  cursor: pointer; }
+
+.rating .filled {
+  color: gold; }
 
 /*# sourceMappingURL=maps/styles.css.map */

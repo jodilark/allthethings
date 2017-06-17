@@ -1,5 +1,5 @@
 <h1>Create a User</h1>
-<!--=============== TESTS-->
+<!-- »»»»»»»»»»»»»»»»»»»║   TESTS   -->
 <div class="test-results">
     <ul>
         <li>1. {{userCreateTest}}</li>
@@ -11,7 +11,7 @@
     </ul>
     <button ng-click="deleteUsers()" style="background: red; color: white; cursor: pointer">Delete All Users</button>
 </div>
-
+ <!-- »»»»»»»»»»»»»»»»»»»║   USER INPUT FIELDS   -->
 <form id="userCreateForm">
     <input type="text" placeholder="first name" ng-model="userInfo.firstName" required />
     <input type="text" placeholder="last name" ng-model="userInfo.lastName" />
@@ -27,14 +27,11 @@
         <option id="countryList" value="" disabled selected>United States of America</option>
     </select>
     <input type="number" placeholder="postal code" ng-model="userInfo.zip"/>
-    <label for="">Renter Rating</label>
-    <button class="stars" ng-click=""></button>
-    <button class="stars" ng-click=""></button>
-    <button class="stars" ng-click=""></button>
-    <button class="stars" ng-click=""></button>
-    <button class="stars" ng-click=""></button>
+    <div ng-init="rating = star.rating + 1"></div>
+    <p>Renter Rating</p><div class="star-rating" star-rating rating-value="rating" data-max="5" on-rating-selected="rateFunction(rating)"></div>
+
     <br/>
-    <input type="checkbox" ng-model="userInfo.status"> Deactivate user
+    <input type="checkbox" ng-model="userStatus" ng-change="deactivateUserChecked()"> Deactivate User
     <input type="submit" value="Submit" ng-click="submit()" />
     <input type="reset">
 </form>

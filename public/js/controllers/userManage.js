@@ -1,9 +1,9 @@
 angular.module('app').controller('userManage', function ($scope, uiGridConstants, userListSrv, getUserColumnsSrv) {
-    // ===============  TESTS
+    // »»»»»»»»»»»»»»»»»»»║  TESTS
     $scope.userManageControllerTest = 'userManage Controller is ready to role!'
     $scope.getUserColumnsSrvServiceTest = getUserColumnsSrv.getUserColumnsSrvServiceTest
 
-    // ===============  COLUMNS AND DATA
+    // »»»»»»»»»»»»»»»»»»»║  COLUMNS AND DATA
     $scope.gridOptions = {
         enableFiltering: true,
         columnDefs: [],
@@ -11,11 +11,8 @@ angular.module('app').controller('userManage', function ($scope, uiGridConstants
             $scope.grid1Api = gridApi;
         }
     };
-    $scope.getUsers = () => {
-        userListSrv.getCustomUserList().then((response) => {
-            $scope.gridOptions.data = response.data
-        })
-    }
+    // ....................  get column data
+    $scope.getUsers = () => userListSrv.getCustomUserList().then((response) => $scope.gridOptions.data = response.data)
     $scope.getUsers()
 
 })

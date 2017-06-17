@@ -1,5 +1,5 @@
 angular.module('app').controller('userCreate', function ($scope, stateListSrv, countryListSrv, postUserInfoSrv, userListSrv, deleteAllUsersSrv) {
-    // =============== TESTS
+    // »»»»»»»»»»»»»»»»»»»║  TESTS 
     $scope.userCreateTest = 'userCreate controller is working correctly'
     $scope.stateListSrvTest = stateListSrv.serviceTest
     $scope.postUserInfoSrvTest = postUserInfoSrv.serviceTest
@@ -7,28 +7,37 @@ angular.module('app').controller('userCreate', function ($scope, stateListSrv, c
     $scope.deleteAllUsersServiceTest = deleteAllUsersSrv.deleteAllUsersServiceTest
     $scope.countryListServiceTest = countryListSrv.countryListServiceTest
 
-    // =============== VARIABLES
+    // »»»»»»»»»»»»»»»»»»»║  VARIABLES
 
 
-    // =============== GET STATES LIST
-    $scope.states = () => stateListSrv.getStatesList().then((response) => $scope.stateName = response.data)    
+    // »»»»»»»»»»»»»»»»»»»║  GET STATES LIST
+    $scope.states = () => stateListSrv.getStatesList().then((response) => $scope.stateName = response.data)
     $scope.states()
 
-    // =============== GET COUNTRY LIST
-    $scope.country = () => countryListSrv.getcountryList().then((response) => $scope.countryName = response.data)    
+    // »»»»»»»»»»»»»»»»»»»║  GET COUNTRY LIST
+    $scope.country = () => countryListSrv.getcountryList().then((response) => $scope.countryName = response.data)
     $scope.country()
 
-    // =============== CLEAR FORM
+    // »»»»»»»»»»»»»»»»»»»║ CLEAR FORM
     $scope.clearForm = () => document.getElementById("userCreateForm").reset()
 
-    // =============== SUBMIT USER FORM DATA
-    $scope.userInfo = {
-        "country_id": 1
-    }
+    // »»»»»»»»»»»»»»»»»»»║ SUBMIT USER FORM DATA
+    // .................... user object to submit   
+    $scope.userInfo = {"country_id": 1, "inactive": false}
+
+    // .................... sets rent rating
+    $scope.rating = 5;
+    $scope.rateFunction = (rating) => $scope.userInfo.renter_rating = rating
+
+    // .................... sets checkbox
+    $scope.deactivateUserChecked = () => $scope.userInfo.inactive = $scope.userStatus
+
+
     $scope.submit = () => {
         var sName = $scope.stateObj.name
         var exists = 0
-        // ...................... checks to verify that the user doesn't already exist in the database.
+
+        // .................... checks to verify that the user doesn't already exist in the database.
         var getUsers = () => {
             userListSrv.getUserList().then((response) => {
                 $scope.users = response.data
@@ -61,8 +70,8 @@ angular.module('app').controller('userCreate', function ($scope, stateListSrv, c
         getUsers()
     }
 
-    // =============== DELETE ALL USERS
-    $scope.deleteUsers = function () { return deleteAllUsersSrv.deleteAllUsers() }
+    // »»»»»»»»»»»»»»»»»»»║ DELETE ALL USERS
+    $scope.deleteUsers = () => { return deleteAllUsersSrv.deleteAllUsers() }
 
 
 

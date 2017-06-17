@@ -1,17 +1,14 @@
 angular.module('app').service('postUserInfoSrv', function ($http) {
-    // =============== TESTS
+    // »»»»»»»»»»»»»»»»»»»║ TESTS
     this.serviceTest = 'the postUserInfoSrv is connected'
 
-    // =============== ENDPOINTS
+    // »»»»»»»»»»»»»»»»»»»║ ENDPOINTS
     this.submitUserInfo = (data) => {
         // console.log(`clicked submit and got ${JSON.stringify(data)}`)
         $http({
             url: 'http://localhost:3000/api/users',
             method: 'POST',
             data: data
-        }).then(function (httpResponse) {
-            console.log('response:', JSON.stringify(httpResponse));
-        })
+        }).then((httpResponse) => console.log('response:', JSON.stringify(httpResponse)))
     }
-
 })

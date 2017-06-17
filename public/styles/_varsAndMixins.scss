@@ -1,12 +1,24 @@
-// =============== FONTS
+// »»»»»»»»»»»»»»»»»»»║ FONTS
 
-// =============== VARIABLES
+// »»»»»»»»»»»»»»»»»»»║ VARIABLES
 
-// =============== MIXINS
+// »»»»»»»»»»»»»»»»»»»║ MIXINS
 // ............... all pages
 @mixin test-format {
     color: green;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-size: 20px;
     font-style: italic;
+}
+
+// ............... create user
+@mixin star-styles {
+    list-style-type: none;
+    display: inline-block;
+    padding: 1px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 30px;
+    line-height: 30px;
+    cursor: pointer;
 }

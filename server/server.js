@@ -1,4 +1,4 @@
-//  =================   REQUIRE MODULES
+//  »»»»»»»»»»»»»»»»»»»║   REQUIRE MODULES
 const express = require('express')
 const session = require('express-session')
 const bodyParser = require('body-parser')
@@ -8,20 +8,20 @@ const Auth0Strategy = require('passport-auth0')
 const passport = require('passport')
 const config = require('./.config')
 
-//  =================   REQUIRE FILES
+//  »»»»»»»»»»»»»»»»»»»║   REQUIRE FILES
 const userCtrl = require('./controllers/userCtrl')
 const homeCtrl = require('./controllers/homeCtrl')
 const settingsCtrl = require('./controllers/settingsCtrl')
 
-//  =================   OTHER VARIABLES
+//  »»»»»»»»»»»»»»»»»»»║   OTHER VARIABLES
 const port = 3000
 
-//  =================   MIDDLEWARE
+//  »»»»»»»»»»»»»»»»»»»║   MIDDLEWARE
 const app = express()
 app.use(express.static('../public'))
 app.use(bodyParser.json())
 
-// ............... database
+// .................... database
 massive({
   host: 'localhost'
   , port: 5432
@@ -33,18 +33,18 @@ massive({
     console.log('connected to allthethings database')
 });
 
-// ............... session setups
+// .................... session setups
 app.use(session({
   resave: true, //Without this you get a constant warning about default values
   saveUninitialized: true, //Without this you get a constant warning about default values
   secret: config.secret
 }))
 
-// ............... passport setups
+// .................... passport setups
 app.use(passport.initialize())
 app.use(passport.session())
 
-// ............... make the strategy (still part of passport setups)
+// .................... make the strategy (still part of passport setups)
 var strategy = new Auth0Strategy({
   domain: config.domain,
   clientID: config.clientID,
@@ -54,7 +54,7 @@ var strategy = new Auth0Strategy({
   return done(null, profile);
 });
 
-// ================ INVOKE PASSPORT METHODS
+// »»»»»»»»»»»»»»»»»»»║ INVOKE PASSPORT METHODS
 // ...pass in the strategy
 passport.use(strategy);
 
@@ -68,16 +68,16 @@ passport.deserializeUser(function (obj, done) {
   done(null, obj);
 });
 
-//  ================= ENDPOINTS
+//  »»»»»»»»»»»»»»»»»»»║ ENDPOINTS
 
-//  ................. public landing page
+//  .................... public landing page
 app.get('/api/features', homeCtrl.getFeatureList)
 
-// //  ................. dashboard
-// // Gets for all the data ('analytics tbd', $changemeCtrl.)
+//  .................... dashboard
+// Gets for all the data ('analytics tbd', $changemeCtrl.)
 app.get('/api/settings', settingsCtrl.getSettings)
 
-// //  ................. create/manage users
+//  .................... create/manage users
 app.get('/api/states', userCtrl.getStatesList)
 app.get('/api/country', userCtrl.getCountriesList)
 app.get('/api/users', userCtrl.getAllUsers)
@@ -88,7 +88,7 @@ app.post('/api/users', userCtrl.createNewUser)
 // app.post('/api/settings/default_location', userCtrl.createDefaultLocation)
 // app.put('/api/settings/default_location', userCtrl.updateDefaultLocation)
 
-// //  ................. create/manage items
+//  .................... create/manage items
 // app.get('/api/items', $changemeCtrl.getAllItems)
 // app.get('/api/locations', $changemeCtrl.getAllLocations)
 // app.get('/api/trackbys', $changemeCtrl.getAlltrackbys)
@@ -96,37 +96,37 @@ app.post('/api/users', userCtrl.createNewUser)
 // app.put('/api/items/:id', $changemeCtrl.updateItem)
 // app.delete('/api/items:id', $changemeCtrl.deleteItems)
 
-// //  ................. rental
+//  .................... rental
 // app.get('/api/rentals', $changemeCtrl.getAllRentals)
 // app.post('/api/rentals', $changemeCtrl.createRental)
 // app.put('/api/rentals/:id', $changemeCtrl.updateRental)
 // app.delete('/api/rentals/:id', $changemeCtrl.deleteRental)
 
-// //  ................. trackbys
+//  .................... trackbys
 // app.post('/api/trackbys', $changemeCtrl.createTrackby)
 // app.put('/api/trackby/:id', $changemeCtrl.updateTrackby)
 
-// //  ................. containers
+//  .................... containers
 // app.get('/api/containers', $changemeCtrl.getAllContainers)
 // app.post('/api/containers', $changemeCtrl.createContainer)
 // app.put('/api/containers/:id', $changemeCtrl.updateContainer)
 // app.delete('/api/containers/:id', $changemeCtrl.deleteContainer)
 
-// //  ................. location classifications
+//  .................... location classifications
 // app.get('/api/loc_classes', $changemeCtrl.getLocClass)
 // app.post('/api/loc_classes', $changemeCtrl.createLocClass)
 // app.delete('/api/loc_classes/:id', $changemeCtrl.deleteLocClass)
 
-// //  ................. locations
+//  .................... locations
 // app.post('/api/locations', $changemeCtrl.createLocation)
 // app.put('/api/locations/:id', $changemeCtrl.updateLocation)
 // app.delete('/api/locations/:id', $changemeCtrl.deleteLocation)
 
-// //  ................. settings
+//  .................... settings
 // app.get('/api/settings/default', $changemeCtrl.getDefaultSettings)
 // app.put('/api/settings', $changemeCtrl.updateSettings)
 
-//  ................. authorization endpoints
+//  .................... authorization endpoints
 app.get('/auth', passport.authenticate('auth0'));
 
 app.get('/auth/callback',
@@ -139,7 +139,5 @@ app.get('/auth/me', function (req, res) {
   res.status(200).send(req.user);
 })
 
-//  =================   TESTS
-app.listen(port, function () {
-  console.log(`listening on port ${port}`)
-})
+//  »»»»»»»»»»»»»»»»»»»║   TESTS
+app.listen(port, () => console.log(`listening on port ${port}`))
