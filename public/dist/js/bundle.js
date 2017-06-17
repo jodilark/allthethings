@@ -20,6 +20,87 @@ angular.module('app', ['ui.router', 'ui.grid']).config(function ($stateProvider,
 });
 'use strict';
 
+angular.module('app').service('countryListSrv', function ($http) {
+    // =============== TESTS
+    this.countryListServiceTest = 'the countryListSrv is connected';
+
+    // =============== ENDPOINTS
+    this.getcountryList = function () {
+        return $http.get('http://localhost:3000/api/country');
+    };
+});
+'use strict';
+
+angular.module('app').service('deleteAllUsersSrv', function ($http) {
+    // =============== TESTS
+    this.deleteAllUsersServiceTest = 'the deleteAllUsersSrv is connected';
+
+    // =============== ENDPOINTS
+    this.deleteAllUsers = function () {
+        $http({
+            url: 'http://localhost:3000/api/user',
+            method: 'DELETE'
+        }).then(function (httpResponse) {
+            console.log('response:', JSON.stringify(httpResponse));
+        });
+    };
+});
+'use strict';
+
+angular.module('app').service('getUserColumnsSrv', function ($http) {
+    // =============== TESTS
+    this.getUserColumnsSrvServiceTest = 'the getUserColumnsSrv is connected';
+
+    // =============== ENDPOINTS
+    this.getColumnList = function () {
+        return $http.get('http://localhost:3000/api/user/columns');
+    };
+});
+'use strict';
+
+angular.module('app').service('postUserInfoSrv', function ($http) {
+    // =============== TESTS
+    this.serviceTest = 'the postUserInfoSrv is connected';
+
+    // =============== ENDPOINTS
+    this.submitUserInfo = function (data) {
+        // console.log(`clicked submit and got ${JSON.stringify(data)}`)
+        $http({
+            url: 'http://localhost:3000/api/users',
+            method: 'POST',
+            data: data
+        }).then(function (httpResponse) {
+            console.log('response:', JSON.stringify(httpResponse));
+        });
+    };
+});
+'use strict';
+
+angular.module('app').service('stateListSrv', function ($http) {
+    // =============== TESTS
+    this.serviceTest = 'the stateListSrv is connected';
+
+    // =============== ENDPOINTS
+    this.getStatesList = function () {
+        return $http.get('http://localhost:3000/api/states');
+    };
+});
+'use strict';
+
+angular.module('app').service('userListSrv', function ($http) {
+    // =============== TESTS
+    this.userServiceTest = 'the userListSrv is connected';
+
+    // =============== ENDPOINTS
+    this.getUserList = function () {
+        return $http.get('http://localhost:3000/api/users');
+    };
+    this.getCustomUserList = function () {
+        return $http.get('http://localhost:3000/api/users/custom');
+    };
+});
+'use strict';
+
 angular.module('app').controller('mainCtrl', function ($scope) {
     // ...tests
     $scope.controllerTest = 'Controller Engaged!!!';
@@ -29,24 +110,33 @@ angular.module('app').controller('mainCtrl', function ($scope) {
 "use strict";
 'use strict';
 
-angular.module('app').controller('userCreate', function ($scope, stateListSrv, postUserInfoSrv, userListSrv, deleteAllUsersSrv) {
+angular.module('app').controller('userCreate', function ($scope, stateListSrv, countryListSrv, postUserInfoSrv, userListSrv, deleteAllUsersSrv) {
     // =============== TESTS
     $scope.userCreateTest = 'userCreate controller is working correctly';
     $scope.stateListSrvTest = stateListSrv.serviceTest;
     $scope.postUserInfoSrvTest = postUserInfoSrv.serviceTest;
     $scope.userServiceTest = userListSrv.userServiceTest;
     $scope.deleteAllUsersServiceTest = deleteAllUsersSrv.deleteAllUsersServiceTest;
+    $scope.countryListServiceTest = countryListSrv.countryListServiceTest;
 
     // =============== VARIABLES
 
 
     // =============== GET STATES LIST
     $scope.states = function () {
-        stateListSrv.getStatesList().then(function (response) {
-            $scope.stateName = response.data;
+        return stateListSrv.getStatesList().then(function (response) {
+            return $scope.stateName = response.data;
         });
     };
     $scope.states
+
+    // =============== GET COUNTRY LIST
+    ();$scope.country = function () {
+        return countryListSrv.getcountryList().then(function (response) {
+            return $scope.countryName = response.data;
+        });
+    };
+    $scope.country
 
     // =============== CLEAR FORM
     ();$scope.clearForm = function () {
@@ -54,11 +144,12 @@ angular.module('app').controller('userCreate', function ($scope, stateListSrv, p
 
         // =============== SUBMIT USER FORM DATA
         ();
-    };$scope.userInfo = {};
+    };$scope.userInfo = {
+        "country_id": 1
+    };
     $scope.submit = function () {
         var sName = $scope.stateObj.name;
         var exists = 0;
-        // console.log(`exists before function ${exists}`)
         // ...................... checks to verify that the user doesn't already exist in the database.
         var getUsers = function getUsers() {
             userListSrv.getUserList().then(function (response) {
@@ -119,75 +210,5 @@ angular.module('app').controller('userManage', function ($scope, uiGridConstants
         });
     };
     $scope.getUsers();
-});
-'use strict';
-
-angular.module('app').service('deleteAllUsersSrv', function ($http) {
-    // =============== TESTS
-    this.deleteAllUsersServiceTest = 'the deleteAllUsersSrv is connected';
-
-    // =============== ENDPOINTS
-    this.deleteAllUsers = function () {
-        $http({
-            url: 'http://localhost:3000/api/user',
-            method: 'DELETE'
-        }).then(function (httpResponse) {
-            console.log('response:', JSON.stringify(httpResponse));
-        });
-    };
-});
-'use strict';
-
-angular.module('app').service('getUserColumnsSrv', function ($http) {
-    // =============== TESTS
-    this.getUserColumnsSrvServiceTest = 'the getUserColumnsSrv is connected';
-
-    // =============== ENDPOINTS
-    this.getColumnList = function () {
-        return $http.get('http://localhost:3000/api/user/columns');
-    };
-});
-'use strict';
-
-angular.module('app').service('postUserInfoSrv', function ($http) {
-    // =============== TESTS
-    this.serviceTest = 'the postUserInfoSrv is connected';
-
-    // =============== ENDPOINTS
-    this.submitUserInfo = function (data) {
-        // console.log(`clicked submit and got ${JSON.stringify(data)}`)
-        $http({
-            url: 'http://localhost:3000/api/user',
-            method: 'POST',
-            data: data
-        }).then(function (httpResponse) {
-            console.log('response:', JSON.stringify(httpResponse));
-        });
-    };
-});
-'use strict';
-
-angular.module('app').service('stateListSrv', function ($http) {
-    // =============== TESTS
-    this.serviceTest = 'the stateListSrv is connected';
-
-    // =============== ENDPOINTS
-    this.getStatesList = function () {
-        return $http.get('http://localhost:3000/api/states');
-    };
-});
-'use strict';
-
-angular.module('app').service('userListSrv', function ($http) {
-    // =============== TESTS
-    this.userServiceTest = 'the userListSrv is connected';
-
-    // =============== ENDPOINTS
-    this.getUserList = function () {
-        return $http.get('http://localhost:3000/api/user');
-    };
-    this.getCustomUserList = function () {
-        return $http.get('http://localhost:3000/api/users');
-    };
 });
 //# sourceMappingURL=bundle.js.map

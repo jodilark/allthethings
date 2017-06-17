@@ -90,11 +90,11 @@
 		, is_active boolean
 		, auth_id int
 	);
-    -- INSERT INTO users
-    -- (first_name, last_name , phone , email , address1 , address2 , city , state_id , country_id , zip , renter_rating , is_active , auth_id)
-    -- VALUES
-    -- ('Jodi', 'Parker', 8019496842, 'jodilparker@gmail.com', '6445 south orange sky court', '', 'West Jordan', 52, 1, 84081, 5, true, 1)
-	-- ;
+    INSERT INTO users
+    (first_name, last_name , phone , email , address1 , address2 , city , state_id , country_id , zip , renter_rating , is_active , auth_id)
+    VALUES
+    ('Jodi', 'Parker', 8019496842, 'jodilparker@gmail.com', '6445 south orange sky court', '', 'West Jordan', 52, 1, 84081, 5, true, 1)
+	;
     -- UPDATE users
     -- SET first_name = 'servo'
     -- WHERE id = 1

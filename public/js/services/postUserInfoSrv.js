@@ -6,7 +6,7 @@ angular.module('app').service('postUserInfoSrv', function ($http) {
     this.submitUserInfo = (data) => {
         // console.log(`clicked submit and got ${JSON.stringify(data)}`)
         $http({
-            url: 'http://localhost:3000/api/user',
+            url: 'http://localhost:3000/api/users',
             method: 'POST',
             data: data
         }).then(function (httpResponse) {

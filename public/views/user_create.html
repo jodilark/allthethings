@@ -7,7 +7,7 @@
         <li>3. {{postUserInfoSrvTest}}</li>
         <li>4. {{userServiceTest}}</li>
         <li>5. {{deleteAllUsersServiceTest}}</li>
-        <li>6. {{dobServiceTest}}</li>
+        <li>6. {{countryListServiceTest}}</li>
     </ul>
     <button ng-click="deleteUsers()" style="background: red; color: white; cursor: pointer">Delete All Users</button>
 </div>
@@ -15,18 +15,26 @@
 <form id="userCreateForm">
     <input type="text" placeholder="first name" ng-model="userInfo.firstName" required />
     <input type="text" placeholder="last name" ng-model="userInfo.lastName" />
-    <input type="email" placeholder="email" ng-model="userInfo.email"  required/>
     <input type="tel" placeholder="phone number" ng-model="userInfo.phone" />
-    <input type="text" class="form-control" placeholder="D.O.B." onfocus="(this.type='date')" ng-model="userInfo.dob"/>
+    <input type="email" placeholder="email" ng-model="userInfo.email"  required/>
     <input type="text" placeholder="street address" ng-model="userInfo.address1"/>
     <input type="text" placeholder="suite, building, apt #..." ng-model="userInfo.address2"/>
     <input type="text" placeholder="city / township" ng-model="userInfo.city"/>
     <select id="stateList" ng-options="state as state.name for state in stateName" ng-model="stateObj">
         <option id="stateList" value="" disabled selected>State</option>
     </select>
-    <input type="text" placeholder="United States of America" disabled />
+    <select id="countryList" ng-options="country as country.name for country in countryName" ng-model="countryObj" disabled>
+        <option id="countryList" value="" disabled selected>United States of America</option>
+    </select>
     <input type="number" placeholder="postal code" ng-model="userInfo.zip"/>
-    <input type="checkbox"> allow medical history to be seen by non-healthcare users
+    <label for="">Renter Rating</label>
+    <button class="stars" ng-click=""></button>
+    <button class="stars" ng-click=""></button>
+    <button class="stars" ng-click=""></button>
+    <button class="stars" ng-click=""></button>
+    <button class="stars" ng-click=""></button>
+    <br/>
+    <input type="checkbox" ng-model="userInfo.status"> Deactivate user
     <input type="submit" value="Submit" ng-click="submit()" />
     <input type="reset">
 </form>

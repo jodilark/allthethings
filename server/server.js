@@ -10,6 +10,8 @@ const config = require('./.config')
 
 //  =================   REQUIRE FILES
 const userCtrl = require('./controllers/userCtrl')
+const homeCtrl = require('./controllers/homeCtrl')
+const settingsCtrl = require('./controllers/settingsCtrl')
 
 //  =================   OTHER VARIABLES
 const port = 3000
@@ -68,8 +70,63 @@ passport.deserializeUser(function (obj, done) {
 
 //  ================= ENDPOINTS
 
+//  ................. public landing page
+app.get('/api/features', homeCtrl.getFeatureList)
 
-// ...authorization endpoints
+// //  ................. dashboard
+// // Gets for all the data ('analytics tbd', $changemeCtrl.)
+app.get('/api/settings', settingsCtrl.getSettings)
+
+// //  ................. create/manage users
+app.get('/api/states', userCtrl.getStatesList)
+app.get('/api/country', userCtrl.getCountriesList)
+app.get('/api/users', userCtrl.getAllUsers)
+app.get('/api/users/custom', userCtrl.getMUData)
+app.post('/api/users', userCtrl.createNewUser)
+// app.put('/api/users/:id', userCtrl.updateUser)
+// app.get('/api/settings/default_location', userCtrl.getDefaultLocation)
+// app.post('/api/settings/default_location', userCtrl.createDefaultLocation)
+// app.put('/api/settings/default_location', userCtrl.updateDefaultLocation)
+
+// //  ................. create/manage items
+// app.get('/api/items', $changemeCtrl.getAllItems)
+// app.get('/api/locations', $changemeCtrl.getAllLocations)
+// app.get('/api/trackbys', $changemeCtrl.getAlltrackbys)
+// app.post('/api/items', $changemeCtrl.createItem)
+// app.put('/api/items/:id', $changemeCtrl.updateItem)
+// app.delete('/api/items:id', $changemeCtrl.deleteItems)
+
+// //  ................. rental
+// app.get('/api/rentals', $changemeCtrl.getAllRentals)
+// app.post('/api/rentals', $changemeCtrl.createRental)
+// app.put('/api/rentals/:id', $changemeCtrl.updateRental)
+// app.delete('/api/rentals/:id', $changemeCtrl.deleteRental)
+
+// //  ................. trackbys
+// app.post('/api/trackbys', $changemeCtrl.createTrackby)
+// app.put('/api/trackby/:id', $changemeCtrl.updateTrackby)
+
+// //  ................. containers
+// app.get('/api/containers', $changemeCtrl.getAllContainers)
+// app.post('/api/containers', $changemeCtrl.createContainer)
+// app.put('/api/containers/:id', $changemeCtrl.updateContainer)
+// app.delete('/api/containers/:id', $changemeCtrl.deleteContainer)
+
+// //  ................. location classifications
+// app.get('/api/loc_classes', $changemeCtrl.getLocClass)
+// app.post('/api/loc_classes', $changemeCtrl.createLocClass)
+// app.delete('/api/loc_classes/:id', $changemeCtrl.deleteLocClass)
+
+// //  ................. locations
+// app.post('/api/locations', $changemeCtrl.createLocation)
+// app.put('/api/locations/:id', $changemeCtrl.updateLocation)
+// app.delete('/api/locations/:id', $changemeCtrl.deleteLocation)
+
+// //  ................. settings
+// app.get('/api/settings/default', $changemeCtrl.getDefaultSettings)
+// app.put('/api/settings', $changemeCtrl.updateSettings)
+
+//  ................. authorization endpoints
 app.get('/auth', passport.authenticate('auth0'));
 
 app.get('/auth/callback',
