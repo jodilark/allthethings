@@ -1,0 +1,19 @@
+<h1>Create a Location Container Type</h1>
+<h3>This should be changed from a ui-route view to a modal directive</h3>
+<!-- »»»»»»»»»»»»»»»»»»»║   TESTS   -->
+<div class="test-results">
+    <ul>
+        <li>1. {{locContainerTest}}</li>
+        <li>2. {{containerServiceTest}}</li>
+    </ul>
+</div>
+<!-- »»»»»»»»»»»»»»»»»»»║   INPUT FIELDS   -->
+<form id="containerCreateForm">
+    <input type="text" placeholder="Description" ng-model="container.name">
+    <input type="submit" value="Submit" ng-click="createContainer()">
+    <input type="reset" value="Cancel">
+</form>
+
+<ul ng-repeat="container in containers">
+    <li>{{container.name}}</li>
+</ul>

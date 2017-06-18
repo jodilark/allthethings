@@ -1,0 +1,32 @@
+<h1>Create a Location</h1>
+<!-- »»»»»»»»»»»»»»»»»»»║   TESTS   -->
+<div class="test-results">
+    <ul>
+        <li>1. {{locCtrlTest}}</li>
+    </ul>
+</div>
+
+<!-- »»»»»»»»»»»»»»»»»»»║   DO'S   -->
+<button ui-sref="loc_container">Create a Location Container Type</button>
+
+<button>Create Location Class</button>
+
+
+<!-- »»»»»»»»»»»»»»»»»»»║   INPUT FIELDS   -->
+<form>
+    <select id="stateList" ng-options="state as state.name for state in stateName" ng-model="stateObj">
+        <option id="stateList" value="" disabled selected>Classification</option>
+    </select>
+    <input type="text" placeholder="description" />
+    <select id="stateList" ng-options="state as state.name for state in stateName" ng-model="stateObj">
+        <option id="stateList" value="" disabled selected>Container Type</option>
+    </select>
+    <input type="text" placeholder="x-coordinate" />
+    <input type="text" placeholder="y-coordinate" />
+    <input type="text" placeholder="z-coordinate" />
+    <select id="stateList" ng-options="state as state.name for state in stateName" ng-model="stateObj">
+        <option id="stateList" value="" disabled selected>Parent Location</option>
+    </select>
+    <input type="submit" />
+    <input type="reset" />
+</form>

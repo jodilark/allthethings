@@ -16,7 +16,55 @@ angular.module('app', ['ui.router', 'ui.grid', 'ui.grid.selection', 'ui.grid.edi
         templateUrl: '../views/user_manage.html',
         url: '/user_manage',
         controller: 'userManage'
+    }).state('location_create', {
+        templateUrl: '../views/location_create.html',
+        url: '/location_create',
+        controller: 'locCreate'
+    }).state('loc_container', {
+        templateUrl: '../views/loc_container.html',
+        url: '/loc_container',
+        controller: 'locContainer'
     });
+});
+'use strict';
+
+angular.module('app').controller('locContainer', function ($scope, containerSrv) {
+    // »»»»»»»»»»»»»»»»»»»║  TESTS 
+    $scope.locContainerTest = 'locContainerTest controller is connected and operational';
+    $scope.containerServiceTest = containerSrv.containerServiceTest;
+
+    // »»»»»»»»»»»»»»»»»»»║ CLEAR FORM
+    $scope.clearForm = function () {
+        return document.getElementById("containerCreateForm").reset
+
+        // »»»»»»»»»»»»»»»»»»»║ CONTAINER MANIPULATION
+        // .................... get list of container types
+        ();
+    };$scope.getContainers = function () {
+        return containerSrv.getContainerList().then(function (response) {
+            return $scope.containers = response.data;
+        });
+    };
+    $scope.getContainers
+
+    // .................... create container types
+    ();$scope.container = {};
+    $scope.createContainer = function () {
+        // console.log(`this will be created ... ${JSON.stringify($scope.container)}`)
+        containerSrv.createContainer($scope.container);
+        $scope.clearForm();
+    };
+
+    // .................... update container types
+
+});
+'use strict';
+
+angular.module('app').controller('locCreate', function ($scope) {
+  // »»»»»»»»»»»»»»»»»»»║  TESTS 
+  $scope.locCtrlTest = 'locCreate controller is connected and operational';
+
+  // .................... user object to submit  
 });
 'use strict';
 
@@ -130,8 +178,24 @@ angular.module('app').controller('userManage', function ($scope, uiGridConstants
     $scope.StateServiceTest = stateListSrv.serviceTest;
     $scope.countryListServiceTest = countryListSrv.countryListServiceTest;
 
+    // »»»»»»»»»»»»»»»»»»»║  GET STATES LIST
+    $scope.states = function () {
+        return stateListSrv.getStatesList().then(function (response) {
+            return $scope.stateName = response.data;
+        });
+    };
+    $scope.states
+
+    // »»»»»»»»»»»»»»»»»»»║  GET COUNTRY LIST
+    ();$scope.country = function () {
+        return countryListSrv.getcountryList().then(function (response) {
+            return $scope.countryName = response.data;
+        });
+    };
+    $scope.country
+
     // »»»»»»»»»»»»»»»»»»»║  COLUMNS AND DATA
-    $scope.gridOptions = {
+    ();$scope.gridOptions = {
         enableRowSelection: false,
         enableRowHeaderSelection: false,
         enableFiltering: true,
@@ -156,22 +220,6 @@ angular.module('app').controller('userManage', function ($scope, uiGridConstants
         });
     };
     $scope.getUsers
-
-    // »»»»»»»»»»»»»»»»»»»║  GET STATES LIST
-    ();$scope.states = function () {
-        return stateListSrv.getStatesList().then(function (response) {
-            return $scope.stateName = response.data;
-        });
-    };
-    $scope.states
-
-    // »»»»»»»»»»»»»»»»»»»║  GET COUNTRY LIST
-    ();$scope.country = function () {
-        return countryListSrv.getcountryList().then(function (response) {
-            return $scope.countryName = response.data;
-        });
-    };
-    $scope.country
 
     // »»»»»»»»»»»»»»»»»»»║ UPDATE USER
     ();$scope.update = function (updateObj) {
@@ -245,6 +293,34 @@ angular.module('app').directive('starRating', function () {
                 }
             });
         }
+    };
+});
+'use strict';
+
+angular.module('app').service('containerSrv', function ($http) {
+    // »»»»»»»»»»»»»»»»»»»║ TESTS
+    this.containerServiceTest = 'the containerSrv is connected';
+
+    // »»»»»»»»»»»»»»»»»»»║ ENDPOINTS
+    // ...................  get containers
+    this.getContainerList = function () {
+        return $http.get('http://localhost:3000/api/containers');
+    };
+    // ...................  create containers
+    this.createContainer = function (data) {
+        $http({
+            url: 'http://localhost:3000/api/containers',
+            method: 'POST',
+            data: data
+        }).then(function (httpResponse) {
+            return console.log('response:', JSON.stringify(httpResponse));
+        });
+    };
+    this.updateContainer = function (id) {
+        return $http.get('http://localhost:3000/api/containers/' + id);
+    };
+    this.deleteContainer = function (id) {
+        return $http.get('http://localhost:3000/api/containers/' + id);
     };
 });
 'use strict';

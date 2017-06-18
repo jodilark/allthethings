@@ -12,6 +12,7 @@ const config = require('./.config')
 const userCtrl = require('./controllers/userCtrl')
 const homeCtrl = require('./controllers/homeCtrl')
 const settingsCtrl = require('./controllers/settingsCtrl')
+const containerCtrl = require('./controllers/containerCtrl')
 
 //  »»»»»»»»»»»»»»»»»»»║   OTHER VARIABLES
 const port = 3000
@@ -107,10 +108,10 @@ app.put('/api/users/:id', userCtrl.updateUser)
 // app.put('/api/trackby/:id', $changemeCtrl.updateTrackby)
 
 //  .................... containers
-// app.get('/api/containers', $changemeCtrl.getAllContainers)
-// app.post('/api/containers', $changemeCtrl.createContainer)
-// app.put('/api/containers/:id', $changemeCtrl.updateContainer)
-// app.delete('/api/containers/:id', $changemeCtrl.deleteContainer)
+app.get('/api/containers', containerCtrl.getAllContainers)
+app.post('/api/containers', containerCtrl.createContainer)
+app.put('/api/containers/:id', containerCtrl.updateContainer)
+app.delete('/api/containers/:id', containerCtrl.deleteContainer)
 
 //  .................... location classifications
 // app.get('/api/loc_classes', $changemeCtrl.getLocClass)

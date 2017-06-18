@@ -6,6 +6,14 @@ angular.module('app').controller('userManage', function ($scope, uiGridConstants
     $scope.StateServiceTest = stateListSrv.serviceTest
     $scope.countryListServiceTest = countryListSrv.countryListServiceTest
 
+    // »»»»»»»»»»»»»»»»»»»║  GET STATES LIST
+    $scope.states = () => stateListSrv.getStatesList().then((response) => $scope.stateName = response.data)
+    $scope.states()
+
+    // »»»»»»»»»»»»»»»»»»»║  GET COUNTRY LIST
+    $scope.country = () => countryListSrv.getcountryList().then((response) => $scope.countryName = response.data)
+    $scope.country()
+
     // »»»»»»»»»»»»»»»»»»»║  COLUMNS AND DATA
     $scope.gridOptions = {
         enableRowSelection: false
@@ -13,11 +21,11 @@ angular.module('app').controller('userManage', function ($scope, uiGridConstants
         , enableFiltering: true
         , columnDefs: [ //this shows which columns show in grid. the value needs to match the data key.
             // { name: 'id' },
-            { name: 'first_name'}
-            , { name: 'last_name'}
-            , { name: 'phone'}
-            , { name: 'email'}
-            , { name: 'state', displayName: 'State' }
+            { name: 'first_name' }
+            , { name: 'last_name' }
+            , { name: 'phone' }
+            , { name: 'email' }
+            , { name: 'state', displayName: 'State'}
         ]
         , onRegisterApi: (gridApi) => {
             $scope.grid1Api = gridApi
@@ -34,13 +42,7 @@ angular.module('app').controller('userManage', function ($scope, uiGridConstants
     $scope.getUsers = () => userListSrv.getCustomUserList().then((response) => $scope.gridOptions.data = response.data)
     $scope.getUsers()
 
-    // »»»»»»»»»»»»»»»»»»»║  GET STATES LIST
-    $scope.states = () => stateListSrv.getStatesList().then((response) => $scope.stateName = response.data)
-    $scope.states()
 
-    // »»»»»»»»»»»»»»»»»»»║  GET COUNTRY LIST
-    $scope.country = () => countryListSrv.getcountryList().then((response) => $scope.countryName = response.data)
-    $scope.country()
 
     // »»»»»»»»»»»»»»»»»»»║ UPDATE USER
     $scope.update = (updateObj) => {

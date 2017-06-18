@@ -20,4 +20,14 @@ angular.module('app', ['ui.router', 'ui.grid', 'ui.grid.selection', 'ui.grid.edi
                 url: '/user_manage',
                 controller: 'userManage'
             })
+            .state('location_create', {
+                templateUrl: '../views/location_create.html',
+                url: '/location_create',
+                controller: 'locCreate'
+            })
+            .state('loc_container', {
+                templateUrl: '../views/loc_container.html',
+                url: '/loc_container',
+                controller: 'locContainer'
+            })
     })
