@@ -1,4 +1,4 @@
-angular.module('app', ['ui.router', 'ui.grid'])
+angular.module('app', ['ui.router', 'ui.grid', 'ui.grid.selection', 'ui.grid.edit'])
     .config(function ($stateProvider, $urlRouterProvider) {
         $urlRouterProvider.otherwise('/', "")
         $stateProvider

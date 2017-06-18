@@ -23,3 +23,24 @@ exports.deleteAllUsers = (req, res) => req.app.get('db').deleteAllTheUsers().the
 
 // ....................  gets data for the manage user table
 exports.getMUData = (req, res) => req.app.get('db').popManageUserTable().then((resp) => res.send(resp))
+
+// ....................  updates a user
+exports.updateUser = (req, res) => {
+    var uId = [
+        req.params.id
+        , req.body.firstName
+        , req.body.lastName
+        , req.body.phone
+        , req.body.email
+        , req.body.address1
+        , req.body.address2
+        , req.body.city
+        , req.body.state_id
+        , req.body.country_id
+        , req.body.zip
+        , req.body.renter_rating
+        , req.body.inactive
+        , req.body.auth_id
+    ]
+    req.app.get('db').updateUserById(uId).then((resp) => res.send(`User ${req.params.id} was updated`))
+}

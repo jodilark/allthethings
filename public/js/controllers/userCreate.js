@@ -1,4 +1,4 @@
-angular.module('app').controller('userCreate', function ($scope, stateListSrv, countryListSrv, postUserInfoSrv, userListSrv, deleteAllUsersSrv) {
+angular.module('app').controller('userCreate', function ($scope, stateListSrv, countryListSrv, updateUserSrv, postUserInfoSrv, userListSrv, deleteAllUsersSrv) {
     // »»»»»»»»»»»»»»»»»»»║  TESTS 
     $scope.userCreateTest = 'userCreate controller is working correctly'
     $scope.stateListSrvTest = stateListSrv.serviceTest
@@ -6,6 +6,7 @@ angular.module('app').controller('userCreate', function ($scope, stateListSrv, c
     $scope.userServiceTest = userListSrv.userServiceTest
     $scope.deleteAllUsersServiceTest = deleteAllUsersSrv.deleteAllUsersServiceTest
     $scope.countryListServiceTest = countryListSrv.countryListServiceTest
+    
 
     // »»»»»»»»»»»»»»»»»»»║  VARIABLES
 
@@ -23,7 +24,7 @@ angular.module('app').controller('userCreate', function ($scope, stateListSrv, c
 
     // »»»»»»»»»»»»»»»»»»»║ SUBMIT USER FORM DATA
     // .................... user object to submit   
-    $scope.userInfo = {"country_id": 1, "inactive": false}
+    $scope.userInfo = { "country_id": 1, "inactive": false }
 
     // .................... sets rent rating
     $scope.rating = 5;

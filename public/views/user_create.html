@@ -8,6 +8,7 @@
         <li>4. {{userServiceTest}}</li>
         <li>5. {{deleteAllUsersServiceTest}}</li>
         <li>6. {{countryListServiceTest}}</li>
+
     </ul>
     <button ng-click="deleteUsers()" style="background: red; color: white; cursor: pointer">Delete All Users</button>
 </div>
@@ -33,5 +34,6 @@
     <br/>
     <input type="checkbox" ng-model="userStatus" ng-change="deactivateUserChecked()"> Deactivate User
     <input type="submit" value="Submit" ng-click="submit()" />
+    <input type="submit" value="Update" ng-click="update()" />
     <input type="reset">
 </form>
