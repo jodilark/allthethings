@@ -89,11 +89,12 @@
 		, renter_rating int
 		, inactive boolean
 		, auth_id int
+		, first_login boolean
 	);
     INSERT INTO users
-    (first_name, last_name , phone , email , address1 , address2 , city , state_id , country_id , zip , renter_rating , inactive , auth_id)
+    (first_name, last_name , phone , email , address1 , address2 , city , state_id , country_id , zip , renter_rating , inactive , auth_id, first_login)
     VALUES
-    ('Jodi', 'Parker', 8019496842, 'jodilparker@gmail.com', '6445 south orange sky court', '', 'West Jordan', 52, 1, 84081, 5, false, 1)
+    ('Jodi', 'Parker', 8019496842, 'jodilparker@gmail.com', '6445 south orange sky court', '', 'West Jordan', 52, 1, 84081, 5, false, 1, false)
 	;
     -- UPDATE users
     -- SET first_name = 'servo'

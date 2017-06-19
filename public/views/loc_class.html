@@ -1,0 +1,22 @@
+<h1>Create a Location Class Type</h1>
+<h3>This should be changed from a ui-route view to a modal directive</h3>
+<!-- »»»»»»»»»»»»»»»»»»»║   TESTS   -->
+<div class="test-results">
+    <ul>
+        <li>1. {{locClassTest}}</li>
+        <li>2. {{locClassServiceTest}}</li>
+    </ul>
+</div>
+<!-- »»»»»»»»»»»»»»»»»»»║   INPUT FIELDS   -->
+<form id="classCreateForm">
+    <input type="text" placeholder="Name" ng-model="locClassObj.name">
+    <input type="text" placeholder="Description" ng-model="locClassObj.description">
+    <input type="submit" value="Submit" id="addData"  ng-click="createLocClassObj()">
+    <input type="reset" value="Cancel">
+    <button ng-click="delete()" ng-disabled="enableDelete != false">Delete</button>
+</form>
+
+
+<div>
+    <div ui-grid="gridOptions" class="myGrid" ui-grid-selection ui-grid-edit></div>
+</div>

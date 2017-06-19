@@ -25,9 +25,14 @@ angular.module('app', ['ui.router', 'ui.grid', 'ui.grid.selection', 'ui.grid.edi
                 url: '/location_create',
                 controller: 'locCreate'
             })
-            .state('loc_container', {
+            .state('loc_container', { // MOVE INTO MODAL
                 templateUrl: '../views/loc_container.html',
                 url: '/loc_container',
                 controller: 'locContainer'
+            })
+            .state('loc_class', { // MOVE INTO MODAL
+                templateUrl: '../views/loc_class.html',
+                url: '/loc_class',
+                controller: 'locClass'
             })
     })

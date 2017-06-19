@@ -15,21 +15,30 @@
     <div class="test-results">
         <!-- .......... controller test-->
         {{controllerTest}}
+        <!-- .......... hello world test-->
+        <h1>Hello World</h1>
+        <button ng-click="login()"  ui-sref="user_create">Simulate 1st Login UI</button>
+        <button ng-click="login()"  ui-sref="dashboard">Simulate already authorized Login UI</button>
+        <!--<button ng-click="logout()" ui-sref='home'>Simulate Logout UI</button>-->
     </div>
-    <!-- .......... hello world test-->
-    <h1>Hello World</h1>
-    <a ui-sref='home'>Home</a>
-    <a href="http://localhost:3000/auth">login</a>
-    <a href="https://jodilark.auth0.com/v2/logout?returnTo=http://localhost:3000/&client_id=hQcU4t5VREA4rCBj8h3onZMNBSRA28sT">logout</a>
-    <button ui-sref="dashboard">Dashboard</button>
-    <button ui-sref="global_search">Global Search Results</button>
-    <button ui-sref="settings">Settings</button>
 
-    <!-- ========== MAKE A DIRECTIVE FOR SIDE MENU-->
-    <button ui-sref="user_create">Create a User</button>
-    <button ui-sref="user_manage">Manage Users</button>
-    <button ui-sref="location_create">Create a location</button>
-    <button ui-sref="loc_container">Create a Location Container Type</button>
+    <a ui-sref='home'>Home</a>
+    <a href="http://localhost:3000/auth" ng-hide='loggedIn'>login</a>
+    <div ng-hide='!loggedIn'>
+        <a href="https://jodilark.auth0.com/v2/logout?returnTo=http://localhost:3000/&client_id=hQcU4t5VREA4rCBj8h3onZMNBSRA28sT"  ng-click="logout()">logout</a>
+        <button ui-sref="dashboard">Dashboard</button>
+        <button ui-sref="global_search">Global Search Results</button>
+        <button ui-sref="settings">Settings</button>
+
+
+        <!-- ========== MAKE A DIRECTIVE FOR SIDE MENU-->
+
+        <button ui-sref="user_create">Create a User</button>
+        <button ui-sref="user_manage">Manage Users</button>
+        <button ui-sref="location_create">Create a location</button>
+        <button ui-sref="loc_container">Create a Location Container Type</button>
+        <button ui-sref="loc_class">Create a Location Class Type</button>
+    </div>
 
 
     <h4>Ui router is below this line</h4>
