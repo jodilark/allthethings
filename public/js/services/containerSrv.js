@@ -13,7 +13,19 @@ angular.module('app').service('containerSrv', function ($http) {
             data: data
         }).then((httpResponse) => console.log('response:', JSON.stringify(httpResponse)))
     }
-    this.updateContainer = (id) => ($http.get('http://localhost:3000/api/containers/' + id))
-    this.deleteContainer = (id) => ($http.get('http://localhost:3000/api/containers/' + id))
-
+    // ...................  update containers
+    this.updateContainer = (id, data) => {
+        $http({
+            url: 'http://localhost:3000/api/containers/' + id,
+            method: 'PUT',
+            data: data
+        }).then((httpResponse) => console.log('response:', JSON.stringify(httpResponse)))
+    }
+    // ...................  delete containers
+    this.deleteContainer = (id) => {
+        $http({
+            url: 'http://localhost:3000/api/containers/' + id,
+            method: 'DELETE'
+        }).then((httpResponse) => console.log('response:', JSON.stringify(httpResponse)))
+    }
 })

@@ -28,7 +28,182 @@ angular.module('app', ['ui.router', 'ui.grid', 'ui.grid.selection', 'ui.grid.edi
 });
 'use strict';
 
-angular.module('app').controller('locContainer', function ($scope, containerSrv) {
+angular.module('app').directive('starRating', function () {
+    return {
+        restrict: 'A',
+        template: '<ul class="rating">' + '	<li ng-repeat="star in stars" ng-class="star" ng-click="toggle($index)">' + '\u2605' + '</li>' + '</ul>',
+        scope: {
+            ratingValue: '=',
+            max: '=',
+            onRatingSelected: '&'
+        },
+        link: function link(scope, elem, attrs) {
+            var updateStars = function updateStars() {
+                scope.stars = [];
+                for (var i = 0; i < scope.max; i++) {
+                    scope.stars.push({
+                        filled: i < scope.ratingValue
+                    });
+                }
+            };
+
+            scope.toggle = function (index) {
+                scope.ratingValue = index + 1;
+                scope.onRatingSelected({
+                    rating: index + 1
+                });
+            };
+
+            scope.$watch('ratingValue', function (oldVal, newVal) {
+                if (newVal) {
+                    updateStars();
+                }
+            });
+        }
+    };
+});
+'use strict';
+
+angular.module('app').service('containerSrv', function ($http) {
+    // »»»»»»»»»»»»»»»»»»»║ TESTS
+    this.containerServiceTest = 'the containerSrv is connected';
+
+    // »»»»»»»»»»»»»»»»»»»║ ENDPOINTS
+    // ...................  get containers
+    this.getContainerList = function () {
+        return $http.get('http://localhost:3000/api/containers');
+    };
+    // ...................  create containers
+    this.createContainer = function (data) {
+        $http({
+            url: 'http://localhost:3000/api/containers',
+            method: 'POST',
+            data: data
+        }).then(function (httpResponse) {
+            return console.log('response:', JSON.stringify(httpResponse));
+        });
+    };
+    // ...................  update containers
+    this.updateContainer = function (id, data) {
+        $http({
+            url: 'http://localhost:3000/api/containers/' + id,
+            method: 'PUT',
+            data: data
+        }).then(function (httpResponse) {
+            return console.log('response:', JSON.stringify(httpResponse));
+        });
+    };
+    // ...................  delete containers
+    this.deleteContainer = function (id) {
+        $http({
+            url: 'http://localhost:3000/api/containers/' + id,
+            method: 'DELETE'
+        }).then(function (httpResponse) {
+            return console.log('response:', JSON.stringify(httpResponse));
+        });
+    };
+});
+'use strict';
+
+angular.module('app').service('countryListSrv', function ($http) {
+    // »»»»»»»»»»»»»»»»»»»║ TESTS
+    this.countryListServiceTest = 'the countryListSrv is connected';
+
+    // »»»»»»»»»»»»»»»»»»»║ ENDPOINTS
+    this.getcountryList = function () {
+        return $http.get('http://localhost:3000/api/country');
+    };
+});
+'use strict';
+
+angular.module('app').service('deleteAllUsersSrv', function ($http) {
+    // »»»»»»»»»»»»»»»»»»»║ TESTS
+    this.deleteAllUsersServiceTest = 'the deleteAllUsersSrv is connected';
+
+    // »»»»»»»»»»»»»»»»»»»║ ENDPOINTS
+    this.deleteAllUsers = function () {
+        $http({
+            url: 'http://localhost:3000/api/user',
+            method: 'DELETE'
+        }).then(function (httpResponse) {
+            return console.log('response:', JSON.stringify(httpResponse));
+        });
+    };
+});
+'use strict';
+
+angular.module('app').service('getUserColumnsSrv', function ($http) {
+    // »»»»»»»»»»»»»»»»»»»║ TESTS
+    this.getUserColumnsSrvServiceTest = 'the getUserColumnsSrv is connected';
+
+    // »»»»»»»»»»»»»»»»»»»║ ENDPOINTS
+    this.getColumnList = function () {
+        return $http.get('http://localhost:3000/api/user/columns');
+    };
+});
+'use strict';
+
+angular.module('app').service('postUserInfoSrv', function ($http) {
+    // »»»»»»»»»»»»»»»»»»»║ TESTS
+    this.serviceTest = 'the postUserInfoSrv is connected';
+
+    // »»»»»»»»»»»»»»»»»»»║ ENDPOINTS
+    this.submitUserInfo = function (data) {
+        // console.log(`clicked submit and got ${JSON.stringify(data)}`)
+        $http({
+            url: 'http://localhost:3000/api/users',
+            method: 'POST',
+            data: data
+        }).then(function (httpResponse) {
+            return console.log('response:', JSON.stringify(httpResponse));
+        });
+    };
+});
+'use strict';
+
+angular.module('app').service('stateListSrv', function ($http) {
+    // »»»»»»»»»»»»»»»»»»»║ TESTS
+    this.serviceTest = 'the stateListSrv is connected';
+
+    // »»»»»»»»»»»»»»»»»»»║ ENDPOINTS
+    this.getStatesList = function () {
+        return $http.get('http://localhost:3000/api/states');
+    };
+});
+'use strict';
+
+angular.module('app').service('updateUserSrv', function ($http) {
+    // »»»»»»»»»»»»»»»»»»»║ TESTS
+    this.updateUserServiceTest = 'the updateUserSrv is connected';
+
+    // »»»»»»»»»»»»»»»»»»»║ ENDPOINTS
+    this.updateUser = function (id, data) {
+        $http({
+            url: 'http://localhost:3000/api/users/' + id,
+            method: 'PUT',
+            data: data
+        }).then(function (httpResponse) {
+            return console.log('response:', JSON.stringify(httpResponse));
+        });
+    };
+});
+'use strict';
+
+angular.module('app').service('userListSrv', function ($http) {
+    // »»»»»»»»»»»»»»»»»»»║ TESTS
+    this.userServiceTest = 'the userListSrv is connected';
+
+    // »»»»»»»»»»»»»»»»»»»║ ENDPOINTS
+    this.getUserList = function () {
+        return $http.get('http://localhost:3000/api/users');
+    };
+    this.getCustomUserList = function () {
+        return $http.get('http://localhost:3000/api/users/custom');
+    };
+});
+'use strict';
+
+angular.module('app').controller('locContainer', function ($scope, containerSrv, uiGridConstants) {
     // »»»»»»»»»»»»»»»»»»»║  TESTS 
     $scope.locContainerTest = 'locContainerTest controller is connected and operational';
     $scope.containerServiceTest = containerSrv.containerServiceTest;
@@ -38,11 +213,12 @@ angular.module('app').controller('locContainer', function ($scope, containerSrv)
         return document.getElementById("containerCreateForm").reset
 
         // »»»»»»»»»»»»»»»»»»»║ CONTAINER MANIPULATION
-        // .................... get list of container types
+        // .................... get list of container types and grid information
         ();
     };$scope.getContainers = function () {
         return containerSrv.getContainerList().then(function (response) {
-            return $scope.containers = response.data;
+            $scope.containers = response.data;
+            $scope.gridOptions.data = response.data;
         });
     };
     $scope.getContainers
@@ -50,6 +226,9 @@ angular.module('app').controller('locContainer', function ($scope, containerSrv)
     // .................... create container types
     ();$scope.container = {};
     $scope.createContainer = function () {
+        $scope.gridOptions.data.push({
+            "name": $scope.container.name
+        });
         // console.log(`this will be created ... ${JSON.stringify($scope.container)}`)
         containerSrv.createContainer($scope.container);
         $scope.clearForm();
@@ -57,6 +236,50 @@ angular.module('app').controller('locContainer', function ($scope, containerSrv)
 
     // .................... update container types
 
+    // »»»»»»»»»»»»»»»»»»»║  COLUMNS AND DATA
+    $scope.gridOptions = {
+        enableRowSelection: true,
+        enableRowHeaderSelection: true,
+        multiSelect: false,
+        enableSelectAll: false,
+        enableFiltering: true,
+        columnDefs: [{ name: 'name', displayName: 'Description' }],
+        onRegisterApi: function onRegisterApi(gridApi) {
+
+            gridApi.selection.on.rowSelectionChanged($scope, function (row) {
+                $scope.selected = row.isSelected;
+                $scope.rowId = row.uid;
+                $scope.rowObj = row.entity;
+                $scope.enableDelete = false;
+                $scope.selected === true ? $scope.enableDelete = false : $scope.enableDelete = true;
+            }
+
+            // ...........   update the user on lost focus, tab, or enter
+            );gridApi.edit.on.afterCellEdit($scope, function (rowEntity) {
+                $scope.updateCont = rowEntity;
+                $scope.update($scope.updateCont);
+            });
+        }
+
+        // .................... update a container
+    };$scope.update = function (upObj) {
+        var cId = upObj.id;
+        containerSrv.updateContainer(cId, upObj);
+    };
+
+    // .................... delete a container
+    $scope.delete = function () {
+        var gridData = $scope.gridOptions.data;
+        var cId = $scope.rowObj.id;
+        if ($scope.selected === true) {
+            for (var i = 0; i < gridData.length; i++) {
+                if (gridData[i].id === cId) {
+                    gridData.splice(i, 1);
+                }
+            }
+            containerSrv.deleteContainer(cId);
+        }
+    };
 });
 'use strict';
 
@@ -257,168 +480,6 @@ angular.module('app').controller('userManage', function ($scope, uiGridConstants
             updateUserSrv.updateUser(uId, expectedObj);
         };
         getId();
-    };
-});
-'use strict';
-
-angular.module('app').directive('starRating', function () {
-    return {
-        restrict: 'A',
-        template: '<ul class="rating">' + '	<li ng-repeat="star in stars" ng-class="star" ng-click="toggle($index)">' + '\u2605' + '</li>' + '</ul>',
-        scope: {
-            ratingValue: '=',
-            max: '=',
-            onRatingSelected: '&'
-        },
-        link: function link(scope, elem, attrs) {
-            var updateStars = function updateStars() {
-                scope.stars = [];
-                for (var i = 0; i < scope.max; i++) {
-                    scope.stars.push({
-                        filled: i < scope.ratingValue
-                    });
-                }
-            };
-
-            scope.toggle = function (index) {
-                scope.ratingValue = index + 1;
-                scope.onRatingSelected({
-                    rating: index + 1
-                });
-            };
-
-            scope.$watch('ratingValue', function (oldVal, newVal) {
-                if (newVal) {
-                    updateStars();
-                }
-            });
-        }
-    };
-});
-'use strict';
-
-angular.module('app').service('containerSrv', function ($http) {
-    // »»»»»»»»»»»»»»»»»»»║ TESTS
-    this.containerServiceTest = 'the containerSrv is connected';
-
-    // »»»»»»»»»»»»»»»»»»»║ ENDPOINTS
-    // ...................  get containers
-    this.getContainerList = function () {
-        return $http.get('http://localhost:3000/api/containers');
-    };
-    // ...................  create containers
-    this.createContainer = function (data) {
-        $http({
-            url: 'http://localhost:3000/api/containers',
-            method: 'POST',
-            data: data
-        }).then(function (httpResponse) {
-            return console.log('response:', JSON.stringify(httpResponse));
-        });
-    };
-    this.updateContainer = function (id) {
-        return $http.get('http://localhost:3000/api/containers/' + id);
-    };
-    this.deleteContainer = function (id) {
-        return $http.get('http://localhost:3000/api/containers/' + id);
-    };
-});
-'use strict';
-
-angular.module('app').service('countryListSrv', function ($http) {
-    // »»»»»»»»»»»»»»»»»»»║ TESTS
-    this.countryListServiceTest = 'the countryListSrv is connected';
-
-    // »»»»»»»»»»»»»»»»»»»║ ENDPOINTS
-    this.getcountryList = function () {
-        return $http.get('http://localhost:3000/api/country');
-    };
-});
-'use strict';
-
-angular.module('app').service('deleteAllUsersSrv', function ($http) {
-    // »»»»»»»»»»»»»»»»»»»║ TESTS
-    this.deleteAllUsersServiceTest = 'the deleteAllUsersSrv is connected';
-
-    // »»»»»»»»»»»»»»»»»»»║ ENDPOINTS
-    this.deleteAllUsers = function () {
-        $http({
-            url: 'http://localhost:3000/api/user',
-            method: 'DELETE'
-        }).then(function (httpResponse) {
-            return console.log('response:', JSON.stringify(httpResponse));
-        });
-    };
-});
-'use strict';
-
-angular.module('app').service('getUserColumnsSrv', function ($http) {
-    // »»»»»»»»»»»»»»»»»»»║ TESTS
-    this.getUserColumnsSrvServiceTest = 'the getUserColumnsSrv is connected';
-
-    // »»»»»»»»»»»»»»»»»»»║ ENDPOINTS
-    this.getColumnList = function () {
-        return $http.get('http://localhost:3000/api/user/columns');
-    };
-});
-'use strict';
-
-angular.module('app').service('postUserInfoSrv', function ($http) {
-    // »»»»»»»»»»»»»»»»»»»║ TESTS
-    this.serviceTest = 'the postUserInfoSrv is connected';
-
-    // »»»»»»»»»»»»»»»»»»»║ ENDPOINTS
-    this.submitUserInfo = function (data) {
-        // console.log(`clicked submit and got ${JSON.stringify(data)}`)
-        $http({
-            url: 'http://localhost:3000/api/users',
-            method: 'POST',
-            data: data
-        }).then(function (httpResponse) {
-            return console.log('response:', JSON.stringify(httpResponse));
-        });
-    };
-});
-'use strict';
-
-angular.module('app').service('stateListSrv', function ($http) {
-    // »»»»»»»»»»»»»»»»»»»║ TESTS
-    this.serviceTest = 'the stateListSrv is connected';
-
-    // »»»»»»»»»»»»»»»»»»»║ ENDPOINTS
-    this.getStatesList = function () {
-        return $http.get('http://localhost:3000/api/states');
-    };
-});
-'use strict';
-
-angular.module('app').service('updateUserSrv', function ($http) {
-    // »»»»»»»»»»»»»»»»»»»║ TESTS
-    this.updateUserServiceTest = 'the updateUserSrv is connected';
-
-    // »»»»»»»»»»»»»»»»»»»║ ENDPOINTS
-    this.updateUser = function (id, data) {
-        $http({
-            url: 'http://localhost:3000/api/users/' + id,
-            method: 'PUT',
-            data: data
-        }).then(function (httpResponse) {
-            return console.log('response:', JSON.stringify(httpResponse));
-        });
-    };
-});
-'use strict';
-
-angular.module('app').service('userListSrv', function ($http) {
-    // »»»»»»»»»»»»»»»»»»»║ TESTS
-    this.userServiceTest = 'the userListSrv is connected';
-
-    // »»»»»»»»»»»»»»»»»»»║ ENDPOINTS
-    this.getUserList = function () {
-        return $http.get('http://localhost:3000/api/users');
-    };
-    this.getCustomUserList = function () {
-        return $http.get('http://localhost:3000/api/users/custom');
     };
 });
 //# sourceMappingURL=bundle.js.map

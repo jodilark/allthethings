@@ -10,10 +10,12 @@
 <!-- »»»»»»»»»»»»»»»»»»»║   INPUT FIELDS   -->
 <form id="containerCreateForm">
     <input type="text" placeholder="Description" ng-model="container.name">
-    <input type="submit" value="Submit" ng-click="createContainer()">
+    <input type="submit" value="Submit" id="addData"  ng-click="createContainer()">
     <input type="reset" value="Cancel">
+    <button ng-click="delete()" ng-disabled="enableDelete != false">Delete</button>
 </form>
 
-<ul ng-repeat="container in containers">
-    <li>{{container.name}}</li>
-</ul>
+
+<div>
+    <div ui-grid="gridOptions" class="myGrid" ui-grid-selection ui-grid-edit></div>
+</div>
