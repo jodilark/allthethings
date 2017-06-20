@@ -4,4 +4,5 @@ angular.module('app').service('locationsListSrv', function ($http) {
 
     // »»»»»»»»»»»»»»»»»»»║ ENDPOINTS
     this.getLocationsList = () => ($http.get('http://localhost:3000/api/locations')) 
+    this.getLocationsCustomList = () => ($http.get('http://localhost:3000/api/locations/custom')) 
 })

@@ -3,7 +3,7 @@
 exports.getLocationsList = (req, res) => req.app.get('db').getAllLocations().then((response) => res.send(response))
 
 // ....................  get a list of all locations to populate lists
-exports.getLocationsCustomList = (req, res) => req.app.get('db').getAllLocations().then((response) => res.send(response))
+exports.getLocationsCustomList = (req, res) => req.app.get('db').getCustomLocations().then((response) => res.send(response))
 
 // ....................  add a new location to the db
 exports.createLocation = (req, res) => {

@@ -35,4 +35,9 @@ angular.module('app', ['ui.router', 'ui.grid', 'ui.grid.selection', 'ui.grid.edi
                 url: '/loc_class',
                 controller: 'locClass'
             })
+            .state('location_manage', {
+                templateUrl: '../views/location_manage.html',
+                url: '/location_manage',
+                controller: 'locManage'
+            })
     })
