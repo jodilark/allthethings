@@ -15,3 +15,5 @@ JOIN loc_classes
 ON loc_classes.id = locations.loc_class_id
 JOIN containers
 ON containers.id = locations.container_id
+ORDER BY id asc
+;

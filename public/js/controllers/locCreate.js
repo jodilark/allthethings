@@ -57,7 +57,8 @@ angular.module('app').controller('locCreate', function ($scope, locCreateSrv, co
             alert(`this is a duplicate`)
         }
         else {
-            locCreateSrv.submitLocationInfo($scope.locObj) 
+            locCreateSrv.submitLocationInfo($scope.locObj)
+            $scope.getLocations() 
             $scope.clearForm()
         }
     }

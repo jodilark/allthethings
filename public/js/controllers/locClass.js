@@ -72,6 +72,7 @@ angular.module('app').controller('locClass', function ($scope, locClassSrv, uiGr
                 }
             }
             locClassSrv.deleteLocClass(cId)
+            $scope.enableDelete = true
         }
     }
 

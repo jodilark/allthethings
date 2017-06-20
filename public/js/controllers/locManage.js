@@ -1,4 +1,4 @@
-angular.module('app').controller('locManage', function ($scope, locationsListSrv) {
+angular.module('app').controller('locManage', function ($scope, locationsListSrv, locationUpdateSrv, locationDeleteSrv) {
     // »»»»»»»»»»»»»»»»»»»║  TESTS 
     $scope.locManageTest = 'locManage controller is connected and operational'
     $scope.locListServiceTest = locationsListSrv.locListServiceTest
@@ -19,11 +19,11 @@ angular.module('app').controller('locManage', function ($scope, locationsListSrv
         , enableSelectAll: false
         , enableFiltering: true
         , columnDefs: [
-            { name: 'id'}
+            { name: 'id', enableCellEdit: false }
             , { name: 'loc_desc', displayName: 'Description' }
-            , { name: 'loc_class_name', displayName: 'Classification' }
-            , { name: 'loc_class_desc', displayName: 'Class Desc.' }
-            , { name: 'loc_container', displayName: 'Container' }
+            , { name: 'loc_class_name', displayName: 'Classification', enableCellEdit: false }
+            , { name: 'loc_class_desc', displayName: 'Class Desc.', enableCellEdit: false }
+            , { name: 'loc_container', displayName: 'Container', enableCellEdit: false }
             , { name: 'x_coordinate', displayName: 'X' }
             , { name: 'y_coordinate', displayName: 'Y' }
             , { name: 'z_coordinate', displayName: 'Z' }
@@ -39,13 +39,33 @@ angular.module('app').controller('locManage', function ($scope, locationsListSrv
                 $scope.selected === true ? $scope.enableDelete = false : $scope.enableDelete = true
             })
 
-            // ...........   update the loc class on lost focus, tab, or enter
+            // ...........   update the location on lost focus, tab, or enter
             gridApi.edit.on.afterCellEdit($scope, function (rowEntity) {
                 $scope.updateCont = rowEntity
-                $scope.update($scope.updateCont)
+                // ............. drop containers and classes text from entity obj
+                var gridObj = {container_id: rowEntity.container_id, id: rowEntity.id, loc_class_id: rowEntity.loc_class_id, loc_desc: rowEntity.loc_desc, parent_location_id: rowEntity.parent_location_id, x_coordinate: rowEntity.x_coordinate, y_coordinate: rowEntity.y_coordinate, z_coordinate: rowEntity.z_coordinate}
+                // ............. call update
+                $scope.update(gridObj)
             })
         }
     }
 
+    // »»»»»»»»»»»»»»»»»»»║  UPDATE LOCATIONS
+    $scope.update = (updateObj) => locationUpdateSrv.submitLocationInfo(updateObj)
+
+    // »»»»»»»»»»»»»»»»»»»║  DELETE LOCATIONS
+    $scope.delete = () => {
+        let gridData = $scope.gridOptions.data
+        let cId = $scope.rowObj.id
+        if ($scope.selected === true) {
+            for (let i = 0; i < gridData.length; i++) {
+                if (gridData[i].id === cId) {
+                    gridData.splice(i, 1)
+                }
+            }
+            locationDeleteSrv.deleteLocation(cId)
+            $scope.enableDelete = true
+        }
+    }
 
 })

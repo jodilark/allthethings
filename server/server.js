@@ -145,8 +145,8 @@ app.delete('/api/loc_classes/:id', locClassCtrl.deleteLocClass)
 app.get('/api/locations', locationsCtrl.getLocationsList)
 app.get('/api/locations/custom', locationsCtrl.getLocationsCustomList)
 app.post('/api/locations', locationsCtrl.createLocation)
-// app.put('/api/locations/:id', locationsCtrl.updateLocation)
-// app.delete('/api/locations/:id', locationsCtrl.deleteLocation)
+app.put('/api/locations/:id', locationsCtrl.updateLocation)
+app.delete('/api/locations/:id', locationsCtrl.deleteLocation)
 
 //  .................... settings
 // app.get('/api/settings/default', $changemeCtrl.getDefaultSettings)

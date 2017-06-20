@@ -110,6 +110,7 @@ angular.module('app').controller('locClass', function ($scope, locClassSrv, uiGr
                 }
             }
             locClassSrv.deleteLocClass(cId);
+            $scope.enableDelete = true;
         }
     };
 });
@@ -190,6 +191,7 @@ angular.module('app').controller('locContainer', function ($scope, containerSrv,
                 }
             }
             containerSrv.deleteContainer(cId);
+            $scope.enableDelete = true;
         }
     };
 });
@@ -267,13 +269,14 @@ angular.module('app').controller('locCreate', function ($scope, locCreateSrv, co
             alert('this is a duplicate');
         } else {
             locCreateSrv.submitLocationInfo($scope.locObj);
+            $scope.getLocations();
             $scope.clearForm();
         }
     };
 });
 'use strict';
 
-angular.module('app').controller('locManage', function ($scope, locationsListSrv) {
+angular.module('app').controller('locManage', function ($scope, locationsListSrv, locationUpdateSrv, locationDeleteSrv) {
     // »»»»»»»»»»»»»»»»»»»║  TESTS 
     $scope.locManageTest = 'locManage controller is connected and operational';
     $scope.locListServiceTest = locationsListSrv.locListServiceTest;
@@ -295,7 +298,7 @@ angular.module('app').controller('locManage', function ($scope, locationsListSrv
         multiSelect: false,
         enableSelectAll: false,
         enableFiltering: true,
-        columnDefs: [{ name: 'id' }, { name: 'loc_desc', displayName: 'Description' }, { name: 'loc_class_name', displayName: 'Classification' }, { name: 'loc_class_desc', displayName: 'Class Desc.' }, { name: 'loc_container', displayName: 'Container' }, { name: 'x_coordinate', displayName: 'X' }, { name: 'y_coordinate', displayName: 'Y' }, { name: 'z_coordinate', displayName: 'Z' }, { name: 'parent_location_id', displayName: 'Parent' }],
+        columnDefs: [{ name: 'id', enableCellEdit: false }, { name: 'loc_desc', displayName: 'Description' }, { name: 'loc_class_name', displayName: 'Classification', enableCellEdit: false }, { name: 'loc_class_desc', displayName: 'Class Desc.', enableCellEdit: false }, { name: 'loc_container', displayName: 'Container', enableCellEdit: false }, { name: 'x_coordinate', displayName: 'X' }, { name: 'y_coordinate', displayName: 'Y' }, { name: 'z_coordinate', displayName: 'Z' }, { name: 'parent_location_id', displayName: 'Parent' }],
         onRegisterApi: function onRegisterApi(gridApi) {
 
             gridApi.selection.on.rowSelectionChanged($scope, function (row) {
@@ -306,11 +309,33 @@ angular.module('app').controller('locManage', function ($scope, locationsListSrv
                 $scope.selected === true ? $scope.enableDelete = false : $scope.enableDelete = true;
             }
 
-            // ...........   update the loc class on lost focus, tab, or enter
+            // ...........   update the location on lost focus, tab, or enter
             );gridApi.edit.on.afterCellEdit($scope, function (rowEntity) {
                 $scope.updateCont = rowEntity;
-                $scope.update($scope.updateCont);
+                // ............. drop containers and classes text from entity obj
+                var gridObj = { container_id: rowEntity.container_id, id: rowEntity.id, loc_class_id: rowEntity.loc_class_id, loc_desc: rowEntity.loc_desc, parent_location_id: rowEntity.parent_location_id, x_coordinate: rowEntity.x_coordinate, y_coordinate: rowEntity.y_coordinate, z_coordinate: rowEntity.z_coordinate
+                    // ............. call update
+                };$scope.update(gridObj);
             });
+        }
+
+        // »»»»»»»»»»»»»»»»»»»║  UPDATE LOCATIONS
+    };$scope.update = function (updateObj) {
+        return locationUpdateSrv.submitLocationInfo(updateObj
+
+        // »»»»»»»»»»»»»»»»»»»║  DELETE LOCATIONS
+        );
+    };$scope.delete = function () {
+        var gridData = $scope.gridOptions.data;
+        var cId = $scope.rowObj.id;
+        if ($scope.selected === true) {
+            for (var i = 0; i < gridData.length; i++) {
+                if (gridData[i].id === cId) {
+                    gridData.splice(i, 1);
+                }
+            }
+            locationDeleteSrv.deleteLocation(cId);
+            $scope.enableDelete = true;
         }
     };
 });
@@ -585,8 +610,6 @@ angular.module('app').service('containerSrv', function ($http) {
             url: 'http://localhost:3000/api/containers',
             method: 'POST',
             data: data
-        }).then(function (httpResponse) {
-            return console.log('response:', JSON.stringify(httpResponse));
         });
     };
     // ...................  update containers
@@ -595,8 +618,6 @@ angular.module('app').service('containerSrv', function ($http) {
             url: 'http://localhost:3000/api/containers/' + id,
             method: 'PUT',
             data: data
-        }).then(function (httpResponse) {
-            return console.log('response:', JSON.stringify(httpResponse));
         });
     };
     // ...................  delete containers
@@ -604,8 +625,6 @@ angular.module('app').service('containerSrv', function ($http) {
         $http({
             url: 'http://localhost:3000/api/containers/' + id,
             method: 'DELETE'
-        }).then(function (httpResponse) {
-            return console.log('response:', JSON.stringify(httpResponse));
         });
     };
 });
@@ -649,6 +668,21 @@ angular.module('app').service('getUserColumnsSrv', function ($http) {
 });
 'use strict';
 
+angular.module('app').service('locationDeleteSrv', function ($http) {
+    // »»»»»»»»»»»»»»»»»»»║ TESTS
+    this.locationDeleteServiceTest = 'the locationDeleteSrv is connected';
+
+    // // »»»»»»»»»»»»»»»»»»»║ ENDPOINTS
+    // ...................  delete loc_classes
+    this.deleteLocation = function (id) {
+        $http({
+            url: 'http://localhost:3000/api/locations/' + id,
+            method: 'DELETE'
+        });
+    };
+});
+'use strict';
+
 angular.module('app').service('locationsListSrv', function ($http) {
     // »»»»»»»»»»»»»»»»»»»║ TESTS
     this.locListServiceTest = 'the locationsListSrv is connected';
@@ -659,6 +693,22 @@ angular.module('app').service('locationsListSrv', function ($http) {
     };
     this.getLocationsCustomList = function () {
         return $http.get('http://localhost:3000/api/locations/custom');
+    };
+});
+'use strict';
+
+angular.module('app').service('locationUpdateSrv', function ($http) {
+    // »»»»»»»»»»»»»»»»»»»║ TESTS
+    this.locationUpdateServiceTest = 'the locationUpdateSrv is connected';
+
+    // »»»»»»»»»»»»»»»»»»»║ ENDPOINTS
+    this.submitLocationInfo = function (data) {
+        // console.log(`data to be sent ${JSON.stringify(data)}`)
+        $http({
+            url: 'http://localhost:3000/api/locations/' + data.id,
+            method: 'PUT',
+            data: data
+        });
     };
 });
 'use strict';
@@ -678,8 +728,6 @@ angular.module('app').service('locClassSrv', function ($http) {
             url: 'http://localhost:3000/api/loc_classes',
             method: 'POST',
             data: data
-        }).then(function (httpResponse) {
-            return console.log('response:', JSON.stringify(httpResponse));
         });
     };
     // ...................  update loc_classes
@@ -688,8 +736,6 @@ angular.module('app').service('locClassSrv', function ($http) {
             url: 'http://localhost:3000/api/loc_classes/' + id,
             method: 'PUT',
             data: data
-        }).then(function (httpResponse) {
-            return console.log('response:', JSON.stringify(httpResponse));
         });
     };
     // ...................  delete loc_classes
@@ -697,8 +743,6 @@ angular.module('app').service('locClassSrv', function ($http) {
         $http({
             url: 'http://localhost:3000/api/loc_classes/' + id,
             method: 'DELETE'
-        }).then(function (httpResponse) {
-            return console.log('response:', JSON.stringify(httpResponse));
         });
     };
 });
@@ -714,8 +758,6 @@ angular.module('app').service('locCreateSrv', function ($http) {
             url: 'http://localhost:3000/api/locations',
             method: 'POST',
             data: data
-        }).then(function (httpResponse) {
-            return console.log('response:', JSON.stringify(httpResponse));
         });
     };
 });

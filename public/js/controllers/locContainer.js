@@ -73,6 +73,7 @@ angular.module('app').controller('locContainer', function ($scope, containerSrv,
                 }
             }
             containerSrv.deleteContainer(cId)
+            $scope.enableDelete = true
         }
     }
 
