@@ -14,6 +14,7 @@ const homeCtrl = require('./controllers/homeCtrl')
 const settingsCtrl = require('./controllers/settingsCtrl')
 const containerCtrl = require('./controllers/containerCtrl')
 const locClassCtrl = require('./controllers/locClassCtrl')
+const locationsCtrl = require('./controllers/locationsCtrl')
 
 //  »»»»»»»»»»»»»»»»»»»║   OTHER VARIABLES
 const port = 3000
@@ -141,9 +142,11 @@ app.put('/api/loc_classes/:id', locClassCtrl.updateLocClass)
 app.delete('/api/loc_classes/:id', locClassCtrl.deleteLocClass)
 
 //  .................... locations
-// app.post('/api/locations', $changemeCtrl.createLocation)
-// app.put('/api/locations/:id', $changemeCtrl.updateLocation)
-// app.delete('/api/locations/:id', $changemeCtrl.deleteLocation)
+app.get('/api/locations', locationsCtrl.getLocationsList)
+app.get('/api/locations/custom', locationsCtrl.getLocationsCustomList)
+app.post('/api/locations', locationsCtrl.createLocation)
+// app.put('/api/locations/:id', locationsCtrl.updateLocation)
+// app.delete('/api/locations/:id', locationsCtrl.deleteLocation)
 
 //  .................... settings
 // app.get('/api/settings/default', $changemeCtrl.getDefaultSettings)

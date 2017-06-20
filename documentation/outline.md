@@ -228,6 +228,7 @@ mvp feature set
 
 possession
 add ons
+	make location dropdowns filterable
 	add photos of items
 	scan a storage/location barcode to get contents of container
 	add an item through scanning a barcode/track item by barcode

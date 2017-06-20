@@ -1,6 +1,6 @@
 angular.module('app').service('locClassSrv', function ($http) {
     // »»»»»»»»»»»»»»»»»»»║ TESTS
-    this.locClassServiceTest = 'the containerSrv is connected'
+    this.locClassServiceTest = 'the locClassSrv is connected'
 
     // // »»»»»»»»»»»»»»»»»»»║ ENDPOINTS
     // ...................  get loc_classes

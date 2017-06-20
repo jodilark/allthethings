@@ -3,6 +3,10 @@
 <div class="test-results">
     <ul>
         <li>1. {{locCtrlTest}}</li>
+        <li>2. {{locCreateServiceTest}}</li>
+        <li>3. {{containerServiceTest}}</li>
+        <li>4. {{locClassServiceTest}}</li>
+        <li>5. {{locListServiceTest}}</li>
     </ul>
 </div>
 
@@ -12,20 +16,20 @@
 
 
 <!-- »»»»»»»»»»»»»»»»»»»║   INPUT FIELDS   -->
-<form>
-    <select id="stateList" ng-options="state as state.name for state in stateName" ng-model="stateObj">
-        <option id="stateList" value="" disabled selected>Classification</option>
+<form id="createLocationForm">
+    <select id="classificationList" ng-options="locClass as locClass.name for locClass in locClasses" ng-model="locClassObj">
+        <option id="classificationList" value="" disabled selected>Classification</option>
     </select>
-    <input type="text" placeholder="description" />
-    <select id="stateList" ng-options="state as state.name for state in stateName" ng-model="stateObj">
-        <option id="stateList" value="" disabled selected>Container Type</option>
+    <input type="text" placeholder="description" ng-model="locObj.description" required/>
+    <select id="containerList" ng-options="container as container.name for container in containers" ng-model="containerObj">
+        <option id="containerList" value="" disabled selected>Container Type</option>
     </select>
-    <input type="text" placeholder="x-coordinate" />
-    <input type="text" placeholder="y-coordinate" />
-    <input type="text" placeholder="z-coordinate" />
-    <select id="stateList" ng-options="state as state.name for state in stateName" ng-model="stateObj">
-        <option id="stateList" value="" disabled selected>Parent Location</option>
+    <input type="number" placeholder="x-coordinate" ng-model="locObj.x_coordinate" />
+    <input type="number" placeholder="y-coordinate" ng-model="locObj.y_coordinate" />
+    <input type="number" placeholder="z-coordinate" ng-model="locObj.z_coordinate" />
+    <select id="locationList" ng-options="location as location.description for location in locations" ng-model="locationParentObj">
+        <option id="locationList" value="" disabled selected>Parent Location</option>
     </select>
-    <input type="submit" />
+    <input type="submit" value="Submit" ng-click="createLocation()"/>
     <input type="reset" />
 </form>

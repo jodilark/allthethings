@@ -32,58 +32,6 @@ angular.module('app', ['ui.router', 'ui.grid', 'ui.grid.selection', 'ui.grid.edi
 });
 'use strict';
 
-angular.module('app').directive('hideShow', function () {
-  return {
-    priority: 1001, // compiles first
-    terminal: true, // prevent lower priority directives to compile after it
-    compile: function compile(el) {
-      el.removeAttr('my-dir'); // necessary to avoid infinite compile loop
-      el.attr('ng-click', 'fxn()');
-      var fn = $compile(el);
-      return function (scope) {
-        fn(scope);
-      };
-    }
-  };
-});
-'use strict';
-
-angular.module('app').directive('starRating', function () {
-    return {
-        restrict: 'A',
-        template: '<ul class="rating">' + '	<li ng-repeat="star in stars" ng-class="star" ng-click="toggle($index)">' + '\u2605' + '</li>' + '</ul>',
-        scope: {
-            ratingValue: '=',
-            max: '=',
-            onRatingSelected: '&'
-        },
-        link: function link(scope, elem, attrs) {
-            var updateStars = function updateStars() {
-                scope.stars = [];
-                for (var i = 0; i < scope.max; i++) {
-                    scope.stars.push({
-                        filled: i < scope.ratingValue
-                    });
-                }
-            };
-
-            scope.toggle = function (index) {
-                scope.ratingValue = index + 1;
-                scope.onRatingSelected({
-                    rating: index + 1
-                });
-            };
-
-            scope.$watch('ratingValue', function (oldVal, newVal) {
-                if (newVal) {
-                    updateStars();
-                }
-            });
-        }
-    };
-});
-'use strict';
-
 angular.module('app').controller('locClass', function ($scope, locClassSrv, uiGridConstants) {
     // »»»»»»»»»»»»»»»»»»»║  TESTS 
     $scope.locClassTest = 'locClass controller is connected and operational';
@@ -243,11 +191,81 @@ angular.module('app').controller('locContainer', function ($scope, containerSrv,
 });
 'use strict';
 
-angular.module('app').controller('locCreate', function ($scope) {
-  // »»»»»»»»»»»»»»»»»»»║  TESTS 
-  $scope.locCtrlTest = 'locCreate controller is connected and operational';
+angular.module('app').controller('locCreate', function ($scope, locCreateSrv, containerSrv, locClassSrv, locationsListSrv) {
+    // »»»»»»»»»»»»»»»»»»»║  TESTS 
+    $scope.locCtrlTest = 'locCreate controller is connected and operational';
+    $scope.locCreateServiceTest = locCreateSrv.locCreateServiceTest;
+    $scope.containerServiceTest = containerSrv.containerServiceTest;
+    $scope.locClassServiceTest = locClassSrv.locClassServiceTest;
+    $scope.locListServiceTest = locationsListSrv.locListServiceTest;
 
-  // .................... user object to submit  
+    // »»»»»»»»»»»»»»»»»»»║ CLEAR FORM
+    $scope.clearForm = function () {
+        return document.getElementById("createLocationForm").reset
+
+        // »»»»»»»»»»»»»»»»»»»║  GET CONTAINER LIST 
+        ();
+    };$scope.getContainers = function () {
+        return containerSrv.getContainerList().then(function (response) {
+            return $scope.containers = response.data;
+        });
+    };
+    $scope.getContainers
+
+    // »»»»»»»»»»»»»»»»»»»║  GET LOCATION CLASSIFICATION LIST
+    ();$scope.getLocClasses = function () {
+        return locClassSrv.getLocClassesList().then(function (response) {
+            return $scope.locClasses = response.data;
+        });
+    };
+    $scope.getLocClasses
+
+    // »»»»»»»»»»»»»»»»»»»║  GET LOCATION LIST
+    ();$scope.getLocations = function () {
+        return locationsListSrv.getLocationsList().then(function (response) {
+            return $scope.locations = response.data;
+        });
+    };
+    $scope.getLocations
+
+    // »»»»»»»»»»»»»»»»»»»║  CREATE A NEW LOCATION
+    //  .................... objects used to post
+    ();$scope.locClassObj = [];
+    $scope.containerObj = [];
+    $scope.locationParentObj = [];
+    $scope.locObj = {};
+    //  .................... function to cover defaults are sent if not user didn't make selection
+    $scope.setDefaults = function () {
+        var cl = $scope.locClassObj.length;
+        var c = $scope.containerObj.length;
+        var p = $scope.locationParentObj.length;
+        cl === 0 ? $scope.locObj.loc_class_id = 1 : undefined;
+        c === 0 ? $scope.locObj.container_id = 1 : undefined;
+        p === 0 ? $scope.locObj.parent_location_id = 1 : undefined;
+    };
+    // ....................  create location
+    $scope.createLocation = function () {
+        $scope.getLocations();
+        $scope.locObj.loc_class_id = $scope.locClassObj.id;
+        $scope.locObj.container_id = $scope.containerObj.id;
+        $scope.locObj.parent_location_id = $scope.locationParentObj.id;
+        $scope.setDefaults();
+        var exists = 0;
+        for (var i = 0; i < $scope.locations.length; i++) {
+            if ($scope.locations[i].description === $scope.locObj.description && $scope.locations[i].parent_location_id === $scope.locObj.parent_location_id) {
+                exists = 1;
+                break;
+            } else {
+                exists = 0;
+            }
+        }
+        if (exists === 1) {
+            alert('this is a duplicate');
+        } else {
+            locCreateSrv.submitLocationInfo($scope.locObj);
+            $scope.clearForm();
+        }
+    };
 });
 'use strict';
 
@@ -453,6 +471,58 @@ angular.module('app').controller('userManage', function ($scope, uiGridConstants
 });
 'use strict';
 
+angular.module('app').directive('hideShow', function () {
+  return {
+    priority: 1001, // compiles first
+    terminal: true, // prevent lower priority directives to compile after it
+    compile: function compile(el) {
+      el.removeAttr('my-dir'); // necessary to avoid infinite compile loop
+      el.attr('ng-click', 'fxn()');
+      var fn = $compile(el);
+      return function (scope) {
+        fn(scope);
+      };
+    }
+  };
+});
+'use strict';
+
+angular.module('app').directive('starRating', function () {
+    return {
+        restrict: 'A',
+        template: '<ul class="rating">' + '	<li ng-repeat="star in stars" ng-class="star" ng-click="toggle($index)">' + '\u2605' + '</li>' + '</ul>',
+        scope: {
+            ratingValue: '=',
+            max: '=',
+            onRatingSelected: '&'
+        },
+        link: function link(scope, elem, attrs) {
+            var updateStars = function updateStars() {
+                scope.stars = [];
+                for (var i = 0; i < scope.max; i++) {
+                    scope.stars.push({
+                        filled: i < scope.ratingValue
+                    });
+                }
+            };
+
+            scope.toggle = function (index) {
+                scope.ratingValue = index + 1;
+                scope.onRatingSelected({
+                    rating: index + 1
+                });
+            };
+
+            scope.$watch('ratingValue', function (oldVal, newVal) {
+                if (newVal) {
+                    updateStars();
+                }
+            });
+        }
+    };
+});
+'use strict';
+
 angular.module('app').service('containerSrv', function ($http) {
     // »»»»»»»»»»»»»»»»»»»║ TESTS
     this.containerServiceTest = 'the containerSrv is connected';
@@ -532,9 +602,20 @@ angular.module('app').service('getUserColumnsSrv', function ($http) {
 });
 'use strict';
 
+angular.module('app').service('locationsListSrv', function ($http) {
+    // »»»»»»»»»»»»»»»»»»»║ TESTS
+    this.locListServiceTest = 'the locationsListSrv is connected';
+
+    // »»»»»»»»»»»»»»»»»»»║ ENDPOINTS
+    this.getLocationsList = function () {
+        return $http.get('http://localhost:3000/api/locations');
+    };
+});
+'use strict';
+
 angular.module('app').service('locClassSrv', function ($http) {
     // »»»»»»»»»»»»»»»»»»»║ TESTS
-    this.locClassServiceTest = 'the containerSrv is connected';
+    this.locClassServiceTest = 'the locClassSrv is connected';
 
     // // »»»»»»»»»»»»»»»»»»»║ ENDPOINTS
     // ...................  get loc_classes
@@ -566,6 +647,23 @@ angular.module('app').service('locClassSrv', function ($http) {
         $http({
             url: 'http://localhost:3000/api/loc_classes/' + id,
             method: 'DELETE'
+        }).then(function (httpResponse) {
+            return console.log('response:', JSON.stringify(httpResponse));
+        });
+    };
+});
+'use strict';
+
+angular.module('app').service('locCreateSrv', function ($http) {
+    // »»»»»»»»»»»»»»»»»»»║ TESTS
+    this.locCreateServiceTest = 'the locCreateSrv is connected';
+
+    // »»»»»»»»»»»»»»»»»»»║ ENDPOINTS
+    this.submitLocationInfo = function (data) {
+        $http({
+            url: 'http://localhost:3000/api/locations',
+            method: 'POST',
+            data: data
         }).then(function (httpResponse) {
             return console.log('response:', JSON.stringify(httpResponse));
         });
