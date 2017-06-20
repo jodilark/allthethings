@@ -18,18 +18,18 @@ const locationsCtrl = require('./controllers/locationsCtrl')
 
 //  »»»»»»»»»»»»»»»»»»»║   OTHER VARIABLES
 const port = 3000
-var successRedir = ''
 
 //  »»»»»»»»»»»»»»»»»»»║   MIDDLEWARE
 const app = express()
 app.use(express.static('../public'))
 app.use(bodyParser.json())
+app.use(cors())
 
 // .................... database
 massive({
-  host: 'localhost'
+  host: config.host
   , port: 5432
-  , database: 'allthethings' //config.database
+  , database: config.database
   , user: config.user
   , password: config.password
 }).then(function (db) {
@@ -48,6 +48,7 @@ app.use(session({
 app.use(passport.initialize())
 app.use(passport.session())
 
+
 // .................... make the strategy (still part of passport setups)
 var strategy = new Auth0Strategy({
   domain: config.domain,
@@ -55,19 +56,18 @@ var strategy = new Auth0Strategy({
   clientSecret: config.clientSecret,
   callbackURL: 'http://localhost:3000/auth/callback'
 }, function (accessToken, refreshToken, extraParams, profile, done) {
-  // console.log(profile)
   // .................... check to see if user exists
-  app.get('db').getAllUsers().then((resp) => {
-    var authEmail = profile._json.email //get email from auth
-    var uEmail = resp.filter((e, i, arr) => {return e.email === authEmail})
-    if (uEmail !== []) {
-      console.log(`${uEmail[0].first_name} is logged in`)
+  app.get('db').checkIfUserExists(profile.id).then((resp) => {
+    let user = resp[0]
+    if (!user) {
+      user = profile
+      user.isFirstTime = true
     }
+    else {
+      user.isFirstTime = false
+    }
+    return done(null, user);
   })
-
-
-
-  return done(null, profile);
 });
 
 // check authentication COME BACK TO THIS
@@ -90,6 +90,22 @@ passport.serializeUser(function (user, done) {
 passport.deserializeUser(function (obj, done) {
   done(null, obj);
 });
+
+//  .................... authorization endpoints
+app.get('/auth', passport.authenticate('auth0'));
+app.get('/auth/callback',
+  passport.authenticate('auth0', { successRedirect: '/#!/user_create_new', failureRedirect: '/login' }), (req, res) => res.status(200).send(req.user))
+app.get('/auth/me', function (req, res) {
+  if (!req.user) return res.sendStatus(403);
+  res.status(200).send(req.user);
+})
+
+// .................... logout
+app.get('/auth/logout', function (req, res) {
+  req.logout();
+  req.session.destroy();
+  res.send('/');
+})
 
 //  »»»»»»»»»»»»»»»»»»»║ ENDPOINTS
 
@@ -152,18 +168,7 @@ app.delete('/api/locations/:id', locationsCtrl.deleteLocation)
 // app.get('/api/settings/default', $changemeCtrl.getDefaultSettings)
 // app.put('/api/settings', $changemeCtrl.updateSettings)
 
-//  .................... authorization endpoints
-app.get('/auth', passport.authenticate('auth0'));
 
-
-
-app.get('/auth/callback',
-  passport.authenticate('auth0', { successRedirect: '/#!/dashboard', failureRedirect: '/login' }), (req, res) => res.status(200).send(req.user))
-
-app.get('/auth/me', function (req, res) {
-  if (!req.user) return res.sendStatus(404);
-  res.status(200).send(req.user);
-})
 
 //  »»»»»»»»»»»»»»»»»»»║   TESTS
 app.listen(port, () => console.log(`listening on port ${port}`))

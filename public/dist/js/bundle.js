@@ -8,6 +8,26 @@ angular.module('app', ['ui.router', 'ui.grid', 'ui.grid.selection', 'ui.grid.edi
     }).state('dashboard', {
         templateUrl: '../views/dashboard.html',
         url: '/dashboard'
+    }).state('user_create_new', {
+        templateUrl: '../views/user_create.html',
+        url: '/user_create_new',
+        controller: 'userCreate',
+        resolve: {
+            authenticate: function authenticate($state, checkUserSrv) {
+                checkUserSrv.getUser().then(function (response) {
+                    // console.log(response.data.isFirstTime)
+                    if (!response.data.isFirstTime) {
+                        console.log(1);
+                        event.preventDefault();
+                        console.log(2);
+                        $state.go('dashboard');
+                    }
+                }).catch(function (error) {
+                    event.preventDefault();
+                    $state.go('home');
+                });
+            }
+        }
     }).state('user_create', {
         templateUrl: '../views/user_create.html',
         url: '/user_create',
@@ -298,7 +318,7 @@ angular.module('app').controller('locManage', function ($scope, locationsListSrv
         multiSelect: false,
         enableSelectAll: false,
         enableFiltering: true,
-        columnDefs: [{ name: 'id', enableCellEdit: false }, { name: 'loc_desc', displayName: 'Description' }, { name: 'loc_class_name', displayName: 'Classification', enableCellEdit: false }, { name: 'loc_class_desc', displayName: 'Class Desc.', enableCellEdit: false }, { name: 'loc_container', displayName: 'Container', enableCellEdit: false }, { name: 'x_coordinate', displayName: 'X' }, { name: 'y_coordinate', displayName: 'Y' }, { name: 'z_coordinate', displayName: 'Z' }, { name: 'parent_location_id', displayName: 'Parent' }],
+        columnDefs: [{ name: 'id', enableCellEdit: false, width: 75 }, { name: 'loc_desc', displayName: 'Description' }, { name: 'loc_class_name', displayName: 'Classification', enableCellEdit: false }, { name: 'loc_class_desc', displayName: 'Class Desc.', enableCellEdit: false }, { name: 'loc_container', displayName: 'Container', enableCellEdit: false }, { name: 'x_coordinate', displayName: 'X', width: 75 }, { name: 'y_coordinate', displayName: 'Y', width: 75 }, { name: 'z_coordinate', displayName: 'Z', width: 75 }, { name: 'parent_location_id', displayName: 'Parent', width: 110 }],
         onRegisterApi: function onRegisterApi(gridApi) {
 
             gridApi.selection.on.rowSelectionChanged($scope, function (row) {
@@ -341,7 +361,7 @@ angular.module('app').controller('locManage', function ($scope, locationsListSrv
 });
 'use strict';
 
-angular.module('app').controller('mainCtrl', function ($scope) {
+angular.module('app').controller('mainCtrl', function ($scope, authService, checkUserSrv) {
     // »»»»»»»»»»»»»»»»»»»║ TESTS
     $scope.controllerTest = 'Controller Engaged!!!';
 
@@ -351,8 +371,13 @@ angular.module('app').controller('mainCtrl', function ($scope) {
         return $scope.loggedIn = true;
     };
     $scope.logout = function () {
-        return $scope.loggedIn = false;
+        $scope.loggedIn = false;
+        authService.logout();
     };
+    // .......................  checks to see if the user is logged in
+    checkUserSrv.getUser().then(function (response) {
+        return $scope.loggedIn = true;
+    });
 });
 "use strict";
 "use strict";
@@ -417,7 +442,6 @@ angular.module('app').controller('userCreate', function ($scope, stateListSrv, c
                 $scope.users = response.data;
                 // console.log(JSON.stringify($scope.users))
                 for (var i = 0; i < $scope.users.length; i++) {
-                    // console.log("what the fuck!")
                     // console.log(`db email ${$scope.users[i].email}`)
                     if ($scope.users[i].email === $scope.userInfo.email && $scope.users[i].first_name === $scope.userInfo.firstName) {
                         exists = 1;
@@ -592,6 +616,27 @@ angular.module('app').directive('starRating', function () {
             });
         }
     };
+});
+'use strict';
+
+angular.module('app').service('authService', function ($http) {
+    // »»»»»»»»»»»»»»»»»»»║ TESTS
+    this.authServiceTest = 'the authService is connected';
+
+    // »»»»»»»»»»»»»»»»»»»║ ENDPOINTS
+    this.logout = function () {
+        return $http.get('/auth/logout').then(function (response) {
+            return window.location = response.data;
+        });
+    };
+});
+'use strict';
+
+angular.module('app').service('checkUserSrv', function ($http) {
+
+  this.getUser = function () {
+    return $http.get('http://localhost:3000/auth/me');
+  };
 });
 'use strict';
 
@@ -774,8 +819,6 @@ angular.module('app').service('postUserInfoSrv', function ($http) {
             url: 'http://localhost:3000/api/users',
             method: 'POST',
             data: data
-        }).then(function (httpResponse) {
-            return console.log('response:', JSON.stringify(httpResponse));
         });
     };
 });
@@ -802,8 +845,6 @@ angular.module('app').service('updateUserSrv', function ($http) {
             url: 'http://localhost:3000/api/users/' + id,
             method: 'PUT',
             data: data
-        }).then(function (httpResponse) {
-            return console.log('response:', JSON.stringify(httpResponse));
         });
     };
 });

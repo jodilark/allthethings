@@ -7,9 +7,26 @@ exports.getCountriesList = (req, res) => req.app.get('db').getCountries().then((
 
 // ....................  adds a new user to the database
 exports.createNewUser = (req, res) => {
-    // console.log(req.body)
-    var userBody = [req.body.country_id, req.body.inactive, req.body.firstName, req.body.lastName, req.body.phone, req.body.email, req.body.address1, req.body.address2, req.body.city, req.body.state_id, req.body.zip, req.body.renter_rating]
-    req.app.get('db').createUser(userBody).then((response) => res.status(200).send(`User has been created successfully`))
+    var userBody = [req.body.country_id
+        , req.body.inactive
+        , req.body.firstName
+        , req.body.lastName
+        , req.body.phone
+        , req.body.email
+        , req.body.address1
+        , req.body.address2
+        , req.body.city
+        , req.body.state_id
+        , req.body.zip
+        , req.body.renter_rating
+        , req.user.id
+    ]
+    if (req.user.isFistTime === true) {
+        req.app.get('db').createFirstTimeUser(userBody).then((response) => res.status(200).send(`User has been created successfully`))
+    }
+    else {
+        req.app.get('db').createUser(userBody).then((response) => res.status(200).send(`User has been created successfully`))
+    }
 }
 
 // ....................  gets a list of all users

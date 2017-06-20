@@ -9,6 +9,6 @@ angular.module('app').service('postUserInfoSrv', function ($http) {
             url: 'http://localhost:3000/api/users',
             method: 'POST',
             data: data
-        }).then((httpResponse) => console.log('response:', JSON.stringify(httpResponse)))
+        })
     }
 })

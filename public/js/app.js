@@ -10,6 +10,27 @@ angular.module('app', ['ui.router', 'ui.grid', 'ui.grid.selection', 'ui.grid.edi
                 templateUrl: '../views/dashboard.html',
                 url: '/dashboard',
             })
+            .state('user_create_new', {
+                templateUrl: '../views/user_create.html',
+                url: '/user_create_new',
+                controller: 'userCreate',
+                resolve: {
+                    authenticate: ($state, checkUserSrv) => {
+                        checkUserSrv.getUser().then((response) => {
+                            // console.log(response.data.isFirstTime)
+                            if (!response.data.isFirstTime) {
+                                console.log(1)
+                                event.preventDefault()
+                                console.log(2)
+                                $state.go('dashboard')
+                            }
+                        }).catch(error => {
+                            event.preventDefault()
+                            $state.go('home')
+                        })
+                    }
+                }
+            })
             .state('user_create', {
                 templateUrl: '../views/user_create.html',
                 url: '/user_create',

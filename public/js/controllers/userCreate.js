@@ -44,7 +44,6 @@ angular.module('app').controller('userCreate', function ($scope, stateListSrv, c
                 $scope.users = response.data
                 // console.log(JSON.stringify($scope.users))
                 for (let i = 0; i < $scope.users.length; i++) {
-                    // console.log("what the fuck!")
                     // console.log(`db email ${$scope.users[i].email}`)
                     if ($scope.users[i].email === $scope.userInfo.email && $scope.users[i].first_name === $scope.userInfo.firstName) {
                         exists = 1

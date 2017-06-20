@@ -19,15 +19,15 @@ angular.module('app').controller('locManage', function ($scope, locationsListSrv
         , enableSelectAll: false
         , enableFiltering: true
         , columnDefs: [
-            { name: 'id', enableCellEdit: false }
+            { name: 'id', enableCellEdit: false, width: 75 }
             , { name: 'loc_desc', displayName: 'Description' }
             , { name: 'loc_class_name', displayName: 'Classification', enableCellEdit: false }
             , { name: 'loc_class_desc', displayName: 'Class Desc.', enableCellEdit: false }
             , { name: 'loc_container', displayName: 'Container', enableCellEdit: false }
-            , { name: 'x_coordinate', displayName: 'X' }
-            , { name: 'y_coordinate', displayName: 'Y' }
-            , { name: 'z_coordinate', displayName: 'Z' }
-            , { name: 'parent_location_id', displayName: 'Parent' }
+            , { name: 'x_coordinate', displayName: 'X', width: 75 }
+            , { name: 'y_coordinate', displayName: 'Y', width: 75 }
+            , { name: 'z_coordinate', displayName: 'Z', width: 75 }
+            , { name: 'parent_location_id', displayName: 'Parent', width: 110 }
         ]
         , onRegisterApi: (gridApi) => {
 

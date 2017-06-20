@@ -8,7 +8,7 @@ angular.module('app').service('updateUserSrv', function ($http) {
             url: 'http://localhost:3000/api/users/' + id,
             method: 'PUT',
             data: data
-        }).then((httpResponse) => console.log('response:', JSON.stringify(httpResponse)))
+        })
     }
 })
 

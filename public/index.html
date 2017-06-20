@@ -17,15 +17,16 @@
         {{controllerTest}}
         <!-- .......... hello world test-->
         <h1>Hello World</h1>
-        <button ng-click="login()"  ui-sref="user_create">Simulate 1st Login UI</button>
-        <button ng-click="login()"  ui-sref="dashboard">Simulate already authorized Login UI</button>
+        <!--<button ng-click="login()"  ui-sref="user_create">Simulate 1st Login UI</button>
+        <button ng-click="login()"  ui-sref="dashboard">Simulate already authorized Login UI</button>-->
         <!--<button ng-click="logout()" ui-sref='home'>Simulate Logout UI</button>-->
     </div>
 
-    <a ui-sref='home'>Home</a>
+
     <a href="http://localhost:3000/auth" ng-hide='loggedIn'>login</a>
     <div ng-hide='!loggedIn'>
-        <a href="https://jodilark.auth0.com/v2/logout?returnTo=http://localhost:3000/&client_id=hQcU4t5VREA4rCBj8h3onZMNBSRA28sT"  ng-click="logout()">logout</a>
+        <a ui-sref='home'>Home</a>
+        <a ng-click="logout()">logout</a>
         <button ui-sref="dashboard">Dashboard</button>
         <button ui-sref="global_search">Global Search Results</button>
         <button ui-sref="settings">Settings</button>
