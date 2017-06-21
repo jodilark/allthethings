@@ -15,6 +15,7 @@ const settingsCtrl = require('./controllers/settingsCtrl')
 const containerCtrl = require('./controllers/containerCtrl')
 const locClassCtrl = require('./controllers/locClassCtrl')
 const locationsCtrl = require('./controllers/locationsCtrl')
+const trackByCtrl = require('./controllers/trackByCtrl')
 
 //  »»»»»»»»»»»»»»»»»»»║   OTHER VARIABLES
 const port = 3000
@@ -123,14 +124,10 @@ app.get('/api/users', userCtrl.getAllUsers)
 app.get('/api/users/custom', userCtrl.getMUData)
 app.post('/api/users', userCtrl.createNewUser)
 app.put('/api/users/:id', userCtrl.updateUser)
-// app.get('/api/settings/default_location', userCtrl.getDefaultLocation)
-// app.post('/api/settings/default_location', userCtrl.createDefaultLocation)
-// app.put('/api/settings/default_location', userCtrl.updateDefaultLocation)
+
 
 //  .................... create/manage items
 // app.get('/api/items', $changemeCtrl.getAllItems)
-// app.get('/api/locations', $changemeCtrl.getAllLocations)
-// app.get('/api/trackbys', $changemeCtrl.getAlltrackbys)
 // app.post('/api/items', $changemeCtrl.createItem)
 // app.put('/api/items/:id', $changemeCtrl.updateItem)
 // app.delete('/api/items:id', $changemeCtrl.deleteItems)
@@ -142,8 +139,10 @@ app.put('/api/users/:id', userCtrl.updateUser)
 // app.delete('/api/rentals/:id', $changemeCtrl.deleteRental)
 
 //  .................... trackbys
-// app.post('/api/trackbys', $changemeCtrl.createTrackby)
-// app.put('/api/trackby/:id', $changemeCtrl.updateTrackby)
+app.get('/api/trackbys', trackByCtrl.getTrackBy)
+app.post('/api/trackbys', trackByCtrl.createTrackby)
+app.put('/api/trackbys/:id', trackByCtrl.updateTrackby)
+app.delete('/api/trackbys/:id', trackByCtrl.deleteTrackBy)
 
 //  .................... containers
 app.get('/api/containers', containerCtrl.getAllContainers)
@@ -167,7 +166,9 @@ app.delete('/api/locations/:id', locationsCtrl.deleteLocation)
 //  .................... settings
 // app.get('/api/settings/default', $changemeCtrl.getDefaultSettings)
 // app.put('/api/settings', $changemeCtrl.updateSettings)
-
+// app.get('/api/settings/default_location', userCtrl.getDefaultLocation)
+// app.post('/api/settings/default_location', userCtrl.createDefaultLocation)
+// app.put('/api/settings/default_location', userCtrl.updateDefaultLocation)
 
 
 //  »»»»»»»»»»»»»»»»»»»║   TESTS

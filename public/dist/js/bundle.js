@@ -1,57 +1,73 @@
 'use strict';
 
 angular.module('app', ['ui.router', 'ui.grid', 'ui.grid.selection', 'ui.grid.edit']).config(function ($stateProvider, $urlRouterProvider) {
-    $urlRouterProvider.otherwise('/', "");
-    $stateProvider.state('home', {
+    $urlRouterProvider.otherwise('/', ""
+    // .......................  authorization
+    // var authentication = {
+    //     authenticate: ($state, checkUserSrv) => {
+    //         checkUserSrv.getUser().then((response) => {
+    //             if (!response.data.isFirstTime) {
+    //                 event.preventDefault()
+    //                 $state.go('dashboard')
+    //             }
+    //         }).catch(error => {
+    //             event.preventDefault()
+    //             $state.go('home')
+    //         })
+    //     }
+    // }
+    );$stateProvider.state('home', {
         templateUrl: '../views/home.html',
         url: '/'
     }).state('dashboard', {
         templateUrl: '../views/dashboard.html',
         url: '/dashboard'
+        //resolve: authentication
     }).state('user_create_new', {
         templateUrl: '../views/user_create.html',
         url: '/user_create_new',
-        controller: 'userCreate',
-        resolve: {
-            authenticate: function authenticate($state, checkUserSrv) {
-                checkUserSrv.getUser().then(function (response) {
-                    // console.log(response.data.isFirstTime)
-                    if (!response.data.isFirstTime) {
-                        console.log(1);
-                        event.preventDefault();
-                        console.log(2);
-                        $state.go('dashboard');
-                    }
-                }).catch(function (error) {
-                    event.preventDefault();
-                    $state.go('home');
-                });
-            }
-        }
+        controller: 'userCreate'
+        //resolve: authentication
     }).state('user_create', {
         templateUrl: '../views/user_create.html',
         url: '/user_create',
         controller: 'userCreate'
+        //resolve: authentication
     }).state('user_manage', {
         templateUrl: '../views/user_manage.html',
         url: '/user_manage',
         controller: 'userManage'
+        //resolve: authentication
     }).state('location_create', {
         templateUrl: '../views/location_create.html',
         url: '/location_create',
         controller: 'locCreate'
+        //resolve: authentication
     }).state('loc_container', { // MOVE INTO MODAL
         templateUrl: '../views/loc_container.html',
         url: '/loc_container',
         controller: 'locContainer'
+        //resolve: authentication
     }).state('loc_class', { // MOVE INTO MODAL
         templateUrl: '../views/loc_class.html',
         url: '/loc_class',
         controller: 'locClass'
+        //resolve: authentication
     }).state('location_manage', {
         templateUrl: '../views/location_manage.html',
         url: '/location_manage',
         controller: 'locManage'
+        //resolve: authentication
+    }).state('trackbys', { // MOVE INTO MODAL
+        templateUrl: '../views/trackbys.html',
+        url: '/trackbys',
+        controller: 'trackBy'
+        //resolve: authentication
+    }).state('settings', { // MOVE INTO MODAL
+        templateUrl: '../views/settings.html',
+        url: '/settings',
+        controller: 'settings'
+        //resolve: authentication
     });
 });
 'use strict';
@@ -375,13 +391,113 @@ angular.module('app').controller('mainCtrl', function ($scope, authService, chec
         authService.logout();
     };
     // .......................  checks to see if the user is logged in
-    checkUserSrv.getUser().then(function (response) {
-        return $scope.loggedIn = true;
-    });
+    // checkUserSrv.getUser().then((response) => $scope.loggedIn = true)
 });
 "use strict";
 "use strict";
-"use strict";
+'use strict';
+
+angular.module('app').controller('settings', function ($scope, uiGridConstants, locationsListSrv) {
+    // »»»»»»»»»»»»»»»»»»»║  TESTS 
+    $scope.settingsTest = 'settings controller is connected and operational';
+    $scope.locListServiceTest = locationsListSrv.locListServiceTest;
+
+    // .................... get list of locations
+    $scope.getLocations = function () {
+        return locationsListSrv.getLocationsList().then(function (response) {
+            $scope.locations = response.data;
+        });
+    };
+    $scope.getLocations();
+});
+'use strict';
+
+angular.module('app').controller('trackBy', function ($scope, uiGridConstants, trackByGetSrv, trackByPostSrv, trackByPutSrv, trackByDeleteSrv) {
+    // »»»»»»»»»»»»»»»»»»»║  TESTS 
+    $scope.trackByTest = 'trackBy controller is connected and operational';
+    $scope.trackByGetSrvTest = trackByGetSrv.trackByGetSrvTest;
+    $scope.trackByPostSrvTest = trackByPostSrv.trackByPostSrvTest;
+    $scope.trackByPutSrvTest = trackByPutSrv.trackByPutSrvTest;
+    $scope.trackByDeleteSrvTest = trackByDeleteSrv.trackByDeleteSrvTest;
+
+    // »»»»»»»»»»»»»»»»»»»║ CLEAR FORM
+    $scope.clearForm = function () {
+        return document.getElementById("trackbyCreateForm").reset
+
+        // »»»»»»»»»»»»»»»»»»»║ TRACKBY MANIPULATION
+        // .................... get list of trackby types and grid information
+        ();
+    };$scope.gettrackbys = function () {
+        return trackByGetSrv.getTrackByList().then(function (response) {
+            $scope.trackbys = response.data;
+            $scope.gridOptions.data = response.data;
+            // console.log(`gridOptions.data = ${JSON.stringify(response.data)}`)
+        });
+    };
+    $scope.gettrackbys
+
+    // .................... create trackby types
+    ();$scope.trackByObj = {};
+    $scope.createTrackBy = function () {
+        $scope.gridOptions.data.push({
+            "trackby_name": $scope.trackByObj.trackby_name,
+            "trackby_value": $scope.trackByObj.trackby_value,
+            "trackby_category": $scope.trackByObj.trackby_category
+        });
+        trackByPostSrv.createTrackBy($scope.trackByObj);
+
+        $scope.clearForm();
+    };
+
+    // .................... update trackby types
+
+    // »»»»»»»»»»»»»»»»»»»║  COLUMNS AND DATA
+    $scope.gridOptions = {
+        enableRowSelection: true,
+        enableRowHeaderSelection: true,
+        multiSelect: false,
+        enableSelectAll: false,
+        enableFiltering: true,
+        columnDefs: [{ name: 'id', enableCellEdit: false }, { name: 'trackby_name', displayName: 'Name' }, { name: 'trackby_value', displayName: 'Value' }, { name: 'trackby_category', displayName: 'Category' }],
+
+        onRegisterApi: function onRegisterApi(gridApi) {
+
+            gridApi.selection.on.rowSelectionChanged($scope, function (row) {
+                $scope.selected = row.isSelected;
+                $scope.rowId = row.uid;
+                $scope.rowObj = row.entity;
+                $scope.enableDelete = false;
+                $scope.selected === true ? $scope.enableDelete = false : $scope.enableDelete = true;
+            }
+
+            // ...........   update the user on lost focus, tab, or enter
+            );gridApi.edit.on.afterCellEdit($scope, function (rowEntity) {
+                $scope.updateCont = rowEntity;
+                $scope.update($scope.updateCont);
+            });
+        }
+
+        // .................... update a trackby
+    };$scope.update = function (upObj) {
+        var cId = upObj.id;
+        trackByPutSrv.updateTrackBy(cId, upObj);
+    };
+
+    // .................... delete a trackby
+    $scope.delete = function () {
+        var gridData = $scope.gridOptions.data;
+        var cId = $scope.rowObj.id;
+        if ($scope.selected === true) {
+            for (var i = 0; i < gridData.length; i++) {
+                if (gridData[i].id === cId) {
+                    gridData.splice(i, 1);
+                }
+            }
+            trackByDeleteSrv.deleteTrackBy(cId);
+            $scope.enableDelete = true;
+        }
+    };
+});
 'use strict';
 
 angular.module('app').controller('userCreate', function ($scope, stateListSrv, countryListSrv, updateUserSrv, postUserInfoSrv, userListSrv, deleteAllUsersSrv) {
@@ -831,6 +947,65 @@ angular.module('app').service('stateListSrv', function ($http) {
     // »»»»»»»»»»»»»»»»»»»║ ENDPOINTS
     this.getStatesList = function () {
         return $http.get('http://localhost:3000/api/states');
+    };
+});
+'use strict';
+
+angular.module('app').service('trackByDeleteSrv', function ($http) {
+    // »»»»»»»»»»»»»»»»»»»║ TESTS
+    this.trackByDeleteSrvTest = 'the trackByDeleteSrv is connected';
+
+    // »»»»»»»»»»»»»»»»»»»║ ENDPOINTS
+    // ...................  delete trackbys
+    this.deleteTrackBy = function (id) {
+        $http({
+            url: 'http://localhost:3000/api/trackbys/' + id,
+            method: 'DELETE'
+        });
+    };
+});
+'use strict';
+
+angular.module('app').service('trackByGetSrv', function ($http) {
+    // »»»»»»»»»»»»»»»»»»»║ TESTS
+    this.trackByGetSrvTest = 'the trackByGetSrv is connected';
+
+    // // »»»»»»»»»»»»»»»»»»»║ ENDPOINTS
+    // ...................  get trackbys
+    this.getTrackByList = function () {
+        return $http.get('http://localhost:3000/api/trackbys/');
+    };
+});
+'use strict';
+
+angular.module('app').service('trackByPostSrv', function ($http) {
+    // »»»»»»»»»»»»»»»»»»»║ TESTS
+    this.trackByPostSrvTest = 'the trackByPostSrv is connected';
+
+    // // »»»»»»»»»»»»»»»»»»»║ ENDPOINTS
+    // ...................  create trackbys
+    this.createTrackBy = function (data) {
+        $http({
+            url: 'http://localhost:3000/api/trackbys/',
+            method: 'POST',
+            data: data
+        });
+    };
+});
+'use strict';
+
+angular.module('app').service('trackByPutSrv', function ($http) {
+    // »»»»»»»»»»»»»»»»»»»║ TESTS
+    this.trackByPutSrvTest = 'the trackByPutSrv is connected';
+
+    // // »»»»»»»»»»»»»»»»»»»║ ENDPOINTS
+    // ...................  update trackbys
+    this.updateTrackBy = function (id, data) {
+        $http({
+            url: 'http://localhost:3000/api/trackbys/' + id,
+            method: 'PUT',
+            data: data
+        });
     };
 });
 'use strict';

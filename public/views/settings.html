@@ -1,1 +1,16 @@
 <h1>Settings Page</h1>
+<!-- »»»»»»»»»»»»»»»»»»»║   TESTS   -->
+<div class="test-results">
+    <ul>
+        <li>1. {{settingsTest}}</li>
+        <li>2. {{locListServiceTest}}</li>
+    </ul>
+</div>
+
+<form id="settingsForm">
+    <select id="locationList" ng-options="location as location.description for location in locations" ng-model="locationObj">
+        <option id="locationList" value="" disabled selected>Default Location</option>
+    </select>
+    <input type="submit" value="Submit">
+    <input type="reset" value="Cancel">
+</form>

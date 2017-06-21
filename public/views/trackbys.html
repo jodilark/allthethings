@@ -1,0 +1,26 @@
+<h1>Manage Track-bys</h1>
+<h3>This should be changed from a ui-route view to a modal directive</h3>
+<!-- »»»»»»»»»»»»»»»»»»»║   TESTS   -->
+<div class="test-results">
+    <ul>
+        <li>1. {{trackByTest}}</li>
+        <li>2. {{trackByGetSrvTest}}</li>
+        <li>3. {{trackByPostSrvTest}}</li>
+        <li>4. {{trackByPutSrvTest}}</li>
+        <li>5. {{trackByDeleteSrvTest}}</li>
+    </ul>
+</div>
+<!-- »»»»»»»»»»»»»»»»»»»║   INPUT FIELDS   -->
+<form id="trackbyCreateForm">
+    <input type="text" placeholder="Name" ng-model="trackByObj.trackby_name">
+    <input type="text" placeholder="Value" ng-model="trackByObj.trackby_value">
+    <input type="text" placeholder="Category" ng-model="trackByObj.trackby_category">
+    <input type="submit" value="Submit" id="addData"  ng-click="createTrackBy()">
+    <input type="reset" value="Cancel">
+    <button ng-click="delete()" ng-disabled="enableDelete != false">Delete</button>
+</form>
+
+
+<div>
+    <div ui-grid="gridOptions" class="myGrid" ui-grid-selection ui-grid-edit></div>
+</div>
