@@ -3,7 +3,7 @@
 exports.getLocClass = (req, res) => req.app.get('db').getLocClasses().then((response) => res.status(200).send(response))
 
 
-// ....................  get a list of all location classifications from the database
+// ....................  create new location classification
 exports.createLocClass = (req, res) => {
     let name = req.body.name
     let description = req.body.description
@@ -12,6 +12,7 @@ exports.createLocClass = (req, res) => {
 
 // ....................  update a single location classification
 exports.updateLocClass = (req, res) => {
+    console.log(req.body)
     let cId = req.params.id
     let name = req.body.name
     let description = req.body.description

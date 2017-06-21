@@ -3,7 +3,7 @@
 exports.getAllContainers = (req, res) => req.app.get('db').getContainers().then((response) => res.status(200).send(response))
 
 
-// ....................  get a list of all containers from the database
+// ....................  create a new container
 exports.createContainer = (req, res) => {
     let name = req.body.name
     req.app.get('db').createContainers(name).then((response) => res.status(200).send(`${name} was created`))

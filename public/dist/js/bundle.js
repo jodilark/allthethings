@@ -3,71 +3,83 @@
 angular.module('app', ['ui.router', 'ui.grid', 'ui.grid.selection', 'ui.grid.edit']).config(function ($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise('/', ""
     // .......................  authorization
-    // var authentication = {
-    //     authenticate: ($state, checkUserSrv) => {
-    //         checkUserSrv.getUser().then((response) => {
-    //             if (!response.data.isFirstTime) {
-    //                 event.preventDefault()
-    //                 $state.go('dashboard')
-    //             }
-    //         }).catch(error => {
-    //             event.preventDefault()
-    //             $state.go('home')
-    //         })
-    //     }
-    // }
-    );$stateProvider.state('home', {
+    );var authentication = {
+        authenticate: function authenticate($state, checkUserSrv) {
+            checkUserSrv.getUser().then(function (response) {
+                if (!response.data.isFirstTime) {
+                    event.preventDefault();
+                    $state.go('dashboard');
+                }
+            }).catch(function (error) {
+                event.preventDefault();
+                $state.go('home');
+            });
+        }
+    };
+    $stateProvider.state('home', {
         templateUrl: '../views/home.html',
         url: '/'
     }).state('dashboard', {
         templateUrl: '../views/dashboard.html',
-        url: '/dashboard'
-        //resolve: authentication
+        url: '/dashboard',
+        resolve: authentication
     }).state('user_create_new', {
         templateUrl: '../views/user_create.html',
         url: '/user_create_new',
-        controller: 'userCreate'
-        //resolve: authentication
+        controller: 'userCreate',
+        resolve: {
+            authenticate: function authenticate($state, checkUserSrv) {
+                checkUserSrv.getUser().then(function (response) {
+                    if (!response.data.isFirstTime) {
+                        event.preventDefault();
+                        $state.go('dashboard');
+                    }
+                }).catch(function (error) {
+                    event.preventDefault();
+                    $state.go('home');
+                });
+            }
+        }
     }).state('user_create', {
         templateUrl: '../views/user_create.html',
         url: '/user_create',
-        controller: 'userCreate'
-        //resolve: authentication
+        controller: 'userCreate',
+        resolve: authentication
     }).state('user_manage', {
         templateUrl: '../views/user_manage.html',
         url: '/user_manage',
-        controller: 'userManage'
-        //resolve: authentication
+        controller: 'userManage',
+        resolve: authentication
     }).state('location_create', {
         templateUrl: '../views/location_create.html',
         url: '/location_create',
-        controller: 'locCreate'
-        //resolve: authentication
+        controller: 'locCreate',
+        resolve: authentication
     }).state('loc_container', { // MOVE INTO MODAL
         templateUrl: '../views/loc_container.html',
         url: '/loc_container',
-        controller: 'locContainer'
-        //resolve: authentication
+        controller: 'locContainer',
+        resolve: authentication
     }).state('loc_class', { // MOVE INTO MODAL
         templateUrl: '../views/loc_class.html',
         url: '/loc_class',
-        controller: 'locClass'
-        //resolve: authentication
+        controller: 'locClass',
+        resolve: authentication
     }).state('location_manage', {
         templateUrl: '../views/location_manage.html',
         url: '/location_manage',
-        controller: 'locManage'
-        //resolve: authentication
+        controller: 'locManage',
+        resolve: authentication
     }).state('trackbys', { // MOVE INTO MODAL
         templateUrl: '../views/trackbys.html',
         url: '/trackbys',
-        controller: 'trackBy'
-        //resolve: authentication
+        controller: 'trackBy',
+        resolve: authentication
     }).state('settings', { // MOVE INTO MODAL
         templateUrl: '../views/settings.html',
         url: '/settings',
-        controller: 'settings'
-        //resolve: authentication
+        controller: 'settings',
+        resolve: authentication
     });
 });
 'use strict';
@@ -391,24 +403,55 @@ angular.module('app').controller('mainCtrl', function ($scope, authService, chec
         authService.logout();
     };
     // .......................  checks to see if the user is logged in
-    // checkUserSrv.getUser().then((response) => $scope.loggedIn = true)
+    checkUserSrv.getUser().then(function (response) {
+        return $scope.loggedIn = true;
+    });
 });
 "use strict";
 "use strict";
 'use strict';
 
-angular.module('app').controller('settings', function ($scope, uiGridConstants, locationsListSrv) {
+angular.module('app').controller('settings', function ($scope, uiGridConstants, locationsListSrv, settingsSrv) {
     // »»»»»»»»»»»»»»»»»»»║  TESTS 
     $scope.settingsTest = 'settings controller is connected and operational';
     $scope.locListServiceTest = locationsListSrv.locListServiceTest;
+    // »»»»»»»»»»»»»»»»»»»║  VARIABLES 
+    $scope.defaultLocation;
+    $scope.loc;
+    var sendArr = {};
 
+    // »»»»»»»»»»»»»»»»»»»║  DATABASE CALLS
     // .................... get list of locations
     $scope.getLocations = function () {
         return locationsListSrv.getLocationsList().then(function (response) {
-            $scope.locations = response.data;
+            return $scope.locations = response.data;
         });
     };
-    $scope.getLocations();
+    $scope.getLocations
+
+    // .................... get default location
+    ();$scope.getDefaultLoc = function () {
+        return settingsSrv.getDefaultLocation().then(function (response) {
+            $scope.loc = response.data[0].description;
+            $scope.locid = response.data[0].id;
+            $scope.defaultLocation = $scope.loc;
+        });
+    };
+    $scope.getDefaultLoc
+
+    // .................... will convert to update default location
+    ();$scope.updateDefault = function () {
+        var dl = $scope.defaultLocation;
+        if (typeof dl === 'string') {
+            // console.log(dl)
+            sendArr.d_location_id = $scope.locid;
+        } else {
+            // console.log(dl.description)
+            sendArr.d_location_id = dl.id;
+        }
+        console.log(sendArr //this is what we will send to the db PUT
+        );settingsSrv.updateDefaultLocation(sendArr);
+    };
 });
 'use strict';
 
@@ -934,6 +977,25 @@ angular.module('app').service('postUserInfoSrv', function ($http) {
         $http({
             url: 'http://localhost:3000/api/users',
             method: 'POST',
+            data: data
+        });
+    };
+});
+'use strict';
+
+angular.module('app').service('settingsSrv', function ($http) {
+    // ...................  get default location
+    this.getDefaultLocation = function () {
+        return $http.get('http://localhost:3000/api/settings/default_location'
+
+        // ...................  update default location
+        );
+    };this.updateDefaultLocation = function (data) {
+        console.log('sending data');
+        console.log(data);
+        $http({
+            url: '/api/settings/default_location',
+            method: 'PUT',
             data: data
         });
     };

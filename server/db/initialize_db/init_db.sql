@@ -66,11 +66,11 @@
 		, location_id int
         , declutter_id int
     );
-    -- INSERT INTO settings
-    -- (sentimental_rental_threshold, location_id, declutter_id)
-    -- VALUES
-    -- (3, 1, 1)
-    -- ;
+    INSERT INTO settings
+    (sentimental_rental_threshold, location_id, declutter_id)
+    VALUES
+    (3, null, 1)
+    ;
 
 	-- USERS
 	CREATE TABLE IF NOT EXISTS users

@@ -17,6 +17,7 @@ const locClassCtrl = require('./controllers/locClassCtrl')
 const locationsCtrl = require('./controllers/locationsCtrl')
 const trackByCtrl = require('./controllers/trackByCtrl')
 
+
 //  »»»»»»»»»»»»»»»»»»»║   OTHER VARIABLES
 const port = 3000
 
@@ -63,10 +64,13 @@ var strategy = new Auth0Strategy({
     if (!user) {
       user = profile
       user.isFirstTime = true
+      // console.log("IF: ", user)
     }
     else {
       user.isFirstTime = false
+      
     }
+    // console.log("outside: ", Object.keys(user))
     return done(null, user);
   })
 });
@@ -95,7 +99,9 @@ passport.deserializeUser(function (obj, done) {
 //  .................... authorization endpoints
 app.get('/auth', passport.authenticate('auth0'));
 app.get('/auth/callback',
-  passport.authenticate('auth0', { successRedirect: '/#!/user_create_new', failureRedirect: '/login' }), (req, res) => res.status(200).send(req.user))
+  passport.authenticate('auth0', { successRedirect: '/#!/user_create_new', failureRedirect: '/login' }), (req, res) => {
+    res.status(200).send(req.user)    
+  })
 app.get('/auth/me', function (req, res) {
   if (!req.user) return res.sendStatus(403);
   res.status(200).send(req.user);
@@ -166,9 +172,9 @@ app.delete('/api/locations/:id', locationsCtrl.deleteLocation)
 //  .................... settings
 // app.get('/api/settings/default', $changemeCtrl.getDefaultSettings)
 // app.put('/api/settings', $changemeCtrl.updateSettings)
-// app.get('/api/settings/default_location', userCtrl.getDefaultLocation)
-// app.post('/api/settings/default_location', userCtrl.createDefaultLocation)
-// app.put('/api/settings/default_location', userCtrl.updateDefaultLocation)
+app.get('/api/settings/default_location', settingsCtrl.getDefaultLocation)
+// app.post('/api/settings/default_location', settingsCtrl.createDefaultLocation)
+app.put('/api/settings/default_location', settingsCtrl.updateDefaultLocation)
 
 
 //  »»»»»»»»»»»»»»»»»»»║   TESTS

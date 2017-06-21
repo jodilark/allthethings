@@ -10,6 +10,6 @@ angular.module('app').controller('mainCtrl', function ($scope, authService, chec
         authService.logout()
     }
     // .......................  checks to see if the user is logged in
-    // checkUserSrv.getUser().then((response) => $scope.loggedIn = true)
+    checkUserSrv.getUser().then((response) => $scope.loggedIn = true)
 
 })

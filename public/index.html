@@ -24,8 +24,8 @@
 
 
     <a href="http://localhost:3000/auth" ng-hide='loggedIn'>login</a>
-    <!--<div ng-hide='!loggedIn'> UNCOMMENT this, mainCtrl auth, app.js WHEN DONE DEVELOPING-->
-    <div>
+    <div ng-hide='!loggedIn'>
+    <!--<div> UNCOMMENT this, mainCtrl auth, app.js WHEN DONE DEVELOPING-->
         <a ui-sref='home'>Home</a>
         <a ng-click="logout()">logout</a>
         <button ui-sref="dashboard">Dashboard</button>

@@ -8,9 +8,9 @@
 </div>
 
 <form id="settingsForm">
-    <select id="locationList" ng-options="location as location.description for location in locations" ng-model="locationObj">
-        <option id="locationList" value="" disabled selected>Default Location</option>
+    <select id="locationList" ng-options="location as location.description for location in locations" ng-model="defaultLocation" >
+        <option id="locationList" value="" disabled selected>{{loc}}</option>
     </select>
-    <input type="submit" value="Submit">
+    <input type="submit" value="Submit" ng-click="updateDefault()">
     <input type="reset" value="Cancel">
 </form>
