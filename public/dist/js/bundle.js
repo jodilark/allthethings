@@ -82,21 +82,64 @@ angular.module('app', ['ui.router', 'ui.grid', 'ui.grid.selection', 'ui.grid.edi
 });
 'use strict';
 
-angular.module('app').controller('itemCreate', function ($scope, itemGetSrv, itemPostSrv, itemPutSrv, itemDeleteSrv, locationsListSrv) {
+angular.module('app').controller('itemCreate', function ($scope, itemMainSrv, itemGetSrv, itemPostSrv, itemPutSrv, itemDeleteSrv, locationsListSrv, trackByGetSrv, userListSrv, settingsSrv) {
     // »»»»»»»»»»»»»»»»»»»║  TESTS 
     $scope.itemCreateTest = 'itemCreate controller is connected and operational';
     $scope.itemGetSrvTest = itemGetSrv.itemGetSrvTest;
     $scope.itemPostSrvTest = itemPostSrv.itemPostSrvTest;
     $scope.itemPutSrvTest = itemPutSrv.itemPutSrvTest;
     $scope.itemDeleteSrvTest = itemDeleteSrv.itemDeleteSrvTest;
+    $scope.itemMainSrvTest = itemMainSrv.itemMainSrvTest;
 
     // »»»»»»»»»»»»»»»»»»»║  VARIABLES
-    $scope.itemCreateObj = { has_package: false };
+    $scope.itemCreateObj = { has_package: false, has_multiPiece: false, is_consumable: false };
     var itemsObj = $scope.itemCreateObj;
-    $scope.originalPackaging = function () {
-        $scope.itemCreateObj.has_package = $scope.packageStatus;
-    };
     $scope.repItem = 'replink';
+    $scope.userId = {};
+    // get current user
+    $scope.currentUser = function () {
+        return itemMainSrv.getCurrentUser().then(function (response) {
+            $scope.thisUser = response.data.first_name;
+            $scope.itemCreateObj.owner_id = response.data.id;
+            $scope.userId.id = response.data.id;
+        });
+    };
+    $scope.currentUser
+    // .................... original package checkbox
+    ();$scope.originalPackaging = function () {
+        return $scope.itemCreateObj.has_package = $scope.packageStatus;
+    };
+
+    // .................... multiple piece checkbox
+    $scope.multiplePieces = function () {
+        return $scope.itemCreateObj.has_multiPiece = $scope.multiPiece;
+    };
+
+    // .................... consumable checkbox
+    $scope.isConsumable = function () {
+        return $scope.itemCreateObj.is_consumable = $scope.consumable;
+    };
+
+    // .................... sets sentimental value
+    $scope.rating = 1;
+    $scope.rateFunction = function (rating) {
+        return $scope.itemCreateObj.sentimental_rating = rating;
+    };
+
+    // .................... sets max data allowed
+    // <input id="datefield" type='date' max='2000-13-13'></input>
+    var today = new Date();
+    var dd = today.getDate();
+    var mm = today.getMonth() + 1; //January is 0!
+    var yyyy = today.getFullYear();
+    if (dd < 10) {
+        dd = '0' + dd;
+    }
+    if (mm < 10) {
+        mm = '0' + mm;
+    }
+    today = yyyy + '-' + mm + '-' + dd;
+    document.getElementById("datefield").setAttribute("max", today);
 
     // »»»»»»»»»»»»»»»»»»»║  GET LOCATION LIST
     $scope.getLocations = function () {
@@ -106,14 +149,40 @@ angular.module('app').controller('itemCreate', function ($scope, itemGetSrv, ite
     };
     $scope.getLocations
 
-    // »»»»»»»»»»»»»»»»»»»║ LOCATION CLASSIFICATION MANIPULATION
-    // .................... get list of location classes and grid information
+    // .................... get custom list of locations
     ();$scope.getLocations = function () {
         return locationsListSrv.getLocationsCustomList().then(function (response) {
             return $scope.gridOptions.data = response.data;
         });
     };
     $scope.getLocations
+
+    // .................... get default location
+    ();$scope.getDefaultLoc = function () {
+        return settingsSrv.getDefaultLocation().then(function (response) {
+            $scope.loc = response.data[0].description;
+            $scope.locid = response.data[0].id;
+            $scope.defaultLocation = $scope.loc;
+            $scope.itemCreateObj.location_id = $scope.locid;
+        });
+    };
+    $scope.getDefaultLoc
+
+    // »»»»»»»»»»»»»»»»»»»║ GET A LIST OF ALL TRACKBYS
+    ();$scope.gettrackbys = function () {
+        return trackByGetSrv.getTrackByList().then(function (response) {
+            return $scope.trackbys = response.data;
+        });
+    };
+    $scope.gettrackbys
+
+    // »»»»»»»»»»»»»»»»»»»║ GET USERS LIST
+    ();$scope.getUsers = function () {
+        return userListSrv.getCustomUserList().then(function (response) {
+            return $scope.users = response.data;
+        });
+    };
+    $scope.getUsers
 
     // .................... columns and data
     ();$scope.gridOptions = {
@@ -130,10 +199,19 @@ angular.module('app').controller('itemCreate', function ($scope, itemGetSrv, ite
                 $scope.rowObj = row.entity;
             });
         }
+    };
 
-        // »»»»»»»»»»»»»»»»»»»║  CREATE ITEMS
-    };$scope.createItem = function () {
-        $scope.itemCreateObj.location = $scope.locationId.id;
+    $scope.locationId = function () {
+        return $scope.itemCreateObj.location_id = $scope.locationOption.id;
+    };
+
+    // »»»»»»»»»»»»»»»»»»»║  CREATE ITEMS
+    $scope.createItem = function () {
+        var loggedInUser = $scope.itemCreateObj.owner_id;
+        if (loggedInUser !== $scope.userId.id) {
+            $scope.itemCreateObj.owner_id = $scope.userId.id;
+        }
+
         console.log(itemsObj //this is the object that will be sent to the server
 
         );
@@ -790,22 +868,6 @@ angular.module('app').controller('userManage', function ($scope, uiGridConstants
 });
 'use strict';
 
-angular.module('app').directive('hideShow', function () {
-  return {
-    priority: 1001, // compiles first
-    terminal: true, // prevent lower priority directives to compile after it
-    compile: function compile(el) {
-      el.removeAttr('my-dir'); // necessary to avoid infinite compile loop
-      el.attr('ng-click', 'fxn()');
-      var fn = $compile(el);
-      return function (scope) {
-        fn(scope);
-      };
-    }
-  };
-});
-'use strict';
-
 angular.module('app').directive('starRating', function () {
     return {
         restrict: 'A',
@@ -839,6 +901,13 @@ angular.module('app').directive('starRating', function () {
             });
         }
     };
+});
+'use strict';
+
+angular.module('app').directive('trackByDir', function () {
+  return {
+    templateUrl: '../views/trackbys.html'
+  };
 });
 'use strict';
 
@@ -959,6 +1028,18 @@ angular.module('app').service('itemGetSrv', function ($http) {
     // ...................  get items
     this.getItemList = function () {
         return $http.get('/api/trackbys/');
+    };
+});
+'use strict';
+
+angular.module('app').service('itemMainSrv', function ($http) {
+    // »»»»»»»»»»»»»»»»»»»║ TESTS
+    this.itemMainSrvTest = 'the itemMainSrv is connected';
+
+    // // »»»»»»»»»»»»»»»»»»»║ ENDPOINTS
+    // ...................  get logged in user
+    this.getCurrentUser = function () {
+        return $http.get('/auth/me/');
     };
 });
 'use strict';

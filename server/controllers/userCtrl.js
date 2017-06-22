@@ -46,9 +46,9 @@ exports.createNewUser = (req, res) => {
             stateFromID = response[0].name
             // res.status(200).send(`got state names`)
             // console.log(`got state names`, stateFromID)
-            req.body.address2 === undefined ?  addr2 = '' : addr2 = req.body.address2
+            req.body.address2 === undefined ?  addr2 = '' : addr2 = req.body.address2 + ','
         })
-        var combinedAddress = `${req.body.address1} ${addr2}, ${req.body.city}, ${stateFromID}, ${req.body.zip}`
+        var combinedAddress = `${req.body.address1} ${addr2} ${req.body.city}, ${stateFromID}, ${req.body.zip}`
         let locationObj = [
             2
             , combinedAddress
