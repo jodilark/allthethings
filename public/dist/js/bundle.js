@@ -3,84 +3,151 @@
 angular.module('app', ['ui.router', 'ui.grid', 'ui.grid.selection', 'ui.grid.edit']).config(function ($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise('/', ""
     // .......................  authorization
-    );var authentication = {
-        authenticate: function authenticate($state, checkUserSrv) {
-            checkUserSrv.getUser().then(function (response) {
-                if (!response.data.isFirstTime) {
-                    event.preventDefault();
-                    $state.go('dashboard');
-                }
-            }).catch(function (error) {
-                event.preventDefault();
-                $state.go('home');
-            });
-        }
-    };
-    $stateProvider.state('home', {
+    // var authentication = {
+    //     authenticate: ($state, checkUserSrv) => {
+    //         checkUserSrv.getUser().then((response) => {
+    //             if (!response.data.isFirstTime) {
+    //                 event.preventDefault()
+    //                 $state.go('dashboard')
+    //             }
+    //         }).catch(error => {
+    //             event.preventDefault()
+    //             $state.go('home')
+    //         })
+    //     }
+    // }
+    );$stateProvider.state('home', {
         templateUrl: '../views/home.html',
         url: '/'
     }).state('dashboard', {
         templateUrl: '../views/dashboard.html',
-        url: '/dashboard',
-        resolve: authentication
+        url: '/dashboard'
+        // resolve: authentication
     }).state('user_create_new', {
         templateUrl: '../views/user_create.html',
         url: '/user_create_new',
-        controller: 'userCreate',
-        resolve: {
-            authenticate: function authenticate($state, checkUserSrv) {
-                checkUserSrv.getUser().then(function (response) {
-                    if (!response.data.isFirstTime) {
-                        event.preventDefault();
-                        $state.go('dashboard');
-                    }
-                }).catch(function (error) {
-                    event.preventDefault();
-                    $state.go('home');
-                });
-            }
-        }
+        controller: 'userCreate'
+        // resolve: authentication
     }).state('user_create', {
         templateUrl: '../views/user_create.html',
         url: '/user_create',
-        controller: 'userCreate',
-        resolve: authentication
+        controller: 'userCreate'
+        // resolve: authentication
     }).state('user_manage', {
         templateUrl: '../views/user_manage.html',
         url: '/user_manage',
-        controller: 'userManage',
-        resolve: authentication
+        controller: 'userManage'
+        // resolve: authentication
     }).state('location_create', {
         templateUrl: '../views/location_create.html',
         url: '/location_create',
-        controller: 'locCreate',
-        resolve: authentication
+        controller: 'locCreate'
+        // resolve: authentication
     }).state('loc_container', { // MOVE INTO MODAL
         templateUrl: '../views/loc_container.html',
         url: '/loc_container',
-        controller: 'locContainer',
-        resolve: authentication
+        controller: 'locContainer'
+        // resolve: authentication
     }).state('loc_class', { // MOVE INTO MODAL
         templateUrl: '../views/loc_class.html',
         url: '/loc_class',
-        controller: 'locClass',
-        resolve: authentication
+        controller: 'locClass'
+        // resolve: authentication
     }).state('location_manage', {
         templateUrl: '../views/location_manage.html',
         url: '/location_manage',
-        controller: 'locManage',
-        resolve: authentication
+        controller: 'locManage'
+        // resolve: authentication
     }).state('trackbys', { // MOVE INTO MODAL
         templateUrl: '../views/trackbys.html',
         url: '/trackbys',
-        controller: 'trackBy',
-        resolve: authentication
+        controller: 'trackBy'
+        // resolve: authentication
     }).state('settings', { // MOVE INTO MODAL
         templateUrl: '../views/settings.html',
         url: '/settings',
-        controller: 'settings',
-        resolve: authentication
+        controller: 'settings'
+        // resolve: authentication
+    }).state('item_create', { // MOVE INTO MODAL
+        templateUrl: '../views/item_create.html',
+        url: '/item_create',
+        controller: 'itemCreate'
+        // resolve: authentication
+    }).state('item_manage', { // MOVE INTO MODAL
+        templateUrl: '../views/item_manage.html',
+        url: '/item_manage',
+        controller: 'itemManage'
+        // resolve: authentication
     });
+});
+'use strict';
+
+angular.module('app').controller('itemCreate', function ($scope, itemGetSrv, itemPostSrv, itemPutSrv, itemDeleteSrv, locationsListSrv) {
+    // »»»»»»»»»»»»»»»»»»»║  TESTS 
+    $scope.itemCreateTest = 'itemCreate controller is connected and operational';
+    $scope.itemGetSrvTest = itemGetSrv.itemGetSrvTest;
+    $scope.itemPostSrvTest = itemPostSrv.itemPostSrvTest;
+    $scope.itemPutSrvTest = itemPutSrv.itemPutSrvTest;
+    $scope.itemDeleteSrvTest = itemDeleteSrv.itemDeleteSrvTest;
+
+    // »»»»»»»»»»»»»»»»»»»║  VARIABLES
+    $scope.itemCreateObj = { has_package: false };
+    var itemsObj = $scope.itemCreateObj;
+    $scope.originalPackaging = function () {
+        $scope.itemCreateObj.has_package = $scope.packageStatus;
+    };
+    $scope.repItem = 'replink';
+
+    // »»»»»»»»»»»»»»»»»»»║  GET LOCATION LIST
+    $scope.getLocations = function () {
+        return locationsListSrv.getLocationsList().then(function (response) {
+            return $scope.locations = response.data;
+        });
+    };
+    $scope.getLocations
+
+    // »»»»»»»»»»»»»»»»»»»║ LOCATION CLASSIFICATION MANIPULATION
+    // .................... get list of location classes and grid information
+    ();$scope.getLocations = function () {
+        return locationsListSrv.getLocationsCustomList().then(function (response) {
+            return $scope.gridOptions.data = response.data;
+        });
+    };
+    $scope.getLocations
+
+    // .................... columns and data
+    ();$scope.gridOptions = {
+        enableRowSelection: true,
+        enableRowHeaderSelection: true,
+        multiSelect: true,
+        enableSelectAll: true,
+        enableFiltering: true,
+        columnDefs: [{ name: 'id', enableCellEdit: false, width: 75 }, { name: 'loc_desc', displayName: 'Description' }, { name: 'loc_class_name', displayName: 'Classification', enableCellEdit: false }, { name: 'loc_class_desc', displayName: 'Class Desc.', enableCellEdit: false }, { name: 'loc_container', displayName: 'Container', enableCellEdit: false }],
+        onRegisterApi: function onRegisterApi(gridApi) {
+            gridApi.selection.on.rowSelectionChanged($scope, function (row) {
+                $scope.selected = row.isSelected;
+                $scope.rowId = row.uid;
+                $scope.rowObj = row.entity;
+            });
+        }
+
+        // »»»»»»»»»»»»»»»»»»»║  CREATE ITEMS
+    };$scope.createItem = function () {
+        $scope.itemCreateObj.location = $scope.locationId.id;
+        console.log(itemsObj //this is the object that will be sent to the server
+
+        );
+    };
+});
+'use strict';
+
+angular.module('app').controller('itemManage', function ($scope, itemGetSrv, itemPostSrv, itemPutSrv, itemDeleteSrv) {
+    // »»»»»»»»»»»»»»»»»»»║  TESTS 
+    $scope.itemManageTest = 'itemManage controller is connected and operational';
+    $scope.itemGetSrvTest = itemGetSrv.itemGetSrvTest;
+    $scope.itemPostSrvTest = itemPostSrv.itemPostSrvTest;
+    $scope.itemPutSrvTest = itemPutSrv.itemPutSrvTest;
+    $scope.itemDeleteSrvTest = itemDeleteSrv.itemDeleteSrvTest;
 });
 'use strict';
 
@@ -333,13 +400,12 @@ angular.module('app').controller('locManage', function ($scope, locationsListSrv
     // .................... get list of location classes and grid information
     $scope.getLocations = function () {
         return locationsListSrv.getLocationsCustomList().then(function (response) {
-            // $scope.locations = response.data
             $scope.gridOptions.data = response.data;
         });
     };
     $scope.getLocations
 
-    // »»»»»»»»»»»»»»»»»»»║  COLUMNS AND DATA
+    // .................... columns and data
     ();$scope.gridOptions = {
         enableRowSelection: true,
         enableRowHeaderSelection: true,
@@ -403,9 +469,7 @@ angular.module('app').controller('mainCtrl', function ($scope, authService, chec
         authService.logout();
     };
     // .......................  checks to see if the user is logged in
-    checkUserSrv.getUser().then(function (response) {
-        return $scope.loggedIn = true;
-    });
+    // checkUserSrv.getUser().then((response) => $scope.loggedIn = true)
 });
 "use strict";
 "use strict";
@@ -868,6 +932,65 @@ angular.module('app').service('getUserColumnsSrv', function ($http) {
     // »»»»»»»»»»»»»»»»»»»║ ENDPOINTS
     this.getColumnList = function () {
         return $http.get('http://localhost:3000/api/user/columns');
+    };
+});
+'use strict';
+
+angular.module('app').service('itemDeleteSrv', function ($http) {
+    // »»»»»»»»»»»»»»»»»»»║ TESTS
+    this.itemDeleteSrvTest = 'the itemDeleteSrv is connected';
+
+    // »»»»»»»»»»»»»»»»»»»║ ENDPOINTS
+    // ...................  delete items
+    this.deleteItem = function (id) {
+        $http({
+            url: '/api/trackbys/' + id,
+            method: 'DELETE'
+        });
+    };
+});
+'use strict';
+
+angular.module('app').service('itemGetSrv', function ($http) {
+    // »»»»»»»»»»»»»»»»»»»║ TESTS
+    this.itemGetSrvTest = 'the itemGetSrv is connected';
+
+    // // »»»»»»»»»»»»»»»»»»»║ ENDPOINTS
+    // ...................  get items
+    this.getItemList = function () {
+        return $http.get('/api/trackbys/');
+    };
+});
+'use strict';
+
+angular.module('app').service('itemPostSrv', function ($http) {
+    // »»»»»»»»»»»»»»»»»»»║ TESTS
+    this.itemPostSrvTest = 'the itemPostSrv is connected';
+
+    // // »»»»»»»»»»»»»»»»»»»║ ENDPOINTS
+    // ...................  create item
+    this.createItem = function (data) {
+        $http({
+            url: '/api/trackbys/',
+            method: 'POST',
+            data: data
+        });
+    };
+});
+'use strict';
+
+angular.module('app').service('itemPutSrv', function ($http) {
+    // »»»»»»»»»»»»»»»»»»»║ TESTS
+    this.itemPutSrvTest = 'the itemPutSrv is connected';
+
+    // // »»»»»»»»»»»»»»»»»»»║ ENDPOINTS
+    // ...................  update items
+    this.updateItem = function (id, data) {
+        $http({
+            url: '/api/trackbys/' + id,
+            method: 'PUT',
+            data: data
+        });
     };
 });
 'use strict';

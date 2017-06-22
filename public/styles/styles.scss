@@ -3,6 +3,11 @@
 
 // =============== PAGE STYLES
 // ............... all pages
+html, input, textarea, button, select {
+  background: #242424;
+  color: #b6b6b6;
+}
+
 .test-results {
     @include test-format;
 }
@@ -28,4 +33,10 @@ ul.rating {
 
 .rating .filled {
   color: gold;
+}
+
+// create items page
+.my-loc-on-items {
+  max-width: 600px;
+  max-height: 200px;
 }

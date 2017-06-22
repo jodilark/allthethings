@@ -1,0 +1,59 @@
+<h1>Create an item</h1>
+<!-- »»»»»»»»»»»»»»»»»»»║   TESTS   -->
+<div class="test-results">
+    <ul>
+        <li>1. {{itemCreateTest}}</li>
+        <li>2. {{itemGetSrvTest}}</li>
+        <li>3. {{itemPostSrvTest}}</li>
+        <li>4. {{itemPutSrvTest}}</li>
+        <li>5. {{itemDeleteSrvTest}}</li>
+    </ul>
+</div>
+
+<!-- »»»»»»»»»»»»»»»»»»»║   DO'S   -->
+<button ui-sref="location_create">Create a location</button> CRUD for items Owner (defaults to current user, should have
+an option to set to none) short_name (required) Description (required) Quantity (defaults to 1 can be zero, cannot be negative)
+purchase price purchase date reason for purchase retailer item was purchased from Warranty period have original packaging
+Replacement link Replacement comment location (required) make new location (can also be used for move to storage) Move to
+storage common other locations (can add multiple) </br> tracking information (can add multiple) make new tracking related items
+(can add multiple) has multiple pieces add/remove piece (pieces will be added as their own items with a location of this
+item) is consumable (removes (?) tracking options and deep-storage option) sentimental rating if put for rental, show are
+you sure flag if sentimental rating is >= 3 access frequency date added (db only) mark as accessed (Do's) last accessed date/time
+()
+
+<!-- »»»»»»»»»»»»»»»»»»»║   INPUT FIELDS   -->
+<form id='itemCreateForm' ng-submit="createItem()">
+    <input type="text" placeholder="owner" ng-model="itemCreateObj.owner">
+    <!-- this should be a select not an input -->
+    <input type="text" placeholder="UPC" ng-model="upc"><button>cam</button>
+    <input type="text" placeholder="short name" ng-model="itemCreateObj.short_name" required>
+    <input type="text" placeholder="description" ng-model="itemCreateObj.description" required>
+    <input type="number" min="0" placeholder="quantity" ng-model="itemCreateObj.quantity">
+    <input type="number" min="0" step="0.01" placeholder="Purchase Price" ng-model="itemCreateObj.price">
+    <input type="text" placeholder="date Purchased" onfocus="(this.type='date')" onblur="(this.type='text', placeholder='value')"
+        ng-model="itemCreateObj.purchase_date">
+    <input type="text" placeholder="reason for purchase" ng-model="itemCreateObj.reason">
+    <input type="text" placeholder="retailer" ng-model="itemCreateObj.retailer">
+    <input type="number" placeholder="warrenty period (in days)" min="0" max="999" ng-model="itemCreateObj.warrenty">
+    <input type="checkbox" ng-model="packageStatus" ng-change="originalPackaging()"> Have original packaging
+    <input type="radio" name="replaceDecision" ng-model="repItem" value="replink" checked>Have replacement link
+    <input type="radio" name="replaceDecision" ng-model="repItem" value="amazon">Search amazon for item
+    <input type="radio" name="replaceDecision" ng-model="repItem" value="other"> Other
+    </br>
+    <p>if replink</p>
+    <input type="text" placeholder="Input link to item" ng-model="itemCreateObj.replink">
+    <p>if amazon</p>
+    <input type="text">
+    <p>if other</p>
+    <textarea name="Other" placeholder="Other" id="" cols="30" rows="10" ng-model="itemCreateObj.repOther"></textarea>
+    </br>
+    <select id="locationList" ng-options="location as location.description for location in locations" ng-model="locationId" required>
+            <option id="locationList" value="" disabled selected>enter current location (required)</option>
+    </select>
+    <p>Other common locations</p>
+    <div>
+        <div ui-grid="gridOptions" class="my-loc-on-items" ui-grid-selection></div>
+    </div>
+    <input type="submit" value="Submit">
+    <input type="reset" value="Cancel"> {{repItem}}
+</form>

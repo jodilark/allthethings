@@ -82,6 +82,10 @@ input, select {
 *, *:before, *:after {
   box-sizing: border-box; }
 
+html, input, textarea, button, select {
+  background: #242424;
+  color: #b6b6b6; }
+
 .test-results {
   color: green;
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
@@ -112,5 +116,9 @@ ul.rating {
 
 .rating .filled {
   color: gold; }
+
+.my-loc-on-items {
+  max-width: 600px;
+  max-height: 200px; }
 
 /*# sourceMappingURL=maps/styles.css.map */

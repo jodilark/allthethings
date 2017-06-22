@@ -24,8 +24,8 @@
 
 
     <a href="http://localhost:3000/auth" ng-hide='loggedIn'>login</a>
-    <div ng-hide='!loggedIn'>
-    <!--<div> UNCOMMENT this, mainCtrl auth, app.js WHEN DONE DEVELOPING-->
+    <!--<div ng-hide='!loggedIn'>UNCOMMENT this, mainCtrl auth, app.js WHEN DONE DEVELOPING-->
+    <div> 
         <a ui-sref='home'>Home</a>
         <a ng-click="logout()">logout</a>
         <button ui-sref="dashboard">Dashboard</button>
@@ -42,6 +42,8 @@
         <button ui-sref="loc_container">Manage Container Types</button>
         <button ui-sref="loc_class">Manage Location Class Types</button>
         <button ui-sref="trackbys">Manage Track-Bys</button>
+        <button ui-sref="item_create">Create an Item</button>
+        <button ui-sref="item_manage">Manage Items</button>
     </div>
 
 

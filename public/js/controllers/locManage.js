@@ -6,12 +6,11 @@ angular.module('app').controller('locManage', function ($scope, locationsListSrv
     // // »»»»»»»»»»»»»»»»»»»║ LOCATION CLASSIFICATION MANIPULATION
     // .................... get list of location classes and grid information
     $scope.getLocations = () => locationsListSrv.getLocationsCustomList().then((response) => {
-        // $scope.locations = response.data
         $scope.gridOptions.data = response.data
     })
     $scope.getLocations()
 
-    // »»»»»»»»»»»»»»»»»»»║  COLUMNS AND DATA
+    // .................... columns and data
     $scope.gridOptions = {
         enableRowSelection: true
         , enableRowHeaderSelection: true
