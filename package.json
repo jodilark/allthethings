@@ -24,7 +24,8 @@
     "gulp-uglify": "^3.0.0",
     "massive": "^3.0.0-rc1",
     "passport": "^0.3.2",
-    "passport-auth0": "^0.6.0"
+    "passport-auth0": "^0.6.0",
+    "quagga": "^0.12.1"
   },
   "repository": {
     "type": "git",

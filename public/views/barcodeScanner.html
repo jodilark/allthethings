@@ -1,0 +1,6 @@
+<input type="text" placeholder="UPC" ng-model="barcode"><button class="icon-barcode button scan">cam</button>
+
+<section id="container" class="container" ng-show="showBarcodeWindow">
+    <button class="overlay__close" ng-click="stoppy()">Stop Scan</button>
+    <div class="overlay overlay--inline overlay__content" />
+</section>

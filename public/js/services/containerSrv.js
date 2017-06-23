@@ -3,6 +3,7 @@ angular.module('app').service('containerSrv', function ($http) {
     this.containerServiceTest = 'the containerSrv is connected'
 
     // »»»»»»»»»»»»»»»»»»»║ ENDPOINTS
+    this.name 
     // ...................  get containers
     this.getContainerList = () => ($http.get('http://localhost:3000/api/containers'))
     // ...................  create containers

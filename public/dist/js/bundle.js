@@ -82,22 +82,60 @@ angular.module('app', ['ui.router', 'ui.grid', 'ui.grid.selection', 'ui.grid.edi
 });
 'use strict';
 
-angular.module('app').controller('itemCreate', function ($scope, itemMainSrv, itemGetSrv, itemPostSrv, itemPutSrv, itemDeleteSrv, locationsListSrv, trackByGetSrv, userListSrv, settingsSrv) {
-    // »»»»»»»»»»»»»»»»»»»║  TESTS 
+angular.module('app').controller('itemCreate', function ($scope, bcService, itemMainSrv, itemGetSrv, itemPostSrv, itemPutSrv, itemDeleteSrv, locationsListSrv, trackByGetSrv, userListSrv, settingsSrv) {
+    // // »»»»»»»»»»»»»»»»»»»║  TESTS 
     $scope.itemCreateTest = 'itemCreate controller is connected and operational';
     $scope.itemGetSrvTest = itemGetSrv.itemGetSrvTest;
     $scope.itemPostSrvTest = itemPostSrv.itemPostSrvTest;
     $scope.itemPutSrvTest = itemPutSrv.itemPutSrvTest;
     $scope.itemDeleteSrvTest = itemDeleteSrv.itemDeleteSrvTest;
     $scope.itemMainSrvTest = itemMainSrv.itemMainSrvTest;
+    // test barcode from service
+    $scope.getBC = function () {
+        $scope.barcode = bcService.upc;
+        console.log($scope.barcode);
+    };
 
     // »»»»»»»»»»»»»»»»»»»║  VARIABLES
-    $scope.itemCreateObj = { has_package: false, has_multiPiece: false, is_consumable: false };
+    $scope.itemCreateObj = {
+        has_package: false,
+        has_multiPiece: false,
+        is_consumable: false,
+        repOther: null,
+        replink: null
+    };
+    var testObj = {
+        af_period: "Week",
+        af_time: 3,
+        common: Object,
+        description: "desc",
+        has_multiPiece: true,
+        has_package: true,
+        is_consumable: true,
+        location_id: 1,
+        owner_id: 1,
+        price: 3.99,
+        purchase_date: "2017-06-22",
+        quantity: 3,
+        reason: "reason",
+        repItem: "replink",
+        repOther: "otherbox",
+        replink: "linky",
+        retailer: "retailer",
+        sentimental_rating: 3,
+        short_name: "short",
+        warrenty: 4
+    };
+
+    $scope.trackbyValues = {};
     var itemsObj = $scope.itemCreateObj;
-    $scope.repItem = 'replink';
+    $scope.replink = 'replink';
+    $scope.repItem = $scope.replink;
     $scope.userId = {};
-    // get current user
-    $scope.currentUser = function () {
+    var commonLocObj = { loc_id: []
+
+        // .................... get current user
+    };$scope.currentUser = function () {
         return itemMainSrv.getCurrentUser().then(function (response) {
             $scope.thisUser = response.data.first_name;
             $scope.itemCreateObj.owner_id = response.data.id;
@@ -126,7 +164,7 @@ angular.module('app').controller('itemCreate', function ($scope, itemMainSrv, it
         return $scope.itemCreateObj.sentimental_rating = rating;
     };
 
-    // .................... sets max data allowed
+    // .................... sets max date allowed
     // <input id="datefield" type='date' max='2000-13-13'></input>
     var today = new Date();
     var dd = today.getDate();
@@ -149,10 +187,11 @@ angular.module('app').controller('itemCreate', function ($scope, itemMainSrv, it
     };
     $scope.getLocations
 
-    // .................... get custom list of locations
+    // .................... get custom list of locations 
     ();$scope.getLocations = function () {
         return locationsListSrv.getLocationsCustomList().then(function (response) {
-            return $scope.gridOptions.data = response.data;
+            var locGrid = response.data;
+            $scope.gridOptions.data = locGrid;
         });
     };
     $scope.getLocations
@@ -161,7 +200,7 @@ angular.module('app').controller('itemCreate', function ($scope, itemMainSrv, it
     ();$scope.getDefaultLoc = function () {
         return settingsSrv.getDefaultLocation().then(function (response) {
             $scope.loc = response.data[0].description;
-            $scope.locid = response.data[0].id;
+            $scope.locid = response.data[0].location_id;
             $scope.defaultLocation = $scope.loc;
             $scope.itemCreateObj.location_id = $scope.locid;
         });
@@ -171,7 +210,8 @@ angular.module('app').controller('itemCreate', function ($scope, itemMainSrv, it
     // »»»»»»»»»»»»»»»»»»»║ GET A LIST OF ALL TRACKBYS
     ();$scope.gettrackbys = function () {
         return trackByGetSrv.getTrackByList().then(function (response) {
-            return $scope.trackbys = response.data;
+            // console.log(response.data)
+            $scope.trackbys = response.data;
         });
     };
     $scope.gettrackbys
@@ -189,14 +229,16 @@ angular.module('app').controller('itemCreate', function ($scope, itemMainSrv, it
         enableRowSelection: true,
         enableRowHeaderSelection: true,
         multiSelect: true,
-        enableSelectAll: true,
+        enableSelectAll: false,
         enableFiltering: true,
-        columnDefs: [{ name: 'id', enableCellEdit: false, width: 75 }, { name: 'loc_desc', displayName: 'Description' }, { name: 'loc_class_name', displayName: 'Classification', enableCellEdit: false }, { name: 'loc_class_desc', displayName: 'Class Desc.', enableCellEdit: false }, { name: 'loc_container', displayName: 'Container', enableCellEdit: false }],
+        columnDefs: [{ name: 'id', enableCellEdit: false, width: 75 }, { name: 'loc_desc', displayName: 'Description' }, { name: 'loc_class_name', displayName: 'Classification' }, { name: 'loc_class_desc', displayName: 'Class Desc.' }, { name: 'loc_container', displayName: 'Container' }],
         onRegisterApi: function onRegisterApi(gridApi) {
             gridApi.selection.on.rowSelectionChanged($scope, function (row) {
                 $scope.selected = row.isSelected;
                 $scope.rowId = row.uid;
                 $scope.rowObj = row.entity;
+                $scope.selected === true ? commonLocObj.loc_id.push($scope.rowObj.id) : commonLocObj.loc_id.splice(commonLocObj.loc_id.indexOf($scope.rowObj.id), 1);
+                $scope.itemCreateObj.common = commonLocObj;
             });
         }
     };
@@ -205,12 +247,21 @@ angular.module('app').controller('itemCreate', function ($scope, itemMainSrv, it
         return $scope.itemCreateObj.location_id = $scope.locationOption.id;
     };
 
+    $scope.swapper = function () {
+        // console.log("swapped")
+        $scope.linked = !$scope.linked;
+    };
+
     // »»»»»»»»»»»»»»»»»»»║  CREATE ITEMS
     $scope.createItem = function () {
+
+        $scope.itemCreateObj.repItem = $scope.repItem;
         var loggedInUser = $scope.itemCreateObj.owner_id;
         if (loggedInUser !== $scope.userId.id) {
             $scope.itemCreateObj.owner_id = $scope.userId.id;
         }
+        $scope.itemCreateObj.trackbys = $scope.trackbyValues;
+        $scope.itemCreateObj.upc = $scope.barcode;
 
         console.log(itemsObj //this is the object that will be sent to the server
 
@@ -868,6 +919,115 @@ angular.module('app').controller('userManage', function ($scope, uiGridConstants
 });
 'use strict';
 
+angular.module('app').directive('bcScanner', function () {
+    return {
+        restrict: 'E',
+        templateUrl: '../views/barcodeScanner.html',
+        scope: '@',
+        controller: function controller($scope, bcService) {
+            // .................... variables
+            $scope.barcode;
+            $scope.storeBarcode = function () {
+                return bcService.storeBarcode($scope.barcode
+
+                // .................... quagga barcode scanner
+                );
+            };var Quagga = window.Quagga;
+            var resultsArr = [];
+            var counter = resultsArr.length;
+            var App = {
+                _lastResult: null,
+                init: function init() {
+                    this.attachListeners();
+                },
+                activateScanner: function activateScanner() {
+                    var scanner = this.configureScanner('.overlay__content'),
+                        onDetected = function (result) {
+                        resultsArr.push(result.codeResult.code);
+                        counter = resultsArr.length;
+                        // console.log("On Detected :", resultsArr)
+                        // console.log("counter = ", counter)
+                        if (counter === 10) {
+                            var mc = mostCommon(resultsArr);
+                            console.log("most common", mc);
+                            $scope.barcode = mc;
+                            $scope.storeBarcode();
+                            $scope.$apply();
+                            $scope.stoppy();
+                            $scope.showBarcodeWindow = false;
+                            $scope.$apply();
+                            snd.play();
+                        }
+                    }.bind(this),
+                        stop = function () {
+                        scanner.stop(); // should also clear all event-listeners?
+                        scanner.removeEventListener('detected', onDetected);
+                        this.hideOverlay();
+                        this.attachListeners();
+                    }.bind(this);
+
+                    this.showOverlay(stop);
+                    console.log("activateScanner");
+                    scanner.addEventListener('detected', onDetected).start();
+                },
+                showOverlay: function showOverlay(cancelCb) {
+                    $scope.showBarcodeWindow = true;
+                    $scope.$apply();
+                    document.querySelector('.container ').classList.add('hide');
+                    document.querySelector('.overlay--inline').classList.add('show');
+                    $scope.stoppy = function () {
+                        cancelCb();
+                    };
+                },
+                attachListeners: function attachListeners() {
+                    var button = document.querySelector('button.scan'),
+                        self = this;
+
+                    button.addEventListener("click", function clickListener(e) {
+                        e.preventDefault();
+                        button.removeEventListener("click", clickListener);
+                        self.activateScanner();
+                    });
+                },
+                hideOverlay: function hideOverlay() {
+                    document.querySelector('.container ').classList.remove('hide');
+                    document.querySelector('.overlay--inline').classList.remove('show');
+                },
+                configureScanner: function configureScanner(selector) {
+                    var scanner = Quagga.decoder({ readers: ['ean_reader'] }).locator({ patchSize: 'medium' }).fromSource({
+                        target: selector,
+                        constraints: {
+                            width: 600,
+                            height: 600,
+                            facingMode: "environment"
+                        }
+                    });
+                    return scanner;
+                }
+            };
+            App.init();
+
+            // .................... take results array and get the average
+            var mostCommon = function mostCommon(arr) {
+                return arr.sort(function (a, b) {
+                    return arr.filter(function (v) {
+                        return v === a;
+                    }).length - arr.filter(function (v) {
+                        return v === b;
+                    }).length;
+                }).pop();
+            };
+            // .................... play a sound
+            var snd = new Audio("../audio/cameraOne.wav");
+
+            // .................... hide / show playback window
+            $scope.showBarcodeWindow = false;
+        }
+
+    };
+});
+'use strict';
+
 angular.module('app').directive('starRating', function () {
     return {
         restrict: 'A',
@@ -904,9 +1064,19 @@ angular.module('app').directive('starRating', function () {
 });
 'use strict';
 
-angular.module('app').directive('trackByDir', function () {
+angular.module('app').directive('trackByDir', function (trackByGetSrv) {
   return {
-    templateUrl: '../views/trackbys.html'
+    restrict: 'E',
+    link: function link(scope, elem, attr) {
+      // // .................... get list of trackby types and grid information
+      // $scope.gettrackbys = () => trackByGetSrv.getTrackByList().then((response) => {
+      //   $scope.trackbys = response.data
+      // })
+      // $scope.gettrackbys()
+      // < div ng-repeat="trackby in trackbys" >
+      //     <input type="text" placeholder="trackby.[name]" ng-model="trackby.value">
+      // </div>
+    }
   };
 });
 'use strict';
@@ -924,6 +1094,20 @@ angular.module('app').service('authService', function ($http) {
 });
 'use strict';
 
+angular.module('app').service('bcService', function ($http) {
+    var _this = this;
+
+    // VARIABLES
+    this.upc;
+
+    //FUNCTIONS
+    this.storeBarcode = function (bc) {
+        console.log("barcode was stored and is", bc);
+        _this.upc = bc;
+    };
+});
+'use strict';
+
 angular.module('app').service('checkUserSrv', function ($http) {
 
   this.getUser = function () {
@@ -937,6 +1121,7 @@ angular.module('app').service('containerSrv', function ($http) {
     this.containerServiceTest = 'the containerSrv is connected';
 
     // »»»»»»»»»»»»»»»»»»»║ ENDPOINTS
+    this.name;
     // ...................  get containers
     this.getContainerList = function () {
         return $http.get('http://localhost:3000/api/containers');

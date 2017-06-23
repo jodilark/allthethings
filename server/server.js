@@ -7,6 +7,7 @@ const cors = require('cors')
 const Auth0Strategy = require('passport-auth0')
 const passport = require('passport')
 const config = require('./.config')
+const Quagga = require('quagga').default
 
 //  »»»»»»»»»»»»»»»»»»»║   REQUIRE FILES
 const userCtrl = require('./controllers/userCtrl')
@@ -26,6 +27,27 @@ const app = express()
 app.use(express.static('../public'))
 app.use(bodyParser.json())
 app.use(cors())
+
+
+// .................... quagga
+if(typeof document !== "undefined")
+Quagga.init({
+    inputStream : {
+      name : "Live",
+      type : "LiveStream",
+      target: document.querySelector('#yourElement')    // Or '#yourElement' (optional)
+    },
+    decoder : {
+      readers : ["code_128_reader"]
+    }
+  }, function(err) {
+      if (err) {
+          console.log(err);
+          return
+      }
+      console.log("Initialization finished. Ready to start");
+      Quagga.start();
+  });
 
 // .................... database
 massive({

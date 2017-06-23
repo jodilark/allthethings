@@ -1,6 +1,6 @@
 <h1>Create an item</h1>
 <!-- »»»»»»»»»»»»»»»»»»»║   TESTS   -->
-<div class="test-results">
+<!--<div class="test-results">
     <ul>
         <li>1. {{itemCreateTest}}</li>
         <li>2. {{itemGetSrvTest}}</li>
@@ -9,7 +9,7 @@
         <li>5. {{itemDeleteSrvTest}}</li>
         <li>6. {{itemMainSrvTest}}</li>
     </ul>
-</div>
+</div>-->
 
 <!-- »»»»»»»»»»»»»»»»»»»║   DO'S   -->
 <button ui-sref="location_create">Create a location</button>
@@ -28,11 +28,11 @@
 <!-- »»»»»»»»»»»»»»»»»»»║   INPUT FIELDS   -->
 <form id='itemCreateForm' ng-submit="createItem()">
     <select id="userList" ng-options="user as user.first_name for user in users" ng-model="userId">
-        <option id="userList" value="" selected>{{thisUser}}</option> <!-- this should be the default location from settins -->
+        <option id="userList" value="" selected>{{thisUser}}</option>
     </select>
-    <input type="text" placeholder="UPC" ng-model="upc"><button>cam</button>
-    <input type="text" placeholder="short name" ng-model="itemCreateObj.short_name" required>
-    <input type="text" placeholder="description" ng-model="itemCreateObj.description" required>
+    <bc-scanner></bc-scanner>
+    <input type="text" placeholder="short name" ng-model="itemCreateObj.short_name">
+    <input type="text" placeholder="description" ng-model="itemCreateObj.description">
     <input type="number" min="0" placeholder="quantity" ng-model="itemCreateObj.quantity">
     <input type="number" min="0" step="0.01" placeholder="Purchase Price" ng-model="itemCreateObj.price">
     <input type="text" placeholder="date Purchased" id='datefield' max='2000-13-13' onfocus="(this.type='date')" onblur="(this.type='text', placeholder='value')"
@@ -41,25 +41,22 @@
     <input type="text" placeholder="retailer" ng-model="itemCreateObj.retailer">
     <input type="number" placeholder="warrenty period (in days)" min="0" max="999" ng-model="itemCreateObj.warrenty" style="min-width: 165px">
     <input type="checkbox" ng-model="packageStatus" ng-change="originalPackaging()"> Have original packaging
-    <input type="radio" name="replaceDecision" ng-model="repItem" value="replink" checked>Have replacement link
-    <input type="radio" name="replaceDecision" ng-model="repItem" value="amazon">Search amazon for item
-    <input type="radio" name="replaceDecision" ng-model="repItem" value="other"> Other
+    <div>
+        <input type="radio" name="replaceDecision" ng-model="repItem" value="replink" checked ng-change="swapper()">Have replacement link
+        <input type="radio" name="replaceDecision" ng-model="repItem" value="other" ng-change="swapper()"> Other
+    </div>
     </br>
-    <p>if replink</p>
-    <input type="text" placeholder="Input link to item" ng-model="itemCreateObj.replink">
-    <p>if amazon</p>
-    <input type="text">
-    <p>if other</p>
-    <textarea name="Other" placeholder="Other" id="" cols="30" rows="10" ng-model="itemCreateObj.repOther"></textarea>
+    <input type="text" placeholder="Input link to item" ng-model="itemCreateObj.replink" ng-hide="linked">
+    <textarea name="Other" placeholder="Other" id="" cols="30" rows="10" ng-model="itemCreateObj.repOther" ng-hide="!linked"></textarea>
     </br>
-    <select id="locationList" ng-options="location as location.description for location in locations" ng-model="locationOption" ng-change="locationId()">
+    <select id="locationList" ng-options="location as location.description for location in locations" ng-model="locationOption"
+        ng-change="locationId()">
             <option id="locationList" value="" disabled selected>{{loc}}</option>
     </select>
     <p>Other common locations</p>
     <div>
         <div ui-grid="gridOptions" class="my-loc-on-items" ui-grid-selection></div>
     </div>
-    <!--placeholder for trackby stuff-->
     <input type="checkbox" ng-model="multiPiece" ng-change="multiplePieces()"> Has multiple pieces
     <input type="checkbox" ng-model="consumable" ng-change="isConsumable()"> Is consumable item
     <p>Sentimental Rating</p>
@@ -72,6 +69,10 @@
     <option>Month</option>
     <option>Year</option>
     </select>
+    <p>Track-Bys</p>
+    <div ng-repeat="trackby in trackbys">
+          <input  type="text" placeholder={{trackby.trackby_name}} value="" ng-model="trackbyValues[trackby.id]">
+    </div>
     <input type="submit" value="Submit">
-    <input type="reset" value="Cancel"> {{repItem}}
+    <input type="reset" value="Cancel">
 </form>
