@@ -20,28 +20,29 @@ angular.module('app').controller('itemCreate', function ($scope, bcService, item
         , repOther: null
         , replink: null
     }
-    const testObj = {
-        af_period: "Week"
-        , af_time: 3
-        , common: Object
-        , description: "desc"
-        , has_multiPiece: true
-        , has_package: true
-        , is_consumable: true
-        , location_id: 1
-        , owner_id: 1
-        , price: 3.99
-        , purchase_date: "2017-06-22"
-        , quantity: 3
-        , reason: "reason"
-        , repItem: "replink"
-        , repOther: "otherbox"
-        , replink: "linky"
-        , retailer: "retailer"
-        , sentimental_rating: 3
-        , short_name: "short"
-        , warrenty: 4
-    }
+    // const testObj = {
+    //         af_period: "Week"
+    //     ,   af_time: 3
+    //     ,   common: Object
+    //     ,   description: "desc"
+    //     ,    has_multiPiece: true
+    //     ,   has_package: true
+    //     ,   is_consumable: true
+    //     ,   location_id: 1
+    //     ,    owner_id: 1
+    //     ,   price: 3.99
+    //     ,   purchase_date: "2017-06-22"
+    //     ,   quantity: 3
+    //     ,   reason: "reason"
+    //     , repItem: "replink"
+    //     ,   repOther: "otherbox"
+    //     ,   replink: "linky"
+    //     ,   retailer: "retailer"
+    //     ,   sentimental_rating: 3
+    //     ,   short_name: "short"
+    //     ,   warrenty: 4
+    //     ,   trackbys: Object
+    // }
 
     $scope.trackbyValues = {}
     const itemsObj = $scope.itemCreateObj
@@ -52,6 +53,7 @@ angular.module('app').controller('itemCreate', function ($scope, bcService, item
 
     // .................... get current user
     $scope.currentUser = () => itemMainSrv.getCurrentUser().then(response => {
+        // console.log(response.data)
         $scope.thisUser = response.data.first_name
         $scope.itemCreateObj.owner_id = response.data.id
         $scope.userId.id = response.data.id
@@ -140,12 +142,8 @@ angular.module('app').controller('itemCreate', function ($scope, bcService, item
 
     $scope.locationId = () => $scope.itemCreateObj.location_id = $scope.locationOption.id
 
-    $scope.swapper = () => {
-        // console.log("swapped")
-        $scope.linked = !$scope.linked
-    }
-
-
+    // .................... radio control
+    $scope.swapper = () => $scope.linked = !$scope.linked
 
 
     // »»»»»»»»»»»»»»»»»»»║  CREATE ITEMS
@@ -158,6 +156,6 @@ angular.module('app').controller('itemCreate', function ($scope, bcService, item
         $scope.itemCreateObj.upc = $scope.barcode
 
         console.log(itemsObj)//this is the object that will be sent to the server
-
+        itemPostSrv.createItem(itemsObj)
     }
 })

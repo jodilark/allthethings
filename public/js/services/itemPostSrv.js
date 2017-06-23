@@ -5,8 +5,9 @@ angular.module('app').service('itemPostSrv', function ($http) {
     // // »»»»»»»»»»»»»»»»»»»║ ENDPOINTS
     // ...................  create item
     this.createItem = (data) => {
+        console.log('the data in itemPostSrv is: ', data)
         $http({
-            url: '/api/trackbys/',
+            url: '/api/items',
             method: 'POST',
             data: data
         })

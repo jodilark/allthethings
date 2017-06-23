@@ -17,6 +17,7 @@ const containerCtrl = require('./controllers/containerCtrl')
 const locClassCtrl = require('./controllers/locClassCtrl')
 const locationsCtrl = require('./controllers/locationsCtrl')
 const trackByCtrl = require('./controllers/trackByCtrl')
+const itemsCtrl = require('./controllers/itemsCtrl')
 
 
 //  »»»»»»»»»»»»»»»»»»»║   OTHER VARIABLES
@@ -155,10 +156,10 @@ app.put('/api/users/:id', userCtrl.updateUser)
 
 
 //  .................... create/manage items
-// app.get('/api/items', $changemeCtrl.getAllItems)
-// app.post('/api/items', $changemeCtrl.createItem)
-// app.put('/api/items/:id', $changemeCtrl.updateItem)
-// app.delete('/api/items:id', $changemeCtrl.deleteItems)
+// app.get('/api/items', itemsCtrl.getAllItems)
+app.post('/api/items', itemsCtrl.createItem)
+// app.put('/api/items/:id', itemsCtrl.updateItem)
+// app.delete('/api/items:id', itemsCtrl.deleteItems)
 
 //  .................... rental
 // app.get('/api/rentals', $changemeCtrl.getAllRentals)

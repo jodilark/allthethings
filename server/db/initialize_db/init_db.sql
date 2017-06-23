@@ -124,10 +124,13 @@
 		, parent_item_id int
 		, is_consumable boolean
 		, sentimental_rating int
-		, frequency_used varchar
+		, frequency_period varchar
+		, frequency_qty int
 		, date_added timestamp
 		, last_accessed timestamp
 		, resale_value money
+		, replace_radio_default varchar
+		, upc varchar
 	);
 
     -- INSERT INTO items

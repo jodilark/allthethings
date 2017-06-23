@@ -33,7 +33,7 @@
     <bc-scanner></bc-scanner>
     <input type="text" placeholder="short name" ng-model="itemCreateObj.short_name">
     <input type="text" placeholder="description" ng-model="itemCreateObj.description">
-    <input type="number" min="0" placeholder="quantity" ng-model="itemCreateObj.quantity">
+    <input type="number" min="0" placeholder="quantity" value="1" ng-model="itemCreateObj.quantity">
     <input type="number" min="0" step="0.01" placeholder="Purchase Price" ng-model="itemCreateObj.price">
     <input type="text" placeholder="date Purchased" id='datefield' max='2000-13-13' onfocus="(this.type='date')" onblur="(this.type='text', placeholder='value')"
         ng-model="itemCreateObj.purchase_date">
