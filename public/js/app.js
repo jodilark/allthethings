@@ -1,4 +1,4 @@
-angular.module('app', ['ui.router', 'ui.grid', 'ui.grid.selection', 'ui.grid.edit'])
+angular.module('app', ['ui.router', 'ui.grid', 'ui.grid.selection', 'ui.grid.edit', 'ui.grid.resizeColumns', 'ui.grid.moveColumns', 'ui.grid.pinning'])
     .config(function ($stateProvider, $urlRouterProvider) {
         $urlRouterProvider.otherwise('/', "")
         // .......................  authorization

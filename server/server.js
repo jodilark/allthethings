@@ -156,9 +156,10 @@ app.put('/api/users/:id', userCtrl.updateUser)
 
 
 //  .................... create/manage items
-// app.get('/api/items', itemsCtrl.getAllItems)
+app.get('/api/items', itemsCtrl.getAllItems)
+app.get('/api/items/custom', itemsCtrl.getItemsCustomList)
 app.post('/api/items', itemsCtrl.createItem)
-// app.put('/api/items/:id', itemsCtrl.updateItem)
+app.put('/api/items/:id', itemsCtrl.updateItem)
 // app.delete('/api/items:id', itemsCtrl.deleteItems)
 
 //  .................... rental

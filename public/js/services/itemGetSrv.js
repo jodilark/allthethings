@@ -4,5 +4,6 @@ angular.module('app').service('itemGetSrv', function ($http) {
 
     // // »»»»»»»»»»»»»»»»»»»║ ENDPOINTS
     // ...................  get items
-    this.getItemList = () => $http.get('/api/trackbys/')
+    this.getItemList = () => $http.get('/api/items')
+    this.getItemCustomList = () => $http.get('/api/items/custom')
 })

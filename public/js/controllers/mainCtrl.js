@@ -4,7 +4,10 @@ angular.module('app').controller('mainCtrl', function ($scope, authService, chec
 
     $scope.loggedIn = false;
 
-    $scope.login = () => $scope.loggedIn = true
+    $scope.login = () => {
+        $scope.loggedIn = true
+        // authService.logMeIn()
+    }
     $scope.logout = () => {
         $scope.loggedIn = false
         authService.logout()

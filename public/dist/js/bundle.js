@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('app', ['ui.router', 'ui.grid', 'ui.grid.selection', 'ui.grid.edit']).config(function ($stateProvider, $urlRouterProvider) {
+angular.module('app', ['ui.router', 'ui.grid', 'ui.grid.selection', 'ui.grid.edit', 'ui.grid.resizeColumns', 'ui.grid.moveColumns', 'ui.grid.pinning']).config(function ($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise('/', ""
     // .......................  authorization
     // var authentication = {
@@ -102,32 +102,11 @@ angular.module('app').controller('itemCreate', function ($scope, bcService, item
         has_multiPiece: false,
         is_consumable: false,
         repOther: null,
-        replink: null
-        // const testObj = {
-        //         af_period: "Week"
-        //     ,   af_time: 3
-        //     ,   common: Object
-        //     ,   description: "desc"
-        //     ,    has_multiPiece: true
-        //     ,   has_package: true
-        //     ,   is_consumable: true
-        //     ,   location_id: 1
-        //     ,    owner_id: 1
-        //     ,   price: 3.99
-        //     ,   purchase_date: "2017-06-22"
-        //     ,   quantity: 3
-        //     ,   reason: "reason"
-        //     , repItem: "replink"
-        //     ,   repOther: "otherbox"
-        //     ,   replink: "linky"
-        //     ,   retailer: "retailer"
-        //     ,   sentimental_rating: 3
-        //     ,   short_name: "short"
-        //     ,   warrenty: 4
-        //     ,   trackbys: Object
-        // }
+        replink: null,
+        af_period: "Day"
+    };
 
-    };$scope.trackbyValues = {};
+    $scope.trackbyValues = {};
     var itemsObj = $scope.itemCreateObj;
     $scope.replink = 'replink';
     $scope.repItem = $scope.replink;
@@ -264,19 +243,147 @@ angular.module('app').controller('itemCreate', function ($scope, bcService, item
         $scope.itemCreateObj.trackbys = $scope.trackbyValues;
         $scope.itemCreateObj.upc = $scope.barcode;
 
-        console.log(itemsObj //this is the object that will be sent to the server
-        );itemPostSrv.createItem(itemsObj);
+        // console.log(itemsObj)//this is the object that will be sent to the server
+        itemPostSrv.createItem(itemsObj);
     };
 });
 'use strict';
 
-angular.module('app').controller('itemManage', function ($scope, itemGetSrv, itemPostSrv, itemPutSrv, itemDeleteSrv) {
+angular.module('app').controller('itemManage', function ($scope, $interval, itemGetSrv, itemPostSrv, itemPutSrv, itemDeleteSrv, userListSrv, locationsListSrv) {
     // »»»»»»»»»»»»»»»»»»»║  TESTS 
     $scope.itemManageTest = 'itemManage controller is connected and operational';
     $scope.itemGetSrvTest = itemGetSrv.itemGetSrvTest;
     $scope.itemPostSrvTest = itemPostSrv.itemPostSrvTest;
     $scope.itemPutSrvTest = itemPutSrv.itemPutSrvTest;
     $scope.itemDeleteSrvTest = itemDeleteSrv.itemDeleteSrvTest;
+    // VARIABLES
+    var ddList = [];
+    var ddLocList = [];
+    var rtnUsers = [];
+    var rtnLocs = [];
+    var nuid = 0;
+    var nlid = 0;
+    var useFrequency = [{ id: 'Day', value: 'Day' }, { id: 'Week', value: 'Week' }, { id: 'Month', value: 'Month' }, { id: 'Year', value: 'Year' }];
+    var betterBool = [{ id: true, value: true }, { id: false, value: false }];
+
+    // .................... get item grid list
+    $scope.getGridData = function () {
+        return itemGetSrv.getItemCustomList().then(function (response) {
+            return $scope.gridOptions.data = response.data;
+        });
+    };
+    $scope.getGridData
+
+    // .................... get list of users
+
+    ();$scope.getUserList = function () {
+        return userListSrv.getUserList().then(function (response) {
+            rtnUsers = response.data;
+            var droplist = function droplist(rIndex) {
+                var tempArr = {};
+                tempArr.id = rIndex.first_name;
+                tempArr.value = rIndex.first_name;
+                ddList.push(tempArr);
+            };
+            rtnUsers.map(droplist);
+        });
+    };
+    $scope.getUserList
+
+    // .................... get list of Locaitons
+
+    ();$scope.getLocaitonList = function () {
+        return locationsListSrv.getLocationsList().then(function (response) {
+            rtnLocs = response.data;
+            var droplist = function droplist(rIndex) {
+                var tempArr = {};
+                tempArr.id = rIndex.description;
+                tempArr.value = rIndex.description;
+                ddLocList.push(tempArr);
+            };
+            rtnLocs.map(droplist);
+        });
+    };
+    $scope.getLocaitonList
+
+    // .................... columns and data
+    ();var minW = 75;
+    var maxW = 500;
+    var wid = 150;
+
+    $scope.gridOptions = {
+        enableRowSelection: true,
+        enableRowHeaderSelection: false,
+        multiSelect: false,
+        enableSelectAll: false,
+        enableGridMenu: true,
+        enableFiltering: true,
+        columnDefs: [{ name: 'id', displayName: 'Id', enableCellEdit: false, minWidth: minW, width: 75, maxWidth: maxW, pinnedLeft: true }, { name: 'Owner', displayName: 'Owner', editableCellTemplate: 'ui-grid/dropdownEditor', minWidth: minW, width: 75, maxWidth: maxW, editDropdownValueLabel: 'value', editDropdownOptionsArray: ddList, pinnedLeft: true }, { name: 'short_name', minWidth: minW, width: 200, maxWidth: maxW, pinnedLeft: true }, { name: 'qty', type: 'number', minWidth: minW, width: 75, maxWidth: maxW, pinnedLeft: true }, { name: 'description', minWidth: minW, width: wid, maxWidth: maxW }, { name: 'date_added', type: 'date', cellFilter: 'date', minWidth: minW, width: 250, maxWidth: maxW }, { name: 'upc', minWidth: minW, width: wid, maxWidth: maxW }, { name: 'frequency_period', displayName: 'Frequency of Use Period', editableCellTemplate: 'ui-grid/dropdownEditor', minWidth: minW, width: wid, maxWidth: maxW, editDropdownOptionsArray: useFrequency }, { name: 'frequency_qty', type: 'number', displayName: 'Times Per Period', minWidth: minW, width: wid, maxWidth: maxW }, { name: 'img', displayName: 'Image', enableCellEdit: false, minWidth: minW, width: wid, maxWidth: maxW }, { name: 'is_consumable', displayName: 'Consumable', editableCellTemplate: 'ui-grid/dropdownEditor', minWidth: minW, width: wid, maxWidth: maxW, editDropdownOptionsArray: betterBool }, { name: 'is_part', displayName: 'Part', editableCellTemplate: 'ui-grid/dropdownEditor', minWidth: minW, width: wid, maxWidth: maxW, editDropdownOptionsArray: betterBool }, { name: 'last_accessed', type: 'date', cellFilter: 'date', minWidth: minW, width: wid, maxWidth: maxW }, { name: 'locationDescription', editableCellTemplate: 'ui-grid/dropdownEditor', minWidth: minW, width: 250, maxWidth: maxW, editDropdownValueLabel: 'value', editDropdownOptionsArray: ddLocList
+            // , { name: 'locationID', minWidth: minW, width: wid, maxWidth: maxW }
+        }, { name: 'original_package', displayName: 'Have Package', editableCellTemplate: 'ui-grid/dropdownEditor', minWidth: minW, width: wid, maxWidth: maxW, editDropdownOptionsArray: betterBool }, { name: 'other_common_loc_json', minWidth: minW, width: '100%', maxWidth: maxW
+            // , { name: 'parent_item_id', minWidth: minW, width: wid, maxWidth: maxW }
+        }, { name: 'purchase_date', type: 'date', cellFilter: 'date', minWidth: minW, width: wid, maxWidth: maxW }, { name: 'purchase_price', minWidth: minW, width: wid, maxWidth: maxW }, { name: 'purchase_reason', minWidth: minW, width: wid, maxWidth: maxW }, { name: 'purchase_retailer', minWidth: minW, width: wid, maxWidth: maxW
+            // , { name: 'replace_radio_default', minWidth: minW, width: wid, maxWidth: maxW }
+        }, { name: 'replacement_comment', minWidth: minW, width: 250, maxWidth: maxW }, { name: 'replacement_link', cellTemplate: '<div class="ui-grid-cell-contents"><a href="{{ COL_FIELD }}" target="_blank">View Item</a></div>', minWidth: minW, width: 250, maxWidth: maxW }, { name: 'resale_value', minWidth: minW, width: wid, maxWidth: maxW }, { name: 'sentimental_rating', type: 'number', minWidth: minW, width: 200, maxWidth: maxW }, { name: 'trackby_json', displayName: 'Track-By', minWidth: minW, width: '100%', maxWidth: maxW
+            // , { name: 'userID', minWidth: minW, width: wid, maxWidth: maxW }
+        }, { name: 'warrenty_period_in_days', displayName: 'Warrenty (days)', type: 'number', minWidth: minW, width: wid, maxWidth: maxW }],
+
+        onRegisterApi: function onRegisterApi(gridApi) {
+            $scope.gridApi = gridApi;
+
+            // interval of zero just to allow the directive to have initialized
+            $interval(function () {
+                gridApi.core.addToGridMenu(gridApi.grid, []);
+            }, 0, 1);
+
+            gridApi.core.on.columnVisibilityChanged($scope, function (changedColumn) {
+                $scope.columnChanged = { name: changedColumn.colDef.name, visible: changedColumn.colDef.visible };
+            });
+
+            gridApi.selection.on.rowSelectionChanged($scope, function (row) {
+                $scope.selected = row.isSelected;
+                $scope.rowId = row.uid;
+                $scope.rowObj = row.entity;
+                $scope.enableDelete = false;
+                $scope.selected === true ? $scope.enableDelete = false : $scope.enableDelete = true;
+            }
+
+            // ...........   update the location on lost focus, tab, or enter
+            );gridApi.edit.on.afterCellEdit($scope, function (rowEntity) {
+                $scope.updateCont = rowEntity;
+                var rei = rowEntity.id;
+                // ............. validation for owner, location, qty
+                var reo = rowEntity.Owner;
+                var rel = rowEntity.locationDescription;
+                var newUsersId = rtnUsers.filter(function (el, ind, arr) {
+                    if (el.first_name === reo) {
+                        nuid = el.id;
+                    }
+                });
+                var newLocationsId = rtnLocs.filter(function (el, ind, arr) {
+                    if (el.description === rel) {
+                        nlid = el.id;
+                    }
+                });
+                var newQuantity = function newQuantity(qty) {
+                    var nqty = 0;
+                    qty < 0 ? nqty = qty / 0 : nqty = qty;
+                    return nqty;
+                };
+                var nIQty = newQuantity(rowEntity.qty);
+                var nFQty = newQuantity(rowEntity.frequency_qty);
+                var nWQty = newQuantity(rowEntity.warrenty_period_in_days);
+                var nSRQty = newQuantity(rowEntity.sentimental_rating);
+                var gridObj = { Owner: rowEntity.Owner, date_added: rowEntity.date_added, description: rowEntity.description, frequency_period: rowEntity.frequency_period, frequency_qty: nFQty, id: rowEntity.id, img: rowEntity.img, is_consumable: rowEntity.is_consumable, is_part: rowEntity.is_part, last_accessed: rowEntity.last_accessed, locationDescription: rowEntity.locationDescription, locationID: nlid, original_package: rowEntity.original_package, other_common_loc_json: rowEntity.other_common_loc_json, parent_item_id: rowEntity.parent_item_id, purchase_date: rowEntity.purchase_date, purchase_price: rowEntity.purchase_price, purchase_reason: rowEntity.purchase_reason, purchase_retailer: rowEntity.purchase_retailer, qty: nIQty, replace_radio_default: rowEntity.replace_radio_default, replacement_comment: rowEntity.replacement_comment, replacement_link: rowEntity.replacement_link, resale_value: rowEntity.resale_value, sentimental_rating: nSRQty, short_name: rowEntity.short_name, trackby_json: rowEntity.trackby_json, upc: rowEntity.upc, userID: nuid, warrenty_period_in_days: nWQty
+                    // ............. call update
+                };$scope.update(rei, gridObj);
+            });
+        }
+
+        // »»»»»»»»»»»»»»»»»»»║  UPDATE ITEMS
+    };$scope.update = function (id, updateObj) {
+        return itemPutSrv.updateItem(id, updateObj);
+    };
 });
 'use strict';
 
@@ -591,7 +698,8 @@ angular.module('app').controller('mainCtrl', function ($scope, authService, chec
     $scope.loggedIn = false;
 
     $scope.login = function () {
-        return $scope.loggedIn = true;
+        $scope.loggedIn = true;
+        // authService.logMeIn()
     };
     $scope.logout = function () {
         $scope.loggedIn = false;
@@ -919,11 +1027,178 @@ angular.module('app').controller('userManage', function ($scope, uiGridConstants
 });
 'use strict';
 
+angular.module('app').directive('bcScanner', function () {
+    return {
+        restrict: 'E',
+        templateUrl: '../views/barcodeScanner.html',
+        scope: '@',
+        controller: function controller($scope, bcService) {
+            // .................... variables
+            $scope.barcode;
+            $scope.storeBarcode = function () {
+                return bcService.storeBarcode($scope.barcode
+
+                // .................... quagga barcode scanner
+                );
+            };var Quagga = window.Quagga;
+            var resultsArr = [];
+            var counter = resultsArr.length;
+            var App = {
+                _lastResult: null,
+                init: function init() {
+                    this.attachListeners();
+                },
+                activateScanner: function activateScanner() {
+                    var scanner = this.configureScanner('.overlay__content'),
+                        onDetected = function (result) {
+                        resultsArr.push(result.codeResult.code);
+                        counter = resultsArr.length;
+                        // console.log("On Detected :", resultsArr)
+                        // console.log("counter = ", counter)
+                        if (counter === 10) {
+                            var mc = mostCommon(resultsArr);
+                            console.log("most common", mc);
+                            $scope.barcode = mc;
+                            $scope.storeBarcode();
+                            $scope.$apply();
+                            $scope.stoppy();
+                            $scope.showBarcodeWindow = false;
+                            $scope.$apply();
+                            snd.play();
+                        }
+                    }.bind(this),
+                        stop = function () {
+                        scanner.stop(); // should also clear all event-listeners?
+                        scanner.removeEventListener('detected', onDetected);
+                        this.hideOverlay();
+                        this.attachListeners();
+                    }.bind(this);
+
+                    this.showOverlay(stop);
+                    console.log("activateScanner");
+                    scanner.addEventListener('detected', onDetected).start();
+                },
+                showOverlay: function showOverlay(cancelCb) {
+                    $scope.showBarcodeWindow = true;
+                    $scope.$apply();
+                    document.querySelector('.container ').classList.add('hide');
+                    document.querySelector('.overlay--inline').classList.add('show');
+                    $scope.stoppy = function () {
+                        cancelCb();
+                    };
+                },
+                attachListeners: function attachListeners() {
+                    var button = document.querySelector('button.scan'),
+                        self = this;
+
+                    button.addEventListener("click", function clickListener(e) {
+                        e.preventDefault();
+                        button.removeEventListener("click", clickListener);
+                        self.activateScanner();
+                    });
+                },
+                hideOverlay: function hideOverlay() {
+                    document.querySelector('.container ').classList.remove('hide');
+                    document.querySelector('.overlay--inline').classList.remove('show');
+                },
+                configureScanner: function configureScanner(selector) {
+                    var scanner = Quagga.decoder({ readers: ['ean_reader'] }).locator({ patchSize: 'medium' }).fromSource({
+                        target: selector,
+                        constraints: {
+                            width: 600,
+                            height: 600,
+                            facingMode: "environment"
+                        }
+                    });
+                    return scanner;
+                }
+            };
+            App.init();
+
+            // .................... take results array and get the average
+            var mostCommon = function mostCommon(arr) {
+                return arr.sort(function (a, b) {
+                    return arr.filter(function (v) {
+                        return v === a;
+                    }).length - arr.filter(function (v) {
+                        return v === b;
+                    }).length;
+                }).pop();
+            };
+            // .................... play a sound
+            var snd = new Audio("../audio/cameraOne.wav");
+
+            // .................... hide / show playback window
+            $scope.showBarcodeWindow = false;
+        }
+
+    };
+});
+'use strict';
+
+angular.module('app').directive('starRating', function () {
+    return {
+        restrict: 'A',
+        template: '<ul class="rating">' + '	<li ng-repeat="star in stars" ng-class="star" ng-click="toggle($index)">' + '\u2605' + '</li>' + '</ul>',
+        scope: {
+            ratingValue: '=',
+            max: '=',
+            onRatingSelected: '&'
+        },
+        link: function link(scope, elem, attrs) {
+            var updateStars = function updateStars() {
+                scope.stars = [];
+                for (var i = 0; i < scope.max; i++) {
+                    scope.stars.push({
+                        filled: i < scope.ratingValue
+                    });
+                }
+            };
+
+            scope.toggle = function (index) {
+                scope.ratingValue = index + 1;
+                scope.onRatingSelected({
+                    rating: index + 1
+                });
+            };
+
+            scope.$watch('ratingValue', function (oldVal, newVal) {
+                if (newVal) {
+                    updateStars();
+                }
+            });
+        }
+    };
+});
+'use strict';
+
+angular.module('app').directive('trackByDir', function (trackByGetSrv) {
+  return {
+    restrict: 'E',
+    link: function link(scope, elem, attr) {
+      // // .................... get list of trackby types and grid information
+      // $scope.gettrackbys = () => trackByGetSrv.getTrackByList().then((response) => {
+      //   $scope.trackbys = response.data
+      // })
+      // $scope.gettrackbys()
+      // < div ng-repeat="trackby in trackbys" >
+      //     <input type="text" placeholder="trackby.[name]" ng-model="trackby.value">
+      // </div>
+    }
+  };
+});
+'use strict';
+
 angular.module('app').service('authService', function ($http) {
     // »»»»»»»»»»»»»»»»»»»║ TESTS
     this.authServiceTest = 'the authService is connected';
 
     // »»»»»»»»»»»»»»»»»»»║ ENDPOINTS
+    this.logMeIn = function () {
+        return $http.get('/auth', 'Access-Control-Allow-Origin').then(function (response) {
+            return res.send('ok');
+        });
+    };
     this.logout = function () {
         return $http.get('/auth/logout').then(function (response) {
             return window.location = response.data;
@@ -1050,7 +1325,10 @@ angular.module('app').service('itemGetSrv', function ($http) {
     // // »»»»»»»»»»»»»»»»»»»║ ENDPOINTS
     // ...................  get items
     this.getItemList = function () {
-        return $http.get('/api/trackbys/');
+        return $http.get('/api/items');
+    };
+    this.getItemCustomList = function () {
+        return $http.get('/api/items/custom');
     };
 });
 'use strict';
@@ -1074,7 +1352,7 @@ angular.module('app').service('itemPostSrv', function ($http) {
     // // »»»»»»»»»»»»»»»»»»»║ ENDPOINTS
     // ...................  create item
     this.createItem = function (data) {
-        console.log('the data in itemPostSrv is: ', data);
+        // console.log('the data in itemPostSrv is: ', data)
         $http({
             url: '/api/items',
             method: 'POST',
@@ -1091,8 +1369,9 @@ angular.module('app').service('itemPutSrv', function ($http) {
     // // »»»»»»»»»»»»»»»»»»»║ ENDPOINTS
     // ...................  update items
     this.updateItem = function (id, data) {
+        // console.log("the id in the srv is :", data)
         $http({
-            url: '/api/trackbys/' + id,
+            url: '/api/items/' + id,
             method: 'PUT',
             data: data
         });
@@ -1326,167 +1605,5 @@ angular.module('app').service('userListSrv', function ($http) {
     this.getCustomUserList = function () {
         return $http.get('http://localhost:3000/api/users/custom');
     };
-});
-'use strict';
-
-angular.module('app').directive('bcScanner', function () {
-    return {
-        restrict: 'E',
-        templateUrl: '../views/barcodeScanner.html',
-        scope: '@',
-        controller: function controller($scope, bcService) {
-            // .................... variables
-            $scope.barcode;
-            $scope.storeBarcode = function () {
-                return bcService.storeBarcode($scope.barcode
-
-                // .................... quagga barcode scanner
-                );
-            };var Quagga = window.Quagga;
-            var resultsArr = [];
-            var counter = resultsArr.length;
-            var App = {
-                _lastResult: null,
-                init: function init() {
-                    this.attachListeners();
-                },
-                activateScanner: function activateScanner() {
-                    var scanner = this.configureScanner('.overlay__content'),
-                        onDetected = function (result) {
-                        resultsArr.push(result.codeResult.code);
-                        counter = resultsArr.length;
-                        // console.log("On Detected :", resultsArr)
-                        // console.log("counter = ", counter)
-                        if (counter === 10) {
-                            var mc = mostCommon(resultsArr);
-                            console.log("most common", mc);
-                            $scope.barcode = mc;
-                            $scope.storeBarcode();
-                            $scope.$apply();
-                            $scope.stoppy();
-                            $scope.showBarcodeWindow = false;
-                            $scope.$apply();
-                            snd.play();
-                        }
-                    }.bind(this),
-                        stop = function () {
-                        scanner.stop(); // should also clear all event-listeners?
-                        scanner.removeEventListener('detected', onDetected);
-                        this.hideOverlay();
-                        this.attachListeners();
-                    }.bind(this);
-
-                    this.showOverlay(stop);
-                    console.log("activateScanner");
-                    scanner.addEventListener('detected', onDetected).start();
-                },
-                showOverlay: function showOverlay(cancelCb) {
-                    $scope.showBarcodeWindow = true;
-                    $scope.$apply();
-                    document.querySelector('.container ').classList.add('hide');
-                    document.querySelector('.overlay--inline').classList.add('show');
-                    $scope.stoppy = function () {
-                        cancelCb();
-                    };
-                },
-                attachListeners: function attachListeners() {
-                    var button = document.querySelector('button.scan'),
-                        self = this;
-
-                    button.addEventListener("click", function clickListener(e) {
-                        e.preventDefault();
-                        button.removeEventListener("click", clickListener);
-                        self.activateScanner();
-                    });
-                },
-                hideOverlay: function hideOverlay() {
-                    document.querySelector('.container ').classList.remove('hide');
-                    document.querySelector('.overlay--inline').classList.remove('show');
-                },
-                configureScanner: function configureScanner(selector) {
-                    var scanner = Quagga.decoder({ readers: ['ean_reader'] }).locator({ patchSize: 'medium' }).fromSource({
-                        target: selector,
-                        constraints: {
-                            width: 600,
-                            height: 600,
-                            facingMode: "environment"
-                        }
-                    });
-                    return scanner;
-                }
-            };
-            App.init();
-
-            // .................... take results array and get the average
-            var mostCommon = function mostCommon(arr) {
-                return arr.sort(function (a, b) {
-                    return arr.filter(function (v) {
-                        return v === a;
-                    }).length - arr.filter(function (v) {
-                        return v === b;
-                    }).length;
-                }).pop();
-            };
-            // .................... play a sound
-            var snd = new Audio("../audio/cameraOne.wav");
-
-            // .................... hide / show playback window
-            $scope.showBarcodeWindow = false;
-        }
-
-    };
-});
-'use strict';
-
-angular.module('app').directive('starRating', function () {
-    return {
-        restrict: 'A',
-        template: '<ul class="rating">' + '	<li ng-repeat="star in stars" ng-class="star" ng-click="toggle($index)">' + '\u2605' + '</li>' + '</ul>',
-        scope: {
-            ratingValue: '=',
-            max: '=',
-            onRatingSelected: '&'
-        },
-        link: function link(scope, elem, attrs) {
-            var updateStars = function updateStars() {
-                scope.stars = [];
-                for (var i = 0; i < scope.max; i++) {
-                    scope.stars.push({
-                        filled: i < scope.ratingValue
-                    });
-                }
-            };
-
-            scope.toggle = function (index) {
-                scope.ratingValue = index + 1;
-                scope.onRatingSelected({
-                    rating: index + 1
-                });
-            };
-
-            scope.$watch('ratingValue', function (oldVal, newVal) {
-                if (newVal) {
-                    updateStars();
-                }
-            });
-        }
-    };
-});
-'use strict';
-
-angular.module('app').directive('trackByDir', function (trackByGetSrv) {
-  return {
-    restrict: 'E',
-    link: function link(scope, elem, attr) {
-      // // .................... get list of trackby types and grid information
-      // $scope.gettrackbys = () => trackByGetSrv.getTrackByList().then((response) => {
-      //   $scope.trackbys = response.data
-      // })
-      // $scope.gettrackbys()
-      // < div ng-repeat="trackby in trackbys" >
-      //     <input type="text" placeholder="trackby.[name]" ng-model="trackby.value">
-      // </div>
-    }
-  };
 });
 //# sourceMappingURL=bundle.js.map

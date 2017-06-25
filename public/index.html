@@ -12,30 +12,56 @@
 
 <body ng-controller="mainCtrl">
     <!-- ========== TESTS-->
-    <div class="test-results">
-        <!-- .......... controller test-->
-        {{controllerTest}}
-        <!-- .......... hello world test-->
-        <h1>Hello World</h1>
-        <!--<button ng-click="login()"  ui-sref="user_create">Simulate 1st Login UI</button>
-        <button ng-click="login()"  ui-sref="dashboard">Simulate already authorized Login UI</button>-->
-        <!--<button ng-click="logout()" ui-sref='home'>Simulate Logout UI</button>-->
+    <!--<div class="test-results">-->
+    <!-- .......... controller test-->
+    <!--{{controllerTest}}-->
+    <!-- .......... hello world test-->
+    <!--<h1>Hello World</h1>-->
+    <!--<button ng-click="login()"  ui-sref="user_create">Simulate 1st Login UI</button>
+            <button ng-click="login()"  ui-sref="dashboard">Simulate already authorized Login UI</button>-->
+    <!--<button ng-click="logout()" ui-sref='home'>Simulate Logout UI</button>-->
+    <!--</div>-->
+    <!--<a href="http://localhost:3000/auth" ng-hide='loggedIn' class="auth-controls header-button" id="login">login</a>-->
+
+    <!--<div class="test-asset" id="t2"></div>-->
+    <!--<div class="test-asset" id="t3"></div>-->
+
+
+
+    <div class="public-header-1" ng-hide='loggedIn'>
+        <div class="public-header-1-a">
+            <div class="test-asset" id="t1"></div>
+        </div>
+        <form action="http://localhost:3000/auth" , class="public-header-1-b-i">
+            <input type="submit" value="Login" class="header-button" id="ph-login" />
+            <button class="header-button" id="ph-contact">Contact</button>
+        </form>
+    </div>
     </div>
 
 
-    <a href="http://localhost:3000/auth" ng-hide='loggedIn'>login</a>
+
+
+    <!--<div>-->
     <!--<div ng-hide='!loggedIn'>UNCOMMENT this, mainCtrl auth, app.js WHEN DONE DEVELOPING-->
+    <!--<div>
+            <a ui-sref='home' class="auth-controls">Home</a>
+            <a ng-click="logout()" class="auth-controls header-button" id="logout">logout</a>
+            <button ui-sref="dashboard">Dashboard</button>
+            <button ui-sref="global_search">Global Search Results</button>
+            <button ui-sref="settings">Settings</button>
+        </div>
+    </div>-->
+
+
+
+
+
+
+
+    <!-- ========== MAKE A DIRECTIVE FOR SIDE MENU-->
     <div>
-        <a ui-sref='home'>Home</a>
-        <a ng-click="logout()">logout</a>
-        <button ui-sref="dashboard">Dashboard</button>
-        <button ui-sref="global_search">Global Search Results</button>
-        <button ui-sref="settings">Settings</button>
-
-
-        <!-- ========== MAKE A DIRECTIVE FOR SIDE MENU-->
-
-        <button ui-sref="user_create">Create a User</button>
+        <!--<button ui-sref="user_create">Create a User</button>
         <button ui-sref="user_manage">Manage Users</button>
         <button ui-sref="location_create">Create a location</button>
         <button ui-sref="location_manage">Manage Locations</button>
@@ -43,12 +69,13 @@
         <button ui-sref="loc_class">Manage Location Class Types</button>
         <button ui-sref="trackbys">Manage Track-Bys</button>
         <button ui-sref="item_create">Create an Item</button>
-        <button ui-sref="item_manage">Manage Items</button>
+        <button ui-sref="item_manage">Manage Items</button>-->
     </div>
 
 
-    <h4>Ui router is below this line</h4>
-    <ui-view></ui-view>
+    <div class="main-view-container">
+        <ui-view></ui-view>
+    </div>
 
     <!-- ========== SCRIPTS-->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.js"></script>

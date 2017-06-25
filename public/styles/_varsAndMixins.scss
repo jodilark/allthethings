@@ -2,6 +2,12 @@
 
 // »»»»»»»»»»»»»»»»»»»║ VARIABLES
 
+// »»»»»»»»»»»»»»»»»»»║ TESTS
+@mixin box-tester {
+    border: 1px solid red;
+    background: rgba(200, 0, 50, .1);
+}
+
 // »»»»»»»»»»»»»»»»»»»║ MIXINS
 // ............... all pages
 @mixin test-format {

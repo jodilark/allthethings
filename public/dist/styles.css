@@ -96,6 +96,64 @@ div.test-results {
   border: 1px dashed red;
   background: rgba(0, 0, 0, 0.1); }
 
+.public-header-1 {
+  border: 1px solid red;
+  background: rgba(200, 0, 50, 0.1);
+  width: 100%;
+  height: 65px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center; }
+
+.public-header-1-a {
+  border: 1px solid red;
+  background: rgba(200, 0, 50, 0.1);
+  height: 100%;
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  margin-left: 10px; }
+
+.public-header-1-b {
+  border: 1px solid red;
+  background: rgba(200, 0, 50, 0.1);
+  height: 100%;
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center; }
+
+.public-header-1-b-i {
+  border: 1px solid red;
+  background: rgba(200, 0, 50, 0.1);
+  height: 100%;
+  flex: .5;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  margin-right: 10px; }
+
+.test-asset {
+  width: 30px;
+  height: 30px;
+  background: lightblue; }
+
+#t1 {
+  height: 45px;
+  width: 200px; }
+
+#ph-login {
+  margin: 0px 5px; }
+
+#ph-contact {
+  margin: 0px 0px 0px 5px;
+  background: green; }
+
 .rating {
   color: #a9a9a9;
   margin: 0;
@@ -120,5 +178,8 @@ ul.rating {
 .my-loc-on-items {
   max-width: 600px;
   max-height: 200px; }
+
+.manageItemsGrid {
+  width: 100%; }
 
 /*# sourceMappingURL=maps/styles.css.map */

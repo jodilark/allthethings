@@ -5,8 +5,9 @@ angular.module('app').service('itemPutSrv', function ($http) {
     // // »»»»»»»»»»»»»»»»»»»║ ENDPOINTS
     // ...................  update items
     this.updateItem = (id, data) => {
+        // console.log("the id in the srv is :", data)
         $http({
-            url: '/api/trackbys/' + id,
+            url: '/api/items/' + id,
             method: 'PUT',
             data: data
         })
