@@ -25,6 +25,8 @@ div.test-results {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  position: fixed;
+  top: 0px;
 }
 
 .public-header-1-a {
