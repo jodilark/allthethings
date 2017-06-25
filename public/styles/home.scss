@@ -1,0 +1,37 @@
+// =============== IMPORT FILES
+@import '_varsAndMixins';
+
+// =============== PAGE STYLES
+
+
+// ............... public home
+// _____: title
+.home-body-wrapper {
+    @include box-tester;
+    height:500px;
+    width: 100%;
+    padding: 20px 20px 0px;
+}
+.home-title-1 {
+    @include box-tester;
+    width: 100%;
+    height: 450px;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+.ht-1-a {
+    @include box-tester;
+    width: 200px;
+    height: 200px;
+}
+.home-test-asset {
+    width: 40px;
+    height: 40px;
+}
+#ht1 {
+    background: lightblue;
+}
+#ht2 {
+    background: lightgreen;
+}
