@@ -31,7 +31,7 @@
     <!--╔══════════════════════════════════════╗-->
     <!--║           PUBLIC HEADERS             ║-->
     <!--╚══════════════════════════════════════╝-->
-    <div class="public-header-1" ng-hide='loggedIn'>
+    <!--<div class="public-header-1" ng-hide='loggedIn'>
         <div class="public-header-1-a">
             <div class="test-asset" id="t1"></div>
         </div>
@@ -41,40 +41,57 @@
                 <button class="header-button" id="ph-contact">Contact</button>
             </form>
         </div>
-    </div>
-
-
-
-
-    <!--<div>-->
-    <!--<div ng-hide='!loggedIn'>UNCOMMENT this, mainCtrl auth, app.js WHEN DONE DEVELOPING-->
-    <!--<div>
-            <a ui-sref='home' class="auth-controls">Home</a>
-            <a ng-click="logout()" class="auth-controls header-button" id="logout">logout</a>
-            <button ui-sref="dashboard">Dashboard</button>
-            <button ui-sref="global_search">Global Search Results</button>
-            <button ui-sref="settings">Settings</button>
-        </div>
     </div>-->
 
-
-
-
-
-
-
-    <!-- ========== MAKE A DIRECTIVE FOR SIDE MENU-->
-    <div>
-        <!--<button ui-sref="user_create">Create a User</button>
-        <button ui-sref="user_manage">Manage Users</button>
-        <button ui-sref="location_create">Create a location</button>
-        <button ui-sref="location_manage">Manage Locations</button>
-        <button ui-sref="loc_container">Manage Container Types</button>
-        <button ui-sref="loc_class">Manage Location Class Types</button>
-        <button ui-sref="trackbys">Manage Track-Bys</button>
-        <button ui-sref="item_create">Create an Item</button>
-        <button ui-sref="item_manage">Manage Items</button>-->
+    <!--╔══════════════════════════════════════╗-->
+    <!--║           DASHBOARD HEADERS          ║-->
+    <!--╚══════════════════════════════════════╝-->
+    <div class="dashboard-header-1" ng-hide='loggedIn'>
+        <div class="dh-1-a">
+            <div class="dh-test-asset" id="dh1" ui-sref="dashboard"></div>
+        </div>
+        <div class="dh-1-b">
+            <div class="dh-1-b-i">
+                <button ng-click="logout()" class="dh-test-asset" id="dh2">logout</button>
+                <button ui-sref="settings" class="dh-test-asset" id="dh3">Settings</button>
+            </div>
+        </div>
     </div>
+
+    <!--╔══════════════════════════════════════╗-->
+    <!--║           NAV BUTTONS                ║-->
+    <!--╚══════════════════════════════════════╝-->
+    <div class="nav-wrapper">
+        <div class="nw-1">
+            <button class="nw-asset" id="nwa1" ng-click='showUserModal()'>C.U</button>
+            <button ui-sref="user_manage" class="nw-asset" id="nwa2">M.U</button>
+            <button class="nw-asset" id="nwa3" ng-click='showLocationModal()'>C.lc</button>
+            <button ui-sref="location_manage" class="nw-asset" id="nwa4">M.L</button>
+            <button ui-sref="loc_container" class="nw-asset" id="nwa5">M.Ct</button>
+            <button ui-sref="loc_class" class="nw-asset" id="nwa6">M.S</button>
+            <button ui-sref="trackbys" class="nw-asset" id="nwa7">M.t</button>
+            <button ui-sref="item_create" class="nw-asset" id="nwa8">C.I</button>
+            <button ui-sref="item_manage" class="nw-asset" id="nwa9">M.I</button>
+        </div>
+    </div>
+
+    <!--╔══════════════════════════════════════╗-->
+    <!--║           MODALS                     ║-->
+    <!--╚══════════════════════════════════════╝-->
+    <div ng-show='modalShownUser' class="miniModal">
+        <div class="modalBox">
+            <modal-user-create-dir></modal-user-create-dir>
+        </div>
+    </div>
+    <div ng-show='modalShownLocation' class="miniModal">
+        <div class="modalBox">
+            <modal-location-create-dir></modal-location-create-dir>
+        </div>
+    </div>
+
+
+
+
 
 
     <div class="main-view-container">

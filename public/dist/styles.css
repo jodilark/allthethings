@@ -82,6 +82,22 @@ input, select {
 *, *:before, *:after {
   box-sizing: border-box; }
 
+.page-wrapper {
+  border: 1px solid red;
+  background: rgba(200, 0, 50, 0.1);
+  height: 100vh;
+  width: 100%;
+  padding: 65px 20px 20px 85px; }
+
+.page-title {
+  z-index: 2001;
+  border: 1px solid red;
+  background: rgba(200, 0, 50, 0.1);
+  line-height: 65px;
+  margin: -65px auto;
+  text-align: center;
+  font-size: 30px; }
+
 .home-body-wrapper {
   border: 1px solid red;
   background: rgba(200, 0, 50, 0.1);
@@ -105,7 +121,7 @@ input, select {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: 1350px;
+  width: 1380px;
   height: 100%; }
 
 .home-test-asset {
@@ -128,6 +144,148 @@ input, select {
   color: black;
   font-size: 20px;
   margin: 0px 50px; }
+
+.find-body-wrapper {
+  border: 1px solid red;
+  background: rgba(200, 0, 50, 0.1);
+  height: 500px;
+  width: 100%;
+  padding: 20px 20px;
+  margin-top: 20px; }
+
+.ft-1 {
+  border: 1px solid red;
+  background: rgba(200, 0, 50, 0.1);
+  width: 100%;
+  height: 450px;
+  display: flex;
+  justify-content: center;
+  align-content: center; }
+
+.ft-1-a {
+  border: 1px solid red;
+  background: rgba(200, 0, 50, 0.1);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-content: center;
+  width: 1380px;
+  height: 100%; }
+
+.ft-1-a-i {
+  border: 1px solid red;
+  background: rgba(200, 0, 50, 0.1);
+  height: 100%;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+
+.ft-1-a-i-1 {
+  border: 1px solid red;
+  background: rgba(200, 0, 50, 0.1);
+  height: 350px;
+  width: 350px; }
+
+.ft-1-a-ii {
+  border: 1px solid red;
+  background: rgba(200, 0, 50, 0.1);
+  height: 100%;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center; }
+
+.ft-1-a-ii-1 {
+  flex: 1;
+  width: 100%; }
+
+.ft-1-a-ii-2 {
+  flex: 1;
+  width: 100%; }
+
+.find-test-asset {
+  width: 100%;
+  height: 100%; }
+
+#ft1 {
+  background: lightblue;
+  width: 100%;
+  color: black;
+  flex: 1;
+  border-radius: 50%; }
+
+#ft2 {
+  background: lightgreen;
+  flex: 1;
+  color: black;
+  font-size: 155px;
+  vertical-align: center;
+  line-height: 222px; }
+
+#ft3 {
+  background: lightcoral;
+  flex: 1;
+  color: black;
+  font-size: 20px; }
+
+.loss-wrapper {
+  border: 1px solid red;
+  background: rgba(200, 0, 50, 0.1);
+  height: 700px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px; }
+
+.lw-1 {
+  border: 1px solid red;
+  background: rgba(200, 0, 50, 0.1);
+  flex: 1;
+  width: 1380px;
+  position: relative; }
+
+.lw-1-a {
+  border: 1px solid red;
+  background: rgba(200, 0, 50, 0.1);
+  width: 500px;
+  height: 355px;
+  margin: 50px 0px 0px 50px; }
+
+.lw-1-b {
+  border: 1px solid red;
+  background: rgba(200, 0, 50, 0.1);
+  width: 750px;
+  height: 175px;
+  position: absolute;
+  right: 0px;
+  bottom: 243px;
+  transform: rotate(45deg); }
+
+.lw-1-c {
+  border: 1px solid red;
+  background: rgba(200, 0, 50, 0.1);
+  width: 100%;
+  position: absolute;
+  bottom: 0px;
+  height: 200px;
+  background: url("https://s3.amazonaws.com/rocketstockassets/uploads/After-Effects-Fire-Example1.gif"); }
+
+.lw-asset {
+  height: 40px;
+  width: 40px; }
+
+#lwa1 {
+  background: lightblue; }
+
+#lwa2 {
+  background: lightcoral; }
+
+#lwa3 {
+  background: lightgreen; }
 
 .cbw-1 {
   border: 1px solid red;
@@ -187,7 +345,28 @@ div.test-results {
   border: 1px dashed red;
   background: rgba(0, 0, 0, 0.1); }
 
+.miniModal {
+  border: 1px solid red;
+  background: rgba(200, 0, 50, 0.1);
+  z-index: 10000;
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  top: 0px;
+  display: flex;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.6);
+  padding-top: 100px; }
+
+.modalBox {
+  border: 1px solid red;
+  background: rgba(200, 0, 50, 0.1);
+  height: 500px;
+  width: 500px;
+  background: black; }
+
 .public-header-1 {
+  z-index: 2000;
   border: 1px solid red;
   background: rgba(200, 0, 50, 0.1);
   width: 100%;
@@ -246,6 +425,93 @@ div.test-results {
 #ph-contact {
   margin: 0px 0px 0px 5px;
   background: green; }
+
+.dashboard-header-1 {
+  z-index: 2000;
+  border: 1px solid red;
+  background: rgba(200, 0, 50, 0.1);
+  width: 100%;
+  height: 65px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  top: 0px; }
+
+.dh-1-a {
+  border: 1px solid red;
+  background: rgba(200, 0, 50, 0.1);
+  height: 100%;
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  margin-left: 20px; }
+
+.dh-1-b {
+  border: 1px solid red;
+  background: rgba(200, 0, 50, 0.1);
+  height: 100%;
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center; }
+
+.dh-1-b-i {
+  border: 1px solid red;
+  background: rgba(200, 0, 50, 0.1);
+  height: 100%;
+  flex: .5;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  margin-right: 20px; }
+
+#dh1 {
+  height: 45px;
+  width: 200px;
+  background: lightblue;
+  cursor: pointer; }
+
+#dh2 {
+  margin: 0px 5px; }
+
+#dh3 {
+  margin: 0px 0px 0px 5px;
+  background: green; }
+
+.nav-wrapper {
+  z-index: 1000;
+  border: 1px solid red;
+  background: rgba(200, 0, 50, 0.1);
+  height: 100vh;
+  width: 85px;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  padding-top: 63px; }
+
+.nw-1 {
+  border: 1px solid red;
+  background: rgba(200, 0, 50, 0.1);
+  height: 100%;
+  width: 100%;
+  margin: 20px 0px;
+  display: flex;
+  flex-direction: column;
+  align-items: center; }
+
+.nw-asset {
+  margin: 5px 0px;
+  width: 65px;
+  height: 65px; }
+
+#nwa1 {
+  margin: 0px 0px 5px; }
 
 .rating {
   color: #a9a9a9;

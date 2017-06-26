@@ -6,10 +6,14 @@ angular.module('app').controller('userCreate', function ($scope, stateListSrv, c
     $scope.userServiceTest = userListSrv.userServiceTest
     $scope.deleteAllUsersServiceTest = deleteAllUsersSrv.deleteAllUsersServiceTest
     $scope.countryListServiceTest = countryListSrv.countryListServiceTest
-    
+
 
     // »»»»»»»»»»»»»»»»»»»║  VARIABLES
 
+    // »»»»»»»»»»»»»»»»»»»║  MODAL CONTROLS
+    $scope.modalShownUser = false
+    $scope.showUserModal = () => $scope.modalShownUser = true
+    $scope.hideUserModal = () => $scope.modalShownUser = false
 
     // »»»»»»»»»»»»»»»»»»»║  GET STATES LIST
     $scope.states = () => stateListSrv.getStatesList().then((response) => $scope.stateName = response.data)

@@ -3,111 +3,223 @@
 
 // =============== PAGE STYLES
 // ............... all pages
-html, input, textarea, button, select {
-  background: #242424;
-  color: #b6b6b6;
-}
+  html, input, textarea, button, select {
+    background: #242424;
+    color: #b6b6b6;
+  }
 
-.test-results {
-  @include test-format;
-}
-div.test-results {
-  border: 1px dashed red;
-  background: rgba(0, 0, 0, .1);
-}
+  .test-results {
+    @include test-format;
+  }
+  div.test-results {
+    border: 1px dashed red;
+    background: rgba(0, 0, 0, .1);
+  }
+
+// _____:modals
+  .miniModal {
+    @include box-tester;
+    z-index:10000;
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    top: 0px;
+    display: flex;
+    justify-content: center;
+    background: rgba(0, 0, 0, .6);
+    padding-top: 100px; 
+  }
+  .modalBox {
+    @include box-tester;
+    height: 500px;
+    width: 500px;
+    background: black;
+  }
+
 
 // _____: public header
-.public-header-1 {
-  @include box-tester;
-  width: 100%;
-  height:65px;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  position: fixed;
-  top: 0px;
-}
+  .public-header-1 {
+    z-index:2000;
+    @include box-tester;
+    width: 100%;
+    height:65px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 0px;
+  }
 
-.public-header-1-a {
-  @include box-tester;
-  height: 100%;
-  flex:1;
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: center;
-  margin-left: 20px;
-}
+  .public-header-1-a {
+    @include box-tester;
+    height: 100%;
+    flex:1;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    margin-left: 20px;
+  }
 
-.public-header-1-b {
-  @include box-tester;
-  height: 100%;
-  flex:1;
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
-  align-items: center;
-}
+  .public-header-1-b {
+    @include box-tester;
+    height: 100%;
+    flex:1;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+  }
 
-.public-header-1-b-i {
-  @include box-tester;
-  height:100%;
-  flex: .5;
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
-  align-items: center;
-  margin-right: 20px;
-}
-.test-asset {
-  width: 30px;
-  height: 30px;
-  background: lightblue;
-}
+  .public-header-1-b-i {
+    @include box-tester;
+    height:100%;
+    flex: .5;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    margin-right: 20px;
+  }
+  .test-asset {
+    width: 30px;
+    height: 30px;
+    background: lightblue;
+  }
 
-#t1 {
-  height: 45px;
-  width: 200px;
-}
+  #t1 {
+    height: 45px;
+    width: 200px;
+  }
 
-#ph-login {
-  margin: 0px 5px;
-}
+  #ph-login {
+    margin: 0px 5px;
+  }
 
-#ph-contact {
-  margin: 0px 0px 0px 5px;
-  background: green;
-}
+  #ph-contact {
+    margin: 0px 0px 0px 5px;
+    background: green;
+  }
 
+// _____: dashboard header
+  .dashboard-header-1 {
+    z-index:2000;
+    @include box-tester;
+    width: 100%;
+    height:65px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 0px;
+  }
+
+  .dh-1-a {
+    @include box-tester;
+    height: 100%;
+    flex:1;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    margin-left: 20px;
+  }
+
+  .dh-1-b {
+    @include box-tester;
+    height: 100%;
+    flex:1;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+  }
+
+  .dh-1-b-i {
+    @include box-tester;
+    height:100%;
+    flex: .5;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    margin-right: 20px;
+  }
+
+  #dh1 {
+    height: 45px;
+    width: 200px;
+    background: lightblue;
+    cursor: pointer;
+  }
+
+  #dh2 {
+    margin: 0px 5px;
+  }
+
+  #dh3 {
+    margin: 0px 0px 0px 5px;
+    background: green;
+  }
+// _____: nav buttons
+  .nav-wrapper {
+    z-index:1000;
+    @include box-tester;
+    height: 100vh;
+    width: 85px;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    padding-top: 63px;
+  }
+  .nw-1 {
+    @include box-tester;
+    height: 100%;
+    width: 100%;
+    margin: 20px 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+  }
+  .nw-asset {
+    margin: 5px 0px;
+    width: 65px;
+    height: 65px;
+  }
+  #nwa1 {
+    margin: 0px 0px 5px;
+  }
 
 // create users page
-.rating{
-  color: #a9a9a9;
-  margin: 0;
-  padding: 0;
+  .rating{
+    color: #a9a9a9;
+    margin: 0;
+    padding: 0;
 
-}
+  }
 
-ul.rating {
-  display: inline-block;
-}
+  ul.rating {
+    display: inline-block;
+  }
 
-.rating li {
-  @include star-styles;
-}
+  .rating li {
+    @include star-styles;
+  }
 
-.rating .filled {
-  color: gold;
-}
+  .rating .filled {
+    color: gold;
+  }
 
 // create items page
-.my-loc-on-items {
-  max-width: 600px;
-  max-height: 200px;
-}
+  .my-loc-on-items {
+    max-width: 600px;
+    max-height: 200px;
+  }
 
 // manage items page
-.manageItemsGrid {
-  width: 100%;
-}
+  .manageItemsGrid {
+    width: 100%;
+  }

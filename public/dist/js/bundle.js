@@ -556,6 +556,15 @@ angular.module('app').controller('locCreate', function ($scope, locCreateSrv, co
     $scope.locClassServiceTest = locClassSrv.locClassServiceTest;
     $scope.locListServiceTest = locationsListSrv.locListServiceTest;
 
+    // »»»»»»»»»»»»»»»»»»»║  MODAL CONTROLS
+    $scope.modalShownLocation = false;
+    $scope.showLocationModal = function () {
+        return $scope.modalShownLocation = true;
+    };
+    $scope.hideLocationModal = function () {
+        return $scope.modalShownLocation = false;
+    };
+
     // »»»»»»»»»»»»»»»»»»»║ CLEAR FORM
     $scope.clearForm = function () {
         return document.getElementById("createLocationForm").reset
@@ -707,6 +716,35 @@ angular.module('app').controller('mainCtrl', function ($scope, authService, chec
     };
     // .......................  checks to see if the user is logged in
     // checkUserSrv.getUser().then((response) => $scope.loggedIn = true)
+
+    // .......................  modal controls
+    $scope.modalShown = false;
+    $scope.toggleModal = function () {
+        $scope.modalShown = !$scope.modalShown;
+    };
+
+    //vars
+    $scope.createUserModalContent = false;
+    $scope.createLocModalContent = false;
+    $scope.setModalContent = function (contentId) {
+        switch (contentId) {
+            case 0:
+                $scope.setAllModalFalse();
+                $scope.createUserModalContent = true;
+                $scope.toggleModal();
+                break;
+            case 1:
+                $scope.setAllModalFalse();
+                $scope.createLocModalContent = true;
+                $scope.toggleModal();
+                break;
+        }
+    };
+    $scope.setAllModalFalse = function () {
+        $scope.createUserModalContent = false;
+        $scope.createLocModalContent = false;
+        // console.log("create user =", $scope.createUserModalContent)
+    };
 });
 "use strict";
 "use strict";
@@ -855,6 +893,14 @@ angular.module('app').controller('userCreate', function ($scope, stateListSrv, c
 
     // »»»»»»»»»»»»»»»»»»»║  VARIABLES
 
+    // »»»»»»»»»»»»»»»»»»»║  MODAL CONTROLS
+    $scope.modalShownUser = false;
+    $scope.showUserModal = function () {
+        return $scope.modalShownUser = true;
+    };
+    $scope.hideUserModal = function () {
+        return $scope.modalShownUser = false;
+    };
 
     // »»»»»»»»»»»»»»»»»»»║  GET STATES LIST
     $scope.states = function () {
@@ -1132,6 +1178,24 @@ angular.module('app').directive('bcScanner', function () {
             $scope.showBarcodeWindow = false;
         }
 
+    };
+});
+'use strict';
+
+angular.module('app').directive('modalLocationCreateDir', function () {
+    return {
+        templateUrl: '../views/location_create.html',
+        scope: '=',
+        controller: 'locCreate'
+    };
+});
+'use strict';
+
+angular.module('app').directive('modalUserCreateDir', function () {
+    return {
+        templateUrl: '../views/user_create.html',
+        scope: '=',
+        controller: 'userCreate'
     };
 });
 'use strict';

@@ -4,92 +4,224 @@
 // =============== PAGE STYLES
 // ............... public home
 // _____: title
-.home-body-wrapper {
-    @include box-tester;
-    height:500px;
-    width: 100%;
-    padding: 20px 20px;
-    margin-top:63px;
-}
-.home-title-1 {
-    @include box-tester;
-    width: 100%;
-    height: 450px;
-    display: flex;
-    justify-content: center;
-    align-content: center;
-}
-.ht-1-a {
-    @include box-tester;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    width: 1350px;
-    height: 100%;
-}
-.home-test-asset {
-    width: 40px;
-    height: 40px;
-}
-#ht1 {
-    background: lightblue;
-    width: 100%;
-    color: black;
-    text-align: center;
-    font-size: 155px;
-    line-height: 355px;
-    flex: 1;    
-}
-#ht2 {
-    background: lightgreen;
-    // width: 100%;
-    height: 150px;
-    flex: .5;
-    color: black;
-    font-size: 20px;
-    margin: 0px 50px;
-}
+    .home-body-wrapper {
+        @include box-tester;
+        height:500px;
+        width: 100%;
+        padding: 20px 20px;
+        margin-top:63px;
+    }
+    .home-title-1 {
+        @include box-tester;
+        width: 100%;
+        height: 450px;
+        display: flex;
+        justify-content: center;
+        align-content: center;
+    }
+    .ht-1-a {
+        @include box-tester;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: $wrapper-widths;
+        height: 100%;
+    }
+    .home-test-asset {
+        width: 40px;
+        height: 40px;
+    }
+    #ht1 {
+        background: lightblue;
+        width: 100%;
+        color: black;
+        text-align: center;
+        font-size: 155px;
+        line-height: 355px;
+        flex: 1;    
+    }
+    #ht2 {
+        background: lightgreen;
+        height: 150px;
+        flex: .5;
+        color: black;
+        font-size: 20px;
+        margin: 0px 50px;
+    }
+// _____:find things
+    .find-body-wrapper {
+        @include box-tester;
+        height:500px;
+        width: 100%;
+        padding: 20px 20px;
+        margin-top:20px;
+    }
+    .ft-1 {
+        @include box-tester;
+        width: 100%;
+        height: 450px;
+        display: flex;
+        justify-content: center;
+        align-content: center;
+    }
+    .ft-1-a {
+        @include box-tester;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-content: center;
+        width: $wrapper-widths;
+        height: 100%;
+    }
+    .ft-1-a-i {
+        @include box-tester;
+        height: 100%;
+        flex:1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .ft-1-a-i-1 {
+        @include box-tester;
+        height: 350px;
+        width: 350px;    
+    }
+    .ft-1-a-ii {
+        @include box-tester;
+        height: 100%;
+        flex:1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-content: center;
+    }
+    .ft-1-a-ii-1 {
+        flex: 1;
+        width: 100%;
+    }
+    .ft-1-a-ii-2 {
+        flex: 1;
+        width: 100%;
+    }
+    .find-test-asset {
+        width: 100%;
+        height: 100%;
+    }
+    #ft1 {
+        background: lightblue;
+        width: 100%;
+        color: black;
+        flex: 1; 
+        border-radius: 50%;   
+    }
+    #ft2 {
+        background: lightgreen;
+        flex: 1;
+        color: black;
+        font-size: 155px;
+        vertical-align: center;
+        line-height: 222px;
+    }
+    #ft3 {
+        background: lightcoral;
+        flex: 1;
+        color: black;
+        font-size: 20px;
+    }
+
+// _____:loss
+    .loss-wrapper {
+        @include box-tester;
+        height: 700px;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+    }
+    .lw-1 {
+        @include box-tester;
+        flex: 1;
+        width: $wrapper-widths;
+        position: relative;
+    }
+    .lw-1-a {
+        @include box-tester;
+        width: 500px;
+        height: 355px;
+        margin: 50px 0px 0px 50px;
+    }
+    .lw-1-b {
+        @include box-tester;
+        width: 750px;
+        height: 175px;
+        // margin: -581px 0px 0px 550px;
+        // margin: -475px 0px 0px 550px;
+        @include home-loss-tilt-end;
+    }
+    .lw-1-c {
+        @include box-tester;
+        width: 100%;
+        position: absolute;
+        bottom: 0px;
+        height: 200px;
+        background: url('https://s3.amazonaws.com/rocketstockassets/uploads/After-Effects-Fire-Example1.gif');
+    }
+    .lw-asset {
+        height: 40px;
+        width: 40px;
+    }
+    #lwa1 {
+        background: lightblue;
+    }
+    #lwa2 {
+        background: lightcoral;
+    }
+    #lwa3 {
+        background: lightgreen;
+    }
 
 // _____:contact footer
-.cbw-1{
-    @include box-tester;
-    width: 100%;
-    height: 100px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;    
-}
-.cbw-1-a{
-    @include box-tester;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    flex: 1;
-    width: 400px;
-}
-.cbw-1-b{
-    border-top: 1px solid blue;
-    flex: 1;
-    width: 600px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.cbw-asset{
-    width: 40px;
-    height: 40px;
-}
-#cbw1{
-    background: lightblue;
-}
-#cbw2{
-    background: lightcoral;
-}
-#cbw3{
-    background: lightgreen;
-}
-#cbw4{
-    background: lightyellow;
-}
+    .cbw-1{
+        @include box-tester;
+        width: 100%;
+        height: 100px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;    
+    }
+    .cbw-1-a{
+        @include box-tester;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        flex: 1;
+        width: 400px;
+    }
+    .cbw-1-b{
+        border-top: 1px solid blue;
+        flex: 1;
+        width: 600px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .cbw-asset{
+        width: 40px;
+        height: 40px;
+    }
+    #cbw1{
+        background: lightblue;
+    }
+    #cbw2{
+        background: lightcoral;
+    }
+    #cbw3{
+        background: lightgreen;
+    }
+    #cbw4{
+        background: lightyellow;
+    }
