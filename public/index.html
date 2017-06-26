@@ -48,7 +48,10 @@
     <!--╚══════════════════════════════════════╝-->
     <div class="dashboard-header-1" ng-hide='loggedIn'>
         <div class="dh-1-a">
-            <div class="dh-test-asset" id="dh1" ui-sref="dashboard"></div>
+            <div class="dh-test-asset" id="dh1" ui-sref="dashboard" ng-click="watchLocation('#!/dashboard')"></div>
+        </div>
+        <div class="dh-1-c">
+            <p class="dh-test-asset" id="dh4">{{pageTitle}}</p>
         </div>
         <div class="dh-1-b">
             <div class="dh-1-b-i">
@@ -63,15 +66,15 @@
     <!--╚══════════════════════════════════════╝-->
     <div class="nav-wrapper">
         <div class="nw-1">
-            <button class="nw-asset" id="nwa1" ng-click='showUserModal()'>C.U</button>
-            <button ui-sref="user_manage" class="nw-asset" id="nwa2">M.U</button>
-            <button class="nw-asset" id="nwa3" ng-click='showLocationModal()'>C.lc</button>
-            <button ui-sref="location_manage" class="nw-asset" id="nwa4">M.L</button>
-            <button ui-sref="loc_container" class="nw-asset" id="nwa5">M.Ct</button>
-            <button ui-sref="loc_class" class="nw-asset" id="nwa6">M.S</button>
-            <button ui-sref="trackbys" class="nw-asset" id="nwa7">M.t</button>
-            <button ui-sref="item_create" class="nw-asset" id="nwa8">C.I</button>
-            <button ui-sref="item_manage" class="nw-asset" id="nwa9">M.I</button>
+            <button title="Manage Users" ui-sref="user_manage" class="nw-asset" id="nwa2" ng-click="watchLocation('#!/user_manage')">M.U</button>
+            <button title="Manage Locations" ui-sref="location_manage" class="nw-asset" id="nwa4" ng-click="watchLocation('#!/location_manage')">M.L</button>
+            <button title="Manage Items" ui-sref="item_manage" class="nw-asset" id="nwa9" ng-click="watchLocation('#!/item_manage')">M.I</button>
+            <button title="Create Users" class="nw-asset" id="nwa1" ng-click='showUserModal()'>C.U</button>
+            <button title="Create Locations" class="nw-asset" id="nwa3" ng-click='showLocationModal()'>C.lc</button>
+            <button title="Manage Containers" class="nw-asset" id="nwa5" ng-click='showContainerModal()'>M.Ct</button>
+            <button title="Manage Storage Types" ui-sref="loc_class" class="nw-asset" id="nwa6">M.S</button>
+            <button title="Manage Track-Bys" class="nw-asset" id="nwa7" ng-click='showTrackbyModal()'>M.t</button>
+            <button title="Create Items" ui-sref="item_create" class="nw-asset" id="nwa8">C.I</button>
         </div>
     </div>
 
@@ -86,6 +89,16 @@
     <div ng-show='modalShownLocation' class="miniModal">
         <div class="modalBox">
             <modal-location-create-dir></modal-location-create-dir>
+        </div>
+    </div>
+    <div ng-show='modalShownContainer' class="miniModal">
+        <div class="modalBox">
+            <modal-container-dir></modal-container-dir>
+        </div>
+    </div>
+    <div ng-show='modalShownTrackby' class="miniModal">
+        <div class="modalBox">
+            <modal-track-dir></modal-track-dir>
         </div>
     </div>
 

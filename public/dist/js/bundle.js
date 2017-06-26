@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('app', ['ui.router', 'ui.grid', 'ui.grid.selection', 'ui.grid.edit', 'ui.grid.resizeColumns', 'ui.grid.moveColumns', 'ui.grid.pinning']).config(function ($stateProvider, $urlRouterProvider) {
+angular.module('app', ['ui.router', 'ui.grid', 'ui.grid.selection', 'ui.grid.edit', 'ui.grid.resizeColumns', 'ui.grid.moveColumns', 'ui.grid.pinning', 'ui.grid.infiniteScroll']).config(function ($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise('/', ""
     // .......................  authorization
     // var authentication = {
@@ -318,6 +318,9 @@ angular.module('app').controller('itemManage', function ($scope, $interval, item
         enableSelectAll: false,
         enableGridMenu: true,
         enableFiltering: true,
+        infiniteScrollRowsFromEnd: 25,
+        infiniteScrollUp: true,
+        infiniteScrollDown: true,
         columnDefs: [{ name: 'id', displayName: 'Id', enableCellEdit: false, minWidth: minW, width: 75, maxWidth: maxW, pinnedLeft: true }, { name: 'Owner', displayName: 'Owner', editableCellTemplate: 'ui-grid/dropdownEditor', minWidth: minW, width: 75, maxWidth: maxW, editDropdownValueLabel: 'value', editDropdownOptionsArray: ddList, pinnedLeft: true }, { name: 'short_name', minWidth: minW, width: 200, maxWidth: maxW, pinnedLeft: true }, { name: 'qty', type: 'number', minWidth: minW, width: 75, maxWidth: maxW, pinnedLeft: true }, { name: 'description', minWidth: minW, width: wid, maxWidth: maxW }, { name: 'date_added', type: 'date', cellFilter: 'date', minWidth: minW, width: 250, maxWidth: maxW }, { name: 'upc', minWidth: minW, width: wid, maxWidth: maxW }, { name: 'frequency_period', displayName: 'Frequency of Use Period', editableCellTemplate: 'ui-grid/dropdownEditor', minWidth: minW, width: wid, maxWidth: maxW, editDropdownOptionsArray: useFrequency }, { name: 'frequency_qty', type: 'number', displayName: 'Times Per Period', minWidth: minW, width: wid, maxWidth: maxW }, { name: 'img', displayName: 'Image', enableCellEdit: false, minWidth: minW, width: wid, maxWidth: maxW }, { name: 'is_consumable', displayName: 'Consumable', editableCellTemplate: 'ui-grid/dropdownEditor', minWidth: minW, width: wid, maxWidth: maxW, editDropdownOptionsArray: betterBool }, { name: 'is_part', displayName: 'Part', editableCellTemplate: 'ui-grid/dropdownEditor', minWidth: minW, width: wid, maxWidth: maxW, editDropdownOptionsArray: betterBool }, { name: 'last_accessed', type: 'date', cellFilter: 'date', minWidth: minW, width: wid, maxWidth: maxW }, { name: 'locationDescription', editableCellTemplate: 'ui-grid/dropdownEditor', minWidth: minW, width: 250, maxWidth: maxW, editDropdownValueLabel: 'value', editDropdownOptionsArray: ddLocList
             // , { name: 'locationID', minWidth: minW, width: wid, maxWidth: maxW }
         }, { name: 'original_package', displayName: 'Have Package', editableCellTemplate: 'ui-grid/dropdownEditor', minWidth: minW, width: wid, maxWidth: maxW, editDropdownOptionsArray: betterBool }, { name: 'other_common_loc_json', minWidth: minW, width: '100%', maxWidth: maxW
@@ -472,6 +475,15 @@ angular.module('app').controller('locContainer', function ($scope, containerSrv,
     $scope.locContainerTest = 'locContainerTest controller is connected and operational';
     $scope.containerServiceTest = containerSrv.containerServiceTest;
 
+    // »»»»»»»»»»»»»»»»»»»║  MODAL CONTROLS
+    $scope.modalShownContainer = false;
+    $scope.showContainerModal = function () {
+        return $scope.modalShownContainer = true;
+    };
+    $scope.hideContainerModal = function () {
+        return $scope.modalShownContainer = false;
+    };
+
     // »»»»»»»»»»»»»»»»»»»║ CLEAR FORM
     $scope.clearForm = function () {
         return document.getElementById("containerCreateForm").reset
@@ -507,7 +519,7 @@ angular.module('app').controller('locContainer', function ($scope, containerSrv,
         multiSelect: false,
         enableSelectAll: false,
         enableFiltering: true,
-        columnDefs: [{ name: 'name', displayName: 'Description' }],
+        columnDefs: [{ name: 'name', displayName: 'Description', width: 464 }],
         onRegisterApi: function onRegisterApi(gridApi) {
 
             gridApi.selection.on.rowSelectionChanged($scope, function (row) {
@@ -724,27 +736,49 @@ angular.module('app').controller('mainCtrl', function ($scope, authService, chec
     };
 
     //vars
-    $scope.createUserModalContent = false;
-    $scope.createLocModalContent = false;
-    $scope.setModalContent = function (contentId) {
-        switch (contentId) {
-            case 0:
-                $scope.setAllModalFalse();
-                $scope.createUserModalContent = true;
-                $scope.toggleModal();
+    // $scope.createUserModalContent = false
+    // $scope.createLocModalContent = false
+    // $scope.setModalContent = (contentId) => {
+    //     switch (contentId) {
+    //         case 0:
+    //             $scope.setAllModalFalse()
+    //             $scope.createUserModalContent = true
+    //             $scope.toggleModal()
+    //             break;
+    //         case 1:
+    //             $scope.setAllModalFalse()
+    //             $scope.createLocModalContent = true
+    //             $scope.toggleModal()
+    //             break;
+    //     }
+    // }
+    // $scope.setAllModalFalse = () => {
+    //     $scope.createUserModalContent = false
+    //     $scope.createLocModalContent = false
+    //     // console.log("create user =", $scope.createUserModalContent)
+    // }
+
+    $scope.pageTitle = "Dashboard";
+    $scope.watchLocation = function (area) {
+        var url = area;
+        // var url = window.location.hash
+        console.log(url);
+        switch (url) {
+            case '#!/user_manage':
+                $scope.pageTitle = 'Users';
                 break;
-            case 1:
-                $scope.setAllModalFalse();
-                $scope.createLocModalContent = true;
-                $scope.toggleModal();
+            case '#!/location_manage':
+                $scope.pageTitle = 'Locations';
+                break;
+            case '#!/item_manage':
+                $scope.pageTitle = 'Items';
+                break;
+            case '#!/dashboard':
+                $scope.pageTitle = 'Dashboard';
                 break;
         }
     };
-    $scope.setAllModalFalse = function () {
-        $scope.createUserModalContent = false;
-        $scope.createLocModalContent = false;
-        // console.log("create user =", $scope.createUserModalContent)
-    };
+    // $scope.watchLocation()
 });
 "use strict";
 "use strict";
@@ -802,9 +836,22 @@ angular.module('app').controller('trackBy', function ($scope, uiGridConstants, t
     $scope.trackByPutSrvTest = trackByPutSrv.trackByPutSrvTest;
     $scope.trackByDeleteSrvTest = trackByDeleteSrv.trackByDeleteSrvTest;
 
+    // »»»»»»»»»»»»»»»»»»»║  MODAL CONTROLS
+    $scope.modalShownTrackby = false;
+    $scope.showTrackbyModal = function () {
+        return $scope.modalShownTrackby = true;
+    };
+    $scope.hideTrackbyModal = function () {
+        $scope.clearForm();
+        $scope.trackByObj.trackby_name = "";
+        $scope.trackByObj.trackby_value = "";
+        $scope.trackByObj.trackby_category = "";
+        $scope.modalShownTrackby = false;
+    };
+
     // »»»»»»»»»»»»»»»»»»»║ CLEAR FORM
     $scope.clearForm = function () {
-        return document.getElementById("trackbyCreateForm").reset
+        return document.getElementById("trackbyForm").reset
 
         // »»»»»»»»»»»»»»»»»»»║ TRACKBY MANIPULATION
         // .................... get list of trackby types and grid information
@@ -1007,13 +1054,20 @@ angular.module('app').controller('userManage', function ($scope, uiGridConstants
     $scope.country
 
     // »»»»»»»»»»»»»»»»»»»║  COLUMNS AND DATA
-    ();$scope.gridOptions = {
-        enableRowSelection: false,
+    ();var minW = 75;
+    var maxW = 500;
+    var wid = 150;
+
+    $scope.gridOptions = {
+        enableRowSelection: true,
         enableRowHeaderSelection: false,
+        multiSelect: false,
+        enableSelectAll: false,
+        enableGridMenu: true,
         enableFiltering: true,
         columnDefs: [//this shows which columns show in grid. the value needs to match the data key.
         // { name: 'id' },
-        { name: 'first_name' }, { name: 'last_name' }, { name: 'phone' }, { name: 'email' }, { name: 'state', displayName: 'State' }],
+        { name: 'first_name', minWidth: minW, width: 75, maxWidth: maxW, pinnedLeft: true }, { name: 'last_name' }, { name: 'phone' }, { name: 'email' }, { name: 'address1', displayName: 'Address' }, { name: 'address2', displayName: 'Bldg/Apt #' }, { name: 'city' }, { name: 'state', displayName: 'State' }, { name: 'zip', displayName: 'Zip Code' }, { name: 'renter_rating' }, { name: 'inactive', displayName: 'Status' }],
         onRegisterApi: function onRegisterApi(gridApi) {
             $scope.grid1Api = gridApi;
 
@@ -1182,11 +1236,29 @@ angular.module('app').directive('bcScanner', function () {
 });
 'use strict';
 
+angular.module('app').directive('modalContainerDir', function () {
+    return {
+        templateUrl: '../views/loc_container.html',
+        scope: '=',
+        controller: 'locContainer'
+    };
+});
+'use strict';
+
 angular.module('app').directive('modalLocationCreateDir', function () {
     return {
         templateUrl: '../views/location_create.html',
         scope: '=',
         controller: 'locCreate'
+    };
+});
+'use strict';
+
+angular.module('app').directive('modalTrackDir', function () {
+    return {
+        templateUrl: '../views/trackbys.html',
+        scope: '=',
+        controller: 'trackBy'
     };
 });
 'use strict';

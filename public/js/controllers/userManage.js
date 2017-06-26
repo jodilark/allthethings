@@ -15,17 +15,30 @@ angular.module('app').controller('userManage', function ($scope, uiGridConstants
     $scope.country()
 
     // »»»»»»»»»»»»»»»»»»»║  COLUMNS AND DATA
+    const minW = 75
+    const maxW = 500
+    const wid = 150
+
     $scope.gridOptions = {
-        enableRowSelection: false
+       enableRowSelection: true
         , enableRowHeaderSelection: false
+        , multiSelect: false
+        , enableSelectAll: false
+        , enableGridMenu: true
         , enableFiltering: true
         , columnDefs: [ //this shows which columns show in grid. the value needs to match the data key.
             // { name: 'id' },
-            { name: 'first_name' }
+            { name: 'first_name', minWidth: minW, width: 75, maxWidth: maxW, pinnedLeft: true }
             , { name: 'last_name' }
             , { name: 'phone' }
             , { name: 'email' }
+            , { name: 'address1', displayName: 'Address' }
+            , { name: 'address2', displayName: 'Bldg/Apt #' }
+            , { name: 'city' }
             , { name: 'state', displayName: 'State'}
+            , { name: 'zip', displayName: 'Zip Code'}
+            , { name: 'renter_rating'}
+            , { name: 'inactive', displayName: 'Status'}
         ]
         , onRegisterApi: (gridApi) => {
             $scope.grid1Api = gridApi

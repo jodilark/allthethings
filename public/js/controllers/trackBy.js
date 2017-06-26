@@ -6,8 +6,19 @@ angular.module('app').controller('trackBy', function ($scope, uiGridConstants, t
     $scope.trackByPutSrvTest = trackByPutSrv.trackByPutSrvTest
     $scope.trackByDeleteSrvTest = trackByDeleteSrv.trackByDeleteSrvTest
 
+    // »»»»»»»»»»»»»»»»»»»║  MODAL CONTROLS
+    $scope.modalShownTrackby = false
+    $scope.showTrackbyModal = () => $scope.modalShownTrackby = true
+    $scope.hideTrackbyModal = () => {
+        $scope.clearForm()
+        $scope.trackByObj.trackby_name= ""
+        $scope.trackByObj.trackby_value = ""
+        $scope.trackByObj.trackby_category = ""
+        $scope.modalShownTrackby = false
+    }
+
     // »»»»»»»»»»»»»»»»»»»║ CLEAR FORM
-    $scope.clearForm = () => document.getElementById("trackbyCreateForm").reset()
+    $scope.clearForm = () => document.getElementById("trackbyForm").reset()
 
     // »»»»»»»»»»»»»»»»»»»║ TRACKBY MANIPULATION
     // .................... get list of trackby types and grid information
@@ -42,7 +53,7 @@ angular.module('app').controller('trackBy', function ($scope, uiGridConstants, t
         , enableSelectAll: false
         , enableFiltering: true
         , columnDefs: [
-            { name: 'id', enableCellEdit: false}
+            { name: 'id', enableCellEdit: false }
             , { name: 'trackby_name', displayName: 'Name' }
             , { name: 'trackby_value', displayName: 'Value' }
             , { name: 'trackby_category', displayName: 'Category' }

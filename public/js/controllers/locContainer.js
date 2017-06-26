@@ -3,6 +3,11 @@ angular.module('app').controller('locContainer', function ($scope, containerSrv,
     $scope.locContainerTest = 'locContainerTest controller is connected and operational'
     $scope.containerServiceTest = containerSrv.containerServiceTest
 
+    // »»»»»»»»»»»»»»»»»»»║  MODAL CONTROLS
+    $scope.modalShownContainer = false
+    $scope.showContainerModal = () => $scope.modalShownContainer = true
+    $scope.hideContainerModal = () => $scope.modalShownContainer = false
+
     // »»»»»»»»»»»»»»»»»»»║ CLEAR FORM
     $scope.clearForm = () => document.getElementById("containerCreateForm").reset()
 
@@ -36,7 +41,7 @@ angular.module('app').controller('locContainer', function ($scope, containerSrv,
         , enableSelectAll: false
         , enableFiltering: true
         , columnDefs: [
-            { name: 'name', displayName: 'Description' }
+            { name: 'name', displayName: 'Description', width: 464 }
         ]
         , onRegisterApi: (gridApi) => {
 

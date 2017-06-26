@@ -82,12 +82,55 @@ input, select {
 *, *:before, *:after {
   box-sizing: border-box; }
 
+.container-wrapper {
+  border: 1px solid red;
+  background: rgba(200, 0, 50, 0.1);
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 10px; }
+
+#containerCreateForm {
+  border: 1px solid red;
+  background: rgba(200, 0, 50, 0.1);
+  width: 100%;
+  flex: .2;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center; }
+
+.contaier-grid-wrapper {
+  border: 1px solid red;
+  background: rgba(200, 0, 50, 0.1);
+  flex: 1;
+  width: 100%;
+  position: relative; }
+
+.myContainerGrid {
+  border: 1px solid red;
+  background: rgba(200, 0, 50, 0.1);
+  width: 100%;
+  margin-bottom: 20px; }
+
+#cont-delete {
+  z-index: 2002;
+  height: 30px;
+  width: 30px;
+  position: absolute;
+  top: 0px; }
+
 .page-wrapper {
   border: 1px solid red;
   background: rgba(200, 0, 50, 0.1);
   height: 100vh;
   width: 100%;
-  padding: 65px 20px 20px 85px; }
+  padding: 65px 20px 20px 85px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start; }
 
 .page-title {
   z-index: 2001;
@@ -97,6 +140,20 @@ input, select {
   margin: -65px auto;
   text-align: center;
   font-size: 30px; }
+
+.chart {
+  height: 300px;
+  width: 300px;
+  margin: 20px; }
+
+#chart1 {
+  background: lightblue; }
+
+#chart2 {
+  background: lightgreen; }
+
+#chart3 {
+  background: lightcoral; }
 
 .home-body-wrapper {
   border: 1px solid red;
@@ -331,6 +388,58 @@ input, select {
 #cbw4 {
   background: lightyellow; }
 
+.page-wrapper-items {
+  border: 1px solid red;
+  background: rgba(200, 0, 50, 0.1);
+  height: 100vh;
+  width: 100%;
+  padding: 85px 20px 20px 105px;
+  overflow-y: hidden;
+  position: relative; }
+
+.grid-container {
+  border: 1px solid red;
+  background: rgba(200, 0, 50, 0.1);
+  width: 100%;
+  height: 100%; }
+
+.manageItemsGrid {
+  height: 87vh; }
+
+.items-delete {
+  z-index: 2002;
+  position: absolute;
+  top: 85;
+  left: 85;
+  height: 30px;
+  width: 30px; }
+
+.page-wrapper {
+  border: 1px solid red;
+  background: rgba(200, 0, 50, 0.1);
+  height: 100vh;
+  width: 100%;
+  padding: 85px 20px 20px 105px;
+  overflow-y: hidden;
+  position: relative; }
+
+.grid-container {
+  border: 1px solid red;
+  background: rgba(200, 0, 50, 0.1);
+  width: 100%;
+  height: 100%; }
+
+.myLocationGrid {
+  height: 89vh; }
+
+.loc-delete {
+  z-index: 2002;
+  position: absolute;
+  top: 85;
+  left: 85;
+  height: 30px;
+  width: 30px; }
+
 html, input, textarea, button, select {
   background: #242424;
   color: #b6b6b6; }
@@ -484,6 +593,9 @@ div.test-results {
   margin: 0px 0px 0px 5px;
   background: green; }
 
+#dh4 {
+  font-size: 40px; }
+
 .nav-wrapper {
   z-index: 1000;
   border: 1px solid red;
@@ -540,5 +652,113 @@ ul.rating {
 
 .manageItemsGrid {
   width: 100%; }
+
+.tb-1 {
+  border-right-color: blue;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column; }
+
+.tb-1-a {
+  height: 150px;
+  width: 100%;
+  display: flex;
+  flex-direction: row; }
+
+.tb-1-a-i {
+  height: 100%;
+  flex: 1;
+  padding: 10px 5px 10px 10px; }
+
+.tb-1-a-ii {
+  height: 100%;
+  flex: 1;
+  padding: 10px 10px 10px 5px; }
+
+.tb-1-b {
+  height: 50px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  border: 2px ridge #999; }
+
+.tb-1-c {
+  display: block;
+  height: 300px;
+  width: 100%;
+  position: relative;
+  padding-top: 10px; }
+
+.tb-asset {
+  width: 65px;
+  height: 30px; }
+
+#tba1 {
+  width: 100%;
+  line-height: 38px; }
+
+#tba2 {
+  width: 100%; }
+
+#tba3 {
+  width: 100%;
+  line-height: 38px; }
+
+#tba4 {
+  width: 100%; }
+
+#tba5 {
+  width: 100%;
+  line-height: 38px; }
+
+#tba6 {
+  width: 100%; }
+
+#tba7 {
+  background: lightseagreen;
+  height: 100%;
+  flex: 1;
+  cursor: pointer;
+  border: 1px outset #b6b6b6; }
+
+#tba8 {
+  background: lightslategray;
+  height: 100%;
+  flex: 1;
+  cursor: pointer;
+  border: 1px outset #b6b6b6; }
+
+#tba9 {
+  background: lightblue;
+  z-index: 2002;
+  position: absolute;
+  top: 10;
+  height: 30px;
+  width: 30px;
+  cursor: pointer; }
+
+#tba10 {
+  background: lightcoral;
+  height: 280px;
+  width: 490px; }
+
+.page-wrapper {
+  border: 1px solid red;
+  background: rgba(200, 0, 50, 0.1);
+  height: 100vh;
+  width: 100%;
+  padding: 85px 20px 20px 105px;
+  overflow-y: hidden; }
+
+.grid-container {
+  border: 1px solid red;
+  background: rgba(200, 0, 50, 0.1);
+  width: 100%;
+  height: 100%; }
+
+.myUserGrid {
+  height: 89vh; }
 
 /*# sourceMappingURL=maps/styles.css.map */

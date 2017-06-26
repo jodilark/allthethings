@@ -1,0 +1,100 @@
+// =============== IMPORT FILES
+@import '_varsAndMixins';
+
+// =============== PAGE STYLES
+// ............... trackby page
+    .tb-1 {
+        border-right-color: blue;
+        height: 100%;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+
+    }
+    .tb-1-a {
+        height: 150px;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+    }
+    .tb-1-a-i {
+        height: 100%;
+        flex: 1;
+        padding: 10px 5px 10px 10px;
+    }
+    .tb-1-a-ii {
+        height: 100%;
+        flex: 1;
+        padding: 10px 10px 10px 5px;
+    }
+    .tb-1-b {
+        height: 50px;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        align-content: center;
+        border: 2px ridge #999;
+    }
+    .tb-1-c {
+        display: block;
+        height: 300px;
+        width: 100%;
+        position: relative;
+        padding-top: 10px;
+    }
+    .tb-asset {
+        width: 65px;
+        height: 30px;
+    }
+    #tba1 {
+        width: 100%;
+        line-height: 38px;
+    }
+    #tba2 {
+        width: 100%;
+    }
+    #tba3 {
+        width: 100%;
+        line-height: 38px;
+    }
+    #tba4 {
+        width: 100%;
+    }
+    #tba5 {
+        width: 100%;
+        line-height: 38px;        
+    }
+    #tba6 {
+        width: 100%;
+    }
+    #tba7 {
+        background: lightseagreen;
+        height: 100%;
+        flex: 1;
+        cursor: pointer;
+        border: 1px outset #b6b6b6;
+    }
+    #tba8 {
+        background: lightslategray;
+        height: 100%;
+        flex: 1;
+        cursor: pointer;
+        border: 1px outset #b6b6b6;
+    }
+    #tba9 {
+        background: lightblue;
+        z-index: 2002;
+        position: absolute;
+        top: 10;
+        height: 30px;
+        width: 30px;
+        cursor: pointer;
+    }
+    #tba10 {
+        background: lightcoral;
+        height: 280px;
+        width: 490px;
+    }
+
+
+

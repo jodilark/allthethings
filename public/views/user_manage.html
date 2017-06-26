@@ -1,6 +1,5 @@
-<h1>Manage a user</h1>
 <!-- »»»»»»»»»»»»»»»»»»»║ TESTS   -->
-<div class="test-results">
+<!--<div class="test-results">
     <ul>
         <li>1. {{userManageControllerTest}}</li>
         <li>2. {{getUserColumnsSrvServiceTest}}</li>
@@ -8,10 +7,12 @@
         <li>4. {{StateServiceTest}}</li>
         <li>5. {{countryListServiceTest}}</li>
     </ul>
-</div>
+</div>-->
 
-<!-- »»»»»»»»»»»»»»»»»»»║ MAKE DIRECTIVE TO SHOW/HIDE DETAILS   -->
-
-<div>
-    <div ui-grid="gridOptions" class="myGrid" ui-grid-selection ui-grid-edit></div>
+<div class="page-wrapper">
+    <div class="grid-container" id="manageUsers">
+        <div>
+            <div ui-grid="gridOptions" class="myUserGrid" ui-grid-selection ui-grid-edit ui-grid-resize-columns ui-grid-move-columns ui-grid-pinning></div>
+        </div>
+    </div>
 </div>

@@ -1,6 +1,6 @@
-<h1>Manage Items</h1>
+<!--<h1>Manage Items</h1>-->
 <!-- »»»»»»»»»»»»»»»»»»»║   TESTS   -->
-<div class="test-results">
+<!--<div class="test-results">
     <ul>
         <li>1. {{itemManageTest}}</li>
         <li>2. {{itemGetSrvTest}}</li>
@@ -8,11 +8,17 @@
         <li>4. {{itemPutSrvTest}}</li>
         <li>5. {{itemDeleteSrvTest}}</li>
     </ul>
-</div>
+</div>-->
 
 <!-- »»»»»»»»»»»»»»»»»»»║   DO'S   -->
 
 <!-- »»»»»»»»»»»»»»»»»»»║   INPUT FIELDS   ui-grid-edit -->
- <div>
-    <div ui-grid="gridOptions" class="manageItemsGrid" ui-grid-selection ui-grid-edit ui-grid-resize-columns ui-grid-move-columns ui-grid-pinning></div>
+<div class="page-wrapper-items">
+    <div class="grid-container" id="manageItems">
+        <button ng-click="delete()" ng-disabled="enableDelete != false" class="items-delete">d</button>
+        <div>
+            <div ui-grid="gridOptions" class="manageItemsGrid" ui-grid-infinite-scroll ui-grid-selection ui-grid-edit ui-grid-resize-columns
+                ui-grid-move-columns ui-grid-pinning></div>
+        </div>
+    </div>
 </div>

@@ -7,7 +7,10 @@
     @include box-tester;
     height: 100vh;
     width: 100%;
-    padding: 65px 20px 20px 85px; 
+    padding: 65px 20px 20px 85px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start; 
     }
     .page-title {
         z-index:2001;
@@ -16,4 +19,18 @@
         margin: -65px auto;
         text-align: center;
         font-size: 30px;
+    }
+    .chart {
+        height: 300px;
+        width: 300px;
+        margin: 20px;
+    }
+    #chart1 {
+        background: lightblue;
+    }
+    #chart2 {
+        background: lightgreen;
+    }
+    #chart3 {
+        background: lightcoral;
     }

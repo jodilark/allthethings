@@ -1,21 +1,24 @@
-<h1>Create a Location Container Type</h1>
-<h3>This should be changed from a ui-route view to a modal directive</h3>
+<!--<h1>Create a Location Container Type</h1>
+<h3>This should be changed from a ui-route view to a modal directive</h3>-->
 <!-- »»»»»»»»»»»»»»»»»»»║   TESTS   -->
-<div class="test-results">
+<!--<div class="test-results">
     <ul>
         <li>1. {{locContainerTest}}</li>
         <li>2. {{containerServiceTest}}</li>
     </ul>
-</div>
+</div>-->
 <!-- »»»»»»»»»»»»»»»»»»»║   INPUT FIELDS   -->
-<form id="containerCreateForm">
-    <input type="text" placeholder="Description" ng-model="container.name">
-    <input type="submit" value="Submit" id="addData"  ng-click="createContainer()">
-    <input type="reset" value="Cancel">
-    <button ng-click="delete()" ng-disabled="enableDelete != false">Delete</button>
-</form>
+<div class="container-wrapper">
+    <form id="containerCreateForm">
+        <input type="text" placeholder="Description" ng-model="container.name">
+        <input type="submit" value="Create" id="addData" ng-click="createContainer()">
+        <input type="reset" value="Close" ng-click="hideContainerModal()">
+    </form>
 
-
-<div>
-    <div ui-grid="gridOptions" class="myGrid" ui-grid-selection ui-grid-edit></div>
+    <div class="contaier-grid-wrapper">
+        <button ng-click="delete()" ng-disabled="enableDelete != false" id="cont-delete">d</button>
+        <div>
+            <div ui-grid="gridOptions" class="myContainerGrid" ui-grid-selection ui-grid-edit></div>
+        </div>
+    </div>
 </div>

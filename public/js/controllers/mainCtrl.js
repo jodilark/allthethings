@@ -22,27 +22,47 @@ angular.module('app').controller('mainCtrl', function ($scope, authService, chec
     };
 
     //vars
-    $scope.createUserModalContent = false
-    $scope.createLocModalContent = false
-    $scope.setModalContent = (contentId) => {
-        switch (contentId) {
-            case 0:
-                $scope.setAllModalFalse()
-                $scope.createUserModalContent = true
-                $scope.toggleModal()
-                break;
-            case 1:
-                $scope.setAllModalFalse()
-                $scope.createLocModalContent = true
-                $scope.toggleModal()
-                break;
+    // $scope.createUserModalContent = false
+    // $scope.createLocModalContent = false
+    // $scope.setModalContent = (contentId) => {
+    //     switch (contentId) {
+    //         case 0:
+    //             $scope.setAllModalFalse()
+    //             $scope.createUserModalContent = true
+    //             $scope.toggleModal()
+    //             break;
+    //         case 1:
+    //             $scope.setAllModalFalse()
+    //             $scope.createLocModalContent = true
+    //             $scope.toggleModal()
+    //             break;
+    //     }
+    // }
+    // $scope.setAllModalFalse = () => {
+    //     $scope.createUserModalContent = false
+    //     $scope.createLocModalContent = false
+    //     // console.log("create user =", $scope.createUserModalContent)
+    // }
+
+    $scope.pageTitle = "Dashboard"
+    $scope.watchLocation = (area) => {
+        var url = area
+        // var url = window.location.hash
+        console.log(url)
+        switch (url) {
+            case '#!/user_manage':
+            $scope.pageTitle = 'Users'
+            break;
+            case '#!/location_manage':
+            $scope.pageTitle = 'Locations'
+            break;
+            case '#!/item_manage':
+            $scope.pageTitle = 'Items'
+            break;
+            case '#!/dashboard':
+            $scope.pageTitle = 'Dashboard'
+            break;
         }
     }
-    $scope.setAllModalFalse = () => {
-        $scope.createUserModalContent = false
-        $scope.createLocModalContent = false
-        // console.log("create user =", $scope.createUserModalContent)
-    }
-
-
+    // $scope.watchLocation()
 })

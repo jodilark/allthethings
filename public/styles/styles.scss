@@ -16,6 +16,7 @@
     background: rgba(0, 0, 0, .1);
   }
 
+
 // _____:modals
   .miniModal {
     @include box-tester;
@@ -162,6 +163,10 @@
   #dh3 {
     margin: 0px 0px 0px 5px;
     background: green;
+  }
+
+  #dh4 {
+    font-size: 40px;
   }
 // _____: nav buttons
   .nav-wrapper {

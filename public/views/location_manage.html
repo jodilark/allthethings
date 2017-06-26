@@ -1,14 +1,21 @@
-<h1>Manage Locations</h1>
 <!-- »»»»»»»»»»»»»»»»»»»║   TESTS   -->
-<div class="test-results">
+<!--<div class="test-results">
     <ul>
         <li>1. {{locManageTest}}</li>
         <li>2. {{locListServiceTest}}</li>
     </ul>
-</div>
+</div>-->
 
- <!--»»»»»»»»»»»»»»»»»»»║   LOCATIONS GRID   -->
-<button ng-click="delete()" ng-disabled="enableDelete != false">Delete</button>
- <div>
+<!--»»»»»»»»»»»»»»»»»»»║   LOCATIONS GRID   -->
+<!--<div>
     <div ui-grid="gridOptions" class="myGrid" ui-grid-selection ui-grid-edit></div>
+</div>-->
+<div class="page-wrapper">
+    <div class="grid-container" id="manageLocations">
+        <button ng-click="delete()" ng-disabled="enableDelete != false" class="loc-delete">d</button>
+        <div>
+            <div ui-grid="gridOptions" class="myLocationGrid" ui-grid-selection ui-grid-edit ui-grid-resize-columns ui-grid-move-columns
+                ui-grid-pinning></div>
+        </div>
+    </div>
 </div>

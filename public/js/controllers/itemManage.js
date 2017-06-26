@@ -60,6 +60,9 @@ angular.module('app').controller('itemManage', function ($scope, $interval, item
         , enableSelectAll: false
         , enableGridMenu: true
         , enableFiltering: true
+        ,infiniteScrollRowsFromEnd: 25
+        ,infiniteScrollUp: true
+        ,infiniteScrollDown: true
         , columnDefs: [
             { name: 'id', displayName: 'Id', enableCellEdit: false, minWidth: minW, width: 75, maxWidth: maxW, pinnedLeft: true }
             , { name: 'Owner', displayName: 'Owner', editableCellTemplate: 'ui-grid/dropdownEditor', minWidth: minW, width: 75, maxWidth: maxW, editDropdownValueLabel: 'value', editDropdownOptionsArray: ddList, pinnedLeft: true }
