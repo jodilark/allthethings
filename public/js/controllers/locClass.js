@@ -1,7 +1,27 @@
-angular.module('app').controller('locClass', function ($scope, locClassSrv, uiGridConstants, ) {
+angular.module('app').controller('locClass', function ($scope, $interval, locClassSrv, uiGridConstants, ) {
     // »»»»»»»»»»»»»»»»»»»║  TESTS 
     $scope.locClassTest = 'locClass controller is connected and operational'
     $scope.locClassServiceTest = locClassSrv.locClassServiceTest
+
+    // »»»»»»»»»»»»»»»»»»»║  MODAL CONTROLS
+    $scope.modalShownStorage = false
+    $scope.showStorageModal = () => {
+        $interval(function () {
+            var fireRefreshEventOnWindow = function () {
+                var evt = document.createEvent("HTMLEvents");
+                evt.initEvent('resize', true, false);
+                window.dispatchEvent(evt);
+            };
+            fireRefreshEventOnWindow();
+        }, 100, 1);
+        $scope.modalShownStorage = true
+    }
+    $scope.hideStorageModal = () => {
+        $scope.clearForm()
+        $scope.locClassObj.name = ""
+        $scope.locClassObj.description = ""
+        $scope.modalShownStorage = false
+    }
 
     // // »»»»»»»»»»»»»»»»»»»║ CLEAR FORM
     $scope.clearForm = () => document.getElementById("classCreateForm").reset()

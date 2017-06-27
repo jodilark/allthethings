@@ -48,7 +48,7 @@ angular.module('app').controller('mainCtrl', function ($scope, authService, chec
     $scope.watchLocation = (area) => {
         var url = area
         // var url = window.location.hash
-        console.log(url)
+        // console.log(url)
         switch (url) {
             case '#!/user_manage':
             $scope.pageTitle = 'Users'
@@ -64,5 +64,5 @@ angular.module('app').controller('mainCtrl', function ($scope, authService, chec
             break;
         }
     }
-    // $scope.watchLocation()
+    $scope.watchLocation(window.location.hash)
 })

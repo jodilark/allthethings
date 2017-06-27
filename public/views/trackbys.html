@@ -12,21 +12,18 @@
 </div>-->
 <!-- »»»»»»»»»»»»»»»»»»»║   INPUT FIELDS   -->
 
-<!--<form class="pwt-1" id="trackbyCreateForm">
-    <input type="text" placeholder="Name" ng-model="trackByObj.trackby_name">
-    <input type="text" placeholder="Value" ng-model="trackByObj.trackby_value">
-    <input type="text" placeholder="Category" ng-model="trackByObj.trackby_category">
-    <input type="submit" value="Submit" id="addData" ng-click="createTrackBy()">
-    <input type="reset" value="Close" ng-click="hideTrackbyModal()">
-</form>
 
 
-<button ng-click="delete()" ng-disabled="enableDelete != false">d</button>
-<div class="pwt-2-a">
-    <div ui-grid="gridOptions" ui-grid-selection ui-grid-edit></div>
-</div>-->
+
+
+
+
 
 <div class="tb-1">
+<div class="header-trackby">
+    <div class="header-text">Trackbys</div>
+    <div class="closing-x" ng-click="hideTrackbyModal()">X</div>
+</div>
     <form class="tb-1-a" id="trackbyForm">
         <div class="tb-1-a-i">
             <div class="tb-asset" id="tba1">Name</div>
@@ -41,10 +38,10 @@
     </form>
     <div class="tb-1-b">
         <input class="tb-asset" id="tba7" type="submit" value="Submit" id="addData" ng-click="createTrackBy()">
-        <input class="tb-asset" id="tba8" type="reset" value="Close" ng-click="hideTrackbyModal()">
+        <input class="tb-asset" id="tba8" type="reset" value="Clear">
     </div>
     <div class="tb-1-c">
-        <div class="tb-asset" id="tba9" ng-click="delete()" ng-disabled="enableDelete != false"></div>
+        <div title="Delete" class="tb-asset" id="tba9" ng-click="delete()" ng-disabled="enableDelete != false"></div>
         <div class="tb-asset" id="tba10" ui-grid="gridOptions" ui-grid-selection ui-grid-edit></div>
     </div>
 </div>

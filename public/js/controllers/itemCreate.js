@@ -1,4 +1,4 @@
-angular.module('app').controller('itemCreate', function ($scope, bcService, itemMainSrv, itemGetSrv, itemPostSrv, itemPutSrv, itemDeleteSrv, locationsListSrv, trackByGetSrv, userListSrv, settingsSrv) {
+angular.module('app').controller('itemCreate', function ($scope, $interval, bcService, itemMainSrv, itemGetSrv, itemPostSrv, itemPutSrv, itemDeleteSrv, locationsListSrv, trackByGetSrv, userListSrv, settingsSrv) {
     // // »»»»»»»»»»»»»»»»»»»║  TESTS 
     $scope.itemCreateTest = 'itemCreate controller is connected and operational'
     $scope.itemGetSrvTest = itemGetSrv.itemGetSrvTest
@@ -6,6 +6,26 @@ angular.module('app').controller('itemCreate', function ($scope, bcService, item
     $scope.itemPutSrvTest = itemPutSrv.itemPutSrvTest
     $scope.itemDeleteSrvTest = itemDeleteSrv.itemDeleteSrvTest
     $scope.itemMainSrvTest = itemMainSrv.itemMainSrvTest
+
+    // »»»»»»»»»»»»»»»»»»»║  MODAL CONTROLS
+    $scope.modalShownItems = false
+    $scope.showItemsModal = () => {
+        $interval(function () {
+            var fireRefreshEventOnWindow = function () {
+                var evt = document.createEvent("HTMLEvents");
+                evt.initEvent('resize', true, false);
+                window.dispatchEvent(evt);
+            };
+            fireRefreshEventOnWindow();
+        }, 100, 1);
+        $scope.modalShownItems = true
+    }
+    $scope.hideItemsModal = () => {
+        $scope.clearForm()
+        $scope.modalShownItems = false
+    }
+
+
     // test barcode from service
     $scope.getBC = () => {
         $scope.barcode = bcService.upc
@@ -19,9 +39,9 @@ angular.module('app').controller('itemCreate', function ($scope, bcService, item
         , is_consumable: false
         , repOther: null
         , replink: null
-        ,af_period: "Day"
+        , af_period: "Day"
     }
-  
+
 
     $scope.trackbyValues = {}
     const itemsObj = $scope.itemCreateObj
@@ -64,7 +84,7 @@ angular.module('app').controller('itemCreate', function ($scope, bcService, item
         mm = '0' + mm
     }
     today = yyyy + '-' + mm + '-' + dd;
-    document.getElementById("datefield").setAttribute("max", today);
+    // document.getElementById("datefield").setAttribute("max", today);
 
 
     // »»»»»»»»»»»»»»»»»»»║  GET LOCATION LIST

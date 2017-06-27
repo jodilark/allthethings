@@ -38,3 +38,13 @@ $wrapper-widths: 1380px;
         bottom: 243px;
         transform: rotate(45deg);
     }
+// create items input containers
+    @mixin ci-input-containers {
+        height: 35px;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        align-items: center;
+        padding: 0px 10px;
+    }

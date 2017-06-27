@@ -82,7 +82,7 @@ angular.module('app', ['ui.router', 'ui.grid', 'ui.grid.selection', 'ui.grid.edi
 });
 'use strict';
 
-angular.module('app').controller('itemCreate', function ($scope, bcService, itemMainSrv, itemGetSrv, itemPostSrv, itemPutSrv, itemDeleteSrv, locationsListSrv, trackByGetSrv, userListSrv, settingsSrv) {
+angular.module('app').controller('itemCreate', function ($scope, $interval, bcService, itemMainSrv, itemGetSrv, itemPostSrv, itemPutSrv, itemDeleteSrv, locationsListSrv, trackByGetSrv, userListSrv, settingsSrv) {
     // // »»»»»»»»»»»»»»»»»»»║  TESTS 
     $scope.itemCreateTest = 'itemCreate controller is connected and operational';
     $scope.itemGetSrvTest = itemGetSrv.itemGetSrvTest;
@@ -90,6 +90,25 @@ angular.module('app').controller('itemCreate', function ($scope, bcService, item
     $scope.itemPutSrvTest = itemPutSrv.itemPutSrvTest;
     $scope.itemDeleteSrvTest = itemDeleteSrv.itemDeleteSrvTest;
     $scope.itemMainSrvTest = itemMainSrv.itemMainSrvTest;
+
+    // »»»»»»»»»»»»»»»»»»»║  MODAL CONTROLS
+    $scope.modalShownItems = false;
+    $scope.showItemsModal = function () {
+        $interval(function () {
+            var fireRefreshEventOnWindow = function fireRefreshEventOnWindow() {
+                var evt = document.createEvent("HTMLEvents");
+                evt.initEvent('resize', true, false);
+                window.dispatchEvent(evt);
+            };
+            fireRefreshEventOnWindow();
+        }, 100, 1);
+        $scope.modalShownItems = true;
+    };
+    $scope.hideItemsModal = function () {
+        $scope.clearForm();
+        $scope.modalShownItems = false;
+    };
+
     // test barcode from service
     $scope.getBC = function () {
         $scope.barcode = bcService.upc;
@@ -157,7 +176,8 @@ angular.module('app').controller('itemCreate', function ($scope, bcService, item
         mm = '0' + mm;
     }
     today = yyyy + '-' + mm + '-' + dd;
-    document.getElementById("datefield").setAttribute("max", today);
+    // document.getElementById("datefield").setAttribute("max", today);
+
 
     // »»»»»»»»»»»»»»»»»»»║  GET LOCATION LIST
     $scope.getLocations = function () {
@@ -390,10 +410,30 @@ angular.module('app').controller('itemManage', function ($scope, $interval, item
 });
 'use strict';
 
-angular.module('app').controller('locClass', function ($scope, locClassSrv, uiGridConstants) {
+angular.module('app').controller('locClass', function ($scope, $interval, locClassSrv, uiGridConstants) {
     // »»»»»»»»»»»»»»»»»»»║  TESTS 
     $scope.locClassTest = 'locClass controller is connected and operational';
     $scope.locClassServiceTest = locClassSrv.locClassServiceTest;
+
+    // »»»»»»»»»»»»»»»»»»»║  MODAL CONTROLS
+    $scope.modalShownStorage = false;
+    $scope.showStorageModal = function () {
+        $interval(function () {
+            var fireRefreshEventOnWindow = function fireRefreshEventOnWindow() {
+                var evt = document.createEvent("HTMLEvents");
+                evt.initEvent('resize', true, false);
+                window.dispatchEvent(evt);
+            };
+            fireRefreshEventOnWindow();
+        }, 100, 1);
+        $scope.modalShownStorage = true;
+    };
+    $scope.hideStorageModal = function () {
+        $scope.clearForm();
+        $scope.locClassObj.name = "";
+        $scope.locClassObj.description = "";
+        $scope.modalShownStorage = false;
+    };
 
     // // »»»»»»»»»»»»»»»»»»»║ CLEAR FORM
     $scope.clearForm = function () {
@@ -470,7 +510,7 @@ angular.module('app').controller('locClass', function ($scope, locClassSrv, uiGr
 });
 'use strict';
 
-angular.module('app').controller('locContainer', function ($scope, containerSrv, uiGridConstants) {
+angular.module('app').controller('locContainer', function ($scope, $interval, containerSrv, uiGridConstants) {
     // »»»»»»»»»»»»»»»»»»»║  TESTS 
     $scope.locContainerTest = 'locContainerTest controller is connected and operational';
     $scope.containerServiceTest = containerSrv.containerServiceTest;
@@ -478,10 +518,20 @@ angular.module('app').controller('locContainer', function ($scope, containerSrv,
     // »»»»»»»»»»»»»»»»»»»║  MODAL CONTROLS
     $scope.modalShownContainer = false;
     $scope.showContainerModal = function () {
-        return $scope.modalShownContainer = true;
+        $interval(function () {
+            var fireRefreshEventOnWindow = function fireRefreshEventOnWindow() {
+                var evt = document.createEvent("HTMLEvents");
+                evt.initEvent('resize', true, false);
+                window.dispatchEvent(evt);
+            };
+            fireRefreshEventOnWindow();
+        }, 100, 1);
+        $scope.modalShownContainer = true;
     };
     $scope.hideContainerModal = function () {
-        return $scope.modalShownContainer = false;
+        $scope.modalShownContainer = false;
+        $scope.clearForm();
+        $scope.container.name = "";
     };
 
     // »»»»»»»»»»»»»»»»»»»║ CLEAR FORM
@@ -762,7 +812,7 @@ angular.module('app').controller('mainCtrl', function ($scope, authService, chec
     $scope.watchLocation = function (area) {
         var url = area;
         // var url = window.location.hash
-        console.log(url);
+        // console.log(url)
         switch (url) {
             case '#!/user_manage':
                 $scope.pageTitle = 'Users';
@@ -778,7 +828,7 @@ angular.module('app').controller('mainCtrl', function ($scope, authService, chec
                 break;
         }
     };
-    // $scope.watchLocation()
+    $scope.watchLocation(window.location.hash);
 });
 "use strict";
 "use strict";
@@ -828,7 +878,7 @@ angular.module('app').controller('settings', function ($scope, uiGridConstants, 
 });
 'use strict';
 
-angular.module('app').controller('trackBy', function ($scope, uiGridConstants, trackByGetSrv, trackByPostSrv, trackByPutSrv, trackByDeleteSrv) {
+angular.module('app').controller('trackBy', function ($scope, $interval, uiGridConstants, trackByGetSrv, trackByPostSrv, trackByPutSrv, trackByDeleteSrv) {
     // »»»»»»»»»»»»»»»»»»»║  TESTS 
     $scope.trackByTest = 'trackBy controller is connected and operational';
     $scope.trackByGetSrvTest = trackByGetSrv.trackByGetSrvTest;
@@ -839,7 +889,15 @@ angular.module('app').controller('trackBy', function ($scope, uiGridConstants, t
     // »»»»»»»»»»»»»»»»»»»║  MODAL CONTROLS
     $scope.modalShownTrackby = false;
     $scope.showTrackbyModal = function () {
-        return $scope.modalShownTrackby = true;
+        $interval(function () {
+            var fireRefreshEventOnWindow = function fireRefreshEventOnWindow() {
+                var evt = document.createEvent("HTMLEvents");
+                evt.initEvent('resize', true, false);
+                window.dispatchEvent(evt);
+            };
+            fireRefreshEventOnWindow();
+        }, 100, 1);
+        $scope.modalShownTrackby = true;
     };
     $scope.hideTrackbyModal = function () {
         $scope.clearForm();
@@ -1153,9 +1211,9 @@ angular.module('app').directive('bcScanner', function () {
                         onDetected = function (result) {
                         resultsArr.push(result.codeResult.code);
                         counter = resultsArr.length;
-                        // console.log("On Detected :", resultsArr)
+                        console.log("On Detected :", resultsArr
                         // console.log("counter = ", counter)
-                        if (counter === 10) {
+                        );if (counter === 10) {
                             var mc = mostCommon(resultsArr);
                             console.log("most common", mc);
                             $scope.barcode = mc;
@@ -1172,6 +1230,8 @@ angular.module('app').directive('bcScanner', function () {
                         scanner.removeEventListener('detected', onDetected);
                         this.hideOverlay();
                         this.attachListeners();
+                        $scope.showBarcodeWindow = false;
+                        $scope.$apply();
                     }.bind(this);
 
                     this.showOverlay(stop);
@@ -1205,8 +1265,8 @@ angular.module('app').directive('bcScanner', function () {
                     var scanner = Quagga.decoder({ readers: ['ean_reader'] }).locator({ patchSize: 'medium' }).fromSource({
                         target: selector,
                         constraints: {
-                            width: 600,
-                            height: 600,
+                            width: 400,
+                            height: 400,
                             facingMode: "environment"
                         }
                     });
@@ -1245,11 +1305,29 @@ angular.module('app').directive('modalContainerDir', function () {
 });
 'use strict';
 
+angular.module('app').directive('modalItemsDir', function () {
+    return {
+        templateUrl: '../views/item_create.html',
+        scope: '=',
+        controller: 'itemCreate'
+    };
+});
+'use strict';
+
 angular.module('app').directive('modalLocationCreateDir', function () {
     return {
         templateUrl: '../views/location_create.html',
         scope: '=',
         controller: 'locCreate'
+    };
+});
+'use strict';
+
+angular.module('app').directive('modalStorageDir', function () {
+    return {
+        templateUrl: '../views/loc_class.html',
+        scope: '=',
+        controller: 'locClass'
     };
 });
 'use strict';

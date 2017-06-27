@@ -1,4 +1,4 @@
-<h1>Create an item</h1>
+<!--<h1>Create an item</h1>-->
 <!-- »»»»»»»»»»»»»»»»»»»║   TESTS   -->
 <!--<div class="test-results">
     <ul>
@@ -12,8 +12,8 @@
 </div>-->
 
 <!-- »»»»»»»»»»»»»»»»»»»║   DO'S   -->
-<button ui-sref="location_create">Create a location</button>
-<button ui-sref="trackbys">Manage Track-Bys</button>
+<!--<button ui-sref="location_create">Create a location</button>
+<button ui-sref="trackbys">Manage Track-Bys</button>-->
 
 <!--CRUD for items Owner (defaults to current user, should have an option to set to none) short_name (required) Description (required)
     Quantity (defaults to 1 can be zero, cannot be negative) purchase price purchase date reason for purchase retailer item
@@ -26,7 +26,7 @@
 
 
 <!-- »»»»»»»»»»»»»»»»»»»║   INPUT FIELDS   -->
-<form id='itemCreateForm' ng-submit="createItem()">
+<!--<form id='itemCreateForm' ng-submit="createItem()">
     <select id="userList" ng-options="user as user.first_name for user in users" ng-model="userId">
         <option id="userList" value="" selected>{{thisUser}}</option>
     </select>
@@ -75,4 +75,68 @@
     </div>
     <input type="submit" value="Submit">
     <input type="reset" value="Cancel">
-</form>
+</form>-->
+
+<div class="create-item-wrapper">
+    <div class="ci-1">
+        <div class="ci-1-a">Create Items</div>
+        <div class="ci-1-b" ng-click="hideItemsModal()">X</div>
+    </div>
+    <div class="scrollContainer">
+    <div class="ci-2">
+        <bc-scanner></bc-scanner>
+        <div class="ci-2-c item-label">Barcode</div>
+    </div>
+    <!-- see bcScanner html -->
+    <div class="ci-4">
+        <input type="text" class="ci-4-a item-input"></input>
+        <div class="ci-4-b item-label">Short Name</div>
+    </div>
+    <div class="ci-5">
+        <input type="text" class="ci-5-a item-input"></input>
+        <div class="ci-5-b item-label">Description</div>
+    </div>
+    <div class="ci-6">
+        <input type="number" class="ci-6-a item-input"></input>
+        <div class="ci-6-b item-label">Quantity</div>
+    </div>
+    <div class="ci-7">
+        <div class="ci-7-b"></div>
+        <div class="ci-7-a">Location Information</div>
+        <div class="ci-7-c"></div>
+    </div>
+    <div class="ci-8">
+        <input type="text" class="ci-8-a item-input"></input>
+        <div class="ci-8-b item-label">Location</div>
+    </div>
+    <div class="ci-9">
+        <div class="ci-9-a">
+            <div id="temp-grid"></div>
+        </div>
+        <div class="ci-9-b">Other Common Locations</div>
+    </div>
+    <div class="ci-7">
+        <div class="ci-7-b"></div>
+        <div class="ci-7-a">Attributes</div>
+        <div class="ci-7-c"></div>
+    </div>
+    <div class="ci-11"></div>
+    <div class="ci-12"></div>
+    <div class="ci-13"></div>
+    <div class="ci-14"></div>
+    <div class="ci-15"></div>
+    <div class="ci-16"></div>
+    <div class="ci-17"></div>
+    <div class="ci-18"></div>
+    <div class="ci-19"></div>
+    <div class="ci-20"></div>
+    <div class="ci-21"></div>
+    <div class="ci-22"></div>
+    <div class="ci-23"></div>
+    <div class="ci-24"></div>
+    <div class="ci-25"></div>
+    <div class="ci-26"></div>
+    <div class="ci-27"></div>
+    </div>
+</div>
+<bc-scanner></bc-scanner>

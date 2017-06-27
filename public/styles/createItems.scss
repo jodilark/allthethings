@@ -1,0 +1,201 @@
+// =============== IMPORT FILES
+@import '_varsAndMixins';
+
+// =============== PAGE STYLES
+// ______:modal-headers
+    .item-input {
+        height: 25px;
+        width: 100%;
+    }
+    .item-label {
+        margin-top: 10px;
+        margin-left: 10px;
+        line-height: 25px;
+        width: 100px;
+    }
+    .create-item-wrapper {
+        height: 498px;
+        width: 100%;
+        position: relative;
+    }
+    .scrollContainer {
+        @include box-tester;
+        border: 2px solid blue;
+        height: 100%;
+        width: 100%;
+        overflow-y: scroll;
+        padding-top: 10px;
+    }
+    .ci-1 {
+        @include box-tester;
+        z-index: 1;
+        height: 35px;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding-right:10px;
+        background: lightblue;
+        position: absolute;
+        top:0px;
+    }
+    .ci-1-a {
+        @include box-tester;
+        height: 100%;
+        display: inline;
+        line-height: 27px;
+        font-size: 20px;
+        font-weight: bold;
+        padding: 0px 20px 0px 10px;
+        border-top-right-radius: 20px;
+        border-top-left-radius: 3px;
+        background: black;
+    }
+    .ci-1-b {
+        @include box-tester;
+        height: 100%;
+        flex: .15;
+        line-height: 30px;
+        font-size: 20px;
+        text-align: right;
+        font-weight: bold;
+        cursor: pointer;
+        color: #333;
+    }
+    .ci-2 {
+        @include box-tester;
+        @include ci-input-containers;
+        margin-top: 35px;
+    }
+    // .ci-2-a {
+    //     display: flex;
+    //     flex-direction: row;
+    // }
+    bc-scanner {
+        padding: 0px 0px !important;
+        position: relative;
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+    }
+    .ci-2-b {
+        height: 25px;
+        width: 30px;
+        background: lightblue;
+        cursor: pointer;
+    }
+    .ci-3 {
+        @include box-tester;
+        @include ci-input-containers;
+        flex: 1;
+    }
+    .ci-3-a {
+        display: flex;
+        height: 100vh;
+        width: 100vw;
+        justify-content: center;
+        align-content: center;
+    }
+    .ci-3-b {
+        z-index: 9999;
+        position: absolute;
+        top: 7px;
+        left: 25px;
+        border: 2px solid white;
+    }
+    .ci-3-c {
+        z-index: 10000 !important;
+        position: absolute;
+        top: 10px;
+        right: -63px;
+    }
+    .locker {
+        z-index: 9998;
+        position:fixed;
+        top: 0px;
+        left: 0px;
+        width: 100vw;
+        height: 100vh;
+        background: rgba(0, 0, 0, .7)
+    }
+    .ci-4 {
+        @include box-tester;
+        @include ci-input-containers;
+    }
+    .ci-4-a {
+
+    }
+    .ci-4-b {
+
+    }
+    .ci-5 {
+        @include box-tester;
+        @include ci-input-containers;       
+    }
+    .ci-5-a {
+        
+    }
+    .ci-5-b {
+        
+    }
+    .ci-6 {
+        @include box-tester;
+        @include ci-input-containers;       
+    }
+    .ci-6-a {
+        
+    }
+    .ci-6-b {
+        
+    }
+    .ci-7 {
+        @include box-tester;
+        @include ci-input-containers;
+        height: 45px;                
+    }
+    .ci-7-a {
+        display: inline-block;
+        line-height: 30px;
+        padding: 0px 10px;
+        margin: 0px 10px;
+    }
+    .ci-7-b {
+        height: 2px;
+        background: white;
+        flex: 1;
+        padding-right: 10px
+    }
+    .ci-7-c {
+        height: 2px;
+        background: white;
+        flex: 1;
+        padding-left: 10px
+    }
+    .ci-8 {
+        @include box-tester;
+        @include ci-input-containers;
+    }
+    .ci-9 {
+        @include box-tester;
+        height: 200px;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        padding: 10px;
+    }
+    .ci-9-a {
+        width: 100%;
+        height: 100%;
+    }
+    #temp-grid {
+        width: 100%;
+        height: 100%;
+        background: lightblue;
+    }
+    .ci-9-b {
+        line-height: 19px;
+        width: 100px;
+        margin-left: 10px;
+    }
+    

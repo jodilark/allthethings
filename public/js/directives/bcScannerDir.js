@@ -23,7 +23,7 @@ angular.module('app').directive('bcScanner',
                             onDetected = function (result) {
                                 resultsArr.push(result.codeResult.code)
                                 counter = resultsArr.length
-                                // console.log("On Detected :", resultsArr)
+                                console.log("On Detected :", resultsArr)
                                 // console.log("counter = ", counter)
                                 if (counter === 10) {
                                     var mc = mostCommon(resultsArr)
@@ -42,6 +42,8 @@ angular.module('app').directive('bcScanner',
                                 scanner.removeEventListener('detected', onDetected);
                                 this.hideOverlay();
                                 this.attachListeners();
+                                $scope.showBarcodeWindow = false
+                                $scope.$apply()
                             }.bind(this);
 
                         this.showOverlay(stop);
@@ -82,8 +84,8 @@ angular.module('app').directive('bcScanner',
                             .fromSource({
                                 target: selector,
                                 constraints: {
-                                    width: 600,
-                                    height: 600,
+                                    width: 400,
+                                    height: 400,
                                     facingMode: "environment"
                                 }
                             });
