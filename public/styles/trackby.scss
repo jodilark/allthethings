@@ -2,6 +2,14 @@
 @import '_varsAndMixins';
 
 // =============== PAGE STYLES
+// _____:main-modal-wrapper
+    .modal-wrapper-trackby {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        width: 100%;
+    }
+
 // ______:modal-headers
     .header-trackby {
         @include box-tester;
@@ -28,7 +36,7 @@
     }
     .closing-x {
         @include box-tester;
-        height: 100%;
+        height: 35px;
         flex: .15;
         line-height: 30px;
         font-size: 20px;
@@ -39,85 +47,19 @@
     }
 
 // ............... trackby page
-    .tb-1 {
-        border-right-color: blue;
-        height: 100%;
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-
-    }
-    .tb-1-a {
-        height: 150px;
-        width: 100%;
-        display: flex;
-        flex-direction: row;
-        padding-bottom: 10px;
-    }
-    .tb-1-a-i {
-        height: 100%;
-        flex: 1;
-        padding: 10px 5px 10px 10px;
-    }
-    .tb-1-a-ii {
-        height: 100%;
-        flex: 1;
-        padding: 10px 10px 10px 5px;
-    }
-    .tb-1-b {
-        height: 40px;
-        width: 100%;
-        display: flex;
-        flex-direction: row;
-        align-content: center;
-        border: 2px ridge #999;
-    }
     .tb-1-c {
-        display: block;
-        height: 300px;
+        border: 1px solid blue;
+        // height: 300px;
+        flex: 1;
         width: 100%;
-        position: relative;
-        padding-top: 10px;
+        // position: relative;
+        padding: 10px;
     }
-    .tb-asset {
+    .tb-delete {
         width: 65px;
         height: 30px;
     }
-    #tba1 {
-        width: 100%;
-        line-height: 38px;
-    }
-    #tba2 {
-        width: 100%;
-    }
-    #tba3 {
-        width: 100%;
-        line-height: 38px;
-    }
-    #tba4 {
-        width: 100%;
-    }
-    #tba5 {
-        width: 100%;
-        line-height: 38px;        
-    }
-    #tba6 {
-        width: 100%;
-    }
-    #tba7 {
-        background: lightseagreen;
-        height: 100%;
-        flex: 1;
-        cursor: pointer;
-        border: 1px outset #b6b6b6;
-    }
-    #tba8 {
-        background: lightslategray;
-        height: 100%;
-        flex: 1;
-        cursor: pointer;
-        border: 1px outset #b6b6b6;
-    }
+
     #tba9 {
         background: lightblue;
         z-index: 2002;
@@ -127,11 +69,39 @@
         width: 30px;
         cursor: pointer;
     }
-    #tba10 {
-        background: lightcoral;
-        height: 280px;
-        width: auto;
+
+// ........... fixit
+    .tb-form-wrapper {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        padding-top: 10px;
+    }
+    .trackby-label {
+        margin-top: 10px;
+        margin-left: 10px;
+        line-height: 25px;
+        width: 156px;        
+    }
+    .trackby-input {
+        height: 25px;
+        width: 100%;        
+    }
+    .trackby-input-wrappers {
+        @include form-input-wrappers;
+    }
+    .mytbgrid {
+        width: 100%;
+        height: 284px;
+    }
+    .ui-grid-viewport {
+        overflow-x: hidden !important;
     }
 
-
-
+// footer
+    .tb-modal-footer {
+        @include modal-footer;
+    }
+    .tb-mf-button-1 {
+        @include mf-buttons;
+    }

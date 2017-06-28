@@ -31,36 +31,36 @@ angular.module('app', ['ui.router', 'ui.grid', 'ui.grid.selection', 'ui.grid.edi
                 controller: 'userCreate',
                 // resolve: authentication
             })
-            .state('user_create', {
-                templateUrl: '../views/user_create.html',
-                url: '/user_create',
-                controller: 'userCreate',
-                // resolve: authentication
-            })
+            // .state('user_create', {
+            //     templateUrl: '../views/user_create.html',
+            //     url: '/user_create',
+            //     controller: 'userCreate',
+            //     // resolve: authentication
+            // })
             .state('user_manage', {
                 templateUrl: '../views/user_manage.html',
                 url: '/user_manage',
                 controller: 'userManage',
                 // resolve: authentication
             })
-            .state('location_create', {
-                templateUrl: '../views/location_create.html',
-                url: '/location_create',
-                controller: 'locCreate',
-                // resolve: authentication
-            })
-            .state('loc_container', { // MOVE INTO MODAL
-                templateUrl: '../views/loc_container.html',
-                url: '/loc_container',
-                controller: 'locContainer',
-                // resolve: authentication
-            })
-            .state('loc_class', { // MOVE INTO MODAL
-                templateUrl: '../views/loc_class.html',
-                url: '/loc_class',
-                controller: 'locClass',
-                // resolve: authentication
-            })
+            // .state('location_create', {
+            //     templateUrl: '../views/location_create.html',
+            //     url: '/location_create',
+            //     controller: 'locCreate',
+            //     // resolve: authentication
+            // })
+            // .state('loc_container', { // MOVE INTO MODAL
+            //     templateUrl: '../views/loc_container.html',
+            //     url: '/loc_container',
+            //     controller: 'locContainer',
+            //     // resolve: authentication
+            // })
+            // .state('loc_class', { // MOVE INTO MODAL
+            //     templateUrl: '../views/loc_class.html',
+            //     url: '/loc_class',
+            //     controller: 'locClass',
+            //     // resolve: authentication
+            // })
             .state('location_manage', {
                 templateUrl: '../views/location_manage.html',
                 url: '/location_manage',

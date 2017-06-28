@@ -17,7 +17,24 @@
   }
 
 
+
+
 // _____:modals
+  // .closing-x {
+  //     @include box-tester;
+  //     height: 30px;
+  //     flex: .15;
+  //     line-height: 30px;
+  //     font-size: 20px;
+  //     text-align: right;
+  //     font-weight: bold;
+  //     cursor: pointer;
+  //     color: blue;
+  //     position: absolute;
+  //     top: 0px;
+  //     right: 10px;
+  // }
+
   .miniModal {
     @include box-tester;
     z-index:10000;
@@ -35,6 +52,7 @@
     height: 500px;
     width: 500px;
     background: black;
+    position: relative;
   }
 
 

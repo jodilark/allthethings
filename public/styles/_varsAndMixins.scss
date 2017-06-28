@@ -48,3 +48,34 @@ $wrapper-widths: 1380px;
         align-items: center;
         padding: 0px 10px;
     }
+
+// create items input containers
+    @mixin form-input-wrappers {
+        height: 35px;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        align-items: center;
+        padding: 0px 10px;
+    }
+
+// modal mixins
+    @mixin modal-footer {
+        border: 1px solid green;
+        height: 30px;
+        width: 100%;
+        background-image: url('../styles/img/texture.jpg');
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        border: 1px inset #a6a6a6;
+        margin-top: 5px;
+    }
+    @mixin mf-buttons {
+        height: 100%;
+        width: 27%;
+        border: 1px ridge #d4d4d4;
+        cursor: pointer;
+        background: gray;
+    }

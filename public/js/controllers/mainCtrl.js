@@ -1,6 +1,7 @@
-angular.module('app').controller('mainCtrl', function ($scope, authService, checkUserSrv) {
+angular.module('app').controller('mainCtrl', function ($scope, $interval, authService, checkUserSrv, modalService) {
     // »»»»»»»»»»»»»»»»»»»║ TESTS
     $scope.controllerTest = 'Controller Engaged!!!'
+
 
     $scope.loggedIn = false;
 
@@ -15,35 +16,23 @@ angular.module('app').controller('mainCtrl', function ($scope, authService, chec
     // .......................  checks to see if the user is logged in
     // checkUserSrv.getUser().then((response) => $scope.loggedIn = true)
 
-    // .......................  modal controls
-    $scope.modalShown = false;
-    $scope.toggleModal = function () {
-        $scope.modalShown = !$scope.modalShown;
-    };
+//modal hide/show controls
+//________FUNCTION
+    $scope.showStorageModal = () => {
+        modalService.refreshWindow()
+        $scope.modalShownStorage = true
+    }
+    $scope.showTrackbyModal = () => {
+        modalService.refreshWindow()
+        $scope.modalShownTrackby = true
+    }
 
-    //vars
-    // $scope.createUserModalContent = false
-    // $scope.createLocModalContent = false
-    // $scope.setModalContent = (contentId) => {
-    //     switch (contentId) {
-    //         case 0:
-    //             $scope.setAllModalFalse()
-    //             $scope.createUserModalContent = true
-    //             $scope.toggleModal()
-    //             break;
-    //         case 1:
-    //             $scope.setAllModalFalse()
-    //             $scope.createLocModalContent = true
-    //             $scope.toggleModal()
-    //             break;
-    //     }
-    // }
-    // $scope.setAllModalFalse = () => {
-    //     $scope.createUserModalContent = false
-    //     $scope.createLocModalContent = false
-    //     // console.log("create user =", $scope.createUserModalContent)
-    // }
+    $scope.showItemsModal = () => {
+        modalService.refreshWindow()
+        $scope.modalShownItems = true
+    }
 
+//_________DASHBOARD TITLE
     $scope.pageTitle = "Dashboard"
     $scope.watchLocation = (area) => {
         var url = area
@@ -51,17 +40,17 @@ angular.module('app').controller('mainCtrl', function ($scope, authService, chec
         // console.log(url)
         switch (url) {
             case '#!/user_manage':
-            $scope.pageTitle = 'Users'
-            break;
+                $scope.pageTitle = 'Users'
+                break;
             case '#!/location_manage':
-            $scope.pageTitle = 'Locations'
-            break;
+                $scope.pageTitle = 'Locations'
+                break;
             case '#!/item_manage':
-            $scope.pageTitle = 'Items'
-            break;
+                $scope.pageTitle = 'Items'
+                break;
             case '#!/dashboard':
-            $scope.pageTitle = 'Dashboard'
-            break;
+                $scope.pageTitle = 'Dashboard'
+                break;
         }
     }
     $scope.watchLocation(window.location.hash)

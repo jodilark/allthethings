@@ -779,9 +779,48 @@ bc-scanner {
   height: 30px;
   width: 30px; }
 
-.header-trackby {
+.modal-wrapper-storage {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%; }
+
+.header-storage {
   border: 1px solid red;
-  background: rgba(200, 0, 50, 0.1); }
+  background: rgba(200, 0, 50, 0.1);
+  height: 35px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding-right: 10px;
+  background: lightblue; }
+
+.header-text {
+  border: 1px solid red;
+  background: rgba(200, 0, 50, 0.1);
+  height: 100%;
+  display: inline;
+  line-height: 27px;
+  font-size: 20px;
+  font-weight: bold;
+  padding: 0px 20px 0px 10px;
+  border-top-right-radius: 20px;
+  border-top-left-radius: 3px;
+  background: black; }
+
+.closing-x {
+  border: 1px solid red;
+  background: rgba(200, 0, 50, 0.1);
+  height: 100%;
+  flex: .15;
+  line-height: 30px;
+  font-size: 20px;
+  text-align: right;
+  font-weight: bold;
+  cursor: pointer;
+  color: #333; }
 
 html, input, textarea, button, select {
   background: #242424;
@@ -815,7 +854,8 @@ div.test-results {
   background: rgba(200, 0, 50, 0.1);
   height: 500px;
   width: 500px;
-  background: black; }
+  background: black;
+  position: relative; }
 
 .public-header-1 {
   z-index: 2000;
@@ -996,6 +1036,12 @@ ul.rating {
 .manageItemsGrid {
   width: 100%; }
 
+.modal-wrapper-trackby {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%; }
+
 .header-trackby {
   border: 1px solid red;
   background: rgba(200, 0, 50, 0.1);
@@ -1024,7 +1070,7 @@ ul.rating {
 .closing-x {
   border: 1px solid red;
   background: rgba(200, 0, 50, 0.1);
-  height: 100%;
+  height: 35px;
   flex: .15;
   line-height: 30px;
   font-size: 20px;
@@ -1033,83 +1079,15 @@ ul.rating {
   cursor: pointer;
   color: #333; }
 
-.tb-1 {
-  border-right-color: blue;
-  height: 100%;
-  width: 100%;
-  display: flex;
-  flex-direction: column; }
-
-.tb-1-a {
-  height: 150px;
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  padding-bottom: 10px; }
-
-.tb-1-a-i {
-  height: 100%;
-  flex: 1;
-  padding: 10px 5px 10px 10px; }
-
-.tb-1-a-ii {
-  height: 100%;
-  flex: 1;
-  padding: 10px 10px 10px 5px; }
-
-.tb-1-b {
-  height: 40px;
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  align-content: center;
-  border: 2px ridge #999; }
-
 .tb-1-c {
-  display: block;
-  height: 300px;
+  border: 1px solid blue;
+  flex: 1;
   width: 100%;
-  position: relative;
-  padding-top: 10px; }
+  padding: 10px; }
 
-.tb-asset {
+.tb-delete {
   width: 65px;
   height: 30px; }
-
-#tba1 {
-  width: 100%;
-  line-height: 38px; }
-
-#tba2 {
-  width: 100%; }
-
-#tba3 {
-  width: 100%;
-  line-height: 38px; }
-
-#tba4 {
-  width: 100%; }
-
-#tba5 {
-  width: 100%;
-  line-height: 38px; }
-
-#tba6 {
-  width: 100%; }
-
-#tba7 {
-  background: lightseagreen;
-  height: 100%;
-  flex: 1;
-  cursor: pointer;
-  border: 1px outset #b6b6b6; }
-
-#tba8 {
-  background: lightslategray;
-  height: 100%;
-  flex: 1;
-  cursor: pointer;
-  border: 1px outset #b6b6b6; }
 
 #tba9 {
   background: lightblue;
@@ -1120,10 +1098,55 @@ ul.rating {
   width: 30px;
   cursor: pointer; }
 
-#tba10 {
-  background: lightcoral;
-  height: 280px;
-  width: auto; }
+.tb-form-wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding-top: 10px; }
+
+.trackby-label {
+  margin-top: 10px;
+  margin-left: 10px;
+  line-height: 25px;
+  width: 156px; }
+
+.trackby-input {
+  height: 25px;
+  width: 100%; }
+
+.trackby-input-wrappers {
+  height: 35px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 0px 10px; }
+
+.mytbgrid {
+  width: 100%;
+  height: 284px; }
+
+.ui-grid-viewport {
+  overflow-x: hidden !important; }
+
+.tb-modal-footer {
+  border: 1px solid green;
+  height: 30px;
+  width: 100%;
+  background-image: url("../styles/img/texture.jpg");
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  border: 1px inset #a6a6a6;
+  margin-top: 5px; }
+
+.tb-mf-button-1 {
+  height: 100%;
+  width: 27%;
+  border: 1px ridge #d4d4d4;
+  cursor: pointer;
+  background: gray; }
 
 .page-wrapper {
   border: 1px solid red;

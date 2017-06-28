@@ -19,29 +19,31 @@
 
 
 
-<div class="tb-1">
-<div class="header-trackby">
-    <div class="header-text">Trackbys</div>
-    <div class="closing-x" ng-click="hideTrackbyModal()">X</div>
-</div>
-    <form class="tb-1-a" id="trackbyForm">
-        <div class="tb-1-a-i">
-            <div class="tb-asset" id="tba1">Name</div>
-            <input class="tb-asset" id="tba2" type="text" ng-model="trackByObj.trackby_name">
-            <div class="tb-asset" id="tba3">Category</div>
-            <input class="tb-asset" id="tba4" type="text" ng-model="trackByObj.trackby_category">
+<div class="modal-wrapper-trackby">
+    <div class="header-trackby">
+        <div class="header-text">Trackbys</div>
+        <div class="closing-x" ng-click="hideTrackbyModal()">X</div>
+    </div> 
+    <form class="tb-form-wrapper" id="trackbyForm" ng-submit="createTrackBy()">
+        <div class="trackby-input-wrappers">
+            <input class="trackby-input" id="tba2" type="text" ng-model="trackByObj.trackby_name" />
+            <div class="trackby-label" id="tba1">Name</div>
         </div>
-        <div class="tb-1-a-ii">
-            <div class="tb-asset" id="tba5">Value</div>
-            <input class="tb-asset" id="tba6" type="text" ng-model="trackByObj.trackby_value">
+        <div class="trackby-input-wrappers">
+            <input class="trackby-input" id="tba4" type="text" ng-model="trackByObj.trackby_category"/>
+            <div class="trackby-label" id="tba3">Category</div>
         </div>
-    </form>
-    <div class="tb-1-b">
-        <input class="tb-asset" id="tba7" type="submit" value="Submit" id="addData" ng-click="createTrackBy()">
-        <input class="tb-asset" id="tba8" type="reset" value="Clear">
+        <div class="trackby-input-wrappers">
+            <input class="trackby-input" id="tba6" type="text" ng-model="trackByObj.trackby_value"/>
+            <div class="trackby-label" id="tba5">Value</div>
+        </div>
+    <div class="tb-modal-footer">
+        <input class="tb-mf-button-1" type="submit" value="Create" />
+        <input class="tb-mf-button-1" type="reset" value="Clear" ng-click="clearForm()" />
     </div>
+    </form>
     <div class="tb-1-c">
-        <div title="Delete" class="tb-asset" id="tba9" ng-click="delete()" ng-disabled="enableDelete != false"></div>
-        <div class="tb-asset" id="tba10" ui-grid="gridOptions" ui-grid-selection ui-grid-edit></div>
+        <div title="Delete" class="tb-delete" id="tba9" ng-click="delete()" ng-disabled="enableDelete != false"></div>
+        <div id="trackby-grid" class="mytbgrid" ui-grid="gridOptions" ui-grid-selection ui-grid-edit></div>
     </div>
 </div>

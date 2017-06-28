@@ -8,21 +8,9 @@ angular.module('app').controller('itemCreate', function ($scope, $interval, bcSe
     $scope.itemMainSrvTest = itemMainSrv.itemMainSrvTest
 
     // »»»»»»»»»»»»»»»»»»»║  MODAL CONTROLS
-    $scope.modalShownItems = false
-    $scope.showItemsModal = () => {
-        $interval(function () {
-            var fireRefreshEventOnWindow = function () {
-                var evt = document.createEvent("HTMLEvents");
-                evt.initEvent('resize', true, false);
-                window.dispatchEvent(evt);
-            };
-            fireRefreshEventOnWindow();
-        }, 200, 1);
-        $scope.modalShownItems = true
-    }
     $scope.hideItemsModal = () => {
         $scope.clearForm()
-        $scope.modalShownItems = false
+        $scope.$parent.modalShownItems = false
     }
 
     // »»»»»»»»»»»»»»»»»»»║ CLEAR FORM

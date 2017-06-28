@@ -28,32 +28,38 @@ angular.module('app', ['ui.router', 'ui.grid', 'ui.grid.selection', 'ui.grid.edi
         url: '/user_create_new',
         controller: 'userCreate'
         // resolve: authentication
-    }).state('user_create', {
-        templateUrl: '../views/user_create.html',
-        url: '/user_create',
-        controller: 'userCreate'
-        // resolve: authentication
-    }).state('user_manage', {
+    }
+    // .state('user_create', {
+    //     templateUrl: '../views/user_create.html',
+    //     url: '/user_create',
+    //     controller: 'userCreate',
+    //     // resolve: authentication
+    // })
+    ).state('user_manage', {
         templateUrl: '../views/user_manage.html',
         url: '/user_manage',
         controller: 'userManage'
         // resolve: authentication
-    }).state('location_create', {
-        templateUrl: '../views/location_create.html',
-        url: '/location_create',
-        controller: 'locCreate'
-        // resolve: authentication
-    }).state('loc_container', { // MOVE INTO MODAL
-        templateUrl: '../views/loc_container.html',
-        url: '/loc_container',
-        controller: 'locContainer'
-        // resolve: authentication
-    }).state('loc_class', { // MOVE INTO MODAL
-        templateUrl: '../views/loc_class.html',
-        url: '/loc_class',
-        controller: 'locClass'
-        // resolve: authentication
-    }).state('location_manage', {
+    }
+    // .state('location_create', {
+    //     templateUrl: '../views/location_create.html',
+    //     url: '/location_create',
+    //     controller: 'locCreate',
+    //     // resolve: authentication
+    // })
+    // .state('loc_container', { // MOVE INTO MODAL
+    //     templateUrl: '../views/loc_container.html',
+    //     url: '/loc_container',
+    //     controller: 'locContainer',
+    //     // resolve: authentication
+    // })
+    // .state('loc_class', { // MOVE INTO MODAL
+    //     templateUrl: '../views/loc_class.html',
+    //     url: '/loc_class',
+    //     controller: 'locClass',
+    //     // resolve: authentication
+    // })
+    ).state('location_manage', {
         templateUrl: '../views/location_manage.html',
         url: '/location_manage',
         controller: 'locManage'
@@ -94,21 +100,9 @@ angular.module('app').controller('itemCreate', function ($scope, $interval, bcSe
     $scope.itemMainSrvTest = itemMainSrv.itemMainSrvTest;
 
     // »»»»»»»»»»»»»»»»»»»║  MODAL CONTROLS
-    $scope.modalShownItems = false;
-    $scope.showItemsModal = function () {
-        $interval(function () {
-            var fireRefreshEventOnWindow = function fireRefreshEventOnWindow() {
-                var evt = document.createEvent("HTMLEvents");
-                evt.initEvent('resize', true, false);
-                window.dispatchEvent(evt);
-            };
-            fireRefreshEventOnWindow();
-        }, 200, 1);
-        $scope.modalShownItems = true;
-    };
     $scope.hideItemsModal = function () {
         $scope.clearForm();
-        $scope.modalShownItems = false;
+        $scope.$parent.modalShownItems = false;
     };
 
     // »»»»»»»»»»»»»»»»»»»║ CLEAR FORM
@@ -418,29 +412,19 @@ angular.module('app').controller('itemManage', function ($scope, $interval, item
 });
 'use strict';
 
-angular.module('app').controller('locClass', function ($scope, $interval, locClassSrv, uiGridConstants) {
+angular.module('app').controller('locClass', function ($scope, locClassSrv, uiGridConstants) {
     // »»»»»»»»»»»»»»»»»»»║  TESTS 
     $scope.locClassTest = 'locClass controller is connected and operational';
     $scope.locClassServiceTest = locClassSrv.locClassServiceTest;
+    $scope.modalView = true;
 
     // »»»»»»»»»»»»»»»»»»»║  MODAL CONTROLS
-    $scope.modalShownStorage = false;
-    $scope.showStorageModal = function () {
-        $interval(function () {
-            var fireRefreshEventOnWindow = function fireRefreshEventOnWindow() {
-                var evt = document.createEvent("HTMLEvents");
-                evt.initEvent('resize', true, false);
-                window.dispatchEvent(evt);
-            };
-            fireRefreshEventOnWindow();
-        }, 100, 1);
-        $scope.modalShownStorage = true;
-    };
+
     $scope.hideStorageModal = function () {
         $scope.clearForm();
         $scope.locClassObj.name = "";
         $scope.locClassObj.description = "";
-        $scope.modalShownStorage = false;
+        $scope.$parent.modalShownStorage = false;
     };
 
     // // »»»»»»»»»»»»»»»»»»»║ CLEAR FORM
@@ -770,7 +754,7 @@ angular.module('app').controller('locManage', function ($scope, locationsListSrv
 });
 'use strict';
 
-angular.module('app').controller('mainCtrl', function ($scope, authService, checkUserSrv) {
+angular.module('app').controller('mainCtrl', function ($scope, $interval, authService, checkUserSrv, modalService) {
     // »»»»»»»»»»»»»»»»»»»║ TESTS
     $scope.controllerTest = 'Controller Engaged!!!';
 
@@ -787,35 +771,23 @@ angular.module('app').controller('mainCtrl', function ($scope, authService, chec
     // .......................  checks to see if the user is logged in
     // checkUserSrv.getUser().then((response) => $scope.loggedIn = true)
 
-    // .......................  modal controls
-    $scope.modalShown = false;
-    $scope.toggleModal = function () {
-        $scope.modalShown = !$scope.modalShown;
+    //modal hide/show controls
+    //________FUNCTION
+    $scope.showStorageModal = function () {
+        modalService.refreshWindow();
+        $scope.modalShownStorage = true;
+    };
+    $scope.showTrackbyModal = function () {
+        modalService.refreshWindow();
+        $scope.modalShownTrackby = true;
     };
 
-    //vars
-    // $scope.createUserModalContent = false
-    // $scope.createLocModalContent = false
-    // $scope.setModalContent = (contentId) => {
-    //     switch (contentId) {
-    //         case 0:
-    //             $scope.setAllModalFalse()
-    //             $scope.createUserModalContent = true
-    //             $scope.toggleModal()
-    //             break;
-    //         case 1:
-    //             $scope.setAllModalFalse()
-    //             $scope.createLocModalContent = true
-    //             $scope.toggleModal()
-    //             break;
-    //     }
-    // }
-    // $scope.setAllModalFalse = () => {
-    //     $scope.createUserModalContent = false
-    //     $scope.createLocModalContent = false
-    //     // console.log("create user =", $scope.createUserModalContent)
-    // }
+    $scope.showItemsModal = function () {
+        modalService.refreshWindow();
+        $scope.modalShownItems = true;
+    };
 
+    //_________DASHBOARD TITLE
     $scope.pageTitle = "Dashboard";
     $scope.watchLocation = function (area) {
         var url = area;
@@ -886,7 +858,7 @@ angular.module('app').controller('settings', function ($scope, uiGridConstants, 
 });
 'use strict';
 
-angular.module('app').controller('trackBy', function ($scope, $interval, uiGridConstants, trackByGetSrv, trackByPostSrv, trackByPutSrv, trackByDeleteSrv) {
+angular.module('app').controller('trackBy', function ($scope, $interval, modalService, uiGridConstants, trackByGetSrv, trackByPostSrv, trackByPutSrv, trackByDeleteSrv) {
     // »»»»»»»»»»»»»»»»»»»║  TESTS 
     $scope.trackByTest = 'trackBy controller is connected and operational';
     $scope.trackByGetSrvTest = trackByGetSrv.trackByGetSrvTest;
@@ -895,24 +867,13 @@ angular.module('app').controller('trackBy', function ($scope, $interval, uiGridC
     $scope.trackByDeleteSrvTest = trackByDeleteSrv.trackByDeleteSrvTest;
 
     // »»»»»»»»»»»»»»»»»»»║  MODAL CONTROLS
-    $scope.modalShownTrackby = false;
-    $scope.showTrackbyModal = function () {
-        $interval(function () {
-            var fireRefreshEventOnWindow = function fireRefreshEventOnWindow() {
-                var evt = document.createEvent("HTMLEvents");
-                evt.initEvent('resize', true, false);
-                window.dispatchEvent(evt);
-            };
-            fireRefreshEventOnWindow();
-        }, 100, 1);
-        $scope.modalShownTrackby = true;
-    };
+
     $scope.hideTrackbyModal = function () {
         $scope.clearForm();
         $scope.trackByObj.trackby_name = "";
         $scope.trackByObj.trackby_value = "";
         $scope.trackByObj.trackby_category = "";
-        $scope.modalShownTrackby = false;
+        $scope.$parent.modalShownTrackby = false;
     };
 
     // »»»»»»»»»»»»»»»»»»»║ CLEAR FORM
@@ -939,9 +900,8 @@ angular.module('app').controller('trackBy', function ($scope, $interval, uiGridC
             "trackby_value": $scope.trackByObj.trackby_value,
             "trackby_category": $scope.trackByObj.trackby_category
         });
-        trackByPostSrv.createTrackBy($scope.trackByObj);
-
         $scope.clearForm();
+        trackByPostSrv.createTrackBy($scope.trackByObj);
     };
 
     // .................... update trackby types
@@ -1315,7 +1275,7 @@ angular.module('app').directive('modalContainerDir', function () {
 angular.module('app').directive('modalItemsDir', function () {
     return {
         templateUrl: '../views/item_create.html',
-        scope: '=',
+        scope: {},
         controller: 'itemCreate'
     };
 });
@@ -1333,16 +1293,16 @@ angular.module('app').directive('modalLocationCreateDir', function () {
 angular.module('app').directive('modalStorageDir', function () {
     return {
         templateUrl: '../views/loc_class.html',
-        scope: '=',
+        scope: {},
         controller: 'locClass'
     };
 });
 'use strict';
 
-angular.module('app').directive('modalTrackDir', function () {
+angular.module('app').directive('modalTrackDir', function (modalService) {
     return {
         templateUrl: '../views/trackbys.html',
-        scope: '=',
+        scope: {},
         controller: 'trackBy'
     };
 });
@@ -1695,6 +1655,23 @@ angular.module('app').service('locCreateSrv', function ($http) {
 });
 'use strict';
 
+angular.module('app').service('modalService', function ($interval) {
+
+    // ...........  refreshes window so the grids fix themselves in the modals
+    this.refreshWindow = function () {
+        $interval(function () {
+            var fireRefreshEventOnWindow = function fireRefreshEventOnWindow() {
+                var evt = document.createEvent("HTMLEvents");
+                evt.initEvent('resize', true, false);
+                window.dispatchEvent(evt);
+            };
+            fireRefreshEventOnWindow();
+            // console.log('refreshed')
+        }, 100, 1);
+    };
+});
+'use strict';
+
 angular.module('app').service('postUserInfoSrv', function ($http) {
     // »»»»»»»»»»»»»»»»»»»║ TESTS
     this.serviceTest = 'the postUserInfoSrv is connected';
@@ -1775,11 +1752,15 @@ angular.module('app').service('trackByPostSrv', function ($http) {
     // // »»»»»»»»»»»»»»»»»»»║ ENDPOINTS
     // ...................  create trackbys
     this.createTrackBy = function (data) {
-        $http({
-            url: 'http://localhost:3000/api/trackbys/',
-            method: 'POST',
-            data: data
-        });
+        if (data.trackby_name == undefined) {
+            alert('Fill out all fields');
+        } else {
+            $http({
+                url: 'http://localhost:3000/api/trackbys/',
+                method: 'POST',
+                data: data
+            });
+        }
     };
 });
 'use strict';

@@ -8,15 +8,24 @@
     </ul>
 </div>-->
 <!-- »»»»»»»»»»»»»»»»»»»║   INPUT FIELDS   -->
-<form id="classCreateForm">
-    <input type="text" placeholder="Name" ng-model="locClassObj.name">
-    <input type="text" placeholder="Description" ng-model="locClassObj.description">
-    <input type="submit" value="Submit" id="addData"  ng-click="createLocClassObj()">
-    <input type="reset" value="Cancel" ng-click="hideStorageModal()">
-    <button ng-click="delete()" ng-disabled="enableDelete != false">Delete</button>
-</form>
+<div class="modal-wrapper-storage" >
+    <div class="header-storage" >
+        <div class="header-text">Storage Types</div>
+        {{sayHi}}
+        {{hello}}
+        <div class="closing-x" ng-click="hideStorageModal()">X</div>
+    </div> 
+    <div>
+    <form id="classCreateForm">
+        <input type="text" placeholder="Name" ng-model="locClassObj.name">
+        <input type="text" placeholder="Description" ng-model="locClassObj.description">
+        <input type="submit" value="Submit" id="addData" ng-click="createLocClassObj()">
+        <input type="reset" value="Clear">
+    </form>
 
-
-<div>
-    <div ui-grid="gridOptions" class="myGrid" ui-grid-selection ui-grid-edit></div>
+    <div>
+        <button ng-click="delete()" ng-disabled="enableDelete != false">Delete</button>
+        <div ui-grid="gridOptions" class="myGrid" ui-grid-selection ui-grid-edit></div>
+    </div>
+    </div>
 </div>
