@@ -68,12 +68,14 @@ angular.module('app', ['ui.router', 'ui.grid', 'ui.grid.selection', 'ui.grid.edi
         url: '/settings',
         controller: 'settings'
         // resolve: authentication
-    }).state('item_create', { // MOVE INTO MODAL
-        templateUrl: '../views/item_create.html',
-        url: '/item_create',
-        controller: 'itemCreate'
-        // resolve: authentication
-    }).state('item_manage', { // MOVE INTO MODAL
+    }
+    // .state('item_create', { // MOVE INTO MODAL
+    //     templateUrl: '../views/item_create.html',
+    //     url: '/item_create',
+    //     controller: 'itemCreate',
+    //     // resolve: authentication
+    // })
+    ).state('item_manage', { // MOVE INTO MODAL
         templateUrl: '../views/item_manage.html',
         url: '/item_manage',
         controller: 'itemManage'
@@ -101,7 +103,7 @@ angular.module('app').controller('itemCreate', function ($scope, $interval, bcSe
                 window.dispatchEvent(evt);
             };
             fireRefreshEventOnWindow();
-        }, 100, 1);
+        }, 200, 1);
         $scope.modalShownItems = true;
     };
     $scope.hideItemsModal = function () {
@@ -109,8 +111,13 @@ angular.module('app').controller('itemCreate', function ($scope, $interval, bcSe
         $scope.modalShownItems = false;
     };
 
-    // test barcode from service
-    $scope.getBC = function () {
+    // »»»»»»»»»»»»»»»»»»»║ CLEAR FORM
+    $scope.clearForm = function () {
+        return document.getElementById("itemCreateForm").reset
+
+        // test barcode from service
+        ();
+    };$scope.getBC = function () {
         $scope.barcode = bcService.upc;
         console.log($scope.barcode);
     };
@@ -176,8 +183,7 @@ angular.module('app').controller('itemCreate', function ($scope, $interval, bcSe
         mm = '0' + mm;
     }
     today = yyyy + '-' + mm + '-' + dd;
-    // document.getElementById("datefield").setAttribute("max", today);
-
+    document.getElementById("datefield").setAttribute("max", today);
 
     // »»»»»»»»»»»»»»»»»»»║  GET LOCATION LIST
     $scope.getLocations = function () {
@@ -231,7 +237,9 @@ angular.module('app').controller('itemCreate', function ($scope, $interval, bcSe
         multiSelect: true,
         enableSelectAll: false,
         enableFiltering: true,
-        columnDefs: [{ name: 'id', enableCellEdit: false, width: 75 }, { name: 'loc_desc', displayName: 'Description' }, { name: 'loc_class_name', displayName: 'Classification' }, { name: 'loc_class_desc', displayName: 'Class Desc.' }, { name: 'loc_container', displayName: 'Container' }],
+        columnDefs: [
+        // { name: 'id', enableCellEdit: false, width: 50 }, 
+        { name: 'loc_desc', displayName: 'Description' }, { name: 'loc_class_name', displayName: 'Storage Type' }, { name: 'loc_container', displayName: 'Container' }],
         onRegisterApi: function onRegisterApi(gridApi) {
             gridApi.selection.on.rowSelectionChanged($scope, function (row) {
                 $scope.selected = row.isSelected;
@@ -262,9 +270,9 @@ angular.module('app').controller('itemCreate', function ($scope, $interval, bcSe
         }
         $scope.itemCreateObj.trackbys = $scope.trackbyValues;
         $scope.itemCreateObj.upc = $scope.barcode;
-
+        $scope.clearForm
         // console.log(itemsObj)//this is the object that will be sent to the server
-        itemPostSrv.createItem(itemsObj);
+        ();itemPostSrv.createItem(itemsObj);
     };
 });
 'use strict';
@@ -1211,9 +1219,9 @@ angular.module('app').directive('bcScanner', function () {
                         onDetected = function (result) {
                         resultsArr.push(result.codeResult.code);
                         counter = resultsArr.length;
-                        console.log("On Detected :", resultsArr
+                        // console.log("On Detected :", resultsArr)
                         // console.log("counter = ", counter)
-                        );if (counter === 10) {
+                        if (counter === 10) {
                             var mc = mostCommon(resultsArr);
                             console.log("most common", mc);
                             $scope.barcode = mc;
@@ -1230,8 +1238,6 @@ angular.module('app').directive('bcScanner', function () {
                         scanner.removeEventListener('detected', onDetected);
                         this.hideOverlay();
                         this.attachListeners();
-                        $scope.showBarcodeWindow = false;
-                        $scope.$apply();
                     }.bind(this);
 
                     this.showOverlay(stop);
@@ -1260,13 +1266,14 @@ angular.module('app').directive('bcScanner', function () {
                 hideOverlay: function hideOverlay() {
                     document.querySelector('.container ').classList.remove('hide');
                     document.querySelector('.overlay--inline').classList.remove('show');
+                    $scope.showBarcodeWindow = false;
                 },
                 configureScanner: function configureScanner(selector) {
                     var scanner = Quagga.decoder({ readers: ['ean_reader'] }).locator({ patchSize: 'medium' }).fromSource({
                         target: selector,
                         constraints: {
-                            width: 400,
-                            height: 400,
+                            width: 600,
+                            height: 600,
                             facingMode: "environment"
                         }
                     });

@@ -9,7 +9,15 @@
 
 <section id="container" class="container" ng-show="showBarcodeWindow">
     <button class="overlay__close ci-3-c" ng-click="stoppy()">Stop Scan</button>
-    <div class="overlay overlay--inline overlay__content ci-3-b">
+    <div class="locker"></div>
+    <div class="scanWindow-contianer">
+        <div class="sw-1"></div>
+        <div id="sw-middle">
+            <div class="sw-1-a"></div>
+            <div class="sw-1-b"></div>
+            <div class="scanBar"></div>
+        </div>
+        <div class="sw-1"></div>
     </div>
-        <div class="locker"></div>
+    <div class="overlay overlay--inline overlay__content ci-3-b"></div>
 </section>

@@ -79,12 +79,12 @@ angular.module('app', ['ui.router', 'ui.grid', 'ui.grid.selection', 'ui.grid.edi
                 controller: 'settings',
                 // resolve: authentication
             })
-            .state('item_create', { // MOVE INTO MODAL
-                templateUrl: '../views/item_create.html',
-                url: '/item_create',
-                controller: 'itemCreate',
-                // resolve: authentication
-            })
+            // .state('item_create', { // MOVE INTO MODAL
+            //     templateUrl: '../views/item_create.html',
+            //     url: '/item_create',
+            //     controller: 'itemCreate',
+            //     // resolve: authentication
+            // })
             .state('item_manage', { // MOVE INTO MODAL
                 templateUrl: '../views/item_manage.html',
                 url: '/item_manage',

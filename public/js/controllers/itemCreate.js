@@ -17,7 +17,7 @@ angular.module('app').controller('itemCreate', function ($scope, $interval, bcSe
                 window.dispatchEvent(evt);
             };
             fireRefreshEventOnWindow();
-        }, 100, 1);
+        }, 200, 1);
         $scope.modalShownItems = true
     }
     $scope.hideItemsModal = () => {
@@ -25,6 +25,8 @@ angular.module('app').controller('itemCreate', function ($scope, $interval, bcSe
         $scope.modalShownItems = false
     }
 
+    // »»»»»»»»»»»»»»»»»»»║ CLEAR FORM
+    $scope.clearForm = () => document.getElementById("itemCreateForm").reset()
 
     // test barcode from service
     $scope.getBC = () => {
@@ -84,7 +86,7 @@ angular.module('app').controller('itemCreate', function ($scope, $interval, bcSe
         mm = '0' + mm
     }
     today = yyyy + '-' + mm + '-' + dd;
-    // document.getElementById("datefield").setAttribute("max", today);
+    document.getElementById("datefield").setAttribute("max", today);
 
 
     // »»»»»»»»»»»»»»»»»»»║  GET LOCATION LIST
@@ -126,7 +128,8 @@ angular.module('app').controller('itemCreate', function ($scope, $interval, bcSe
         , enableSelectAll: false
         , enableFiltering: true
         , columnDefs: [
-            { name: 'id', enableCellEdit: false, width: 75 }, { name: 'loc_desc', displayName: 'Description' }, { name: 'loc_class_name', displayName: 'Classification' }, { name: 'loc_class_desc', displayName: 'Class Desc.' }, { name: 'loc_container', displayName: 'Container' }
+            // { name: 'id', enableCellEdit: false, width: 50 }, 
+            { name: 'loc_desc', displayName: 'Description' }, { name: 'loc_class_name', displayName: 'Storage Type' }, { name: 'loc_container', displayName: 'Container' }
         ]
         , onRegisterApi: (gridApi) => {
             gridApi.selection.on.rowSelectionChanged($scope, function (row) {
@@ -153,7 +156,7 @@ angular.module('app').controller('itemCreate', function ($scope, $interval, bcSe
         if (loggedInUser !== $scope.userId.id) { $scope.itemCreateObj.owner_id = $scope.userId.id }
         $scope.itemCreateObj.trackbys = $scope.trackbyValues
         $scope.itemCreateObj.upc = $scope.barcode
-
+        $scope.clearForm()
         // console.log(itemsObj)//this is the object that will be sent to the server
         itemPostSrv.createItem(itemsObj)
     }

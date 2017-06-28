@@ -23,12 +23,12 @@ angular.module('app').directive('bcScanner',
                             onDetected = function (result) {
                                 resultsArr.push(result.codeResult.code)
                                 counter = resultsArr.length
-                                console.log("On Detected :", resultsArr)
+                                // console.log("On Detected :", resultsArr)
                                 // console.log("counter = ", counter)
                                 if (counter === 10) {
                                     var mc = mostCommon(resultsArr)
                                     console.log("most common", mc)
-                                    $scope.barcode = mc                                    
+                                    $scope.barcode = mc
                                     $scope.storeBarcode()
                                     $scope.$apply()
                                     $scope.stoppy()
@@ -42,8 +42,6 @@ angular.module('app').directive('bcScanner',
                                 scanner.removeEventListener('detected', onDetected);
                                 this.hideOverlay();
                                 this.attachListeners();
-                                $scope.showBarcodeWindow = false
-                                $scope.$apply()
                             }.bind(this);
 
                         this.showOverlay(stop);
@@ -76,6 +74,7 @@ angular.module('app').directive('bcScanner',
                             .classList.remove('hide');
                         document.querySelector('.overlay--inline')
                             .classList.remove('show');
+                        $scope.showBarcodeWindow = false
                     },
                     configureScanner: function (selector) {
                         var scanner = Quagga
@@ -84,8 +83,8 @@ angular.module('app').directive('bcScanner',
                             .fromSource({
                                 target: selector,
                                 constraints: {
-                                    width: 400,
-                                    height: 400,
+                                    width: 600,
+                                    height: 600,
                                     facingMode: "environment"
                                 }
                             });

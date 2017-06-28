@@ -11,132 +11,136 @@
     </ul>
 </div>-->
 
-<!-- »»»»»»»»»»»»»»»»»»»║   DO'S   -->
-<!--<button ui-sref="location_create">Create a location</button>
-<button ui-sref="trackbys">Manage Track-Bys</button>-->
 
-<!--CRUD for items Owner (defaults to current user, should have an option to set to none) short_name (required) Description (required)
-    Quantity (defaults to 1 can be zero, cannot be negative) purchase price purchase date reason for purchase retailer item
-    was purchased from Warranty period have original packaging Replacement link Replacement comment location (required) make
-    new location (can also be used for move to storage) Move to storage common other locations (can add multiple) </br>
-    tracking information (can add multiple) make new tracking related items (can add multiple) has multiple pieces add/remove
-    piece (pieces will be added as their own items with a location of this item) is consumable (removes (?) tracking options
-    and deep-storage option) sentimental rating if put for rental, show are you sure flag if sentimental rating is >= 3 access
-    frequency date added (db only) mark as accessed (Do's) last accessed date/time ()-->
-
-
-<!-- »»»»»»»»»»»»»»»»»»»║   INPUT FIELDS   -->
-<!--<form id='itemCreateForm' ng-submit="createItem()">
-    <select id="userList" ng-options="user as user.first_name for user in users" ng-model="userId">
-        <option id="userList" value="" selected>{{thisUser}}</option>
-    </select>
-    <bc-scanner></bc-scanner>
-    <input type="text" placeholder="short name" ng-model="itemCreateObj.short_name">
-    <input type="text" placeholder="description" ng-model="itemCreateObj.description">
-    <input type="number" min="0" placeholder="quantity" value="1" ng-model="itemCreateObj.quantity">
-    <input type="number" min="0" step="0.01" placeholder="Purchase Price" ng-model="itemCreateObj.price">
-    <input type="text" placeholder="date Purchased" id='datefield' max='2000-13-13' onfocus="(this.type='date')" onblur="(this.type='text', placeholder='value')"
-        ng-model="itemCreateObj.purchase_date">
-    <input type="text" placeholder="reason for purchase" ng-model="itemCreateObj.reason">
-    <input type="text" placeholder="retailer" ng-model="itemCreateObj.retailer">
-    <input type="number" placeholder="warrenty period (in days)" min="0" max="999" ng-model="itemCreateObj.warrenty" style="min-width: 165px">
-    <input type="checkbox" ng-model="packageStatus" ng-change="originalPackaging()"> Have original packaging
-    <div>
-        <input type="radio" name="replaceDecision" ng-model="repItem" value="replink" checked ng-change="swapper()">Have replacement link
-        <input type="radio" name="replaceDecision" ng-model="repItem" value="other" ng-change="swapper()"> Other
-    </div>
-    </br>
-    <input type="text" placeholder="Input link to item" ng-model="itemCreateObj.replink" ng-hide="linked">
-    <textarea name="Other" placeholder="Other" id="" cols="30" rows="10" ng-model="itemCreateObj.repOther" ng-hide="!linked"></textarea>
-    </br>
-    <select id="locationList" ng-options="location as location.description for location in locations" ng-model="locationOption"
-        ng-change="locationId()">
-            <option id="locationList" value="" disabled selected>{{loc}}</option>
-    </select>
-    <p>Other common locations</p>
-    <div>
-        <div ui-grid="gridOptions" class="my-loc-on-items" ui-grid-selection></div>
-    </div>
-    <input type="checkbox" ng-model="multiPiece" ng-change="multiplePieces()"> Has multiple pieces
-    <input type="checkbox" ng-model="consumable" ng-change="isConsumable()"> Is consumable item
-    <p>Sentimental Rating</p>
-    <div class="star-rating" star-rating rating-value="rating" data-max="5" on-rating-selected="rateFunction(rating)"></div>
-    <p>Access Frequency</p>
-    <input type="number" min="0" id="access-days" placeholder="time(s)" ng-model="itemCreateObj.af_time"> per
-    <select name="time" id="time" ng-model="itemCreateObj.af_period">
-    <option selected>Day</option>
-    <option>Week</option>
-    <option>Month</option>
-    <option>Year</option>
-    </select>
-    <p>Track-Bys</p>
-    <div ng-repeat="trackby in trackbys">
-          <input  type="text" placeholder={{trackby.trackby_name}} value="" ng-model="trackbyValues[trackby.id]">
-    </div>
-    <input type="submit" value="Submit">
-    <input type="reset" value="Cancel">
-</form>-->
-
-<div class="create-item-wrapper">
+<form class="create-item-wrapper" id='itemCreateForm' ng-submit="createItem()">
     <div class="ci-1">
         <div class="ci-1-a">Create Items</div>
         <div class="ci-1-b" ng-click="hideItemsModal()">X</div>
     </div>
     <div class="scrollContainer">
-    <div class="ci-2">
-        <bc-scanner></bc-scanner>
-        <div class="ci-2-c item-label">Barcode</div>
-    </div>
-    <!-- see bcScanner html -->
-    <div class="ci-4">
-        <input type="text" class="ci-4-a item-input"></input>
-        <div class="ci-4-b item-label">Short Name</div>
-    </div>
-    <div class="ci-5">
-        <input type="text" class="ci-5-a item-input"></input>
-        <div class="ci-5-b item-label">Description</div>
-    </div>
-    <div class="ci-6">
-        <input type="number" class="ci-6-a item-input"></input>
-        <div class="ci-6-b item-label">Quantity</div>
-    </div>
-    <div class="ci-7">
-        <div class="ci-7-b"></div>
-        <div class="ci-7-a">Location Information</div>
-        <div class="ci-7-c"></div>
-    </div>
-    <div class="ci-8">
-        <input type="text" class="ci-8-a item-input"></input>
-        <div class="ci-8-b item-label">Location</div>
-    </div>
-    <div class="ci-9">
-        <div class="ci-9-a">
-            <div id="temp-grid"></div>
+        <div class="ci-4">
+            <select class="item-input" id="userList" ng-options="user as user.first_name for user in users" ng-model="userId">
+                <option id="userList" value="" selected>{{thisUser}}</option>
+            </select>
+            <div class="ci-8-b item-label">Owner</div>
         </div>
-        <div class="ci-9-b">Other Common Locations</div>
+        <div class="ci-2">
+            <bc-scanner></bc-scanner>
+            <div class="ci-2-c item-label">Barcode</div>
+        </div>
+        <div class="ci-4">
+            <input type="text" class="ci-4-a item-input" ng-model="itemCreateObj.short_name"></input>
+            <div class="ci-4-b item-label">Short Name</div>
+        </div>
+        <div class="ci-5">
+            <input type="text" class="ci-5-a item-input" ng-model="itemCreateObj.description"></input>
+            <div class="ci-5-b item-label">Description</div>
+        </div>
+        <div class="ci-6">
+            <input type="number" class="ci-6-a item-input" min="0" value="1" ng-model="itemCreateObj.quantity">
+            <div class="ci-6-b item-label">Quantity</div>
+        </div>
+        <div class="ci-7">
+            <div class="ci-7-b"></div>
+            <div class="ci-7-a">Location Information</div>
+            <div class="ci-7-c"></div>
+        </div>
+        <div class="ci-8">
+            <select class="ci-8-a item-input" id="locationList" ng-options="location as location.description for location in locations" ng-model="locationOption" ng-change="locationId()">
+            <option id="locationList" value="" disabled selected>{{loc}}</option>
+            </select>
+            <div class="ci-8-b item-label">Location</div>
+        </div>
+        <div class="ci-9">
+            <div class="ci-9-a">
+                <div ui-grid="gridOptions" id="temp-grid" class="my-loc-on-items" ui-grid-selection></div>
+            </div>
+            <div class="ci-9-b">Other Common Locations</div>
+        </div>
+        <div class="ci-7">
+            <div class="ci-7-b"></div>
+            <div class="ci-7-a">Attributes</div>
+            <div class="ci-7-c"></div>
+        </div>
+        <div class="ci-11">
+            <div>
+                <label><input type="checkbox" id="ci-11-a  item-input" ng-model="consumable" ng-change="isConsumable()">Is consumable</input></label>
+            </div>
+            <div>
+                <label><input type="checkbox" id="ci-11-a  item-input" ng-model="packageStatus" ng-change="originalPackaging()">Has original package</input></label>
+            </div>
+            <div>
+                <label><input type="checkbox" id="ci-11-a  item-input" ng-model="multiPiece" ng-change="multiplePieces()">Has pieces</input></label>
+            </div>
+        </div>
+        <div class="ci-12">
+            <div class="star-rating ci-12-a" star-rating rating-value="rating" data-max="5" on-rating-selected="rateFunction(rating)"></div>
+            <div id="ci-12-b">Sentimental Rating</div>
+        </div>
+        <div class="ci-7">
+            <div class="ci-7-b"></div>
+            <div class="ci-7-a">Purchase Info</div>
+            <div class="ci-7-c"></div>
+        </div>
+        <div class="ci-8">
+            <input type="text" class="ci-8-a item-input" ng-model="itemCreateObj.retailer"></input>
+            <div class="ci-8-b item-label">Retailer</div>
+        </div>
+        <div class="ci-8">
+            <input type="number" min="0" step="0.01" class="ci-8-a item-input" ng-model="itemCreateObj.price">
+            <div class="ci-8-b item-label">Price</div>
+        </div>
+        <div class="ci-8">
+            <input type="date" class="ci-8-a item-input" id='datefield' max='2000-13-13' ng-model="itemCreateObj.purchase_date">
+            <div class="ci-8-b item-label">Purchase Date</div>
+        </div>
+        <div class="ci-8">
+            <input type="text" class="ci-8-a item-input" ng-model="itemCreateObj.reason"></input>
+            <div class="ci-8-b item-label">Reason</div>
+        </div>
+        <div class="ci-8">
+            <input type="number" class="ci-8-a item-input" placeholder="warrenty period (in days)" min="0" max="999" ng-model="itemCreateObj.warrenty" style="min-width: 165px">
+            <div class="ci-8-b item-label">Warrenty</div>
+        </div>
+        <div class="ci-13">
+            <label><input type="radio" name="replaceDecision" ng-model="repItem" value="replink" checked ng-change="swapper()">Replacement link</label>
+            <label><input type="radio" name="replaceDecision" id="ci-13-a" ng-model="repItem" value="other" ng-change="swapper()"> Other</label>
+        </div>
+        <div>
+            <div ng-hide="linked" class="ci-13">
+                <input type="text" class="item-input" ng-model="itemCreateObj.replink">
+                <div class="ci-8-b item-label">Link to item</div>
+            </div>
+            <div ng-hide="!linked" class="ci-14">
+                <textarea name="Other" class="item-input" id="te-other" cols="30" rows="10" ng-model="itemCreateObj.repOther"></textarea>
+                <div class="ci-14-b item-label">Other</div>
+            </div>
+        </div>
+        <div class="ci-7">
+            <div class="ci-7-b"></div>
+            <div class="ci-7-a">Track-Bys</div>
+            <div class="ci-7-c"></div>
+        </div>
+        <div ng-repeat="trackby in trackbys" class="ci-8">
+            <input class="item-input" type="text" value="" ng-model="trackbyValues[trackby.id]">
+            <div class="ci-8-b item-label">{{trackby.trackby_name}}</div>
+        </div>
+        <div class="ci-8">
+            <input class="item-input" id="tb-times" type="number" min="0" id="access-days" placeholder="time(s)" ng-model="itemCreateObj.af_time">
+            <p id="per">per</p>
+            <select name="time" id="time" ng-model="itemCreateObj.af_period">
+                <option selected>Day</option>
+                <option>Week</option>
+                <option>Month</option>
+                <option>Year</option>
+            </select>
+            <div id="ci-24-b" class="item-label">Access</div>
+        </div>
+        <div class="modal-footer">
+            <input class="mf-button-1" type="submit" value="Create">
+            <input class="mf-button-1" type="reset" value="Cancel">
+            <!--<div class="mf-button-1">Create</div>
+            <div class="mf-button-1">Cancel</div>-->
+        </div>
     </div>
-    <div class="ci-7">
-        <div class="ci-7-b"></div>
-        <div class="ci-7-a">Attributes</div>
-        <div class="ci-7-c"></div>
-    </div>
-    <div class="ci-11"></div>
-    <div class="ci-12"></div>
-    <div class="ci-13"></div>
-    <div class="ci-14"></div>
-    <div class="ci-15"></div>
-    <div class="ci-16"></div>
-    <div class="ci-17"></div>
-    <div class="ci-18"></div>
-    <div class="ci-19"></div>
-    <div class="ci-20"></div>
-    <div class="ci-21"></div>
-    <div class="ci-22"></div>
-    <div class="ci-23"></div>
-    <div class="ci-24"></div>
-    <div class="ci-25"></div>
-    <div class="ci-26"></div>
-    <div class="ci-27"></div>
-    </div>
-</div>
-<bc-scanner></bc-scanner>
+</form>

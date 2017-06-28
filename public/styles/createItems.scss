@@ -11,12 +11,14 @@
         margin-top: 10px;
         margin-left: 10px;
         line-height: 25px;
-        width: 100px;
+        width: 120px;
     }
     .create-item-wrapper {
         height: 498px;
         width: 100%;
         position: relative;
+        padding-bottom: 30px;
+        padding-top: 25px;
     }
     .scrollContainer {
         @include box-tester;
@@ -66,12 +68,7 @@
     .ci-2 {
         @include box-tester;
         @include ci-input-containers;
-        margin-top: 35px;
     }
-    // .ci-2-a {
-    //     display: flex;
-    //     flex-direction: row;
-    // }
     bc-scanner {
         padding: 0px 0px !important;
         position: relative;
@@ -98,56 +95,73 @@
         align-content: center;
     }
     .ci-3-b {
-        z-index: 9999;
+        z-index: 9997;
         position: absolute;
-        top: 7px;
-        left: 25px;
+        top: -65px;
+        left: -121px;
         border: 2px solid white;
     }
     .ci-3-c {
-        z-index: 10000 !important;
+        z-index: 10001 !important;
         position: absolute;
-        top: 10px;
-        right: -63px;
+        top: -50px;
+        left: 418px;
     }
-    .locker {
+    .scanWindow-contianer {
         z-index: 9998;
         position:fixed;
         top: 0px;
         left: 0px;
         width: 100vw;
         height: 100vh;
-        background: rgba(0, 0, 0, .7)
+        display: flex;
+        flex-direction: row;
+    }
+    .sw-1 {
+       height: 100%; 
+       width: 100%;
+       background: rgba(0, 0, 0, .7);
+    }
+    #sw-middle {
+        height: 100%; 
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width:650px;
+       background: rgba(0, 0, 0, 0);
+       position: relative;
+    }
+    .sw-1-a {
+        width: 100%;
+        min-height: 122px;
+        background: rgba(0, 0, 0, .7);
+    }
+    .sw-1-b {
+        width: 100%;
+        height: 100%;
+        margin-top: 150px;
+        background: rgba(0, 0, 0, .7);
+    }
+    .scanBar {
+        z-index: 10000 !important;
+        position:absolute;
+        top: 194px;
+        left: -22px;
+        width: 320px;
+        height: 3px;
+        background: red;
     }
     .ci-4 {
         @include box-tester;
         @include ci-input-containers;
     }
-    .ci-4-a {
-
-    }
-    .ci-4-b {
-
-    }
     .ci-5 {
         @include box-tester;
         @include ci-input-containers;       
     }
-    .ci-5-a {
-        
-    }
-    .ci-5-b {
-        
-    }
     .ci-6 {
         @include box-tester;
         @include ci-input-containers;       
-    }
-    .ci-6-a {
-        
-    }
-    .ci-6-b {
-        
     }
     .ci-7 {
         @include box-tester;
@@ -177,7 +191,6 @@
         @include ci-input-containers;
     }
     .ci-9 {
-        @include box-tester;
         height: 200px;
         display: flex;
         flex-direction: row;
@@ -185,7 +198,7 @@
         padding: 10px;
     }
     .ci-9-a {
-        width: 100%;
+        width: 350px;
         height: 100%;
     }
     #temp-grid {
@@ -195,7 +208,83 @@
     }
     .ci-9-b {
         line-height: 19px;
-        width: 100px;
+        width: 95px;
         margin-left: 10px;
     }
-    
+    .ci-11 {
+        @include box-tester;
+        height: 35px;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0px 10px;
+    }
+    .ci-12 {
+        @include box-tester;
+        height: 35px;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+        padding: 0px 10px;
+    }
+    #ci-12-b {
+        margin-left: 15px;
+    }
+    .ci-13 {
+        @include box-tester;
+        height: 35px;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+        padding: 0px 10px;       
+    }
+    #ci-13-a {
+        margin-left: 36px;
+    }
+    .ci-14 {
+        @include box-tester;
+        height: 100%;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: flex-start;
+        padding: 0px 10px; 
+        vertical-align: top;        
+    }
+    #te-other {
+        height: 200px;
+    }
+    #per {
+        margin: 0px 10px; 
+    }
+    #ci-24-b {
+       width: 169px; 
+    }
+    .modal-footer {
+        height: 30px;
+        width: 100%;
+        background-image: url('../styles/img/texture.jpg');
+        position: absolute;
+        bottom: 0px;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        border: 1px inset #a6a6a6
+    }
+    .mf-button-1 {
+        height: 100%;
+        width: 27%;
+        border: 1px ridge #d4d4d4;
+        // text-align: center;
+        // vertical-align: middle;
+        // line-height: 30px;
+        cursor: pointer;
+        background: gray;
+    }
