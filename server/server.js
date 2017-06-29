@@ -81,7 +81,7 @@ var strategy = new Auth0Strategy({
   domain: config.domain,
   clientID: config.clientID,
   clientSecret: config.clientSecret,
-  callbackURL: 'http://localhost:3000/auth/callback'
+  callbackURL: '/auth/callback'
 }, function (accessToken, refreshToken, extraParams, profile, done) {
   // .................... check to see if user exists
   app.get('db').checkIfUserExists(profile.id).then((resp) => {
