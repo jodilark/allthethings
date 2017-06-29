@@ -599,12 +599,10 @@ angular.module('app').controller('locCreate', function ($scope, locCreateSrv, co
     $scope.locListServiceTest = locationsListSrv.locListServiceTest;
 
     // »»»»»»»»»»»»»»»»»»»║  MODAL CONTROLS
-    $scope.modalShownLocation = false;
-    $scope.showLocationModal = function () {
-        return $scope.modalShownLocation = true;
-    };
     $scope.hideLocationModal = function () {
-        return $scope.modalShownLocation = false;
+        $scope.clearForm();
+        $scope.locObj = {};
+        $scope.$parent.modalShownLocation = false;
     };
 
     // »»»»»»»»»»»»»»»»»»»║ CLEAR FORM
@@ -772,10 +770,14 @@ angular.module('app').controller('mainCtrl', function ($scope, $interval, authSe
     $scope.showItemsModal = function () {
         modalService.refreshWindow();
         $scope.modalShownItems = true;
+        modalService.refreshWindow();
     };
     $scope.showContainerModal = function () {
         modalService.refreshWindow();
         $scope.modalShownContainer = true;
+    };
+    $scope.showLocationModal = function () {
+        return $scope.modalShownLocation = true;
     };
 
     //_________DASHBOARD TITLE
@@ -1275,7 +1277,7 @@ angular.module('app').directive('modalItemsDir', function () {
 angular.module('app').directive('modalLocationCreateDir', function () {
     return {
         templateUrl: '../views/location_create.html',
-        scope: '=',
+        scope: {},
         controller: 'locCreate'
     };
 });

@@ -10,26 +10,54 @@
     </ul>
 </div>-->
 
-<!-- »»»»»»»»»»»»»»»»»»»║   DO'S   -->
-<button ui-sref="loc_container">Create a Location Container Type</button>
-<button ui-sref="loc_class">Create a Location Class Type</button>
-
 
 <!-- »»»»»»»»»»»»»»»»»»»║   INPUT FIELDS   -->
-<form id="createLocationForm">
-    <select id="classificationList" ng-options="locClass as locClass.name for locClass in locClasses" ng-model="locClassObj">
-        <option id="classificationList" value="" disabled selected>Classification</option>
-    </select>
-    <input type="text" placeholder="description" ng-model="locObj.description" required/>
-    <select id="containerList" ng-options="container as container.name for container in containers" ng-model="containerObj">
-        <option id="containerList" value="" disabled selected>Container Type</option>
-    </select>
-    <input type="number" placeholder="x-coordinate" ng-model="locObj.x_coordinate" />
-    <input type="number" placeholder="y-coordinate" ng-model="locObj.y_coordinate" />
-    <input type="number" placeholder="z-coordinate" ng-model="locObj.z_coordinate" />
-    <select id="locationList" ng-options="location as location.description for location in locations" ng-model="locationParentObj">
-        <option id="locationList" value="" disabled selected>Parent Location</option>
-    </select>
-    <input type="submit" value="Submit" ng-click="createLocation()"/>
-    <input type="reset" value="Cancel"  ng-click="hideLocationModal()"/>
-</form>
+<div class="modal-wrapper-location">
+    <div class="header-location">
+        <div class="header-text">Create a Location</div>
+        <div class="closing-x" ng-click="hideLocationModal()">X</div>
+    </div>
+    <form id="createLocationForm" class="form-wrapper">
+        <div class="input-wrapper">
+            <select class="modal-input" id="classificationList" ng-options="locClass as locClass.name for locClass in locClasses" ng-model="locClassObj">
+                <option id="classificationList" value="" disabled selected>Classification</option>
+            </select>
+            <div class="modal-label">Storage Type</div>
+        </div>
+        <div class="input-wrapper">
+            <input type="text" class="modal-input" ng-model="locObj.description" required/>
+            <div class="modal-label">Description</div>
+        </div>
+        <div class="input-wrapper">
+            <select class="modal-input" id="containerList" ng-options="container as container.name for container in containers" ng-model="containerObj">
+                <option id="containerList" value="" disabled selected>Container Type</option>
+            </select>
+            <div class="modal-label">Container</div>
+        </div>
+        <div class="loc-coordinates-wrapper">
+            <div class="loc-coordinates-input-wrapper">
+                <input type="number" class="loc-coordinates-input" ng-model="locObj.x_coordinate" />
+                <div class="loc-coordinates-label">x</div>
+            </div>
+            <div class="loc-coordinates-input-wrapper">
+                <input type="number" class="loc-coordinates-input" ng-model="locObj.y_coordinate" />
+                <div class="loc-coordinates-label">y</div>
+            </div>
+            <div class="loc-coordinates-input-wrapper">
+                <input type="number" class="loc-coordinates-input" ng-model="locObj.z_coordinate" />
+                <div class="loc-coordinates-label">z</div>
+            </div>
+            <div class="loc-coordinates-title">Coordinates</div>
+        </div>
+        <div class="input-wrapper last-input-wrapper">
+            <select class="modal-input" id="locationList" ng-options="location as location.description for location in locations" ng-model="locationParentObj">
+                <option id="locationList" value="" disabled selected>Parent Location</option>
+            </select>
+            <div class="modal-label">Parent Loc.</div>
+        </div>
+        <div class="modal-controls-wrapper">
+            <input type="submit" value="Create" class="modal-controls" id="addData" ng-click="createLocation()">
+            <input type="reset" value="Clear" class="modal-controls">
+        </div>
+    </form>
+</div>

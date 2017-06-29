@@ -121,10 +121,6 @@
             <div class="ci-7-a">Track-Bys</div>
             <div class="ci-7-c"></div>
         </div>
-        <div ng-repeat="trackby in trackbys" class="ci-8">
-            <input class="item-input" type="text" value="" ng-model="trackbyValues[trackby.id]">
-            <div class="ci-8-b item-label">{{trackby.trackby_name}}</div>
-        </div>
         <div class="ci-8">
             <input class="item-input" id="tb-times" type="number" min="0" id="access-days" placeholder="time(s)" ng-model="itemCreateObj.af_time">
             <p id="per">per</p>
@@ -135,6 +131,10 @@
                 <option>Year</option>
             </select>
             <div id="ci-24-b" class="item-label">Access</div>
+        </div>
+        <div ng-repeat="trackby in trackbys" class="ci-8">
+            <input class="item-input" type="text" value="" ng-model="trackbyValues[trackby.id]">
+            <div class="ci-8-b item-label">{{trackby.trackby_name}}</div>
         </div>
     </div>
     <div class="modal-footer">

@@ -29,11 +29,14 @@ angular.module('app').controller('mainCtrl', function ($scope, $interval, authSe
     $scope.showItemsModal = () => {
         modalService.refreshWindow()
         $scope.modalShownItems = true
+        modalService.refreshWindow()
     }
     $scope.showContainerModal = () => {
         modalService.refreshWindow()
         $scope.modalShownContainer = true
     }
+    $scope.showLocationModal = () => $scope.modalShownLocation = true
+    
 
 
 

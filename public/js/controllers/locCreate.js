@@ -7,9 +7,11 @@ angular.module('app').controller('locCreate', function ($scope, locCreateSrv, co
     $scope.locListServiceTest = locationsListSrv.locListServiceTest
 
     // »»»»»»»»»»»»»»»»»»»║  MODAL CONTROLS
-    $scope.modalShownLocation = false
-    $scope.showLocationModal = () => $scope.modalShownLocation = true
-    $scope.hideLocationModal = () => $scope.modalShownLocation = false
+    $scope.hideLocationModal = () => {
+        $scope.clearForm()
+        $scope.locObj = {}
+        $scope.$parent.modalShownLocation = false
+    }
 
     // »»»»»»»»»»»»»»»»»»»║ CLEAR FORM
     $scope.clearForm = () => document.getElementById("createLocationForm").reset()

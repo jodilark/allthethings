@@ -3,11 +3,11 @@
 
 // =============== PAGE STYLES
 // _____:main-modal-wrapper
-    .modal-wrapper-container {
+    .modal-wrapper-location {
         @include modal-wrapper-storage;
     }
 // ______:modal-headers
-    .header-container {
+    .header-location {
         @include box-tester;
         @include modal-header-wrapper;
     }
@@ -42,22 +42,31 @@
     .modal-controls {
         @include modal-controls;
     }
-//_____: modal-grid
-    .modal-grid-wrapper {
-        position: relative;
+//_____: loc-coordinates
+    .loc-coordinates-wrapper {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        align-items: center;
+        padding: 5px 10px;
+        width: 100%;
     }
-    #container-grid {
-        height: 368px;
+    .loc-coordinates-input-wrapper {
+        display: flex;
+        flex-direction: row;
+        height: 100%;
+        width: 172px;
     }
-    .ui-grid-viewport {
-        overflow-x: hidden !important;
+    .loc-coordinates-input {
+        height: 25px;
+        width: 100%;
     }
-    .grid-delete {
-        background: lightblue;
-        z-index: 2002;
-        position: absolute;
-        top: 10;
-        height: 30px;
-        width: 30px;
-        cursor: pointer;        
+    .loc-coordinates-label {
+        margin: 5px 10px 0px 5px;
+        line-height: 25px; 
+    }
+    .loc-coordinates-title {
+        margin-top: 10px;
+        line-height: 25px;
+        width: 166px;         
     }
