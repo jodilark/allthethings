@@ -4,5 +4,5 @@ angular.module('app').service('trackByGetSrv', function ($http) {
 
     // // »»»»»»»»»»»»»»»»»»»║ ENDPOINTS
     // ...................  get trackbys
-    this.getTrackByList = () => ($http.get('http://localhost:3000/api/trackbys/'))
+    this.getTrackByList = () => ($http.get('/api/trackbys/'))
 })

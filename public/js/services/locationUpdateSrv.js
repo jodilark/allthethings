@@ -6,7 +6,7 @@ angular.module('app').service('locationUpdateSrv', function ($http) {
     this.submitLocationInfo = (data) => {
         // console.log(`data to be sent ${JSON.stringify(data)}`)
         $http({
-            url: 'http://localhost:3000/api/locations/' + data.id,
+            url: '/api/locations/' + data.id,
             method: 'PUT',
             data: data
         })

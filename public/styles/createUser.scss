@@ -8,20 +8,21 @@
     }
 // ______:modal-headers
     .header-user {
-        @include box-tester;
         @include modal-header-wrapper;
     }
     .header-text {
-        @include box-tester;
         @include modal-header-text;
     }
     .closing-x {
-        @include box-tester;
         @include modal-closin-x;
     }
 // _____: modal-form-section
-    .form-wrapper {
-        @include form-wrapper
+    #userCreateForm {
+        width: 100%;
+        // border: 1px solid blue;
+        display: flex;
+        flex-direction: column;
+        padding: 0px;
     }
     .input-wrapper {
         @include input-wrapper
@@ -41,4 +42,14 @@
     }
     .modal-controls {
         @include modal-controls;
+    }
+    .filler-wrapper {
+        height: 46px;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        align-items: center;
+        // border: 1px solid green;
+        padding: 0px 10px;
     }

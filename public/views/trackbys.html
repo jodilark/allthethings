@@ -43,7 +43,9 @@
     </div>
     </form>
     <div class="tb-1-c">
-        <div title="Delete" class="tb-delete" id="tba9" ng-click="delete()" ng-disabled="enableDelete != false"></div>
+        <div title="Delete" id="tba9" ng-click="delete()" ng-disabled="enableDelete != false">
+            <i class="fa fa-trash" aria-hidden="true"></i>
+        </div>
         <div id="trackby-grid" class="mytbgrid" ui-grid="gridOptions" ui-grid-selection ui-grid-edit></div>
     </div>
 </div>

@@ -1,0 +1,46 @@
+// <style>
+    body .auth0-lock.auth0-lock .auth0-lock-cred-pane {
+       background: rgba(173, 216, 230, .7); 
+    }
+    body .auth0-lock.auth0-lock .auth0-lock-overlay {
+       background: url('https://fthmb.tqn.com/RFNzoVWbP2RBJq5gvDweq2hSoQ4=/1500x1127/filters:no_upscale()/about/Organized-home-office-56a4a8763df78cf772838d2b.jpg');
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
+    body .auth0-lock.auth0-lock .auth0-lock-header-logo {
+        display: none;
+    }
+    body .auth0-lock-header {
+        padding: 27px 0px !important;
+        height: 75px !important;
+        color: #f8f8f8 !important;
+    }
+    body .auth0-lock-header-bg {
+        background-color: #9c3d63 !important;
+    }  
+    body .auth0-lock.auth0-lock .auth0-lock-tabs {
+        display: none !important;
+    }
+    body .auth0-lock-social-button[data-provider="fitbit"] {
+       width: 40px !important;
+       border: 1px solid #555 !important;
+    } 
+    body .auth0-lock-social-button[data-provider^="google"] {
+       width: 40px !important;
+       border: 1px solid #555 !important;
+    }
+    body .auth0-lock-social-buttons-container {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+    }
+    body .auth0-lock.auth0-lock .auth0-lock-social-button.auth0-lock-social-big-button {
+      margin: 0px 5px !important; 
+    }
+    body .auth0-lock-submit{
+        background: #595C80 !important;
+    }  
+    
+    
+//   </style>

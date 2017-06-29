@@ -12,11 +12,9 @@
 
 // ______:modal-headers
     .header-trackby {
-        @include box-tester;
         @include modal-header-wrapper;
     }
     .header-text {
-        @include box-tester;
         height: 100%;
         display: inline;
         line-height: 27px;
@@ -28,7 +26,6 @@
         background: black;
     }
     .closing-x {
-        @include box-tester;
         height: 35px;
         flex: .15;
         line-height: 30px;
@@ -41,12 +38,8 @@
 
 // ............... trackby page
     .tb-1-c {
-        border: 1px solid blue;
-        // height: 300px;
         flex: 1;
         width: 100%;
-        // position: relative;
-        // padding: 10px;
     }
     .tb-delete {
         width: 65px;
@@ -54,7 +47,7 @@
     }
 
     #tba9 {
-        background: lightblue;
+        // background: lightblue;
         z-index: 2002;
         position: absolute;
         top: 10;

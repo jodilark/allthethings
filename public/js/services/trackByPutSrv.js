@@ -6,7 +6,7 @@ angular.module('app').service('trackByPutSrv', function ($http) {
     // ...................  update trackbys
     this.updateTrackBy = (id, data) => {
         $http({
-            url: 'http://localhost:3000/api/trackbys/' + id,
+            url: '/api/trackbys/' + id,
             method: 'PUT',
             data: data
         })

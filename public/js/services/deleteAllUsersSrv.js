@@ -5,7 +5,7 @@ angular.module('app').service('deleteAllUsersSrv', function ($http) {
     // »»»»»»»»»»»»»»»»»»»║ ENDPOINTS
     this.deleteAllUsers = function () {
         $http({
-            url: 'http://localhost:3000/api/user',
+            url: '/api/user',
             method: 'DELETE'
         }).then((httpResponse) => console.log('response:', JSON.stringify(httpResponse)))
     }

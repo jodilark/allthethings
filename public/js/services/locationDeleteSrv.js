@@ -6,7 +6,7 @@ angular.module('app').service('locationDeleteSrv', function ($http) {
     // ...................  delete loc_classes
     this.deleteLocation = (id) => {
         $http({
-            url: 'http://localhost:3000/api/locations/' + id,
+            url: '/api/locations/' + id,
             method: 'DELETE'
         })
     }

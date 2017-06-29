@@ -4,11 +4,11 @@ angular.module('app').service('locClassSrv', function ($http) {
 
     // // »»»»»»»»»»»»»»»»»»»║ ENDPOINTS
     // ...................  get loc_classes
-    this.getLocClassesList = () => ($http.get('http://localhost:3000/api/loc_classes'))
+    this.getLocClassesList = () => ($http.get('/api/loc_classes'))
     // ...................  create loc_classes
     this.createLocClassObj = (data) => {
         $http({
-            url: 'http://localhost:3000/api/loc_classes',
+            url: '/api/loc_classes',
             method: 'POST',
             data: data
         })
@@ -16,7 +16,7 @@ angular.module('app').service('locClassSrv', function ($http) {
     // ...................  update loc_classes
     this.updateLocClass = (id, data) => {
         $http({
-            url: 'http://localhost:3000/api/loc_classes/' + id,
+            url: '/api/loc_classes/' + id,
             method: 'PUT',
             data: data
         })
@@ -24,7 +24,7 @@ angular.module('app').service('locClassSrv', function ($http) {
     // ...................  delete loc_classes
     this.deleteLocClass = (id) => {
         $http({
-            url: 'http://localhost:3000/api/loc_classes/' + id,
+            url: '/api/loc_classes/' + id,
             method: 'DELETE'
         })
     }

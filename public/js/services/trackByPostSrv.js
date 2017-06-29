@@ -10,7 +10,7 @@ angular.module('app').service('trackByPostSrv', function ($http) {
         }
         else {
             $http({
-                url: 'http://localhost:3000/api/trackbys/',
+                url: '/api/trackbys/',
                 method: 'POST',
                 data: data
             })

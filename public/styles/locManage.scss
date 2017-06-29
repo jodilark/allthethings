@@ -3,6 +3,9 @@
 
 // =============== PAGE STYLES
 // ............... loc manage page
+#container {
+    z-index: 3000;
+}
     .page-wrapper {
     @include box-tester;
     height: 100vh;

@@ -82,6 +82,7 @@ input, select {
 *, *:before, *:after {
   box-sizing: border-box; }
 
+@import url("https://fonts.googleapis.com/css?family=Fresca|Josefin+Sans|Lobster+Two|Source+Code+Pro");
 .modal-wrapper-container {
   display: flex;
   flex-direction: column;
@@ -89,8 +90,6 @@ input, select {
   width: 100%; }
 
 .header-container {
-  border: 1px solid red;
-  background: rgba(200, 0, 50, 0.1);
   height: 35px;
   width: 100%;
   display: flex;
@@ -101,8 +100,6 @@ input, select {
   background: lightblue; }
 
 .header-text {
-  border: 1px solid red;
-  background: rgba(200, 0, 50, 0.1);
   height: 100%;
   display: inline;
   line-height: 27px;
@@ -114,8 +111,6 @@ input, select {
   background: black; }
 
 .closing-x {
-  border: 1px solid red;
-  background: rgba(200, 0, 50, 0.1);
   height: 100%;
   flex: .15;
   line-height: 30px;
@@ -127,7 +122,6 @@ input, select {
 
 .form-wrapper {
   width: 100%;
-  border: 1px solid blue;
   display: flex;
   flex-direction: column;
   padding: 10px 0px; }
@@ -139,7 +133,6 @@ input, select {
   flex-direction: row;
   justify-content: flex-end;
   align-items: center;
-  border: 1px solid green;
   padding: 0px 10px; }
 
 .last-input-wrapper {
@@ -156,7 +149,6 @@ input, select {
   width: 156px; }
 
 .modal-controls-wrapper {
-  border: 1px solid green;
   height: 30px;
   width: 100%;
   background-image: url("../styles/img/texture.jpg");
@@ -181,15 +173,7 @@ input, select {
 .ui-grid-viewport {
   overflow-x: hidden !important; }
 
-.grid-delete {
-  background: lightblue;
-  z-index: 2002;
-  position: absolute;
-  top: 10;
-  height: 30px;
-  width: 30px;
-  cursor: pointer; }
-
+@import url("https://fonts.googleapis.com/css?family=Fresca|Josefin+Sans|Lobster+Two|Source+Code+Pro");
 .item-input {
   height: 25px;
   width: 100%; }
@@ -208,17 +192,12 @@ input, select {
   width: 100%; }
 
 .scrollContainer {
-  border: 1px solid red;
-  background: rgba(200, 0, 50, 0.1);
-  border: 2px solid blue;
   height: 100%;
   width: 100%;
   overflow-y: scroll;
   padding-top: 5px; }
 
 .ci-1 {
-  border: 1px solid red;
-  background: rgba(200, 0, 50, 0.1);
   z-index: 1;
   height: 35px;
   width: 100%;
@@ -230,8 +209,6 @@ input, select {
   background: lightblue; }
 
 .ci-1-a {
-  border: 1px solid red;
-  background: rgba(200, 0, 50, 0.1);
   height: 100%;
   display: inline;
   line-height: 27px;
@@ -243,8 +220,6 @@ input, select {
   background: black; }
 
 .ci-1-b {
-  border: 1px solid red;
-  background: rgba(200, 0, 50, 0.1);
   height: 100%;
   flex: .15;
   line-height: 30px;
@@ -255,8 +230,6 @@ input, select {
   color: #333; }
 
 .ci-2 {
-  border: 1px solid red;
-  background: rgba(200, 0, 50, 0.1);
   height: 35px;
   width: 100%;
   display: flex;
@@ -279,8 +252,6 @@ bc-scanner {
   cursor: pointer; }
 
 .ci-3 {
-  border: 1px solid red;
-  background: rgba(200, 0, 50, 0.1);
   height: 35px;
   width: 100%;
   display: flex;
@@ -336,7 +307,7 @@ bc-scanner {
 
 .sw-1-a {
   width: 100%;
-  min-height: 122px;
+  min-height: 220px;
   background: rgba(0, 0, 0, 0.7); }
 
 .sw-1-b {
@@ -348,15 +319,13 @@ bc-scanner {
 .scanBar {
   z-index: 10000 !important;
   position: absolute;
-  top: 194px;
+  top: 294px;
   left: -22px;
   width: 320px;
   height: 3px;
   background: red; }
 
 .ci-4 {
-  border: 1px solid red;
-  background: rgba(200, 0, 50, 0.1);
   height: 35px;
   width: 100%;
   display: flex;
@@ -366,8 +335,6 @@ bc-scanner {
   padding: 0px 10px; }
 
 .ci-5 {
-  border: 1px solid red;
-  background: rgba(200, 0, 50, 0.1);
   height: 35px;
   width: 100%;
   display: flex;
@@ -377,8 +344,6 @@ bc-scanner {
   padding: 0px 10px; }
 
 .ci-6 {
-  border: 1px solid red;
-  background: rgba(200, 0, 50, 0.1);
   height: 35px;
   width: 100%;
   display: flex;
@@ -388,8 +353,6 @@ bc-scanner {
   padding: 0px 10px; }
 
 .ci-7 {
-  border: 1px solid red;
-  background: rgba(200, 0, 50, 0.1);
   height: 35px;
   width: 100%;
   display: flex;
@@ -418,8 +381,6 @@ bc-scanner {
   padding-left: 10px; }
 
 .ci-8 {
-  border: 1px solid red;
-  background: rgba(200, 0, 50, 0.1);
   height: 35px;
   width: 100%;
   display: flex;
@@ -450,8 +411,6 @@ bc-scanner {
   margin-left: 10px; }
 
 .ci-11 {
-  border: 1px solid red;
-  background: rgba(200, 0, 50, 0.1);
   height: 35px;
   width: 100%;
   display: flex;
@@ -461,8 +420,6 @@ bc-scanner {
   padding: 0px 10px; }
 
 .ci-12 {
-  border: 1px solid red;
-  background: rgba(200, 0, 50, 0.1);
   height: 35px;
   width: 100%;
   display: flex;
@@ -475,8 +432,6 @@ bc-scanner {
   margin-left: 15px; }
 
 .ci-13 {
-  border: 1px solid red;
-  background: rgba(200, 0, 50, 0.1);
   height: 35px;
   width: 100%;
   display: flex;
@@ -489,8 +444,6 @@ bc-scanner {
   margin-left: 36px; }
 
 .ci-14 {
-  border: 1px solid red;
-  background: rgba(200, 0, 50, 0.1);
   height: 100%;
   width: 100%;
   display: flex;
@@ -510,7 +463,6 @@ bc-scanner {
   width: 169px; }
 
 .modal-footer {
-  border: 1px solid green;
   height: 30px;
   width: 100%;
   background-image: url("../styles/img/texture.jpg");
@@ -526,6 +478,7 @@ bc-scanner {
   cursor: pointer;
   background: gray; }
 
+@import url("https://fonts.googleapis.com/css?family=Fresca|Josefin+Sans|Lobster+Two|Source+Code+Pro");
 .modal-wrapper-location {
   display: flex;
   flex-direction: column;
@@ -533,8 +486,6 @@ bc-scanner {
   width: 100%; }
 
 .header-location {
-  border: 1px solid red;
-  background: rgba(200, 0, 50, 0.1);
   height: 35px;
   width: 100%;
   display: flex;
@@ -545,8 +496,6 @@ bc-scanner {
   background: lightblue; }
 
 .header-text {
-  border: 1px solid red;
-  background: rgba(200, 0, 50, 0.1);
   height: 100%;
   display: inline;
   line-height: 27px;
@@ -558,8 +507,6 @@ bc-scanner {
   background: black; }
 
 .closing-x {
-  border: 1px solid red;
-  background: rgba(200, 0, 50, 0.1);
   height: 100%;
   flex: .15;
   line-height: 30px;
@@ -571,7 +518,6 @@ bc-scanner {
 
 .form-wrapper {
   width: 100%;
-  border: 1px solid blue;
   display: flex;
   flex-direction: column;
   padding: 10px 0px; }
@@ -583,7 +529,6 @@ bc-scanner {
   flex-direction: row;
   justify-content: flex-end;
   align-items: center;
-  border: 1px solid green;
   padding: 0px 10px; }
 
 .last-input-wrapper {
@@ -600,7 +545,6 @@ bc-scanner {
   width: 156px; }
 
 .modal-controls-wrapper {
-  border: 1px solid green;
   height: 30px;
   width: 100%;
   background-image: url("../styles/img/texture.jpg");
@@ -643,6 +587,7 @@ bc-scanner {
   line-height: 25px;
   width: 166px; }
 
+@import url("https://fonts.googleapis.com/css?family=Fresca|Josefin+Sans|Lobster+Two|Source+Code+Pro");
 .modal-wrapper-user {
   display: flex;
   flex-direction: column;
@@ -650,8 +595,6 @@ bc-scanner {
   width: 100%; }
 
 .header-user {
-  border: 1px solid red;
-  background: rgba(200, 0, 50, 0.1);
   height: 35px;
   width: 100%;
   display: flex;
@@ -662,8 +605,6 @@ bc-scanner {
   background: lightblue; }
 
 .header-text {
-  border: 1px solid red;
-  background: rgba(200, 0, 50, 0.1);
   height: 100%;
   display: inline;
   line-height: 27px;
@@ -675,8 +616,6 @@ bc-scanner {
   background: black; }
 
 .closing-x {
-  border: 1px solid red;
-  background: rgba(200, 0, 50, 0.1);
   height: 100%;
   flex: .15;
   line-height: 30px;
@@ -686,12 +625,11 @@ bc-scanner {
   cursor: pointer;
   color: #333; }
 
-.form-wrapper {
+#userCreateForm {
   width: 100%;
-  border: 1px solid blue;
   display: flex;
   flex-direction: column;
-  padding: 10px 0px; }
+  padding: 0px; }
 
 .input-wrapper {
   height: 35px;
@@ -700,7 +638,6 @@ bc-scanner {
   flex-direction: row;
   justify-content: flex-end;
   align-items: center;
-  border: 1px solid green;
   padding: 0px 10px; }
 
 .last-input-wrapper {
@@ -717,7 +654,6 @@ bc-scanner {
   width: 156px; }
 
 .modal-controls-wrapper {
-  border: 1px solid green;
   height: 30px;
   width: 100%;
   background-image: url("../styles/img/texture.jpg");
@@ -733,6 +669,16 @@ bc-scanner {
   cursor: pointer;
   background: gray; }
 
+.filler-wrapper {
+  height: 46px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 0px 10px; }
+
+@import url("https://fonts.googleapis.com/css?family=Fresca|Josefin+Sans|Lobster+Two|Source+Code+Pro");
 .page-wrapper {
   border: 1px solid red;
   background: rgba(200, 0, 50, 0.1);
@@ -766,6 +712,7 @@ bc-scanner {
 #chart3 {
   background: lightcoral; }
 
+@import url("https://fonts.googleapis.com/css?family=Fresca|Josefin+Sans|Lobster+Two|Source+Code+Pro");
 .home-body-wrapper {
   border: 1px solid red;
   background: rgba(200, 0, 50, 0.1);
@@ -999,6 +946,7 @@ bc-scanner {
 #cbw4 {
   background: lightyellow; }
 
+@import url("https://fonts.googleapis.com/css?family=Fresca|Josefin+Sans|Lobster+Two|Source+Code+Pro");
 .page-wrapper-items {
   border: 1px solid red;
   background: rgba(200, 0, 50, 0.1);
@@ -1024,6 +972,52 @@ bc-scanner {
   left: 85;
   height: 30px;
   width: 30px; }
+
+body .auth0-lock.auth0-lock .auth0-lock-cred-pane {
+  background: rgba(173, 216, 230, 0.7); }
+
+body .auth0-lock.auth0-lock .auth0-lock-overlay {
+  background: url("https://fthmb.tqn.com/RFNzoVWbP2RBJq5gvDweq2hSoQ4=/1500x1127/filters:no_upscale()/about/Organized-home-office-56a4a8763df78cf772838d2b.jpg");
+  background-size: cover;
+  background-repeat: no-repeat; }
+
+body .auth0-lock.auth0-lock .auth0-lock-header-logo {
+  display: none; }
+
+body .auth0-lock-header {
+  padding: 27px 0px !important;
+  height: 75px !important;
+  color: #f8f8f8 !important; }
+
+body .auth0-lock-header-bg {
+  background-color: #9c3d63 !important; }
+
+body .auth0-lock.auth0-lock .auth0-lock-tabs {
+  display: none !important; }
+
+body .auth0-lock-social-button[data-provider="fitbit"] {
+  width: 40px !important;
+  border: 1px solid #555 !important; }
+
+body .auth0-lock-social-button[data-provider^="google"] {
+  width: 40px !important;
+  border: 1px solid #555 !important; }
+
+body .auth0-lock-social-buttons-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center; }
+
+body .auth0-lock.auth0-lock .auth0-lock-social-button.auth0-lock-social-big-button {
+  margin: 0px 5px !important; }
+
+body .auth0-lock-submit {
+  background: #595C80 !important; }
+
+@import url("https://fonts.googleapis.com/css?family=Fresca|Josefin+Sans|Lobster+Two|Source+Code+Pro");
+#container {
+  z-index: 3000; }
 
 .page-wrapper {
   border: 1px solid red;
@@ -1051,6 +1045,7 @@ bc-scanner {
   height: 30px;
   width: 30px; }
 
+@import url("https://fonts.googleapis.com/css?family=Fresca|Josefin+Sans|Lobster+Two|Source+Code+Pro");
 .modal-wrapper-storage {
   display: flex;
   flex-direction: column;
@@ -1058,8 +1053,6 @@ bc-scanner {
   width: 100%; }
 
 .header-storage {
-  border: 1px solid red;
-  background: rgba(200, 0, 50, 0.1);
   height: 35px;
   width: 100%;
   display: flex;
@@ -1070,8 +1063,6 @@ bc-scanner {
   background: lightblue; }
 
 .header-text {
-  border: 1px solid red;
-  background: rgba(200, 0, 50, 0.1);
   height: 100%;
   display: inline;
   line-height: 27px;
@@ -1083,8 +1074,6 @@ bc-scanner {
   background: black; }
 
 .closing-x {
-  border: 1px solid red;
-  background: rgba(200, 0, 50, 0.1);
   height: 100%;
   flex: .15;
   line-height: 30px;
@@ -1096,7 +1085,6 @@ bc-scanner {
 
 .form-wrapper {
   width: 100%;
-  border: 1px solid blue;
   display: flex;
   flex-direction: column;
   padding: 10px 0px; }
@@ -1108,7 +1096,6 @@ bc-scanner {
   flex-direction: row;
   justify-content: flex-end;
   align-items: center;
-  border: 1px solid green;
   padding: 0px 10px; }
 
 .last-input-wrapper {
@@ -1125,7 +1112,6 @@ bc-scanner {
   width: 156px; }
 
 .modal-controls-wrapper {
-  border: 1px solid green;
   height: 30px;
   width: 100%;
   background-image: url("../styles/img/texture.jpg");
@@ -1151,7 +1137,6 @@ bc-scanner {
   overflow-x: hidden !important; }
 
 .grid-delete {
-  background: lightblue;
   z-index: 2002;
   position: absolute;
   top: 10;
@@ -1159,6 +1144,7 @@ bc-scanner {
   width: 30px;
   cursor: pointer; }
 
+@import url("https://fonts.googleapis.com/css?family=Fresca|Josefin+Sans|Lobster+Two|Source+Code+Pro");
 html, input, textarea, button, select {
   background: #242424;
   color: #b6b6b6; }
@@ -1328,8 +1314,6 @@ div.test-results {
   padding-top: 63px; }
 
 .nw-1 {
-  border: 1px solid red;
-  background: rgba(200, 0, 50, 0.1);
   height: 100%;
   width: 100%;
   margin: 20px 0px;
@@ -1340,10 +1324,15 @@ div.test-results {
 .nw-asset {
   margin: 5px 0px;
   width: 65px;
-  height: 65px; }
+  height: 65px;
+  border: 3px solid white;
+  border-radius: 10px;
+  background: #2E5DAA; }
 
-#nwa1 {
-  margin: 0px 0px 5px; }
+.nw-asset:hover {
+  width: 70px;
+  height: 70px;
+  background: #9c3d63; }
 
 .rating {
   color: #a9a9a9;
@@ -1373,6 +1362,21 @@ ul.rating {
 .manageItemsGrid {
   width: 100%; }
 
+.fa-trash {
+  margin-left: 5px;
+  color: #595C80;
+  font-size: 24px !important; }
+
+.fa-trash:hover {
+  color: #333;
+  margin-left: 3px;
+  font-size: 31px !important; }
+
+.fa-user.leftNavButton {
+  font-size: 46px !important;
+  color: #f8f8f8; }
+
+@import url("https://fonts.googleapis.com/css?family=Fresca|Josefin+Sans|Lobster+Two|Source+Code+Pro");
 .modal-wrapper-trackby {
   display: flex;
   flex-direction: column;
@@ -1380,8 +1384,6 @@ ul.rating {
   width: 100%; }
 
 .header-trackby {
-  border: 1px solid red;
-  background: rgba(200, 0, 50, 0.1);
   height: 35px;
   width: 100%;
   display: flex;
@@ -1392,8 +1394,6 @@ ul.rating {
   background: lightblue; }
 
 .header-text {
-  border: 1px solid red;
-  background: rgba(200, 0, 50, 0.1);
   height: 100%;
   display: inline;
   line-height: 27px;
@@ -1405,8 +1405,6 @@ ul.rating {
   background: black; }
 
 .closing-x {
-  border: 1px solid red;
-  background: rgba(200, 0, 50, 0.1);
   height: 35px;
   flex: .15;
   line-height: 30px;
@@ -1417,7 +1415,6 @@ ul.rating {
   color: #333; }
 
 .tb-1-c {
-  border: 1px solid blue;
   flex: 1;
   width: 100%; }
 
@@ -1426,7 +1423,6 @@ ul.rating {
   height: 30px; }
 
 #tba9 {
-  background: lightblue;
   z-index: 2002;
   position: absolute;
   top: 10;
@@ -1470,7 +1466,6 @@ ul.rating {
   margin-bottom: 5px; }
 
 .tb-modal-footer {
-  border: 1px solid green;
   height: 30px;
   width: 100%;
   background-image: url("../styles/img/texture.jpg");
@@ -1486,6 +1481,7 @@ ul.rating {
   cursor: pointer;
   background: gray; }
 
+@import url("https://fonts.googleapis.com/css?family=Fresca|Josefin+Sans|Lobster+Two|Source+Code+Pro");
 .page-wrapper {
   border: 1px solid red;
   background: rgba(200, 0, 50, 0.1);

@@ -16,24 +16,11 @@
     background: rgba(0, 0, 0, .1);
   }
 
-
+// body {
+//   background: url('../styles/img/texture2.png')
+// }
 
 // _____:modals
-  // .closing-x {
-  //     @include box-tester;
-  //     height: 30px;
-  //     flex: .15;
-  //     line-height: 30px;
-  //     font-size: 20px;
-  //     text-align: right;
-  //     font-weight: bold;
-  //     cursor: pointer;
-  //     color: blue;
-  //     position: absolute;
-  //     top: 0px;
-  //     right: 10px;
-  // }
-
   .miniModal {
     @include box-tester;
     z-index:10000;
@@ -197,7 +184,6 @@
     padding-top: 63px;
   }
   .nw-1 {
-    @include box-tester;
     height: 100%;
     width: 100%;
     margin: 20px 0px;
@@ -210,10 +196,18 @@
     margin: 5px 0px;
     width: 65px;
     height: 65px;
+    border: 3px solid white;
+    border-radius: 10px;
+    background: $quaternary;
   }
-  #nwa1 {
-    margin: 0px 0px 5px;
+  .nw-asset:hover {
+    
+    width: 70px;
+    height: 70px;
+    background: $secondary-color;
   }
+//_____:top nav
+
 
 // create users page
   .rating{
@@ -244,4 +238,20 @@
 // manage items page
   .manageItemsGrid {
     width: 100%;
+  }
+
+// _____: icons
+  .fa-trash {
+    margin-left: 5px;
+    color: $primary-color;
+    font-size: 24px !important;
+  }
+  .fa-trash:hover {    
+    color: #333;
+    margin-left: 3px;
+    font-size: 31px !important;
+  }
+  .fa-user.leftNavButton {
+    font-size: 46px !important;
+    color: #f8f8f8;
   }

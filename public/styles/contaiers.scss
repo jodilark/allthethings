@@ -8,15 +8,12 @@
     }
 // ______:modal-headers
     .header-container {
-        @include box-tester;
         @include modal-header-wrapper;
     }
     .header-text {
-        @include box-tester;
         @include modal-header-text;
     }
     .closing-x {
-        @include box-tester;
         @include modal-closin-x;
     }
 // _____: modal-form-section
@@ -51,13 +48,4 @@
     }
     .ui-grid-viewport {
         overflow-x: hidden !important;
-    }
-    .grid-delete {
-        background: lightblue;
-        z-index: 2002;
-        position: absolute;
-        top: 10;
-        height: 30px;
-        width: 30px;
-        cursor: pointer;        
     }

@@ -1,8 +1,18 @@
 // »»»»»»»»»»»»»»»»»»»║ FONTS
+@import url('https://fonts.googleapis.com/css?family=Fresca|Josefin+Sans|Lobster+Two|Source+Code+Pro');
 
 // »»»»»»»»»»»»»»»»»»»║ VARIABLES
 // ...........home
 $wrapper-widths: 1380px;
+$primary-color: #595C80;
+$secondary-color: #9c3d63;
+$tertiary-color: #B0AFB0;
+$quaternary: #2E5DAA;
+$main-title-font: 'Lobster Two', cursive;
+$breadcrumb-font: 'Josefin Sans', sans-serif;
+$title-font: 'Fresca', sans-serif;
+$regular-font: 'Source Code Pro', monospace;
+
 
 // »»»»»»»»»»»»»»»»»»»║ TESTS
 @mixin box-tester {
@@ -103,7 +113,7 @@ $wrapper-widths: 1380px;
 // form
     @mixin form-wrapper {
         width: 100%;
-        border: 1px solid blue;
+        // border: 1px solid blue;
         display: flex;
         flex-direction: column;
         padding: 10px 0px;
@@ -115,7 +125,6 @@ $wrapper-widths: 1380px;
         flex-direction: row;
         justify-content: flex-end;
         align-items: center;
-        border: 1px solid green;
         padding: 0px 10px;
     }
 // form-inputs
@@ -131,7 +140,6 @@ $wrapper-widths: 1380px;
     }   
 // modal-controls
     @mixin modal-controls-wrapper {
-        border: 1px solid green;
         height: 30px;
         width: 100%;
         background-image: url('../styles/img/texture.jpg');

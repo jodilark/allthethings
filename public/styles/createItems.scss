@@ -14,31 +14,23 @@
         width: 120px;
     }
     .create-item-wrapper {
-        // height: 498px;
-        // width: 100%;
         position: relative;
-        // padding-bottom: 30px;
-        // padding-top: 25px;
         display: flex;
         flex-direction: column;
         height: 100%;
         width: 100%;
     }
     .scrollContainer {
-        @include box-tester;
-        border: 2px solid blue;
         height: 100%;
         width: 100%;
         overflow-y: scroll;
         padding-top: 5px;
     }
     .ci-1 {
-        @include box-tester;
         z-index: 1;
         @include modal-header-wrapper;
     }
     .ci-1-a {
-        @include box-tester;
         height: 100%;
         display: inline;
         line-height: 27px;
@@ -50,7 +42,6 @@
         background: black;
     }
     .ci-1-b {
-        @include box-tester;
         height: 100%;
         flex: .15;
         line-height: 30px;
@@ -61,7 +52,6 @@
         color: #333;
     }
     .ci-2 {
-        @include box-tester;
         @include ci-input-containers;
     }
     bc-scanner {
@@ -78,7 +68,6 @@
         cursor: pointer;
     }
     .ci-3 {
-        @include box-tester;
         @include ci-input-containers;
         flex: 1;
     }
@@ -128,7 +117,7 @@
     }
     .sw-1-a {
         width: 100%;
-        min-height: 122px;
+        min-height: 220px;
         background: rgba(0, 0, 0, .7);
     }
     .sw-1-b {
@@ -140,26 +129,22 @@
     .scanBar {
         z-index: 10000 !important;
         position:absolute;
-        top: 194px;
+        top: 294px;
         left: -22px;
         width: 320px;
         height: 3px;
         background: red;
     }
     .ci-4 {
-        @include box-tester;
         @include ci-input-containers;
     }
     .ci-5 {
-        @include box-tester;
         @include ci-input-containers;       
     }
     .ci-6 {
-        @include box-tester;
         @include ci-input-containers;       
     }
     .ci-7 {
-        @include box-tester;
         @include ci-input-containers;
         height: 45px;                
     }
@@ -182,7 +167,6 @@
         padding-left: 10px
     }
     .ci-8 {
-        @include box-tester;
         @include ci-input-containers;
     }
     .ci-9 {
@@ -207,7 +191,6 @@
         margin-left: 10px;
     }
     .ci-11 {
-        @include box-tester;
         height: 35px;
         width: 100%;
         display: flex;
@@ -217,7 +200,6 @@
         padding: 0px 10px;
     }
     .ci-12 {
-        @include box-tester;
         height: 35px;
         width: 100%;
         display: flex;
@@ -230,7 +212,6 @@
         margin-left: 15px;
     }
     .ci-13 {
-        @include box-tester;
         height: 35px;
         width: 100%;
         display: flex;
@@ -243,7 +224,6 @@
         margin-left: 36px;
     }
     .ci-14 {
-        @include box-tester;
         height: 100%;
         width: 100%;
         display: flex;

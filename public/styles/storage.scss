@@ -8,15 +8,12 @@
     }
 // ______:modal-headers
     .header-storage {
-        @include box-tester;
         @include modal-header-wrapper;
     }
     .header-text {
-        @include box-tester;
         @include modal-header-text;
     }
     .closing-x {
-        @include box-tester;
         @include modal-closin-x;
     }
 // _____: modal-form-section
@@ -53,7 +50,7 @@
         overflow-x: hidden !important;
     }
     .grid-delete {
-        background: lightblue;
+        // background: lightblue;
         z-index: 2002;
         position: absolute;
         top: 10;

@@ -3,6 +3,6 @@ angular.module('app').service('locationsListSrv', function ($http) {
     this.locListServiceTest = 'the locationsListSrv is connected'
 
     // »»»»»»»»»»»»»»»»»»»║ ENDPOINTS
-    this.getLocationsList = () => ($http.get('http://localhost:3000/api/locations')) 
-    this.getLocationsCustomList = () => ($http.get('http://localhost:3000/api/locations/custom')) 
+    this.getLocationsList = () => ($http.get('/api/locations')) 
+    this.getLocationsCustomList = () => ($http.get('/api/locations/custom')) 
 })
