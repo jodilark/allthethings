@@ -2,43 +2,62 @@
 @import '_varsAndMixins';
 
 // =============== PAGE STYLES
-// ............... loc container page
-
-    .container-wrapper {
-        @include box-tester;
-        height: 100%;
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        padding: 10px;
+// _____:main-modal-wrapper
+    .modal-wrapper-container {
+        @include modal-wrapper-storage;
     }
-    #containerCreateForm {
+// ______:modal-headers
+    .header-container {
         @include box-tester;
-        width: 100%;
-        flex: .2;
-        display: flex;
-        flex-direction: row;
-        justify-content: flex-start;
-        align-items: center;
+        @include modal-header-wrapper;
     }
-    .contaier-grid-wrapper {
+    .header-text {
         @include box-tester;
-        flex: 1;
-        width: 100%;
+        @include modal-header-text;
+    }
+    .closing-x {
+        @include box-tester;
+        @include modal-closin-x;
+    }
+// _____: modal-form-section
+    .form-wrapper {
+        @include form-wrapper
+    }
+    .input-wrapper {
+        @include input-wrapper
+    }
+    .last-input-wrapper {
+        margin-bottom: 5px;
+    }
+//_____: modal-input
+    .modal-input {
+        @include modal-input;       
+    }
+    .modal-label {
+        @include modal-label;       
+    }
+    .modal-controls-wrapper {
+        @include modal-controls-wrapper;
+    }
+    .modal-controls {
+        @include modal-controls;
+    }
+//_____: modal-grid
+    .modal-grid-wrapper {
         position: relative;
     }
-    .myContainerGrid {
-        @include box-tester;
-        // height: 100%;
-        width: 100%;
-        
-        margin-bottom: 20px;
+    .myGrid {
+        height: 368px;
     }
-    #cont-delete {
+    .ui-grid-viewport {
+        overflow-x: hidden !important;
+    }
+    .grid-delete {
+        background: lightblue;
         z-index: 2002;
+        position: absolute;
+        top: 10;
         height: 30px;
         width: 30px;
-        position: absolute;
-        top: 0px;
+        cursor: pointer;        
     }

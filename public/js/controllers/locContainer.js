@@ -4,22 +4,10 @@ angular.module('app').controller('locContainer', function ($scope, $interval, co
     $scope.containerServiceTest = containerSrv.containerServiceTest
 
     // »»»»»»»»»»»»»»»»»»»║  MODAL CONTROLS
-    $scope.modalShownContainer = false
-    $scope.showContainerModal = () => {
-        $interval(function () {
-            var fireRefreshEventOnWindow = function () {
-                var evt = document.createEvent("HTMLEvents");
-                evt.initEvent('resize', true, false);
-                window.dispatchEvent(evt);
-            };
-            fireRefreshEventOnWindow();
-        }, 100, 1);
-        $scope.modalShownContainer = true
-    }
     $scope.hideContainerModal = () => {
-        $scope.modalShownContainer = false
         $scope.clearForm()
         $scope.container.name = ""
+        $scope.$parent.modalShownContainer = false
     }
 
     // »»»»»»»»»»»»»»»»»»»║ CLEAR FORM

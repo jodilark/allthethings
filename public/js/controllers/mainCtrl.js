@@ -26,10 +26,13 @@ angular.module('app').controller('mainCtrl', function ($scope, $interval, authSe
         modalService.refreshWindow()
         $scope.modalShownTrackby = true
     }
-
     $scope.showItemsModal = () => {
         modalService.refreshWindow()
         $scope.modalShownItems = true
+    }
+    $scope.showContainerModal = () => {
+        modalService.refreshWindow()
+        $scope.modalShownContainer = true
     }
 
 
