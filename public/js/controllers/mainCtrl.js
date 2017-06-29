@@ -36,6 +36,7 @@ angular.module('app').controller('mainCtrl', function ($scope, $interval, authSe
         $scope.modalShownContainer = true
     }
     $scope.showLocationModal = () => $scope.modalShownLocation = true
+    $scope.showUserModal = () => $scope.modalShownUser = true
     
 
 

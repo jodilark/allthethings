@@ -1,0 +1,44 @@
+// =============== IMPORT FILES
+@import '_varsAndMixins';
+
+// =============== PAGE STYLES
+// _____:main-modal-wrapper
+    .modal-wrapper-user {
+        @include modal-wrapper-storage;
+    }
+// ______:modal-headers
+    .header-user {
+        @include box-tester;
+        @include modal-header-wrapper;
+    }
+    .header-text {
+        @include box-tester;
+        @include modal-header-text;
+    }
+    .closing-x {
+        @include box-tester;
+        @include modal-closin-x;
+    }
+// _____: modal-form-section
+    .form-wrapper {
+        @include form-wrapper
+    }
+    .input-wrapper {
+        @include input-wrapper
+    }
+    .last-input-wrapper {
+        margin-bottom: 5px;
+    }
+//_____: modal-input
+    .modal-input {
+        @include modal-input;       
+    }
+    .modal-label {
+        @include modal-label;       
+    }
+    .modal-controls-wrapper {
+        @include modal-controls-wrapper;
+    }
+    .modal-controls {
+        @include modal-controls;
+    }

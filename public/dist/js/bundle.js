@@ -779,6 +779,9 @@ angular.module('app').controller('mainCtrl', function ($scope, $interval, authSe
     $scope.showLocationModal = function () {
         return $scope.modalShownLocation = true;
     };
+    $scope.showUserModal = function () {
+        return $scope.modalShownUser = true;
+    };
 
     //_________DASHBOARD TITLE
     $scope.pageTitle = "Dashboard";
@@ -960,12 +963,11 @@ angular.module('app').controller('userCreate', function ($scope, stateListSrv, c
     // »»»»»»»»»»»»»»»»»»»║  VARIABLES
 
     // »»»»»»»»»»»»»»»»»»»║  MODAL CONTROLS
-    $scope.modalShownUser = false;
-    $scope.showUserModal = function () {
-        return $scope.modalShownUser = true;
-    };
     $scope.hideUserModal = function () {
-        return $scope.modalShownUser = false;
+        $scope.clearForm();
+        $scope.userInfo = { "country_id": 1, "inactive": false };
+        $scope.$parent.modalShownUser = false;
+        console.log('got here');
     };
 
     // »»»»»»»»»»»»»»»»»»»║  GET STATES LIST
@@ -1304,7 +1306,7 @@ angular.module('app').directive('modalTrackDir', function (modalService) {
 angular.module('app').directive('modalUserCreateDir', function () {
     return {
         templateUrl: '../views/user_create.html',
-        scope: '=',
+        scope: {},
         controller: 'userCreate'
     };
 });
