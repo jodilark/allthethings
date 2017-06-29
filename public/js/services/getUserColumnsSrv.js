@@ -3,5 +3,5 @@ angular.module('app').service('getUserColumnsSrv', function ($http) {
     this.getUserColumnsSrvServiceTest = 'the getUserColumnsSrv is connected'
 
     // »»»»»»»»»»»»»»»»»»»║ ENDPOINTS
-    this.getColumnList = () => ($http.get('http://localhost:3000/api/user/columns'))
+    this.getColumnList = () => ($http.get('/api/user/columns'))
 })

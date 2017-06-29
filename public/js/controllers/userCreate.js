@@ -11,9 +11,12 @@ angular.module('app').controller('userCreate', function ($scope, stateListSrv, c
     // »»»»»»»»»»»»»»»»»»»║  VARIABLES
 
     // »»»»»»»»»»»»»»»»»»»║  MODAL CONTROLS
-    $scope.modalShownUser = false
-    $scope.showUserModal = () => $scope.modalShownUser = true
-    $scope.hideUserModal = () => $scope.modalShownUser = false
+    $scope.hideUserModal = () => {
+        $scope.clearForm()
+        $scope.userInfo = { "country_id": 1, "inactive": false }
+        $scope.$parent.modalShownUser = false
+        console.log('got here')
+    }
 
     // »»»»»»»»»»»»»»»»»»»║  GET STATES LIST
     $scope.states = () => stateListSrv.getStatesList().then((response) => $scope.stateName = response.data)

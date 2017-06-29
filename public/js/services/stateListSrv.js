@@ -3,5 +3,5 @@ angular.module('app').service('stateListSrv', function ($http) {
     this.serviceTest = 'the stateListSrv is connected'
 
     // »»»»»»»»»»»»»»»»»»»║ ENDPOINTS
-    this.getStatesList = () => ($http.get('http://localhost:3000/api/states'))
+    this.getStatesList = () => ($http.get('/api/states'))
 })

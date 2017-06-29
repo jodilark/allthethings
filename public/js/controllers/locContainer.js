@@ -1,12 +1,14 @@
-angular.module('app').controller('locContainer', function ($scope, containerSrv, uiGridConstants, ) {
+angular.module('app').controller('locContainer', function ($scope, $interval, containerSrv, uiGridConstants, ) {
     // »»»»»»»»»»»»»»»»»»»║  TESTS 
     $scope.locContainerTest = 'locContainerTest controller is connected and operational'
     $scope.containerServiceTest = containerSrv.containerServiceTest
 
     // »»»»»»»»»»»»»»»»»»»║  MODAL CONTROLS
-    $scope.modalShownContainer = false
-    $scope.showContainerModal = () => $scope.modalShownContainer = true
-    $scope.hideContainerModal = () => $scope.modalShownContainer = false
+    $scope.hideContainerModal = () => {
+        $scope.clearForm()
+        $scope.container.name = ""
+        $scope.$parent.modalShownContainer = false
+    }
 
     // »»»»»»»»»»»»»»»»»»»║ CLEAR FORM
     $scope.clearForm = () => document.getElementById("containerCreateForm").reset()

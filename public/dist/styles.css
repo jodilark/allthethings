@@ -82,46 +82,603 @@ input, select {
 *, *:before, *:after {
   box-sizing: border-box; }
 
-.container-wrapper {
-  border: 1px solid red;
-  background: rgba(200, 0, 50, 0.1);
+@import url("https://fonts.googleapis.com/css?family=Fresca|Josefin+Sans|Lobster+Two|Source+Code+Pro");
+.modal-wrapper-container {
+  display: flex;
+  flex-direction: column;
   height: 100%;
+  width: 100%; }
+
+.header-container {
+  height: 35px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding-right: 10px;
+  background: lightblue; }
+
+.header-text {
+  height: 100%;
+  display: inline;
+  line-height: 27px;
+  font-size: 20px;
+  font-weight: bold;
+  padding: 0px 20px 0px 10px;
+  border-top-right-radius: 20px;
+  border-top-left-radius: 3px;
+  background: black; }
+
+.closing-x {
+  height: 100%;
+  flex: .15;
+  line-height: 30px;
+  font-size: 20px;
+  text-align: right;
+  font-weight: bold;
+  cursor: pointer;
+  color: #333; }
+
+.form-wrapper {
   width: 100%;
   display: flex;
   flex-direction: column;
+  padding: 10px 0px; }
+
+.input-wrapper {
+  height: 35px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 0px 10px; }
+
+.last-input-wrapper {
+  margin-bottom: 5px; }
+
+.modal-input {
+  height: 25px;
+  width: 100%; }
+
+.modal-label {
+  margin-top: 10px;
+  margin-left: 10px;
+  line-height: 25px;
+  width: 156px; }
+
+.modal-controls-wrapper {
+  height: 30px;
+  width: 100%;
+  background-image: url("../styles/img/texture.jpg");
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  border: 1px inset #a6a6a6; }
+
+.modal-controls {
+  height: 100%;
+  width: 27%;
+  border: 1px ridge #d4d4d4;
+  cursor: pointer;
+  background: gray; }
+
+.modal-grid-wrapper {
+  position: relative; }
+
+#container-grid {
+  height: 368px; }
+
+.ui-grid-viewport {
+  overflow-x: hidden !important; }
+
+@import url("https://fonts.googleapis.com/css?family=Fresca|Josefin+Sans|Lobster+Two|Source+Code+Pro");
+.item-input {
+  height: 25px;
+  width: 100%; }
+
+.item-label {
+  margin-top: 10px;
+  margin-left: 10px;
+  line-height: 25px;
+  width: 120px; }
+
+.create-item-wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%; }
+
+.scrollContainer {
+  height: 100%;
+  width: 100%;
+  overflow-y: scroll;
+  padding-top: 5px; }
+
+.ci-1 {
+  z-index: 1;
+  height: 35px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding-right: 10px;
+  background: lightblue; }
+
+.ci-1-a {
+  height: 100%;
+  display: inline;
+  line-height: 27px;
+  font-size: 20px;
+  font-weight: bold;
+  padding: 0px 20px 0px 10px;
+  border-top-right-radius: 20px;
+  border-top-left-radius: 3px;
+  background: black; }
+
+.ci-1-b {
+  height: 100%;
+  flex: .15;
+  line-height: 30px;
+  font-size: 20px;
+  text-align: right;
+  font-weight: bold;
+  cursor: pointer;
+  color: #333; }
+
+.ci-2 {
+  height: 35px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 0px 10px; }
+
+bc-scanner {
+  padding: 0px 0px !important;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  width: 100%; }
+
+.ci-2-b {
+  height: 25px;
+  width: 30px;
+  background: lightblue;
+  cursor: pointer; }
+
+.ci-3 {
+  height: 35px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 0px 10px;
+  flex: 1; }
+
+.ci-3-a {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
   justify-content: center;
+  align-content: center; }
+
+.ci-3-b {
+  z-index: 9997;
+  position: absolute;
+  top: -65px;
+  left: -121px;
+  border: 2px solid white; }
+
+.ci-3-c {
+  z-index: 10001 !important;
+  position: absolute;
+  top: -50px;
+  left: 418px; }
+
+.scanWindow-contianer {
+  z-index: 9998;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: row; }
+
+.sw-1 {
+  height: 100%;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.7); }
+
+#sw-middle {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 650px;
+  background: transparent;
+  position: relative; }
+
+.sw-1-a {
+  width: 100%;
+  min-height: 220px;
+  background: rgba(0, 0, 0, 0.7); }
+
+.sw-1-b {
+  width: 100%;
+  height: 100%;
+  margin-top: 150px;
+  background: rgba(0, 0, 0, 0.7); }
+
+.scanBar {
+  z-index: 10000 !important;
+  position: absolute;
+  top: 294px;
+  left: -22px;
+  width: 320px;
+  height: 3px;
+  background: red; }
+
+.ci-4 {
+  height: 35px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 0px 10px; }
+
+.ci-5 {
+  height: 35px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 0px 10px; }
+
+.ci-6 {
+  height: 35px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 0px 10px; }
+
+.ci-7 {
+  height: 35px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 0px 10px;
+  height: 45px; }
+
+.ci-7-a {
+  display: inline-block;
+  line-height: 30px;
+  padding: 0px 10px;
+  margin: 0px 10px; }
+
+.ci-7-b {
+  height: 2px;
+  background: white;
+  flex: 1;
+  padding-right: 10px; }
+
+.ci-7-c {
+  height: 2px;
+  background: white;
+  flex: 1;
+  padding-left: 10px; }
+
+.ci-8 {
+  height: 35px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 0px 10px; }
+
+.ci-9 {
+  height: 200px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
   padding: 10px; }
 
-#containerCreateForm {
-  border: 1px solid red;
-  background: rgba(200, 0, 50, 0.1);
+.ci-9-a {
+  width: 350px;
+  height: 100%; }
+
+#temp-grid {
   width: 100%;
-  flex: .2;
+  height: 100%;
+  background: lightblue; }
+
+.ci-9-b {
+  line-height: 19px;
+  width: 95px;
+  margin-left: 10px; }
+
+.ci-11 {
+  height: 35px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 10px; }
+
+.ci-12 {
+  height: 35px;
+  width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
-  align-items: center; }
+  align-items: center;
+  padding: 0px 10px; }
 
-.contaier-grid-wrapper {
-  border: 1px solid red;
-  background: rgba(200, 0, 50, 0.1);
-  flex: 1;
+#ci-12-b {
+  margin-left: 15px; }
+
+.ci-13 {
+  height: 35px;
   width: 100%;
-  position: relative; }
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 0px 10px; }
 
-.myContainerGrid {
-  border: 1px solid red;
-  background: rgba(200, 0, 50, 0.1);
+#ci-13-a {
+  margin-left: 36px; }
+
+.ci-14 {
+  height: 100%;
   width: 100%;
-  margin-bottom: 20px; }
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 0px 10px;
+  vertical-align: top; }
 
-#cont-delete {
-  z-index: 2002;
+#te-other {
+  height: 200px; }
+
+#per {
+  margin: 0px 10px; }
+
+#ci-24-b {
+  width: 169px; }
+
+.modal-footer {
   height: 30px;
-  width: 30px;
-  position: absolute;
-  top: 0px; }
+  width: 100%;
+  background-image: url("../styles/img/texture.jpg");
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  border: 1px inset #a6a6a6; }
 
+.mf-button-1 {
+  height: 100%;
+  width: 27%;
+  border: 1px ridge #d4d4d4;
+  cursor: pointer;
+  background: gray; }
+
+@import url("https://fonts.googleapis.com/css?family=Fresca|Josefin+Sans|Lobster+Two|Source+Code+Pro");
+.modal-wrapper-location {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%; }
+
+.header-location {
+  height: 35px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding-right: 10px;
+  background: lightblue; }
+
+.header-text {
+  height: 100%;
+  display: inline;
+  line-height: 27px;
+  font-size: 20px;
+  font-weight: bold;
+  padding: 0px 20px 0px 10px;
+  border-top-right-radius: 20px;
+  border-top-left-radius: 3px;
+  background: black; }
+
+.closing-x {
+  height: 100%;
+  flex: .15;
+  line-height: 30px;
+  font-size: 20px;
+  text-align: right;
+  font-weight: bold;
+  cursor: pointer;
+  color: #333; }
+
+.form-wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 10px 0px; }
+
+.input-wrapper {
+  height: 35px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 0px 10px; }
+
+.last-input-wrapper {
+  margin-bottom: 5px; }
+
+.modal-input {
+  height: 25px;
+  width: 100%; }
+
+.modal-label {
+  margin-top: 10px;
+  margin-left: 10px;
+  line-height: 25px;
+  width: 156px; }
+
+.modal-controls-wrapper {
+  height: 30px;
+  width: 100%;
+  background-image: url("../styles/img/texture.jpg");
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  border: 1px inset #a6a6a6; }
+
+.modal-controls {
+  height: 100%;
+  width: 27%;
+  border: 1px ridge #d4d4d4;
+  cursor: pointer;
+  background: gray; }
+
+.loc-coordinates-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 5px 10px;
+  width: 100%; }
+
+.loc-coordinates-input-wrapper {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+  width: 172px; }
+
+.loc-coordinates-input {
+  height: 25px;
+  width: 100%; }
+
+.loc-coordinates-label {
+  margin: 5px 10px 0px 5px;
+  line-height: 25px; }
+
+.loc-coordinates-title {
+  margin-top: 10px;
+  line-height: 25px;
+  width: 166px; }
+
+@import url("https://fonts.googleapis.com/css?family=Fresca|Josefin+Sans|Lobster+Two|Source+Code+Pro");
+.modal-wrapper-user {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%; }
+
+.header-user {
+  height: 35px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding-right: 10px;
+  background: lightblue; }
+
+.header-text {
+  height: 100%;
+  display: inline;
+  line-height: 27px;
+  font-size: 20px;
+  font-weight: bold;
+  padding: 0px 20px 0px 10px;
+  border-top-right-radius: 20px;
+  border-top-left-radius: 3px;
+  background: black; }
+
+.closing-x {
+  height: 100%;
+  flex: .15;
+  line-height: 30px;
+  font-size: 20px;
+  text-align: right;
+  font-weight: bold;
+  cursor: pointer;
+  color: #333; }
+
+#userCreateForm {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 0px; }
+
+.input-wrapper {
+  height: 35px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 0px 10px; }
+
+.last-input-wrapper {
+  margin-bottom: 5px; }
+
+.modal-input {
+  height: 25px;
+  width: 100%; }
+
+.modal-label {
+  margin-top: 10px;
+  margin-left: 10px;
+  line-height: 25px;
+  width: 156px; }
+
+.modal-controls-wrapper {
+  height: 30px;
+  width: 100%;
+  background-image: url("../styles/img/texture.jpg");
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  border: 1px inset #a6a6a6; }
+
+.modal-controls {
+  height: 100%;
+  width: 27%;
+  border: 1px ridge #d4d4d4;
+  cursor: pointer;
+  background: gray; }
+
+.filler-wrapper {
+  height: 46px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 0px 10px; }
+
+@import url("https://fonts.googleapis.com/css?family=Fresca|Josefin+Sans|Lobster+Two|Source+Code+Pro");
 .page-wrapper {
   border: 1px solid red;
   background: rgba(200, 0, 50, 0.1);
@@ -155,6 +712,7 @@ input, select {
 #chart3 {
   background: lightcoral; }
 
+@import url("https://fonts.googleapis.com/css?family=Fresca|Josefin+Sans|Lobster+Two|Source+Code+Pro");
 .home-body-wrapper {
   border: 1px solid red;
   background: rgba(200, 0, 50, 0.1);
@@ -388,6 +946,7 @@ input, select {
 #cbw4 {
   background: lightyellow; }
 
+@import url("https://fonts.googleapis.com/css?family=Fresca|Josefin+Sans|Lobster+Two|Source+Code+Pro");
 .page-wrapper-items {
   border: 1px solid red;
   background: rgba(200, 0, 50, 0.1);
@@ -413,6 +972,52 @@ input, select {
   left: 85;
   height: 30px;
   width: 30px; }
+
+body .auth0-lock.auth0-lock .auth0-lock-cred-pane {
+  background: rgba(173, 216, 230, 0.7); }
+
+body .auth0-lock.auth0-lock .auth0-lock-overlay {
+  background: url("https://fthmb.tqn.com/RFNzoVWbP2RBJq5gvDweq2hSoQ4=/1500x1127/filters:no_upscale()/about/Organized-home-office-56a4a8763df78cf772838d2b.jpg");
+  background-size: cover;
+  background-repeat: no-repeat; }
+
+body .auth0-lock.auth0-lock .auth0-lock-header-logo {
+  display: none; }
+
+body .auth0-lock-header {
+  padding: 27px 0px !important;
+  height: 75px !important;
+  color: #f8f8f8 !important; }
+
+body .auth0-lock-header-bg {
+  background-color: #9c3d63 !important; }
+
+body .auth0-lock.auth0-lock .auth0-lock-tabs {
+  display: none !important; }
+
+body .auth0-lock-social-button[data-provider="fitbit"] {
+  width: 40px !important;
+  border: 1px solid #555 !important; }
+
+body .auth0-lock-social-button[data-provider^="google"] {
+  width: 40px !important;
+  border: 1px solid #555 !important; }
+
+body .auth0-lock-social-buttons-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center; }
+
+body .auth0-lock.auth0-lock .auth0-lock-social-button.auth0-lock-social-big-button {
+  margin: 0px 5px !important; }
+
+body .auth0-lock-submit {
+  background: #595C80 !important; }
+
+@import url("https://fonts.googleapis.com/css?family=Fresca|Josefin+Sans|Lobster+Two|Source+Code+Pro");
+#container {
+  z-index: 3000; }
 
 .page-wrapper {
   border: 1px solid red;
@@ -440,6 +1045,106 @@ input, select {
   height: 30px;
   width: 30px; }
 
+@import url("https://fonts.googleapis.com/css?family=Fresca|Josefin+Sans|Lobster+Two|Source+Code+Pro");
+.modal-wrapper-storage {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%; }
+
+.header-storage {
+  height: 35px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding-right: 10px;
+  background: lightblue; }
+
+.header-text {
+  height: 100%;
+  display: inline;
+  line-height: 27px;
+  font-size: 20px;
+  font-weight: bold;
+  padding: 0px 20px 0px 10px;
+  border-top-right-radius: 20px;
+  border-top-left-radius: 3px;
+  background: black; }
+
+.closing-x {
+  height: 100%;
+  flex: .15;
+  line-height: 30px;
+  font-size: 20px;
+  text-align: right;
+  font-weight: bold;
+  cursor: pointer;
+  color: #333; }
+
+.form-wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 10px 0px; }
+
+.input-wrapper {
+  height: 35px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 0px 10px; }
+
+.last-input-wrapper {
+  margin-bottom: 5px; }
+
+.modal-input {
+  height: 25px;
+  width: 100%; }
+
+.modal-label {
+  margin-top: 10px;
+  margin-left: 10px;
+  line-height: 25px;
+  width: 156px; }
+
+.modal-controls-wrapper {
+  height: 30px;
+  width: 100%;
+  background-image: url("../styles/img/texture.jpg");
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  border: 1px inset #a6a6a6; }
+
+.modal-controls {
+  height: 100%;
+  width: 27%;
+  border: 1px ridge #d4d4d4;
+  cursor: pointer;
+  background: gray; }
+
+.modal-grid-wrapper {
+  position: relative; }
+
+.myGrid {
+  height: 334px; }
+
+.ui-grid-viewport {
+  overflow-x: hidden !important; }
+
+.grid-delete {
+  z-index: 2002;
+  position: absolute;
+  top: 10;
+  height: 30px;
+  width: 30px;
+  cursor: pointer; }
+
+@import url("https://fonts.googleapis.com/css?family=Fresca|Josefin+Sans|Lobster+Two|Source+Code+Pro");
 html, input, textarea, button, select {
   background: #242424;
   color: #b6b6b6; }
@@ -472,7 +1177,8 @@ div.test-results {
   background: rgba(200, 0, 50, 0.1);
   height: 500px;
   width: 500px;
-  background: black; }
+  background: black;
+  position: relative; }
 
 .public-header-1 {
   z-index: 2000;
@@ -608,8 +1314,6 @@ div.test-results {
   padding-top: 63px; }
 
 .nw-1 {
-  border: 1px solid red;
-  background: rgba(200, 0, 50, 0.1);
   height: 100%;
   width: 100%;
   margin: 20px 0px;
@@ -620,10 +1324,15 @@ div.test-results {
 .nw-asset {
   margin: 5px 0px;
   width: 65px;
-  height: 65px; }
+  height: 65px;
+  border: 3px solid white;
+  border-radius: 10px;
+  background: #2E5DAA; }
 
-#nwa1 {
-  margin: 0px 0px 5px; }
+.nw-asset:hover {
+  width: 70px;
+  height: 70px;
+  background: #9c3d63; }
 
 .rating {
   color: #a9a9a9;
@@ -653,85 +1362,67 @@ ul.rating {
 .manageItemsGrid {
   width: 100%; }
 
-.tb-1 {
-  border-right-color: blue;
-  height: 100%;
-  width: 100%;
+.fa-trash {
+  margin-left: 5px;
+  color: #595C80;
+  font-size: 24px !important; }
+
+.fa-trash:hover {
+  color: #333;
+  margin-left: 3px;
+  font-size: 31px !important; }
+
+.fa-user.leftNavButton {
+  font-size: 46px !important;
+  color: #f8f8f8; }
+
+@import url("https://fonts.googleapis.com/css?family=Fresca|Josefin+Sans|Lobster+Two|Source+Code+Pro");
+.modal-wrapper-trackby {
   display: flex;
-  flex-direction: column; }
-
-.tb-1-a {
-  height: 150px;
-  width: 100%;
-  display: flex;
-  flex-direction: row; }
-
-.tb-1-a-i {
+  flex-direction: column;
   height: 100%;
-  flex: 1;
-  padding: 10px 5px 10px 10px; }
+  width: 100%; }
 
-.tb-1-a-ii {
-  height: 100%;
-  flex: 1;
-  padding: 10px 10px 10px 5px; }
-
-.tb-1-b {
-  height: 50px;
+.header-trackby {
+  height: 35px;
   width: 100%;
   display: flex;
   flex-direction: row;
-  align-content: center;
-  border: 2px ridge #999; }
+  justify-content: space-between;
+  align-items: center;
+  padding-right: 10px;
+  background: lightblue; }
+
+.header-text {
+  height: 100%;
+  display: inline;
+  line-height: 27px;
+  font-size: 20px;
+  font-weight: bold;
+  padding: 0px 20px 0px 10px;
+  border-top-right-radius: 20px;
+  border-top-left-radius: 3px;
+  background: black; }
+
+.closing-x {
+  height: 35px;
+  flex: .15;
+  line-height: 30px;
+  font-size: 20px;
+  text-align: right;
+  font-weight: bold;
+  cursor: pointer;
+  color: #333; }
 
 .tb-1-c {
-  display: block;
-  height: 300px;
-  width: 100%;
-  position: relative;
-  padding-top: 10px; }
+  flex: 1;
+  width: 100%; }
 
-.tb-asset {
+.tb-delete {
   width: 65px;
   height: 30px; }
 
-#tba1 {
-  width: 100%;
-  line-height: 38px; }
-
-#tba2 {
-  width: 100%; }
-
-#tba3 {
-  width: 100%;
-  line-height: 38px; }
-
-#tba4 {
-  width: 100%; }
-
-#tba5 {
-  width: 100%;
-  line-height: 38px; }
-
-#tba6 {
-  width: 100%; }
-
-#tba7 {
-  background: lightseagreen;
-  height: 100%;
-  flex: 1;
-  cursor: pointer;
-  border: 1px outset #b6b6b6; }
-
-#tba8 {
-  background: lightslategray;
-  height: 100%;
-  flex: 1;
-  cursor: pointer;
-  border: 1px outset #b6b6b6; }
-
 #tba9 {
-  background: lightblue;
   z-index: 2002;
   position: absolute;
   top: 10;
@@ -739,11 +1430,58 @@ ul.rating {
   width: 30px;
   cursor: pointer; }
 
-#tba10 {
-  background: lightcoral;
-  height: 280px;
-  width: 490px; }
+.tb-form-wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 5px 0px; }
 
+.trackby-label {
+  margin-top: 10px;
+  margin-left: 10px;
+  line-height: 25px;
+  width: 156px; }
+
+.trackby-input {
+  height: 25px;
+  width: 100%; }
+
+.trackby-input-wrappers {
+  height: 35px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 0px 10px; }
+
+.mytbgrid {
+  width: 100%;
+  height: 310px; }
+
+.ui-grid-viewport {
+  overflow-x: hidden !important; }
+
+#lastWrapper-trackby {
+  margin-bottom: 5px; }
+
+.tb-modal-footer {
+  height: 30px;
+  width: 100%;
+  background-image: url("../styles/img/texture.jpg");
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  border: 1px inset #a6a6a6; }
+
+.tb-mf-button-1 {
+  height: 100%;
+  width: 27%;
+  border: 1px ridge #d4d4d4;
+  cursor: pointer;
+  background: gray; }
+
+@import url("https://fonts.googleapis.com/css?family=Fresca|Josefin+Sans|Lobster+Two|Source+Code+Pro");
 .page-wrapper {
   border: 1px solid red;
   background: rgba(200, 0, 50, 0.1);

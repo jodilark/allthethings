@@ -28,7 +28,7 @@ angular.module('app').directive('bcScanner',
                                 if (counter === 10) {
                                     var mc = mostCommon(resultsArr)
                                     console.log("most common", mc)
-                                    $scope.barcode = mc                                    
+                                    $scope.barcode = mc
                                     $scope.storeBarcode()
                                     $scope.$apply()
                                     $scope.stoppy()
@@ -74,6 +74,7 @@ angular.module('app').directive('bcScanner',
                             .classList.remove('hide');
                         document.querySelector('.overlay--inline')
                             .classList.remove('show');
+                        $scope.showBarcodeWindow = false
                     },
                     configureScanner: function (selector) {
                         var scanner = Quagga

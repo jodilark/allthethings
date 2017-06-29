@@ -1,7 +1,17 @@
-angular.module('app').controller('locClass', function ($scope, locClassSrv, uiGridConstants, ) {
+angular.module('app').controller('locClass', function ($scope, locClassSrv, uiGridConstants) {
     // »»»»»»»»»»»»»»»»»»»║  TESTS 
     $scope.locClassTest = 'locClass controller is connected and operational'
     $scope.locClassServiceTest = locClassSrv.locClassServiceTest
+    $scope.modalView = true
+
+    // »»»»»»»»»»»»»»»»»»»║  MODAL CONTROLS
+
+    $scope.hideStorageModal = () => {
+        $scope.clearForm()
+        $scope.locClassObj.name = ""
+        $scope.locClassObj.description = ""
+        $scope.$parent.modalShownStorage = false
+    }
 
     // // »»»»»»»»»»»»»»»»»»»║ CLEAR FORM
     $scope.clearForm = () => document.getElementById("classCreateForm").reset()

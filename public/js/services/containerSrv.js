@@ -5,11 +5,11 @@ angular.module('app').service('containerSrv', function ($http) {
     // »»»»»»»»»»»»»»»»»»»║ ENDPOINTS
     this.name 
     // ...................  get containers
-    this.getContainerList = () => ($http.get('http://localhost:3000/api/containers'))
+    this.getContainerList = () => ($http.get('/api/containers'))
     // ...................  create containers
     this.createContainer = (data) => {
         $http({
-            url: 'http://localhost:3000/api/containers',
+            url: '/api/containers',
             method: 'POST',
             data: data
         })
@@ -17,7 +17,7 @@ angular.module('app').service('containerSrv', function ($http) {
     // ...................  update containers
     this.updateContainer = (id, data) => {
         $http({
-            url: 'http://localhost:3000/api/containers/' + id,
+            url: '/api/containers/' + id,
             method: 'PUT',
             data: data
         })
@@ -25,7 +25,7 @@ angular.module('app').service('containerSrv', function ($http) {
     // ...................  delete containers
     this.deleteContainer = (id) => {
         $http({
-            url: 'http://localhost:3000/api/containers/' + id,
+            url: '/api/containers/' + id,
             method: 'DELETE'
         })
     }

@@ -20,6 +20,7 @@ const trackByCtrl = require('./controllers/trackByCtrl')
 const itemsCtrl = require('./controllers/itemsCtrl')
 
 
+
 //  »»»»»»»»»»»»»»»»»»»║   OTHER VARIABLES
 const port = 3000
 
@@ -30,24 +31,25 @@ app.use(bodyParser.json())
 app.use(cors())
 
 
+
 // .................... quagga
-if(typeof document !== "undefined")
-Quagga.init({
-    inputStream : {
-      name : "Live",
-      type : "LiveStream",
+if (typeof document !== "undefined")
+  Quagga.init({
+    inputStream: {
+      name: "Live",
+      type: "LiveStream",
       target: document.querySelector('#yourElement')    // Or '#yourElement' (optional)
     },
-    decoder : {
-      readers : ["code_128_reader"]
+    decoder: {
+      readers: ["code_128_reader"]
     }
-  }, function(err) {
-      if (err) {
-          console.log(err);
-          return
-      }
-      console.log("Initialization finished. Ready to start");
-      Quagga.start();
+  }, function (err) {
+    if (err) {
+      console.log(err);
+      return
+    }
+    console.log("Initialization finished. Ready to start");
+    Quagga.start();
   });
 
 // .................... database
@@ -91,7 +93,7 @@ var strategy = new Auth0Strategy({
     }
     else {
       user.isFirstTime = false
-      
+
     }
     // console.log("outside: ", Object.keys(user))
     return done(null, user);
@@ -122,8 +124,8 @@ passport.deserializeUser(function (obj, done) {
 //  .................... authorization endpoints
 app.get('/auth', passport.authenticate('auth0'));
 app.get('/auth/callback',
-  passport.authenticate('auth0', { successRedirect: '/#!/user_create_new', failureRedirect: '/login' }), (req, res) => {
-    res.status(200).send(req.user)    
+  passport.authenticate('auth0', { successRedirect: '/#!/dashboard', failureRedirect: '/login' }), (req, res) => {
+    res.status(200).send(req.user)
   })
 app.get('/auth/me', function (req, res) {
   if (!req.user) return res.sendStatus(403);

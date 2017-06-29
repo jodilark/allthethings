@@ -1,4 +1,4 @@
-angular.module('app').controller('trackBy', function ($scope, uiGridConstants, trackByGetSrv, trackByPostSrv, trackByPutSrv, trackByDeleteSrv) {
+angular.module('app').controller('trackBy', function ($scope, $interval, modalService, uiGridConstants, trackByGetSrv, trackByPostSrv, trackByPutSrv, trackByDeleteSrv) {
     // »»»»»»»»»»»»»»»»»»»║  TESTS 
     $scope.trackByTest = 'trackBy controller is connected and operational'
     $scope.trackByGetSrvTest = trackByGetSrv.trackByGetSrvTest
@@ -7,14 +7,13 @@ angular.module('app').controller('trackBy', function ($scope, uiGridConstants, t
     $scope.trackByDeleteSrvTest = trackByDeleteSrv.trackByDeleteSrvTest
 
     // »»»»»»»»»»»»»»»»»»»║  MODAL CONTROLS
-    $scope.modalShownTrackby = false
-    $scope.showTrackbyModal = () => $scope.modalShownTrackby = true
+ 
     $scope.hideTrackbyModal = () => {
         $scope.clearForm()
-        $scope.trackByObj.trackby_name= ""
+        $scope.trackByObj.trackby_name = ""
         $scope.trackByObj.trackby_value = ""
         $scope.trackByObj.trackby_category = ""
-        $scope.modalShownTrackby = false
+        $scope.$parent.modalShownTrackby = false
     }
 
     // »»»»»»»»»»»»»»»»»»»║ CLEAR FORM
@@ -37,9 +36,8 @@ angular.module('app').controller('trackBy', function ($scope, uiGridConstants, t
             , "trackby_value": $scope.trackByObj.trackby_value
             , "trackby_category": $scope.trackByObj.trackby_category
         });
-        trackByPostSrv.createTrackBy($scope.trackByObj)
-
         $scope.clearForm()
+        trackByPostSrv.createTrackBy($scope.trackByObj)
     }
 
 

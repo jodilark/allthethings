@@ -1,8 +1,18 @@
 // »»»»»»»»»»»»»»»»»»»║ FONTS
+@import url('https://fonts.googleapis.com/css?family=Fresca|Josefin+Sans|Lobster+Two|Source+Code+Pro');
 
 // »»»»»»»»»»»»»»»»»»»║ VARIABLES
 // ...........home
 $wrapper-widths: 1380px;
+$primary-color: #595C80;
+$secondary-color: #9c3d63;
+$tertiary-color: #B0AFB0;
+$quaternary: #2E5DAA;
+$main-title-font: 'Lobster Two', cursive;
+$breadcrumb-font: 'Josefin Sans', sans-serif;
+$title-font: 'Fresca', sans-serif;
+$regular-font: 'Source Code Pro', monospace;
+
 
 // »»»»»»»»»»»»»»»»»»»║ TESTS
 @mixin box-tester {
@@ -37,4 +47,111 @@ $wrapper-widths: 1380px;
         right: 0px;
         bottom: 243px;
         transform: rotate(45deg);
+    }
+// create items input containers
+    @mixin ci-input-containers {
+        height: 35px;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        align-items: center;
+        padding: 0px 10px;
+    }
+
+// create items input containers
+    @mixin form-input-wrappers {
+        height: 35px;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        align-items: center;
+        padding: 0px 10px;
+    }
+
+// modal mixins
+// main-wrapper
+    @mixin modal-wrapper-storage {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        width: 100%;
+    }
+// header
+    @mixin modal-header-wrapper {
+        height: 35px;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding-right:10px;
+        background: lightblue;
+    }
+    @mixin modal-header-text {
+        height: 100%;
+        display: inline;
+        line-height: 27px;
+        font-size: 20px;
+        font-weight: bold;
+        padding: 0px 20px 0px 10px;
+        border-top-right-radius: 20px;
+        border-top-left-radius: 3px;
+        background: black;
+    }
+    @mixin modal-closin-x {
+        height: 100%;
+        flex: .15;
+        line-height: 30px;
+        font-size: 20px;
+        text-align: right;
+        font-weight: bold;
+        cursor: pointer;
+        color: #333;
+    }
+// form
+    @mixin form-wrapper {
+        width: 100%;
+        // border: 1px solid blue;
+        display: flex;
+        flex-direction: column;
+        padding: 10px 0px;
+    }
+    @mixin input-wrapper {
+        height: 35px;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        align-items: center;
+        padding: 0px 10px;
+    }
+// form-inputs
+    @mixin modal-input {
+        height: 25px;
+        width: 100%;        
+    }
+    @mixin modal-label {
+        margin-top: 10px;
+        margin-left: 10px;
+        line-height: 25px;
+        width: 156px;        
+    }   
+// modal-controls
+    @mixin modal-controls-wrapper {
+        height: 30px;
+        width: 100%;
+        background-image: url('../styles/img/texture.jpg');
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        border: 1px inset #a6a6a6;
+    }
+    @mixin modal-controls {
+        height: 100%;
+        width: 27%;
+        border: 1px ridge #d4d4d4;
+        cursor: pointer;
+        background: gray;
     }

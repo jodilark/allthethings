@@ -1,0 +1,250 @@
+// =============== IMPORT FILES
+@import '_varsAndMixins';
+
+// =============== PAGE STYLES
+// ______:modal-headers
+    .item-input {
+        height: 25px;
+        width: 100%;
+    }
+    .item-label {
+        margin-top: 10px;
+        margin-left: 10px;
+        line-height: 25px;
+        width: 120px;
+    }
+    .create-item-wrapper {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        width: 100%;
+    }
+    .scrollContainer {
+        height: 100%;
+        width: 100%;
+        overflow-y: scroll;
+        padding-top: 5px;
+    }
+    .ci-1 {
+        z-index: 1;
+        @include modal-header-wrapper;
+    }
+    .ci-1-a {
+        height: 100%;
+        display: inline;
+        line-height: 27px;
+        font-size: 20px;
+        font-weight: bold;
+        padding: 0px 20px 0px 10px;
+        border-top-right-radius: 20px;
+        border-top-left-radius: 3px;
+        background: black;
+    }
+    .ci-1-b {
+        height: 100%;
+        flex: .15;
+        line-height: 30px;
+        font-size: 20px;
+        text-align: right;
+        font-weight: bold;
+        cursor: pointer;
+        color: #333;
+    }
+    .ci-2 {
+        @include ci-input-containers;
+    }
+    bc-scanner {
+        padding: 0px 0px !important;
+        position: relative;
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+    }
+    .ci-2-b {
+        height: 25px;
+        width: 30px;
+        background: lightblue;
+        cursor: pointer;
+    }
+    .ci-3 {
+        @include ci-input-containers;
+        flex: 1;
+    }
+    .ci-3-a {
+        display: flex;
+        height: 100vh;
+        width: 100vw;
+        justify-content: center;
+        align-content: center;
+    }
+    .ci-3-b {
+        z-index: 9997;
+        position: absolute;
+        top: -65px;
+        left: -121px;
+        border: 2px solid white;
+    }
+    .ci-3-c {
+        z-index: 10001 !important;
+        position: absolute;
+        top: -50px;
+        left: 418px;
+    }
+    .scanWindow-contianer {
+        z-index: 9998;
+        position:fixed;
+        top: 0px;
+        left: 0px;
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        flex-direction: row;
+    }
+    .sw-1 {
+       height: 100%; 
+       width: 100%;
+       background: rgba(0, 0, 0, .7);
+    }
+    #sw-middle {
+        height: 100%; 
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width:650px;
+       background: rgba(0, 0, 0, 0);
+       position: relative;
+    }
+    .sw-1-a {
+        width: 100%;
+        min-height: 220px;
+        background: rgba(0, 0, 0, .7);
+    }
+    .sw-1-b {
+        width: 100%;
+        height: 100%;
+        margin-top: 150px;
+        background: rgba(0, 0, 0, .7);
+    }
+    .scanBar {
+        z-index: 10000 !important;
+        position:absolute;
+        top: 294px;
+        left: -22px;
+        width: 320px;
+        height: 3px;
+        background: red;
+    }
+    .ci-4 {
+        @include ci-input-containers;
+    }
+    .ci-5 {
+        @include ci-input-containers;       
+    }
+    .ci-6 {
+        @include ci-input-containers;       
+    }
+    .ci-7 {
+        @include ci-input-containers;
+        height: 45px;                
+    }
+    .ci-7-a {
+        display: inline-block;
+        line-height: 30px;
+        padding: 0px 10px;
+        margin: 0px 10px;
+    }
+    .ci-7-b {
+        height: 2px;
+        background: white;
+        flex: 1;
+        padding-right: 10px
+    }
+    .ci-7-c {
+        height: 2px;
+        background: white;
+        flex: 1;
+        padding-left: 10px
+    }
+    .ci-8 {
+        @include ci-input-containers;
+    }
+    .ci-9 {
+        height: 200px;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        padding: 10px;
+    }
+    .ci-9-a {
+        width: 350px;
+        height: 100%;
+    }
+    #temp-grid {
+        width: 100%;
+        height: 100%;
+        background: lightblue;
+    }
+    .ci-9-b {
+        line-height: 19px;
+        width: 95px;
+        margin-left: 10px;
+    }
+    .ci-11 {
+        height: 35px;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0px 10px;
+    }
+    .ci-12 {
+        height: 35px;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+        padding: 0px 10px;
+    }
+    #ci-12-b {
+        margin-left: 15px;
+    }
+    .ci-13 {
+        height: 35px;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+        padding: 0px 10px;       
+    }
+    #ci-13-a {
+        margin-left: 36px;
+    }
+    .ci-14 {
+        height: 100%;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: flex-start;
+        padding: 0px 10px; 
+        vertical-align: top;        
+    }
+    #te-other {
+        height: 200px;
+    }
+    #per {
+        margin: 0px 10px; 
+    }
+    #ci-24-b {
+       width: 169px; 
+    }
+    .modal-footer {
+        @include modal-controls-wrapper;
+    }
+    .mf-button-1 {
+        @include modal-controls;
+    }

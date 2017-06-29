@@ -3,11 +3,11 @@
 
 // =============== PAGE STYLES
 // _____:main-modal-wrapper
-    .modal-wrapper-container {
+    .modal-wrapper-storage {
         @include modal-wrapper-storage;
     }
 // ______:modal-headers
-    .header-container {
+    .header-storage {
         @include modal-header-wrapper;
     }
     .header-text {
@@ -43,9 +43,18 @@
     .modal-grid-wrapper {
         position: relative;
     }
-    #container-grid {
-        height: 368px;
+    .myGrid {
+        height: 334px;
     }
     .ui-grid-viewport {
         overflow-x: hidden !important;
+    }
+    .grid-delete {
+        // background: lightblue;
+        z-index: 2002;
+        position: absolute;
+        top: 10;
+        height: 30px;
+        width: 30px;
+        cursor: pointer;        
     }

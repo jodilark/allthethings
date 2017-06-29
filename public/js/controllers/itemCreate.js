@@ -1,4 +1,4 @@
-angular.module('app').controller('itemCreate', function ($scope, bcService, itemMainSrv, itemGetSrv, itemPostSrv, itemPutSrv, itemDeleteSrv, locationsListSrv, trackByGetSrv, userListSrv, settingsSrv) {
+angular.module('app').controller('itemCreate', function ($scope, $interval, bcService, itemMainSrv, itemGetSrv, itemPostSrv, itemPutSrv, itemDeleteSrv, locationsListSrv, trackByGetSrv, userListSrv, settingsSrv) {
     // // »»»»»»»»»»»»»»»»»»»║  TESTS 
     $scope.itemCreateTest = 'itemCreate controller is connected and operational'
     $scope.itemGetSrvTest = itemGetSrv.itemGetSrvTest
@@ -6,6 +6,16 @@ angular.module('app').controller('itemCreate', function ($scope, bcService, item
     $scope.itemPutSrvTest = itemPutSrv.itemPutSrvTest
     $scope.itemDeleteSrvTest = itemDeleteSrv.itemDeleteSrvTest
     $scope.itemMainSrvTest = itemMainSrv.itemMainSrvTest
+
+    // »»»»»»»»»»»»»»»»»»»║  MODAL CONTROLS
+    $scope.hideItemsModal = () => {
+        $scope.clearForm()
+        $scope.$parent.modalShownItems = false
+    }
+
+    // »»»»»»»»»»»»»»»»»»»║ CLEAR FORM
+    $scope.clearForm = () => document.getElementById("itemCreateForm").reset()
+
     // test barcode from service
     $scope.getBC = () => {
         $scope.barcode = bcService.upc
@@ -19,9 +29,9 @@ angular.module('app').controller('itemCreate', function ($scope, bcService, item
         , is_consumable: false
         , repOther: null
         , replink: null
-        ,af_period: "Day"
+        , af_period: "Day"
     }
-  
+
 
     $scope.trackbyValues = {}
     const itemsObj = $scope.itemCreateObj
@@ -106,7 +116,8 @@ angular.module('app').controller('itemCreate', function ($scope, bcService, item
         , enableSelectAll: false
         , enableFiltering: true
         , columnDefs: [
-            { name: 'id', enableCellEdit: false, width: 75 }, { name: 'loc_desc', displayName: 'Description' }, { name: 'loc_class_name', displayName: 'Classification' }, { name: 'loc_class_desc', displayName: 'Class Desc.' }, { name: 'loc_container', displayName: 'Container' }
+            // { name: 'id', enableCellEdit: false, width: 50 }, 
+            { name: 'loc_desc', displayName: 'Description' }, { name: 'loc_class_name', displayName: 'Storage Type' }, { name: 'loc_container', displayName: 'Container' }
         ]
         , onRegisterApi: (gridApi) => {
             gridApi.selection.on.rowSelectionChanged($scope, function (row) {
@@ -133,7 +144,7 @@ angular.module('app').controller('itemCreate', function ($scope, bcService, item
         if (loggedInUser !== $scope.userId.id) { $scope.itemCreateObj.owner_id = $scope.userId.id }
         $scope.itemCreateObj.trackbys = $scope.trackbyValues
         $scope.itemCreateObj.upc = $scope.barcode
-
+        $scope.clearForm()
         // console.log(itemsObj)//this is the object that will be sent to the server
         itemPostSrv.createItem(itemsObj)
     }

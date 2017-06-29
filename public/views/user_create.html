@@ -13,26 +13,67 @@
     <button ng-click="deleteUsers()" style="background: red; color: white; cursor: pointer">Delete All Users</button>
 </div>-->
  <!-- »»»»»»»»»»»»»»»»»»»║   USER INPUT FIELDS   -->
-<form id="userCreateForm">
-    <input type="text" placeholder="first name" ng-model="userInfo.firstName" required />
-    <input type="text" placeholder="last name" ng-model="userInfo.lastName" />
-    <input type="tel" placeholder="phone number" ng-model="userInfo.phone" />
-    <input type="email" placeholder="email" ng-model="userInfo.email"  required/>
-    <input type="text" placeholder="street address" ng-model="userInfo.address1"/>
-    <input type="text" placeholder="suite, building, apt #..." ng-model="userInfo.address2"/>
-    <input type="text" placeholder="city / township" ng-model="userInfo.city"/>
-    <select id="stateList" ng-options="state as state.name for state in stateName" ng-model="stateObj">
-        <option id="stateList" value="" disabled selected>State</option>
-    </select>
-    <select id="countryList" ng-options="country as country.name for country in countryName" ng-model="countryObj" disabled>
-        <option id="countryList" value="" disabled selected>United States of America</option>
-    </select>
-    <input type="number" placeholder="postal code" ng-model="userInfo.zip"/>
-    <div ng-init="rating = star.rating + 1"></div>
-    <p>Renter Rating</p><div class="star-rating" star-rating rating-value="rating" data-max="5" on-rating-selected="rateFunction(rating)"></div>
-
-    <br/>
-    <input type="checkbox" ng-model="userStatus" ng-change="deactivateUserChecked()"> Deactivate User
-    <input type="submit" value="Submit" ng-click="submit()" />
-    <input type="reset" value="Cancel" ng-click="hideUserModal()">
-</form>
+<div class="modal-wrapper-user">
+    <div class="header-user">
+        <div class="header-text">Create a User</div>
+        <div class="closing-x" ng-click="hideUserModal()">X</div>
+    </div>
+    <form id="userCreateForm" class="form-wrapper">
+        <div class="input-wrapper">
+            <input type="text" class="modal-input" ng-model="userInfo.firstName" required />
+            <div class="modal-label">First Name</div>
+        </div>
+        <div class="input-wrapper">
+            <input type="text" class="modal-input" ng-model="userInfo.lastName" />
+            <div class="modal-label">Last Name</div>
+        </div>
+        <div class="input-wrapper">
+            <input type="tel" class="modal-input" ng-model="userInfo.phone" />
+            <div class="modal-label">Phone</div>
+        </div>
+        <div class="input-wrapper">
+            <input type="email" class="modal-input" ng-model="userInfo.email"  required/>
+            <div class="modal-label">Email</div>
+        </div>
+        <div class="input-wrapper">
+            <input type="text" class="modal-input" placeholder="street" ng-model="userInfo.address1"/>
+            <div class="modal-label">Address 1</div>
+        </div>
+        <div class="input-wrapper">
+            <input type="text" class="modal-input" placeholder="suite, building, apt #..." ng-model="userInfo.address2"/>
+            <div class="modal-label">Address 2</div>
+        </div>
+        <div class="input-wrapper">
+            <input type="text" class="modal-input" placeholder="city / township" ng-model="userInfo.city"/>
+            <div class="modal-label">City</div>
+        </div>
+        <div class="input-wrapper">
+            <select class="modal-input" id="stateList" ng-options="state as state.name for state in stateName" ng-model="stateObj">
+                <option id="stateList" value="" selected>State</option>
+            </select>
+            <div class="modal-label">State</div>
+        </div>
+        <div class="input-wrapper">
+            <select class="modal-input" id="countryList" ng-options="country as country.name for country in countryName" ng-model="countryObj" disabled>
+                <option id="countryList" value="" disabled selected>United States of America</option>
+            </select>
+            <div class="modal-label">Country</div>
+        </div>
+        <div class="input-wrapper">
+            <input type="number" class="modal-input" placeholder="postal / zip code" ng-model="userInfo.zip"/>
+            <div class="modal-label">Zip Code</div>
+        </div>
+        <div class="input-wrapper">
+            <div ng-init="rating = star.rating + 1"></div>
+            <div class="star-rating modal-input" star-rating rating-value="rating" data-max="5" on-rating-selected="rateFunction(rating)"></div>
+            <div class="modal-label">Renter Rating</div>
+        </div>
+        <div class="filler-wrapper">
+            <label><input type="checkbox" ng-model="userStatus" ng-change="deactivateUserChecked()">Deactivate User</label>
+        </div>
+        <div class="modal-controls-wrapper">
+            <input type="submit" value="Create" class="modal-controls" id="addData" ng-click="submit()">
+            <input type="reset" value="Clear" class="modal-controls">
+        </div>
+    </form>
+</div>

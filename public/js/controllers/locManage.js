@@ -1,4 +1,4 @@
-angular.module('app').controller('locManage', function ($scope, locationsListSrv, locationUpdateSrv, locationDeleteSrv) {
+angular.module('app').controller('locManage', function ($scope, bcService, locationsListSrv, locationUpdateSrv, locationDeleteSrv) {
     // »»»»»»»»»»»»»»»»»»»║  TESTS 
     $scope.locManageTest = 'locManage controller is connected and operational'
     $scope.locListServiceTest = locationsListSrv.locListServiceTest
@@ -42,7 +42,7 @@ angular.module('app').controller('locManage', function ($scope, locationsListSrv
             gridApi.edit.on.afterCellEdit($scope, function (rowEntity) {
                 $scope.updateCont = rowEntity
                 // ............. drop containers and classes text from entity obj
-                var gridObj = {container_id: rowEntity.container_id, id: rowEntity.id, loc_class_id: rowEntity.loc_class_id, loc_desc: rowEntity.loc_desc, parent_location_id: rowEntity.parent_location_id, x_coordinate: rowEntity.x_coordinate, y_coordinate: rowEntity.y_coordinate, z_coordinate: rowEntity.z_coordinate}
+                var gridObj = { container_id: rowEntity.container_id, id: rowEntity.id, loc_class_id: rowEntity.loc_class_id, loc_desc: rowEntity.loc_desc, parent_location_id: rowEntity.parent_location_id, x_coordinate: rowEntity.x_coordinate, y_coordinate: rowEntity.y_coordinate, z_coordinate: rowEntity.z_coordinate }
                 // ............. call update
                 $scope.update(gridObj)
             })
@@ -66,5 +66,7 @@ angular.module('app').controller('locManage', function ($scope, locationsListSrv
             $scope.enableDelete = true
         }
     }
+
+
 
 })

@@ -5,7 +5,7 @@ angular.module('app').service('updateUserSrv', function ($http) {
     // »»»»»»»»»»»»»»»»»»»║ ENDPOINTS
     this.updateUser = (id, data) => {
         $http({
-            url: 'http://localhost:3000/api/users/' + id,
+            url: '/api/users/' + id,
             method: 'PUT',
             data: data
         })

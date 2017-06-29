@@ -5,10 +5,15 @@ angular.module('app').service('trackByPostSrv', function ($http) {
     // // »»»»»»»»»»»»»»»»»»»║ ENDPOINTS
     // ...................  create trackbys
     this.createTrackBy = (data) => {
-        $http({
-            url: 'http://localhost:3000/api/trackbys/',
-            method: 'POST',
-            data: data
-        })
+        if (data.trackby_name == undefined) {
+            alert('Fill out all fields')
+        }
+        else {
+            $http({
+                url: '/api/trackbys/',
+                method: 'POST',
+                data: data
+            })
+        }
     }
 })
