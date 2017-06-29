@@ -1250,446 +1250,6 @@ angular.module('app').controller('userManage', function ($scope, uiGridConstants
 });
 'use strict';
 
-angular.module('app').service('authService', function ($http) {
-    // »»»»»»»»»»»»»»»»»»»║ TESTS
-    this.authServiceTest = 'the authService is connected';
-
-    // »»»»»»»»»»»»»»»»»»»║ ENDPOINTS
-    this.logMeIn = function () {
-        return $http.get('/auth', 'Access-Control-Allow-Origin').then(function (response) {
-            return res.send('ok');
-        });
-    };
-    this.logout = function () {
-        return $http.get('/auth/logout').then(function (response) {
-            return window.location = response.data;
-        });
-    };
-});
-'use strict';
-
-angular.module('app').service('bcService', function ($http) {
-    var _this = this;
-
-    // VARIABLES
-    this.upc;
-
-    //FUNCTIONS
-    this.storeBarcode = function (bc) {
-        console.log("barcode was stored and is", bc);
-        _this.upc = bc;
-    };
-});
-'use strict';
-
-angular.module('app').service('checkUserSrv', function ($http) {
-
-  this.getUser = function () {
-    return $http.get('/auth/me');
-  };
-});
-'use strict';
-
-angular.module('app').service('containerSrv', function ($http) {
-    // »»»»»»»»»»»»»»»»»»»║ TESTS
-    this.containerServiceTest = 'the containerSrv is connected';
-
-    // »»»»»»»»»»»»»»»»»»»║ ENDPOINTS
-    this.name;
-    // ...................  get containers
-    this.getContainerList = function () {
-        return $http.get('/api/containers');
-    };
-    // ...................  create containers
-    this.createContainer = function (data) {
-        $http({
-            url: '/api/containers',
-            method: 'POST',
-            data: data
-        });
-    };
-    // ...................  update containers
-    this.updateContainer = function (id, data) {
-        $http({
-            url: '/api/containers/' + id,
-            method: 'PUT',
-            data: data
-        });
-    };
-    // ...................  delete containers
-    this.deleteContainer = function (id) {
-        $http({
-            url: '/api/containers/' + id,
-            method: 'DELETE'
-        });
-    };
-});
-'use strict';
-
-angular.module('app').service('countryListSrv', function ($http) {
-    // »»»»»»»»»»»»»»»»»»»║ TESTS
-    this.countryListServiceTest = 'the countryListSrv is connected';
-
-    // »»»»»»»»»»»»»»»»»»»║ ENDPOINTS
-    this.getcountryList = function () {
-        return $http.get('/api/country');
-    };
-});
-'use strict';
-
-angular.module('app').service('deleteAllUsersSrv', function ($http) {
-    // »»»»»»»»»»»»»»»»»»»║ TESTS
-    this.deleteAllUsersServiceTest = 'the deleteAllUsersSrv is connected';
-
-    // »»»»»»»»»»»»»»»»»»»║ ENDPOINTS
-    this.deleteAllUsers = function () {
-        $http({
-            url: '/api/user',
-            method: 'DELETE'
-        }).then(function (httpResponse) {
-            return console.log('response:', JSON.stringify(httpResponse));
-        });
-    };
-});
-'use strict';
-
-angular.module('app').service('getUserColumnsSrv', function ($http) {
-    // »»»»»»»»»»»»»»»»»»»║ TESTS
-    this.getUserColumnsSrvServiceTest = 'the getUserColumnsSrv is connected';
-
-    // »»»»»»»»»»»»»»»»»»»║ ENDPOINTS
-    this.getColumnList = function () {
-        return $http.get('/api/user/columns');
-    };
-});
-'use strict';
-
-angular.module('app').service('itemDeleteSrv', function ($http) {
-    // »»»»»»»»»»»»»»»»»»»║ TESTS
-    this.itemDeleteSrvTest = 'the itemDeleteSrv is connected';
-
-    // »»»»»»»»»»»»»»»»»»»║ ENDPOINTS
-    // ...................  delete items
-    this.deleteItem = function (id) {
-        $http({
-            url: '/api/trackbys/' + id,
-            method: 'DELETE'
-        });
-    };
-});
-'use strict';
-
-angular.module('app').service('itemGetSrv', function ($http) {
-    // »»»»»»»»»»»»»»»»»»»║ TESTS
-    this.itemGetSrvTest = 'the itemGetSrv is connected';
-
-    // // »»»»»»»»»»»»»»»»»»»║ ENDPOINTS
-    // ...................  get items
-    this.getItemList = function () {
-        return $http.get('/api/items');
-    };
-    this.getItemCustomList = function () {
-        return $http.get('/api/items/custom');
-    };
-});
-'use strict';
-
-angular.module('app').service('itemMainSrv', function ($http) {
-    // »»»»»»»»»»»»»»»»»»»║ TESTS
-    this.itemMainSrvTest = 'the itemMainSrv is connected';
-
-    // // »»»»»»»»»»»»»»»»»»»║ ENDPOINTS
-    // ...................  get logged in user
-    this.getCurrentUser = function () {
-        return $http.get('/auth/me/');
-    };
-});
-'use strict';
-
-angular.module('app').service('itemPostSrv', function ($http) {
-    // »»»»»»»»»»»»»»»»»»»║ TESTS
-    this.itemPostSrvTest = 'the itemPostSrv is connected';
-
-    // // »»»»»»»»»»»»»»»»»»»║ ENDPOINTS
-    // ...................  create item
-    this.createItem = function (data) {
-        // console.log('the data in itemPostSrv is: ', data)
-        $http({
-            url: '/api/items',
-            method: 'POST',
-            data: data
-        });
-    };
-});
-'use strict';
-
-angular.module('app').service('itemPutSrv', function ($http) {
-    // »»»»»»»»»»»»»»»»»»»║ TESTS
-    this.itemPutSrvTest = 'the itemPutSrv is connected';
-
-    // // »»»»»»»»»»»»»»»»»»»║ ENDPOINTS
-    // ...................  update items
-    this.updateItem = function (id, data) {
-        // console.log("the id in the srv is :", data)
-        $http({
-            url: '/api/items/' + id,
-            method: 'PUT',
-            data: data
-        });
-    };
-});
-'use strict';
-
-angular.module('app').service('locationDeleteSrv', function ($http) {
-    // »»»»»»»»»»»»»»»»»»»║ TESTS
-    this.locationDeleteServiceTest = 'the locationDeleteSrv is connected';
-
-    // // »»»»»»»»»»»»»»»»»»»║ ENDPOINTS
-    // ...................  delete loc_classes
-    this.deleteLocation = function (id) {
-        $http({
-            url: '/api/locations/' + id,
-            method: 'DELETE'
-        });
-    };
-});
-'use strict';
-
-angular.module('app').service('locationsListSrv', function ($http) {
-    // »»»»»»»»»»»»»»»»»»»║ TESTS
-    this.locListServiceTest = 'the locationsListSrv is connected';
-
-    // »»»»»»»»»»»»»»»»»»»║ ENDPOINTS
-    this.getLocationsList = function () {
-        return $http.get('/api/locations');
-    };
-    this.getLocationsCustomList = function () {
-        return $http.get('/api/locations/custom');
-    };
-});
-'use strict';
-
-angular.module('app').service('locationUpdateSrv', function ($http) {
-    // »»»»»»»»»»»»»»»»»»»║ TESTS
-    this.locationUpdateServiceTest = 'the locationUpdateSrv is connected';
-
-    // »»»»»»»»»»»»»»»»»»»║ ENDPOINTS
-    this.submitLocationInfo = function (data) {
-        // console.log(`data to be sent ${JSON.stringify(data)}`)
-        $http({
-            url: '/api/locations/' + data.id,
-            method: 'PUT',
-            data: data
-        });
-    };
-});
-'use strict';
-
-angular.module('app').service('locClassSrv', function ($http) {
-    // »»»»»»»»»»»»»»»»»»»║ TESTS
-    this.locClassServiceTest = 'the locClassSrv is connected';
-
-    // // »»»»»»»»»»»»»»»»»»»║ ENDPOINTS
-    // ...................  get loc_classes
-    this.getLocClassesList = function () {
-        return $http.get('/api/loc_classes');
-    };
-    // ...................  create loc_classes
-    this.createLocClassObj = function (data) {
-        $http({
-            url: '/api/loc_classes',
-            method: 'POST',
-            data: data
-        });
-    };
-    // ...................  update loc_classes
-    this.updateLocClass = function (id, data) {
-        $http({
-            url: '/api/loc_classes/' + id,
-            method: 'PUT',
-            data: data
-        });
-    };
-    // ...................  delete loc_classes
-    this.deleteLocClass = function (id) {
-        $http({
-            url: '/api/loc_classes/' + id,
-            method: 'DELETE'
-        });
-    };
-});
-'use strict';
-
-angular.module('app').service('locCreateSrv', function ($http) {
-    // »»»»»»»»»»»»»»»»»»»║ TESTS
-    this.locCreateServiceTest = 'the locCreateSrv is connected';
-
-    // »»»»»»»»»»»»»»»»»»»║ ENDPOINTS
-    this.submitLocationInfo = function (data) {
-        $http({
-            url: '/api/locations',
-            method: 'POST',
-            data: data
-        });
-    };
-});
-'use strict';
-
-angular.module('app').service('modalService', function ($interval) {
-
-    // ...........  refreshes window so the grids fix themselves in the modals
-    this.refreshWindow = function () {
-        $interval(function () {
-            var fireRefreshEventOnWindow = function fireRefreshEventOnWindow() {
-                var evt = document.createEvent("HTMLEvents");
-                evt.initEvent('resize', true, false);
-                window.dispatchEvent(evt);
-            };
-            fireRefreshEventOnWindow();
-            // console.log('refreshed')
-        }, 100, 1);
-    };
-});
-'use strict';
-
-angular.module('app').service('postUserInfoSrv', function ($http) {
-    // »»»»»»»»»»»»»»»»»»»║ TESTS
-    this.serviceTest = 'the postUserInfoSrv is connected';
-
-    // »»»»»»»»»»»»»»»»»»»║ ENDPOINTS
-    this.submitUserInfo = function (data) {
-        // console.log(`clicked submit and got ${JSON.stringify(data)}`)
-        $http({
-            url: '/api/users',
-            method: 'POST',
-            data: data
-        });
-    };
-});
-'use strict';
-
-angular.module('app').service('settingsSrv', function ($http) {
-    // ...................  get default location
-    this.getDefaultLocation = function () {
-        return $http.get('http://localhost:3000/api/settings/default_location'
-
-        // ...................  update default location
-        );
-    };this.updateDefaultLocation = function (data) {
-        console.log('sending data');
-        console.log(data);
-        $http({
-            url: '/api/settings/default_location',
-            method: 'PUT',
-            data: data
-        });
-    };
-});
-'use strict';
-
-angular.module('app').service('stateListSrv', function ($http) {
-    // »»»»»»»»»»»»»»»»»»»║ TESTS
-    this.serviceTest = 'the stateListSrv is connected';
-
-    // »»»»»»»»»»»»»»»»»»»║ ENDPOINTS
-    this.getStatesList = function () {
-        return $http.get('/api/states');
-    };
-});
-'use strict';
-
-angular.module('app').service('trackByDeleteSrv', function ($http) {
-    // »»»»»»»»»»»»»»»»»»»║ TESTS
-    this.trackByDeleteSrvTest = 'the trackByDeleteSrv is connected';
-
-    // »»»»»»»»»»»»»»»»»»»║ ENDPOINTS
-    // ...................  delete trackbys
-    this.deleteTrackBy = function (id) {
-        $http({
-            url: '/api/trackbys/' + id,
-            method: 'DELETE'
-        });
-    };
-});
-'use strict';
-
-angular.module('app').service('trackByGetSrv', function ($http) {
-    // »»»»»»»»»»»»»»»»»»»║ TESTS
-    this.trackByGetSrvTest = 'the trackByGetSrv is connected';
-
-    // // »»»»»»»»»»»»»»»»»»»║ ENDPOINTS
-    // ...................  get trackbys
-    this.getTrackByList = function () {
-        return $http.get('/api/trackbys/');
-    };
-});
-'use strict';
-
-angular.module('app').service('trackByPostSrv', function ($http) {
-    // »»»»»»»»»»»»»»»»»»»║ TESTS
-    this.trackByPostSrvTest = 'the trackByPostSrv is connected';
-
-    // // »»»»»»»»»»»»»»»»»»»║ ENDPOINTS
-    // ...................  create trackbys
-    this.createTrackBy = function (data) {
-        if (data.trackby_name == undefined) {
-            alert('Fill out all fields');
-        } else {
-            $http({
-                url: '/api/trackbys/',
-                method: 'POST',
-                data: data
-            });
-        }
-    };
-});
-'use strict';
-
-angular.module('app').service('trackByPutSrv', function ($http) {
-    // »»»»»»»»»»»»»»»»»»»║ TESTS
-    this.trackByPutSrvTest = 'the trackByPutSrv is connected';
-
-    // // »»»»»»»»»»»»»»»»»»»║ ENDPOINTS
-    // ...................  update trackbys
-    this.updateTrackBy = function (id, data) {
-        $http({
-            url: '/api/trackbys/' + id,
-            method: 'PUT',
-            data: data
-        });
-    };
-});
-'use strict';
-
-angular.module('app').service('updateUserSrv', function ($http) {
-    // »»»»»»»»»»»»»»»»»»»║ TESTS
-    this.updateUserServiceTest = 'the updateUserSrv is connected';
-
-    // »»»»»»»»»»»»»»»»»»»║ ENDPOINTS
-    this.updateUser = function (id, data) {
-        $http({
-            url: '/api/users/' + id,
-            method: 'PUT',
-            data: data
-        });
-    };
-});
-'use strict';
-
-angular.module('app').service('userListSrv', function ($http) {
-    // »»»»»»»»»»»»»»»»»»»║ TESTS
-    this.userServiceTest = 'the userListSrv is connected';
-
-    // »»»»»»»»»»»»»»»»»»»║ ENDPOINTS
-    this.getUserList = function () {
-        return $http.get('/api/users');
-    };
-    this.getCustomUserList = function () {
-        return $http.get('/api/users/custom');
-    };
-});
-'use strict';
-
 angular.module('app').directive('bcScanner', function () {
     return {
         restrict: 'E',
@@ -1904,5 +1464,404 @@ angular.module('app').directive('trackByDir', function (trackByGetSrv) {
       // </div>
     }
   };
+});
+'use strict';
+
+angular.module('app').service('authService', function ($http) {
+    // »»»»»»»»»»»»»»»»»»»║ TESTS
+    this.authServiceTest = 'the authService is connected';
+
+    // »»»»»»»»»»»»»»»»»»»║ ENDPOINTS
+    this.logMeIn = function () {
+        return $http.get('/auth', 'Access-Control-Allow-Origin').then(function (response) {
+            return res.send('ok');
+        });
+    };
+    this.logout = function () {
+        return $http.get('/auth/logout').then(function (response) {
+            return window.location = response.data;
+        });
+    };
+});
+'use strict';
+
+angular.module('app').service('bcService', function ($http) {
+    var _this = this;
+
+    // VARIABLES
+    this.upc;
+
+    //FUNCTIONS
+    this.storeBarcode = function (bc) {
+        console.log("barcode was stored and is", bc);
+        _this.upc = bc;
+    };
+});
+'use strict';
+
+angular.module('app').service('checkUserSrv', function ($http) {
+
+  this.getUser = function () {
+    return $http.get('/auth/me');
+  };
+});
+'use strict';
+
+angular.module('app').service('containerSrv', function ($http) {
+    // »»»»»»»»»»»»»»»»»»»║ TESTS
+    this.containerServiceTest = 'the containerSrv is connected';
+
+    // »»»»»»»»»»»»»»»»»»»║ ENDPOINTS
+    this.name;
+    // ...................  get containers
+    this.getContainerList = function () {
+        return $http.get('/api/containers');
+    };
+    // ...................  create containers
+    this.createContainer = function (data) {
+        $http({
+            url: '/api/containers',
+            method: 'POST',
+            data: data
+        });
+    };
+    // ...................  update containers
+    this.updateContainer = function (id, data) {
+        $http({
+            url: '/api/containers/' + id,
+            method: 'PUT',
+            data: data
+        });
+    };
+    // ...................  delete containers
+    this.deleteContainer = function (id) {
+        $http({
+            url: '/api/containers/' + id,
+            method: 'DELETE'
+        });
+    };
+});
+'use strict';
+
+angular.module('app').service('countryListSrv', function ($http) {
+    // »»»»»»»»»»»»»»»»»»»║ TESTS
+    this.countryListServiceTest = 'the countryListSrv is connected';
+
+    // »»»»»»»»»»»»»»»»»»»║ ENDPOINTS
+    this.getcountryList = function () {
+        return $http.get('/api/country');
+    };
+});
+'use strict';
+
+angular.module('app').service('getUserColumnsSrv', function ($http) {
+    // »»»»»»»»»»»»»»»»»»»║ TESTS
+    this.getUserColumnsSrvServiceTest = 'the getUserColumnsSrv is connected';
+
+    // »»»»»»»»»»»»»»»»»»»║ ENDPOINTS
+    this.getColumnList = function () {
+        return $http.get('/api/user/columns');
+    };
+});
+'use strict';
+
+angular.module('app').service('itemDeleteSrv', function ($http) {
+    // »»»»»»»»»»»»»»»»»»»║ TESTS
+    this.itemDeleteSrvTest = 'the itemDeleteSrv is connected';
+
+    // »»»»»»»»»»»»»»»»»»»║ ENDPOINTS
+    // ...................  delete items
+    this.deleteItem = function (id) {
+        $http({
+            url: '/api/trackbys/' + id,
+            method: 'DELETE'
+        });
+    };
+});
+'use strict';
+
+angular.module('app').service('itemGetSrv', function ($http) {
+    // »»»»»»»»»»»»»»»»»»»║ TESTS
+    this.itemGetSrvTest = 'the itemGetSrv is connected';
+
+    // // »»»»»»»»»»»»»»»»»»»║ ENDPOINTS
+    // ...................  get items
+    this.getItemList = function () {
+        return $http.get('/api/items');
+    };
+    this.getItemCustomList = function () {
+        return $http.get('/api/items/custom');
+    };
+});
+'use strict';
+
+angular.module('app').service('itemMainSrv', function ($http) {
+    // »»»»»»»»»»»»»»»»»»»║ TESTS
+    this.itemMainSrvTest = 'the itemMainSrv is connected';
+
+    // // »»»»»»»»»»»»»»»»»»»║ ENDPOINTS
+    // ...................  get logged in user
+    this.getCurrentUser = function () {
+        return $http.get('/auth/me/');
+    };
+});
+'use strict';
+
+angular.module('app').service('itemPostSrv', function ($http) {
+    // »»»»»»»»»»»»»»»»»»»║ TESTS
+    this.itemPostSrvTest = 'the itemPostSrv is connected';
+
+    // // »»»»»»»»»»»»»»»»»»»║ ENDPOINTS
+    // ...................  create item
+    this.createItem = function (data) {
+        // console.log('the data in itemPostSrv is: ', data)
+        $http({
+            url: '/api/items',
+            method: 'POST',
+            data: data
+        });
+    };
+});
+'use strict';
+
+angular.module('app').service('itemPutSrv', function ($http) {
+    // »»»»»»»»»»»»»»»»»»»║ TESTS
+    this.itemPutSrvTest = 'the itemPutSrv is connected';
+
+    // // »»»»»»»»»»»»»»»»»»»║ ENDPOINTS
+    // ...................  update items
+    this.updateItem = function (id, data) {
+        // console.log("the id in the srv is :", data)
+        $http({
+            url: '/api/items/' + id,
+            method: 'PUT',
+            data: data
+        });
+    };
+});
+'use strict';
+
+angular.module('app').service('locationDeleteSrv', function ($http) {
+    // »»»»»»»»»»»»»»»»»»»║ TESTS
+    this.locationDeleteServiceTest = 'the locationDeleteSrv is connected';
+
+    // // »»»»»»»»»»»»»»»»»»»║ ENDPOINTS
+    // ...................  delete loc_classes
+    this.deleteLocation = function (id) {
+        $http({
+            url: '/api/locations/' + id,
+            method: 'DELETE'
+        });
+    };
+});
+'use strict';
+
+angular.module('app').service('locationUpdateSrv', function ($http) {
+    // »»»»»»»»»»»»»»»»»»»║ TESTS
+    this.locationUpdateServiceTest = 'the locationUpdateSrv is connected';
+
+    // »»»»»»»»»»»»»»»»»»»║ ENDPOINTS
+    this.submitLocationInfo = function (data) {
+        // console.log(`data to be sent ${JSON.stringify(data)}`)
+        $http({
+            url: '/api/locations/' + data.id,
+            method: 'PUT',
+            data: data
+        });
+    };
+});
+'use strict';
+
+angular.module('app').service('locClassSrv', function ($http) {
+    // »»»»»»»»»»»»»»»»»»»║ TESTS
+    this.locClassServiceTest = 'the locClassSrv is connected';
+
+    // // »»»»»»»»»»»»»»»»»»»║ ENDPOINTS
+    // ...................  get loc_classes
+    this.getLocClassesList = function () {
+        return $http.get('/api/loc_classes');
+    };
+    // ...................  create loc_classes
+    this.createLocClassObj = function (data) {
+        $http({
+            url: '/api/loc_classes',
+            method: 'POST',
+            data: data
+        });
+    };
+    // ...................  update loc_classes
+    this.updateLocClass = function (id, data) {
+        $http({
+            url: '/api/loc_classes/' + id,
+            method: 'PUT',
+            data: data
+        });
+    };
+    // ...................  delete loc_classes
+    this.deleteLocClass = function (id) {
+        $http({
+            url: '/api/loc_classes/' + id,
+            method: 'DELETE'
+        });
+    };
+});
+'use strict';
+
+angular.module('app').service('locCreateSrv', function ($http) {
+    // »»»»»»»»»»»»»»»»»»»║ TESTS
+    this.locCreateServiceTest = 'the locCreateSrv is connected';
+
+    // »»»»»»»»»»»»»»»»»»»║ ENDPOINTS
+    this.submitLocationInfo = function (data) {
+        $http({
+            url: '/api/locations',
+            method: 'POST',
+            data: data
+        });
+    };
+});
+'use strict';
+
+angular.module('app').service('modalService', function ($interval) {
+
+    // ...........  refreshes window so the grids fix themselves in the modals
+    this.refreshWindow = function () {
+        $interval(function () {
+            var fireRefreshEventOnWindow = function fireRefreshEventOnWindow() {
+                var evt = document.createEvent("HTMLEvents");
+                evt.initEvent('resize', true, false);
+                window.dispatchEvent(evt);
+            };
+            fireRefreshEventOnWindow();
+            // console.log('refreshed')
+        }, 100, 1);
+    };
+});
+'use strict';
+
+angular.module('app').service('postUserInfoSrv', function ($http) {
+    // »»»»»»»»»»»»»»»»»»»║ TESTS
+    this.serviceTest = 'the postUserInfoSrv is connected';
+
+    // »»»»»»»»»»»»»»»»»»»║ ENDPOINTS
+    this.submitUserInfo = function (data) {
+        // console.log(`clicked submit and got ${JSON.stringify(data)}`)
+        $http({
+            url: '/api/users',
+            method: 'POST',
+            data: data
+        });
+    };
+});
+'use strict';
+
+angular.module('app').service('settingsSrv', function ($http) {
+    // ...................  get default location
+    this.getDefaultLocation = function () {
+        return $http.get('http://localhost:3000/api/settings/default_location'
+
+        // ...................  update default location
+        );
+    };this.updateDefaultLocation = function (data) {
+        console.log('sending data');
+        console.log(data);
+        $http({
+            url: '/api/settings/default_location',
+            method: 'PUT',
+            data: data
+        });
+    };
+});
+'use strict';
+
+angular.module('app').service('trackByDeleteSrv', function ($http) {
+    // »»»»»»»»»»»»»»»»»»»║ TESTS
+    this.trackByDeleteSrvTest = 'the trackByDeleteSrv is connected';
+
+    // »»»»»»»»»»»»»»»»»»»║ ENDPOINTS
+    // ...................  delete trackbys
+    this.deleteTrackBy = function (id) {
+        $http({
+            url: '/api/trackbys/' + id,
+            method: 'DELETE'
+        });
+    };
+});
+'use strict';
+
+angular.module('app').service('trackByGetSrv', function ($http) {
+    // »»»»»»»»»»»»»»»»»»»║ TESTS
+    this.trackByGetSrvTest = 'the trackByGetSrv is connected';
+
+    // // »»»»»»»»»»»»»»»»»»»║ ENDPOINTS
+    // ...................  get trackbys
+    this.getTrackByList = function () {
+        return $http.get('/api/trackbys/');
+    };
+});
+'use strict';
+
+angular.module('app').service('trackByPostSrv', function ($http) {
+    // »»»»»»»»»»»»»»»»»»»║ TESTS
+    this.trackByPostSrvTest = 'the trackByPostSrv is connected';
+
+    // // »»»»»»»»»»»»»»»»»»»║ ENDPOINTS
+    // ...................  create trackbys
+    this.createTrackBy = function (data) {
+        if (data.trackby_name == undefined) {
+            alert('Fill out all fields');
+        } else {
+            $http({
+                url: '/api/trackbys/',
+                method: 'POST',
+                data: data
+            });
+        }
+    };
+});
+'use strict';
+
+angular.module('app').service('trackByPutSrv', function ($http) {
+    // »»»»»»»»»»»»»»»»»»»║ TESTS
+    this.trackByPutSrvTest = 'the trackByPutSrv is connected';
+
+    // // »»»»»»»»»»»»»»»»»»»║ ENDPOINTS
+    // ...................  update trackbys
+    this.updateTrackBy = function (id, data) {
+        $http({
+            url: '/api/trackbys/' + id,
+            method: 'PUT',
+            data: data
+        });
+    };
+});
+'use strict';
+
+angular.module('app').service('updateUserSrv', function ($http) {
+    // »»»»»»»»»»»»»»»»»»»║ TESTS
+    this.updateUserServiceTest = 'the updateUserSrv is connected';
+
+    // »»»»»»»»»»»»»»»»»»»║ ENDPOINTS
+    this.updateUser = function (id, data) {
+        $http({
+            url: '/api/users/' + id,
+            method: 'PUT',
+            data: data
+        });
+    };
+});
+'use strict';
+
+angular.module('app').service('userListSrv', function ($http) {
+    // »»»»»»»»»»»»»»»»»»»║ TESTS
+    this.userServiceTest = 'the userListSrv is connected';
+
+    // »»»»»»»»»»»»»»»»»»»║ ENDPOINTS
+    this.getUserList = function () {
+        return $http.get('/api/users');
+    };
+    this.getCustomUserList = function () {
+        return $http.get('/api/users/custom');
+    };
 });
 //# sourceMappingURL=bundle.js.map
