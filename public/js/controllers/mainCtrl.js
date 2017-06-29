@@ -16,8 +16,8 @@ angular.module('app').controller('mainCtrl', function ($scope, $interval, authSe
     // .......................  checks to see if the user is logged in
     // checkUserSrv.getUser().then((response) => $scope.loggedIn = true)
 
-//modal hide/show controls
-//________FUNCTION
+    //modal hide/show controls
+    //________FUNCTION
     $scope.showStorageModal = () => {
         modalService.refreshWindow()
         $scope.modalShownStorage = true
@@ -32,7 +32,9 @@ angular.module('app').controller('mainCtrl', function ($scope, $interval, authSe
         $scope.modalShownItems = true
     }
 
-//_________DASHBOARD TITLE
+
+
+    //_________DASHBOARD TITLE
     $scope.pageTitle = "Dashboard"
     $scope.watchLocation = (area) => {
         var url = area

@@ -61,7 +61,76 @@ $wrapper-widths: 1380px;
     }
 
 // modal mixins
-    @mixin modal-footer {
+// main-wrapper
+    @mixin modal-wrapper-storage {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        width: 100%;
+    }
+// header
+    @mixin modal-header-wrapper {
+        height: 35px;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding-right:10px;
+        background: lightblue;
+    }
+    @mixin modal-header-text {
+        height: 100%;
+        display: inline;
+        line-height: 27px;
+        font-size: 20px;
+        font-weight: bold;
+        padding: 0px 20px 0px 10px;
+        border-top-right-radius: 20px;
+        border-top-left-radius: 3px;
+        background: black;
+    }
+    @mixin modal-closin-x {
+        height: 100%;
+        flex: .15;
+        line-height: 30px;
+        font-size: 20px;
+        text-align: right;
+        font-weight: bold;
+        cursor: pointer;
+        color: #333;
+    }
+// form
+    @mixin form-wrapper {
+        width: 100%;
+        border: 1px solid blue;
+        display: flex;
+        flex-direction: column;
+        padding: 10px 0px;
+    }
+    @mixin input-wrapper {
+        height: 35px;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        align-items: center;
+        border: 1px solid green;
+        padding: 0px 10px;
+    }
+// form-inputs
+    @mixin modal-input {
+        height: 25px;
+        width: 100%;        
+    }
+    @mixin modal-label {
+        margin-top: 10px;
+        margin-left: 10px;
+        line-height: 25px;
+        width: 156px;        
+    }   
+// modal-controls
+    @mixin modal-controls-wrapper {
         border: 1px solid green;
         height: 30px;
         width: 100%;
@@ -70,9 +139,8 @@ $wrapper-widths: 1380px;
         flex-direction: row;
         justify-content: flex-end;
         border: 1px inset #a6a6a6;
-        margin-top: 5px;
     }
-    @mixin mf-buttons {
+    @mixin modal-controls {
         height: 100%;
         width: 27%;
         border: 1px ridge #d4d4d4;

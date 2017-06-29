@@ -14,11 +14,15 @@
         width: 120px;
     }
     .create-item-wrapper {
-        height: 498px;
-        width: 100%;
+        // height: 498px;
+        // width: 100%;
         position: relative;
-        padding-bottom: 30px;
-        padding-top: 25px;
+        // padding-bottom: 30px;
+        // padding-top: 25px;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        width: 100%;
     }
     .scrollContainer {
         @include box-tester;
@@ -26,21 +30,12 @@
         height: 100%;
         width: 100%;
         overflow-y: scroll;
-        padding-top: 10px;
+        padding-top: 5px;
     }
     .ci-1 {
         @include box-tester;
         z-index: 1;
-        height: 35px;
-        width: 100%;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-        padding-right:10px;
-        background: lightblue;
-        position: absolute;
-        top:0px;
+        @include modal-header-wrapper;
     }
     .ci-1-a {
         @include box-tester;
@@ -268,20 +263,8 @@
        width: 169px; 
     }
     .modal-footer {
-        height: 30px;
-        width: 100%;
-        background-image: url('../styles/img/texture.jpg');
-        position: absolute;
-        bottom: 0px;
-        display: flex;
-        flex-direction: row;
-        justify-content: flex-end;
-        border: 1px inset #a6a6a6
+        @include modal-controls-wrapper;
     }
     .mf-button-1 {
-        height: 100%;
-        width: 27%;
-        border: 1px ridge #d4d4d4;
-        cursor: pointer;
-        background: gray;
+        @include modal-controls;
     }

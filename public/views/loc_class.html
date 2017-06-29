@@ -8,24 +8,27 @@
     </ul>
 </div>-->
 <!-- »»»»»»»»»»»»»»»»»»»║   INPUT FIELDS   -->
-<div class="modal-wrapper-storage" >
-    <div class="header-storage" >
+<div class="modal-wrapper-storage">
+    <div class="header-storage">
         <div class="header-text">Storage Types</div>
-        {{sayHi}}
-        {{hello}}
         <div class="closing-x" ng-click="hideStorageModal()">X</div>
-    </div> 
-    <div>
-    <form id="classCreateForm">
-        <input type="text" placeholder="Name" ng-model="locClassObj.name">
-        <input type="text" placeholder="Description" ng-model="locClassObj.description">
-        <input type="submit" value="Submit" id="addData" ng-click="createLocClassObj()">
-        <input type="reset" value="Clear">
-    </form>
-
-    <div>
-        <button ng-click="delete()" ng-disabled="enableDelete != false">Delete</button>
-        <div ui-grid="gridOptions" class="myGrid" ui-grid-selection ui-grid-edit></div>
     </div>
+    <form id="classCreateForm" class="form-wrapper">
+        <div class="input-wrapper">
+            <input type="text" class="modal-input" ng-model="locClassObj.name"/>
+            <div class="modal-label">Name</div>
+        </div>
+        <div class="input-wrapper last-input-wrapper">
+            <input type="text" class="modal-input" ng-model="locClassObj.description"/>
+            <div class="modal-label">Description</div>
+        </div>
+        <div class="modal-controls-wrapper">
+            <input type="submit" value="Submit" class="modal-controls" id="addData" ng-click="createLocClassObj()"/>
+            <input type="reset" value="Clear" class="modal-controls">
+        </div>
+    </form>
+    <div class="modal-grid-wrapper">
+        <button class="grid-delete" ng-click="delete()" ng-disabled="enableDelete != false">d</button>
+        <div ui-grid="gridOptions" class="myGrid" ui-grid-selection ui-grid-edit></div>
     </div>
 </div>
