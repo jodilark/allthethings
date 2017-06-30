@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css?family=Fresca|Josefin+Sans|Source+Code+Pro");
+@import url("https://fonts.googleapis.com/css?family=Lobster+Two");
 html, body, div, span, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 abbr, address, cite, code,
@@ -82,7 +84,8 @@ input, select {
 *, *:before, *:after {
   box-sizing: border-box; }
 
-@import url("https://fonts.googleapis.com/css?family=Fresca|Josefin+Sans|Lobster+Two|Source+Code+Pro");
+@import url("https://fonts.googleapis.com/css?family=Fresca|Josefin+Sans|Source+Code+Pro");
+@import url("https://fonts.googleapis.com/css?family=Lobster+Two");
 .modal-wrapper-container {
   display: flex;
   flex-direction: column;
@@ -173,7 +176,8 @@ input, select {
 #container-grid .ui-grid-viewport {
   overflow-x: hidden !important; }
 
-@import url("https://fonts.googleapis.com/css?family=Fresca|Josefin+Sans|Lobster+Two|Source+Code+Pro");
+@import url("https://fonts.googleapis.com/css?family=Fresca|Josefin+Sans|Source+Code+Pro");
+@import url("https://fonts.googleapis.com/css?family=Lobster+Two");
 .item-input {
   height: 25px;
   width: 100%; }
@@ -481,7 +485,8 @@ bc-scanner {
   cursor: pointer;
   background: gray; }
 
-@import url("https://fonts.googleapis.com/css?family=Fresca|Josefin+Sans|Lobster+Two|Source+Code+Pro");
+@import url("https://fonts.googleapis.com/css?family=Fresca|Josefin+Sans|Source+Code+Pro");
+@import url("https://fonts.googleapis.com/css?family=Lobster+Two");
 .modal-wrapper-location {
   display: flex;
   flex-direction: column;
@@ -590,7 +595,8 @@ bc-scanner {
   line-height: 25px;
   width: 166px; }
 
-@import url("https://fonts.googleapis.com/css?family=Fresca|Josefin+Sans|Lobster+Two|Source+Code+Pro");
+@import url("https://fonts.googleapis.com/css?family=Fresca|Josefin+Sans|Source+Code+Pro");
+@import url("https://fonts.googleapis.com/css?family=Lobster+Two");
 .modal-wrapper-user {
   display: flex;
   flex-direction: column;
@@ -681,9 +687,9 @@ bc-scanner {
   align-items: center;
   padding: 0px 10px; }
 
-@import url("https://fonts.googleapis.com/css?family=Fresca|Josefin+Sans|Lobster+Two|Source+Code+Pro");
+@import url("https://fonts.googleapis.com/css?family=Fresca|Josefin+Sans|Source+Code+Pro");
+@import url("https://fonts.googleapis.com/css?family=Lobster+Two");
 .page-wrapper {
-  border: 1px solid red;
   height: 100vh;
   width: 100%;
   padding: 65px 20px 20px 85px;
@@ -693,7 +699,6 @@ bc-scanner {
 
 .page-title {
   z-index: 2001;
-  border: 1px solid red;
   line-height: 65px;
   margin: -65px auto;
   text-align: center;
@@ -713,16 +718,15 @@ bc-scanner {
 #chart3 {
   background: lightcoral; }
 
-@import url("https://fonts.googleapis.com/css?family=Fresca|Josefin+Sans|Lobster+Two|Source+Code+Pro");
+@import url("https://fonts.googleapis.com/css?family=Fresca|Josefin+Sans|Source+Code+Pro");
+@import url("https://fonts.googleapis.com/css?family=Lobster+Two");
 .home-body-wrapper {
-  border: 1px solid red;
   height: 500px;
   width: 100%;
   padding: 20px 20px;
   margin-top: 63px; }
 
 .home-title-1 {
-  border: 1px solid red;
   width: 100%;
   height: 450px;
   display: flex;
@@ -730,7 +734,6 @@ bc-scanner {
   align-content: center; }
 
 .ht-1-a {
-  border: 1px solid red;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -759,14 +762,12 @@ bc-scanner {
   margin: 0px 50px; }
 
 .find-body-wrapper {
-  border: 1px solid red;
   height: 500px;
   width: 100%;
   padding: 20px 20px;
   margin-top: 20px; }
 
 .ft-1 {
-  border: 1px solid red;
   width: 100%;
   height: 450px;
   display: flex;
@@ -774,7 +775,6 @@ bc-scanner {
   align-content: center; }
 
 .ft-1-a {
-  border: 1px solid red;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -783,7 +783,6 @@ bc-scanner {
   height: 100%; }
 
 .ft-1-a-i {
-  border: 1px solid red;
   height: 100%;
   flex: 1;
   display: flex;
@@ -791,12 +790,10 @@ bc-scanner {
   align-items: center; }
 
 .ft-1-a-i-1 {
-  border: 1px solid red;
   height: 350px;
   width: 350px; }
 
 .ft-1-a-ii {
-  border: 1px solid red;
   height: 100%;
   flex: 1;
   display: flex;
@@ -838,7 +835,6 @@ bc-scanner {
   font-size: 20px; }
 
 .loss-wrapper {
-  border: 1px solid red;
   height: 700px;
   width: 100%;
   display: flex;
@@ -848,19 +844,16 @@ bc-scanner {
   padding: 20px; }
 
 .lw-1 {
-  border: 1px solid red;
   flex: 1;
   width: 1380px;
   position: relative; }
 
 .lw-1-a {
-  border: 1px solid red;
   width: 500px;
   height: 355px;
   margin: 50px 0px 0px 50px; }
 
 .lw-1-b {
-  border: 1px solid red;
   width: 750px;
   height: 175px;
   position: absolute;
@@ -869,7 +862,6 @@ bc-scanner {
   transform: rotate(45deg); }
 
 .lw-1-c {
-  border: 1px solid red;
   width: 100%;
   position: absolute;
   bottom: 0px;
@@ -890,7 +882,6 @@ bc-scanner {
   background: lightgreen; }
 
 .cbw-1 {
-  border: 1px solid red;
   width: 100%;
   height: 100px;
   display: flex;
@@ -899,7 +890,6 @@ bc-scanner {
   align-items: center; }
 
 .cbw-1-a {
-  border: 1px solid red;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -931,7 +921,8 @@ bc-scanner {
 #cbw4 {
   background: lightyellow; }
 
-@import url("https://fonts.googleapis.com/css?family=Fresca|Josefin+Sans|Lobster+Two|Source+Code+Pro");
+@import url("https://fonts.googleapis.com/css?family=Fresca|Josefin+Sans|Source+Code+Pro");
+@import url("https://fonts.googleapis.com/css?family=Lobster+Two");
 .page-wrapper-items {
   height: 100vh;
   width: 100%;
@@ -1002,12 +993,12 @@ body .auth0-lock.auth0-lock .auth0-lock-social-button.auth0-lock-social-big-butt
 body .auth0-lock-submit {
   background: #595C80 !important; }
 
-@import url("https://fonts.googleapis.com/css?family=Fresca|Josefin+Sans|Lobster+Two|Source+Code+Pro");
+@import url("https://fonts.googleapis.com/css?family=Fresca|Josefin+Sans|Source+Code+Pro");
+@import url("https://fonts.googleapis.com/css?family=Lobster+Two");
 #container {
   z-index: 3000; }
 
 .page-wrapper {
-  border: 1px solid red;
   height: 100vh;
   width: 100%;
   padding: 85px 20px 20px 105px;
@@ -1015,7 +1006,6 @@ body .auth0-lock-submit {
   position: relative; }
 
 .grid-container {
-  border: 1px solid red;
   width: 100%;
   height: 100%; }
 
@@ -1030,7 +1020,8 @@ body .auth0-lock-submit {
   height: 30px;
   width: 30px; }
 
-@import url("https://fonts.googleapis.com/css?family=Fresca|Josefin+Sans|Lobster+Two|Source+Code+Pro");
+@import url("https://fonts.googleapis.com/css?family=Fresca|Josefin+Sans|Source+Code+Pro");
+@import url("https://fonts.googleapis.com/css?family=Lobster+Two");
 .modal-wrapper-storage {
   display: flex;
   flex-direction: column;
@@ -1129,10 +1120,10 @@ body .auth0-lock-submit {
   width: 30px;
   cursor: pointer; }
 
-@import url("https://fonts.googleapis.com/css?family=Fresca|Josefin+Sans|Lobster+Two|Source+Code+Pro");
+@import url("https://fonts.googleapis.com/css?family=Fresca|Josefin+Sans|Source+Code+Pro");
+@import url("https://fonts.googleapis.com/css?family=Lobster+Two");
 html, input, textarea, button, select {
-  background: #242424;
-  color: #b6b6b6; }
+  font-family: "Source Code Pro", monospace; }
 
 .test-results {
   color: green;
@@ -1144,8 +1135,13 @@ div.test-results {
   border: 1px dashed red;
   background: rgba(0, 0, 0, 0.1); }
 
+body {
+  background: url("../styles/img/darkTexture2.png"); }
+
+.ui-grid-contents-wrapper {
+  background: rgba(173, 216, 230, 0.3); }
+
 .miniModal {
-  border: 1px solid red;
   z-index: 10000;
   height: 100vh;
   width: 100vw;
@@ -1157,7 +1153,6 @@ div.test-results {
   padding-top: 100px; }
 
 .modalBox {
-  border: 1px solid red;
   height: 500px;
   width: 500px;
   background: black;
@@ -1165,7 +1160,6 @@ div.test-results {
 
 .public-header-1 {
   z-index: 2000;
-  border: 1px solid red;
   width: 100%;
   height: 65px;
   display: flex;
@@ -1176,7 +1170,6 @@ div.test-results {
   top: 0px; }
 
 .public-header-1-a {
-  border: 1px solid red;
   height: 100%;
   flex: 1;
   display: flex;
@@ -1186,7 +1179,6 @@ div.test-results {
   margin-left: 20px; }
 
 .public-header-1-b {
-  border: 1px solid red;
   height: 100%;
   flex: 1;
   display: flex;
@@ -1195,7 +1187,6 @@ div.test-results {
   align-items: center; }
 
 .public-header-1-b-i {
-  border: 1px solid red;
   height: 100%;
   flex: .5;
   display: flex;
@@ -1222,7 +1213,8 @@ div.test-results {
 
 .dashboard-header-1 {
   z-index: 2000;
-  border: 1px solid red;
+  background: #9c3d63;
+  border-bottom: 3px solid rgba(0, 0, 0, 0.3);
   width: 100%;
   height: 65px;
   display: flex;
@@ -1232,8 +1224,10 @@ div.test-results {
   position: fixed;
   top: 0px; }
 
+.filtre--r {
+  background-image: radial-gradient(circle farthest-corner at center, rgba(255, 255, 255, 0.2) 0%, transparent 20%); }
+
 .dh-1-a {
-  border: 1px solid red;
   height: 100%;
   flex: 1;
   display: flex;
@@ -1243,7 +1237,6 @@ div.test-results {
   margin-left: 20px; }
 
 .dh-1-b {
-  border: 1px solid red;
   height: 100%;
   flex: 1;
   display: flex;
@@ -1252,7 +1245,6 @@ div.test-results {
   align-items: center; }
 
 .dh-1-b-i {
-  border: 1px solid red;
   height: 100%;
   flex: .5;
   display: flex;
@@ -1262,6 +1254,7 @@ div.test-results {
   margin-right: 20px; }
 
 #dh1 {
+  z-index: 2001;
   height: 45px;
   width: 200px;
   background: lightblue;
@@ -1271,21 +1264,25 @@ div.test-results {
   margin: 0px 5px; }
 
 #dh3 {
+  z-index: 2001;
   margin: 0px 0px 0px 5px;
   background: green; }
 
 #dh4 {
-  font-size: 40px; }
+  font-size: 40px;
+  z-index: 2001;
+  color: #f8f8f8;
+  font-family: "Lobster Two", cursive; }
 
 .nav-wrapper {
   z-index: 1000;
-  border: 1px solid red;
   height: 100vh;
   width: 85px;
   position: fixed;
   top: 0px;
   left: 0px;
-  padding-top: 63px; }
+  padding-top: 43px;
+  text-align: center; }
 
 .nw-1 {
   height: 100%;
@@ -1293,7 +1290,11 @@ div.test-results {
   margin: 20px 0px;
   display: flex;
   flex-direction: column;
-  align-items: center; }
+  align-items: center;
+  background: url("../styles/img/inverseLeather.PNG");
+  background-size: cover;
+  background-repeat: no-repeat;
+  border-right: 3px solid rgba(0, 0, 0, 0.3); }
 
 .nw-asset {
   margin: 5px 0px;
@@ -1308,13 +1309,34 @@ div.test-results {
 .nw-asset:hover {
   width: 70px;
   height: 70px;
-  background: #9c3d63; }
+  background: #8ea148; }
 
 #nwa1 {
   background: #118987; }
 
 #nwa2 {
+  background: #9c3d63; }
+
+#nwa3 {
+  background: #f7b500; }
+
+#nwa4 {
+  background: #9c3d63; }
+
+#nwa5 {
+  background: #595C80; }
+
+#nwa6 {
   background: #ea4609; }
+
+#nwa7 {
+  background: #f7b500; }
+
+#nwa8 {
+  background: #118987; }
+
+#nwa9 {
+  background: #d80c18; }
 
 .rating {
   color: #a9a9a9;
@@ -1354,21 +1376,20 @@ ul.rating {
   margin-left: 3px;
   font-size: 31px !important; }
 
-.fa-user.leftNavButton {
-  font-size: 32px !important;
+.leftNavButton.add {
+  font-size: 18px !important;
   color: #f8f8f8;
   position: absolute;
-  bottom: 5px;
+  top: 5px;
   right: 5px; }
 
-.fa-user-plus.leftNavButton {
+.leftNavButton.center {
   font-size: 32px !important;
   color: #f8f8f8;
-  position: absolute;
-  bottom: 5px;
-  left: 5px; }
+  padding-top: 10px; }
 
-@import url("https://fonts.googleapis.com/css?family=Fresca|Josefin+Sans|Lobster+Two|Source+Code+Pro");
+@import url("https://fonts.googleapis.com/css?family=Fresca|Josefin+Sans|Source+Code+Pro");
+@import url("https://fonts.googleapis.com/css?family=Lobster+Two");
 .modal-wrapper-trackby {
   display: flex;
   flex-direction: column;
@@ -1473,16 +1494,15 @@ ul.rating {
   cursor: pointer;
   background: gray; }
 
-@import url("https://fonts.googleapis.com/css?family=Fresca|Josefin+Sans|Lobster+Two|Source+Code+Pro");
+@import url("https://fonts.googleapis.com/css?family=Fresca|Josefin+Sans|Source+Code+Pro");
+@import url("https://fonts.googleapis.com/css?family=Lobster+Two");
 .page-wrapper {
-  border: 1px solid red;
   height: 100vh;
   width: 100%;
   padding: 85px 20px 20px 105px;
   overflow-y: hidden; }
 
 .grid-container {
-  border: 1px solid red;
   width: 100%;
   height: 100%; }
 

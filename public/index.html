@@ -49,7 +49,7 @@
     <!--║           DASHBOARD HEADERS          ║-->
     <!--╚══════════════════════════════════════╝-->
     <div ng-hide='!loggedIn'>
-        <div class="dashboard-header-1">
+        <div class="dashboard-header-1 filtre--r">
             <div class="dh-1-a">
                 <div class="dh-test-asset" id="dh1" ui-sref="dashboard" ng-click="watchLocation('#!/dashboard')"></div>
             </div>
@@ -70,18 +70,35 @@
         <div class="nav-wrapper">
             <div class="nw-1">
                 <div></div>
-                <button title="Create Items" class="nw-asset" id="nwa8" ng-click='showItemsModal()'>C.I</button>
-                <button title="Manage Items" ui-sref="item_manage" class="nw-asset" id="nwa9" ng-click="watchLocation('#!/item_manage')">M.I</button>
-                <button title="Create Locations" class="nw-asset" id="nwa3" ng-click='showLocationModal()'>C.lc</button>
-                <button title="Manage Locations" ui-sref="location_manage" class="nw-asset" id="nwa4" ng-click="watchLocation('#!/location_manage')">M.L</button>
-                <button title="Manage Containers" class="nw-asset" id="nwa5" ng-click='showContainerModal()'>M.Ct</button>
-                <button title="Manage Storage Types" class="nw-asset" id="nwa6" ng-click='showStorageModal()'>M.S</button>
-                <button title="Manage Track-Bys" class="nw-asset" id="nwa7" ng-click='showTrackbyModal()'>M.t</button>
-                <div title="Create Users" class="nw-asset" id="nwa1" ng-click='showUserModal()'>
-                <i class="fa fa-user-plus leftNavButton" aria-hidden="true"></i>
+                <div title="Create Items" class="nw-asset" id="nwa8" ng-click='showItemsModal()'>
+                    <i class="fa fa-plus leftNavButton add" aria-hidden="true"></i>
+                    <i class="fa fa-shopping-bag leftNavButton center" aria-hidden="true"></i>
                 </div>
-                <div title="Manage Users" ui-sref="user_manage" class="nw-asset" id="nwa2" ng-click="watchLocation('#!/user_manage')">
-                <i class="fa fa-user leftNavButton" aria-hidden="true"></i>
+                <div title="Items" ui-sref="item_manage" class="nw-asset" id="nwa9" ng-click="watchLocation('#!/item_manage')">
+                    <i class="fa fa-key leftNavButton center" aria-hidden="true"></i>
+                </div>
+                <div title="Create Locations" class="nw-asset" id="nwa3" ng-click='showLocationModal()'>
+                    <i class="fa fa-plus leftNavButton add" aria-hidden="true"></i>
+                    <i class="fa fa-map-marker leftNavButton center" aria-hidden="true"></i>
+                </div>
+                <div title="Locations" ui-sref="location_manage" class="nw-asset" id="nwa4" ng-click="watchLocation('#!/location_manage')">
+                    <i class="fa fa-map leftNavButton center" aria-hidden="true"></i>
+                </div>
+                <div title="Containers" class="nw-asset" id="nwa5" ng-click='showContainerModal()'>
+                    <i class="fa fa-archive leftNavButton center" aria-hidden="true"></i>
+                </div>
+                <div title="Storage Types" class="nw-asset" id="nwa6" ng-click='showStorageModal()'>
+                    <i class="fa fa-hdd-o leftNavButton center" aria-hidden="true"></i>
+                </div>
+                <div title="Track-Bys" class="nw-asset" id="nwa7" ng-click='showTrackbyModal()'>
+                    <i class="fa fa-crosshairs leftNavButton center" aria-hidden="true"></i>
+                </div>
+                <div title="Create Users" class="nw-asset" id="nwa1" ng-click='showUserModal()'>
+                    <i class="fa fa-plus leftNavButton add" aria-hidden="true"></i>
+                    <i class="fa fa-user leftNavButton center" aria-hidden="true"></i>
+                </div>
+                <div title="Users" ui-sref="user_manage" class="nw-asset" id="nwa2" ng-click="watchLocation('#!/user_manage')">
+                    <i class="fa fa-vcard leftNavButton center" aria-hidden="true"></i>
                 </div>
             </div>
         </div>

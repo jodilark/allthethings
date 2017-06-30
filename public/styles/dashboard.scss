@@ -4,7 +4,6 @@
 // =============== PAGE STYLES
 // ............... dashboard
     .page-wrapper {
-    @include box-tester;
     height: 100vh;
     width: 100%;
     padding: 65px 20px 20px 85px;
@@ -14,7 +13,6 @@
     }
     .page-title {
         z-index:2001;
-        @include box-tester;
         line-height: 65px;
         margin: -65px auto;
         text-align: center;
