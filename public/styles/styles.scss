@@ -198,7 +198,9 @@
     height: 65px;
     border: 3px solid white;
     border-radius: 10px;
-    background: $quaternary;
+    background: $quaternary-color;
+    position: relative;
+    padding: 5px;
   }
   .nw-asset:hover {
     
@@ -206,6 +208,14 @@
     height: 70px;
     background: $secondary-color;
   }
+  #nwa1 {
+    background: $octonary-color;
+  }
+  #nwa2 {
+    background: $nonary-color;
+  }
+
+
 //_____:top nav
 
 
@@ -252,6 +262,16 @@
     font-size: 31px !important;
   }
   .fa-user.leftNavButton {
-    font-size: 46px !important;
+    font-size: 32px !important;
     color: #f8f8f8;
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+  }
+  .fa-user-plus.leftNavButton {
+    font-size: 32px !important;
+    color: #f8f8f8;
+    position: absolute;
+    bottom: 5px;
+    left: 5px;
   }

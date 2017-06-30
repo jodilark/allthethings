@@ -43,10 +43,10 @@
     .modal-grid-wrapper {
         position: relative;
     }
-    .myGrid {
+    .myStorageGrid {
         height: 334px;
     }
-    .ui-grid-viewport {
+    #storage-grid .ui-grid-viewport {
         overflow-x: hidden !important;
     }
     .grid-delete {

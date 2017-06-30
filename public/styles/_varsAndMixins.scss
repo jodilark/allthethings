@@ -7,7 +7,12 @@ $wrapper-widths: 1380px;
 $primary-color: #595C80;
 $secondary-color: #9c3d63;
 $tertiary-color: #B0AFB0;
-$quaternary: #2E5DAA;
+$quaternary-color: #2E5DAA;
+$quinary-color: rgba(142, 161, 72, 1);
+$senary-color: rgba(216, 12, 24, 1);
+$septenary-color: rgba(247, 181, 0, 1);
+$octonary-color: rgba(17, 137, 135, 1);
+$nonary-color: rgba(234, 70, 9, 1);
 $main-title-font: 'Lobster Two', cursive;
 $breadcrumb-font: 'Josefin Sans', sans-serif;
 $title-font: 'Fresca', sans-serif;
@@ -17,7 +22,7 @@ $regular-font: 'Source Code Pro', monospace;
 // »»»»»»»»»»»»»»»»»»»║ TESTS
 @mixin box-tester {
     border: 1px solid red;
-    background: rgba(200, 0, 50, .1);
+    // background: rgba(200, 0, 50, .1);
 }
 
 // »»»»»»»»»»»»»»»»»»»║ MIXINS

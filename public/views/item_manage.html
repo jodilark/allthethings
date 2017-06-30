@@ -14,25 +14,27 @@
 
 <!-- »»»»»»»»»»»»»»»»»»»║   INPUT FIELDS   ui-grid-edit -->
 <div class="page-wrapper-items">
-    <input type="text" ng-model="barcode" class="ci-2-a item-input"><button class="icon-barcode button scan ci-2-b">c</button>
-    <section id="container" class="container" ng-show="showBarcodeWindow">
-        <button class="overlay__close ci-3-c" ng-click="stoppy()">Stop Scan</button>
-        <div class="locker"></div>
-        <div class="scanWindow-contianer">
-            <div class="sw-1"></div>
-            <div id="sw-middle">
-                <div class="sw-1-a"></div>
-                <div class="sw-1-b"></div>
-                <div class="scanBar"></div>
+    <!--<div class="item-barcode-wrapper">
+        <input type="text" ng-model="barcode" class="ci-2-a item-input"><button class="icon-barcode button scan ci-2-b">c</button>
+        <section id="container" class="container" ng-show="showBarcodeWindow">
+            <button class="overlay__close ci-3-c" ng-click="stoppy()">Stop Scan</button>
+            <div class="locker"></div>
+            <div class="scanWindow-contianer">
+                <div class="sw-1"></div>
+                <div id="sw-middle">
+                    <div class="sw-1-a"></div>
+                    <div class="sw-1-b"></div>
+                    <div class="scanBar"></div>
+                </div>
+                <div class="sw-1"></div>
             </div>
-            <div class="sw-1"></div>
-        </div>
-        <div class="overlay overlay--inline overlay__content ci-3-b"></div>
-    </section>
+            <div class="overlay overlay--inline overlay__content ci-3-b"></div>
+        </section>
+    </div>-->
     <div class="grid-container" id="manageItems">
         <button ng-click="delete()" ng-disabled="enableDelete != false" class="items-delete">d</button>
         <div>
-            <div ui-grid="gridOptions" class="manageItemsGrid" ui-grid-infinite-scroll ui-grid-selection ui-grid-edit ui-grid-resize-columns
+            <div id="manage-items-grid" ui-grid="gridOptions" class="manageItemsGrid" ui-grid-infinite-scroll ui-grid-selection ui-grid-edit ui-grid-resize-columns
                 ui-grid-move-columns ui-grid-pinning></div>
         </div>
     </div>

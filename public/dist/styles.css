@@ -170,7 +170,7 @@ input, select {
 #container-grid {
   height: 368px; }
 
-.ui-grid-viewport {
+#container-grid .ui-grid-viewport {
   overflow-x: hidden !important; }
 
 @import url("https://fonts.googleapis.com/css?family=Fresca|Josefin+Sans|Lobster+Two|Source+Code+Pro");
@@ -453,6 +453,9 @@ bc-scanner {
   padding: 0px 10px;
   vertical-align: top; }
 
+#temp-grid .ui-grid-viewport {
+  overflow-x: hidden !important; }
+
 #te-other {
   height: 200px; }
 
@@ -681,7 +684,6 @@ bc-scanner {
 @import url("https://fonts.googleapis.com/css?family=Fresca|Josefin+Sans|Lobster+Two|Source+Code+Pro");
 .page-wrapper {
   border: 1px solid red;
-  background: rgba(200, 0, 50, 0.1);
   height: 100vh;
   width: 100%;
   padding: 65px 20px 20px 85px;
@@ -692,7 +694,6 @@ bc-scanner {
 .page-title {
   z-index: 2001;
   border: 1px solid red;
-  background: rgba(200, 0, 50, 0.1);
   line-height: 65px;
   margin: -65px auto;
   text-align: center;
@@ -715,7 +716,6 @@ bc-scanner {
 @import url("https://fonts.googleapis.com/css?family=Fresca|Josefin+Sans|Lobster+Two|Source+Code+Pro");
 .home-body-wrapper {
   border: 1px solid red;
-  background: rgba(200, 0, 50, 0.1);
   height: 500px;
   width: 100%;
   padding: 20px 20px;
@@ -723,7 +723,6 @@ bc-scanner {
 
 .home-title-1 {
   border: 1px solid red;
-  background: rgba(200, 0, 50, 0.1);
   width: 100%;
   height: 450px;
   display: flex;
@@ -732,7 +731,6 @@ bc-scanner {
 
 .ht-1-a {
   border: 1px solid red;
-  background: rgba(200, 0, 50, 0.1);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -762,7 +760,6 @@ bc-scanner {
 
 .find-body-wrapper {
   border: 1px solid red;
-  background: rgba(200, 0, 50, 0.1);
   height: 500px;
   width: 100%;
   padding: 20px 20px;
@@ -770,7 +767,6 @@ bc-scanner {
 
 .ft-1 {
   border: 1px solid red;
-  background: rgba(200, 0, 50, 0.1);
   width: 100%;
   height: 450px;
   display: flex;
@@ -779,7 +775,6 @@ bc-scanner {
 
 .ft-1-a {
   border: 1px solid red;
-  background: rgba(200, 0, 50, 0.1);
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -789,7 +784,6 @@ bc-scanner {
 
 .ft-1-a-i {
   border: 1px solid red;
-  background: rgba(200, 0, 50, 0.1);
   height: 100%;
   flex: 1;
   display: flex;
@@ -798,13 +792,11 @@ bc-scanner {
 
 .ft-1-a-i-1 {
   border: 1px solid red;
-  background: rgba(200, 0, 50, 0.1);
   height: 350px;
   width: 350px; }
 
 .ft-1-a-ii {
   border: 1px solid red;
-  background: rgba(200, 0, 50, 0.1);
   height: 100%;
   flex: 1;
   display: flex;
@@ -847,7 +839,6 @@ bc-scanner {
 
 .loss-wrapper {
   border: 1px solid red;
-  background: rgba(200, 0, 50, 0.1);
   height: 700px;
   width: 100%;
   display: flex;
@@ -858,21 +849,18 @@ bc-scanner {
 
 .lw-1 {
   border: 1px solid red;
-  background: rgba(200, 0, 50, 0.1);
   flex: 1;
   width: 1380px;
   position: relative; }
 
 .lw-1-a {
   border: 1px solid red;
-  background: rgba(200, 0, 50, 0.1);
   width: 500px;
   height: 355px;
   margin: 50px 0px 0px 50px; }
 
 .lw-1-b {
   border: 1px solid red;
-  background: rgba(200, 0, 50, 0.1);
   width: 750px;
   height: 175px;
   position: absolute;
@@ -882,7 +870,6 @@ bc-scanner {
 
 .lw-1-c {
   border: 1px solid red;
-  background: rgba(200, 0, 50, 0.1);
   width: 100%;
   position: absolute;
   bottom: 0px;
@@ -904,7 +891,6 @@ bc-scanner {
 
 .cbw-1 {
   border: 1px solid red;
-  background: rgba(200, 0, 50, 0.1);
   width: 100%;
   height: 100px;
   display: flex;
@@ -914,7 +900,6 @@ bc-scanner {
 
 .cbw-1-a {
   border: 1px solid red;
-  background: rgba(200, 0, 50, 0.1);
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -948,8 +933,6 @@ bc-scanner {
 
 @import url("https://fonts.googleapis.com/css?family=Fresca|Josefin+Sans|Lobster+Two|Source+Code+Pro");
 .page-wrapper-items {
-  border: 1px solid red;
-  background: rgba(200, 0, 50, 0.1);
   height: 100vh;
   width: 100%;
   padding: 85px 20px 20px 105px;
@@ -957,8 +940,6 @@ bc-scanner {
   position: relative; }
 
 .grid-container {
-  border: 1px solid red;
-  background: rgba(200, 0, 50, 0.1);
   width: 100%;
   height: 100%; }
 
@@ -972,6 +953,12 @@ bc-scanner {
   left: 85;
   height: 30px;
   width: 30px; }
+
+.item-barcode-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end; }
 
 body .auth0-lock.auth0-lock .auth0-lock-cred-pane {
   background: rgba(173, 216, 230, 0.7); }
@@ -1021,7 +1008,6 @@ body .auth0-lock-submit {
 
 .page-wrapper {
   border: 1px solid red;
-  background: rgba(200, 0, 50, 0.1);
   height: 100vh;
   width: 100%;
   padding: 85px 20px 20px 105px;
@@ -1030,7 +1016,6 @@ body .auth0-lock-submit {
 
 .grid-container {
   border: 1px solid red;
-  background: rgba(200, 0, 50, 0.1);
   width: 100%;
   height: 100%; }
 
@@ -1130,10 +1115,10 @@ body .auth0-lock-submit {
 .modal-grid-wrapper {
   position: relative; }
 
-.myGrid {
+.myStorageGrid {
   height: 334px; }
 
-.ui-grid-viewport {
+#storage-grid .ui-grid-viewport {
   overflow-x: hidden !important; }
 
 .grid-delete {
@@ -1161,7 +1146,6 @@ div.test-results {
 
 .miniModal {
   border: 1px solid red;
-  background: rgba(200, 0, 50, 0.1);
   z-index: 10000;
   height: 100vh;
   width: 100vw;
@@ -1174,7 +1158,6 @@ div.test-results {
 
 .modalBox {
   border: 1px solid red;
-  background: rgba(200, 0, 50, 0.1);
   height: 500px;
   width: 500px;
   background: black;
@@ -1183,7 +1166,6 @@ div.test-results {
 .public-header-1 {
   z-index: 2000;
   border: 1px solid red;
-  background: rgba(200, 0, 50, 0.1);
   width: 100%;
   height: 65px;
   display: flex;
@@ -1195,7 +1177,6 @@ div.test-results {
 
 .public-header-1-a {
   border: 1px solid red;
-  background: rgba(200, 0, 50, 0.1);
   height: 100%;
   flex: 1;
   display: flex;
@@ -1206,7 +1187,6 @@ div.test-results {
 
 .public-header-1-b {
   border: 1px solid red;
-  background: rgba(200, 0, 50, 0.1);
   height: 100%;
   flex: 1;
   display: flex;
@@ -1216,7 +1196,6 @@ div.test-results {
 
 .public-header-1-b-i {
   border: 1px solid red;
-  background: rgba(200, 0, 50, 0.1);
   height: 100%;
   flex: .5;
   display: flex;
@@ -1244,7 +1223,6 @@ div.test-results {
 .dashboard-header-1 {
   z-index: 2000;
   border: 1px solid red;
-  background: rgba(200, 0, 50, 0.1);
   width: 100%;
   height: 65px;
   display: flex;
@@ -1256,7 +1234,6 @@ div.test-results {
 
 .dh-1-a {
   border: 1px solid red;
-  background: rgba(200, 0, 50, 0.1);
   height: 100%;
   flex: 1;
   display: flex;
@@ -1267,7 +1244,6 @@ div.test-results {
 
 .dh-1-b {
   border: 1px solid red;
-  background: rgba(200, 0, 50, 0.1);
   height: 100%;
   flex: 1;
   display: flex;
@@ -1277,7 +1253,6 @@ div.test-results {
 
 .dh-1-b-i {
   border: 1px solid red;
-  background: rgba(200, 0, 50, 0.1);
   height: 100%;
   flex: .5;
   display: flex;
@@ -1305,7 +1280,6 @@ div.test-results {
 .nav-wrapper {
   z-index: 1000;
   border: 1px solid red;
-  background: rgba(200, 0, 50, 0.1);
   height: 100vh;
   width: 85px;
   position: fixed;
@@ -1327,12 +1301,20 @@ div.test-results {
   height: 65px;
   border: 3px solid white;
   border-radius: 10px;
-  background: #2E5DAA; }
+  background: #2E5DAA;
+  position: relative;
+  padding: 5px; }
 
 .nw-asset:hover {
   width: 70px;
   height: 70px;
   background: #9c3d63; }
+
+#nwa1 {
+  background: #118987; }
+
+#nwa2 {
+  background: #ea4609; }
 
 .rating {
   color: #a9a9a9;
@@ -1373,8 +1355,18 @@ ul.rating {
   font-size: 31px !important; }
 
 .fa-user.leftNavButton {
-  font-size: 46px !important;
-  color: #f8f8f8; }
+  font-size: 32px !important;
+  color: #f8f8f8;
+  position: absolute;
+  bottom: 5px;
+  right: 5px; }
+
+.fa-user-plus.leftNavButton {
+  font-size: 32px !important;
+  color: #f8f8f8;
+  position: absolute;
+  bottom: 5px;
+  left: 5px; }
 
 @import url("https://fonts.googleapis.com/css?family=Fresca|Josefin+Sans|Lobster+Two|Source+Code+Pro");
 .modal-wrapper-trackby {
@@ -1459,7 +1451,7 @@ ul.rating {
   width: 100%;
   height: 310px; }
 
-.ui-grid-viewport {
+#trackby-grid {
   overflow-x: hidden !important; }
 
 #lastWrapper-trackby {
@@ -1484,7 +1476,6 @@ ul.rating {
 @import url("https://fonts.googleapis.com/css?family=Fresca|Josefin+Sans|Lobster+Two|Source+Code+Pro");
 .page-wrapper {
   border: 1px solid red;
-  background: rgba(200, 0, 50, 0.1);
   height: 100vh;
   width: 100%;
   padding: 85px 20px 20px 105px;
@@ -1492,7 +1483,6 @@ ul.rating {
 
 .grid-container {
   border: 1px solid red;
-  background: rgba(200, 0, 50, 0.1);
   width: 100%;
   height: 100%; }
 

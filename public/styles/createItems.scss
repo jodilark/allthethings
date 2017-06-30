@@ -233,6 +233,9 @@
         padding: 0px 10px; 
         vertical-align: top;        
     }
+    #temp-grid .ui-grid-viewport {
+        overflow-x: hidden !important;
+    }
     #te-other {
         height: 200px;
     }
