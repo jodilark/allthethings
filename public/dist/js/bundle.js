@@ -1639,6 +1639,8 @@ angular.module('app').service('itemPostSrv', function ($http) {
             url: '/api/items',
             method: 'POST',
             data: data
+        }).then(function (response) {
+            return alert('Item has been created.');
         });
     };
 });
@@ -1751,6 +1753,8 @@ angular.module('app').service('locCreateSrv', function ($http) {
             url: '/api/locations',
             method: 'POST',
             data: data
+        }).then(function (response) {
+            return alert('Location has been created.');
         });
     };
 });

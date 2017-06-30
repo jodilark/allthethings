@@ -38,10 +38,16 @@
             <div class="test-asset" id="t1"></div>
         </div>
         <div class="public-header-1-b">
-            <form action="/auth" , class="public-header-1-b-i">
-                <input type="submit" value="Login" class="header-button" id="ph-login" />
-                <button class="header-button" id="ph-contact">Contact</button>
-            </form>
+            <div class="public-header-1-b-i">
+                <div class="header-div">
+                    <a href="/auth" title="Login">
+                        <i class="fa fa-sign-in topNavButton" aria-hidden="true" ></i>
+                    </a>
+                </div>
+                <div class="header-div" title="Contact">
+                    <i class="fa fa-laptop topNavButton" aria-hidden="true"></i>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -58,8 +64,12 @@
             </div>
             <div class="dh-1-b">
                 <div class="dh-1-b-i">
-                    <button ng-click="logout()" class="dh-test-asset" id="dh2">logout</button>
-                    <button ui-sref="settings" class="dh-test-asset" id="dh3">Settings</button>
+                    <div ng-click="logout()" class="dh-test-asset" id="dh2" title="Logout">
+                        <i class="fa fa-sign-out topNavButton" aria-hidden="true"></i>
+                    </div>
+                    <div ui-sref="settings" class="dh-test-asset" id="dh3" title="Settings">
+                        <i class="fa fa-cog topNavButton" aria-hidden="true"></i>
+                    </div>
                 </div>
             </div>
         </div>

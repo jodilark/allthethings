@@ -22,11 +22,15 @@
             <select class="modal-input" id="classificationList" ng-options="locClass as locClass.name for locClass in locClasses" ng-model="locClassObj">
                 <option id="classificationList" value="" disabled selected>Classification</option>
             </select>
-            <div class="modal-label">Storage Type</div>
+            <div class="modal-label">Strg. Type</div>
         </div>
         <div class="input-wrapper">
             <input type="text" class="modal-input" ng-model="locObj.description" required/>
             <div class="modal-label">Description</div>
+        </div>
+        <div class="input-wrapper">
+            <input type="text" class="modal-input" ng-model="locObj.barcode"/>
+            <div class="modal-label">Barcode</div>
         </div>
         <div class="input-wrapper">
             <select class="modal-input" id="containerList" ng-options="container as container.name for container in containers" ng-model="containerObj">
@@ -55,9 +59,9 @@
             </select>
             <div class="modal-label">Parent Loc.</div>
         </div>
+    </form>
         <div class="modal-controls-wrapper">
             <input type="submit" value="Create" class="modal-controls" id="addData" ng-click="createLocation()">
             <input type="reset" value="Clear" class="modal-controls">
         </div>
-    </form>
 </div>

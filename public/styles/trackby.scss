@@ -15,25 +15,10 @@
         @include modal-header-wrapper;
     }
     .header-text {
-        height: 100%;
-        display: inline;
-        line-height: 27px;
-        font-size: 20px;
-        font-weight: bold;
-        padding: 0px 20px 0px 10px;
-        border-top-right-radius: 20px;
-        border-top-left-radius: 3px;
-        background: black;
+        @include modal-header-text
     }
     .closing-x {
-        height: 35px;
-        flex: .15;
-        line-height: 30px;
-        font-size: 20px;
-        text-align: right;
-        font-weight: bold;
-        cursor: pointer;
-        color: #333;
+        @include modal-closin-x
     }
 
 // ............... trackby page

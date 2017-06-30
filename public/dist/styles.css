@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css?family=Fresca|Josefin+Sans|Source+Code+Pro");
 @import url("https://fonts.googleapis.com/css?family=Lobster+Two");
+@import url("https://fonts.googleapis.com/css?family=Quicksand");
 html, body, div, span, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 abbr, address, cite, code,
@@ -89,8 +90,9 @@ input, select {
 .modal-wrapper-container {
   display: flex;
   flex-direction: column;
-  height: 100%;
-  width: 100%; }
+  width: 500px;
+  border: 2px solid #B0AFB0;
+  border-radius: 5px; }
 
 .header-container {
   height: 35px;
@@ -100,18 +102,19 @@ input, select {
   justify-content: space-between;
   align-items: center;
   padding-right: 10px;
-  background: lightblue; }
+  background: rgba(173, 216, 230, 0.3); }
 
 .header-text {
   height: 100%;
   display: inline;
-  line-height: 27px;
   font-size: 20px;
   font-weight: bold;
-  padding: 0px 20px 0px 10px;
+  padding: 7px 20px 0px 10px;
   border-top-right-radius: 20px;
   border-top-left-radius: 3px;
-  background: black; }
+  background: #2E5DAA;
+  color: #f8f8f8;
+  font-family: "Josefin Sans", sans-serif; }
 
 .closing-x {
   height: 100%;
@@ -121,13 +124,14 @@ input, select {
   text-align: right;
   font-weight: bold;
   cursor: pointer;
-  color: #333; }
+  color: #f8f8f8; }
 
 .form-wrapper {
   width: 100%;
   display: flex;
   flex-direction: column;
-  padding: 10px 0px; }
+  padding: 10px 0px 0px;
+  background: #e4e4e4; }
 
 .input-wrapper {
   height: 35px;
@@ -154,7 +158,7 @@ input, select {
 .modal-controls-wrapper {
   height: 30px;
   width: 100%;
-  background-image: url("../styles/img/texture.jpg");
+  background: rgba(173, 216, 230, 0.3);
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
@@ -165,7 +169,9 @@ input, select {
   width: 27%;
   border: 1px ridge #d4d4d4;
   cursor: pointer;
-  background: gray; }
+  background: #595C80;
+  color: #f8f8f8;
+  font-family: "Josefin Sans", sans-serif; }
 
 .modal-grid-wrapper {
   position: relative; }
@@ -210,7 +216,7 @@ input, select {
   justify-content: space-between;
   align-items: center;
   padding-right: 10px;
-  background: lightblue; }
+  background: rgba(173, 216, 230, 0.3); }
 
 .ci-1-a {
   height: 100%;
@@ -472,7 +478,7 @@ bc-scanner {
 .modal-footer {
   height: 30px;
   width: 100%;
-  background-image: url("../styles/img/texture.jpg");
+  background: rgba(173, 216, 230, 0.3);
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
@@ -483,15 +489,18 @@ bc-scanner {
   width: 27%;
   border: 1px ridge #d4d4d4;
   cursor: pointer;
-  background: gray; }
+  background: #595C80;
+  color: #f8f8f8;
+  font-family: "Josefin Sans", sans-serif; }
 
 @import url("https://fonts.googleapis.com/css?family=Fresca|Josefin+Sans|Source+Code+Pro");
 @import url("https://fonts.googleapis.com/css?family=Lobster+Two");
 .modal-wrapper-location {
   display: flex;
   flex-direction: column;
-  height: 100%;
-  width: 100%; }
+  width: 500px;
+  border: 2px solid #B0AFB0;
+  border-radius: 5px; }
 
 .header-location {
   height: 35px;
@@ -501,18 +510,19 @@ bc-scanner {
   justify-content: space-between;
   align-items: center;
   padding-right: 10px;
-  background: lightblue; }
+  background: rgba(173, 216, 230, 0.3); }
 
 .header-text {
   height: 100%;
   display: inline;
-  line-height: 27px;
   font-size: 20px;
   font-weight: bold;
-  padding: 0px 20px 0px 10px;
+  padding: 7px 20px 0px 10px;
   border-top-right-radius: 20px;
   border-top-left-radius: 3px;
-  background: black; }
+  background: #2E5DAA;
+  color: #f8f8f8;
+  font-family: "Josefin Sans", sans-serif; }
 
 .closing-x {
   height: 100%;
@@ -522,13 +532,14 @@ bc-scanner {
   text-align: right;
   font-weight: bold;
   cursor: pointer;
-  color: #333; }
+  color: #f8f8f8; }
 
 .form-wrapper {
   width: 100%;
   display: flex;
   flex-direction: column;
-  padding: 10px 0px; }
+  padding: 10px 0px 0px;
+  background: #e4e4e4; }
 
 .input-wrapper {
   height: 35px;
@@ -555,7 +566,7 @@ bc-scanner {
 .modal-controls-wrapper {
   height: 30px;
   width: 100%;
-  background-image: url("../styles/img/texture.jpg");
+  background: rgba(173, 216, 230, 0.3);
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
@@ -566,7 +577,9 @@ bc-scanner {
   width: 27%;
   border: 1px ridge #d4d4d4;
   cursor: pointer;
-  background: gray; }
+  background: #595C80;
+  color: #f8f8f8;
+  font-family: "Josefin Sans", sans-serif; }
 
 .loc-coordinates-wrapper {
   display: flex;
@@ -600,8 +613,9 @@ bc-scanner {
 .modal-wrapper-user {
   display: flex;
   flex-direction: column;
-  height: 100%;
-  width: 100%; }
+  width: 500px;
+  border: 2px solid #B0AFB0;
+  border-radius: 5px; }
 
 .header-user {
   height: 35px;
@@ -611,18 +625,19 @@ bc-scanner {
   justify-content: space-between;
   align-items: center;
   padding-right: 10px;
-  background: lightblue; }
+  background: rgba(173, 216, 230, 0.3); }
 
 .header-text {
   height: 100%;
   display: inline;
-  line-height: 27px;
   font-size: 20px;
   font-weight: bold;
-  padding: 0px 20px 0px 10px;
+  padding: 7px 20px 0px 10px;
   border-top-right-radius: 20px;
   border-top-left-radius: 3px;
-  background: black; }
+  background: #2E5DAA;
+  color: #f8f8f8;
+  font-family: "Josefin Sans", sans-serif; }
 
 .closing-x {
   height: 100%;
@@ -632,7 +647,7 @@ bc-scanner {
   text-align: right;
   font-weight: bold;
   cursor: pointer;
-  color: #333; }
+  color: #f8f8f8; }
 
 #userCreateForm {
   width: 100%;
@@ -665,7 +680,7 @@ bc-scanner {
 .modal-controls-wrapper {
   height: 30px;
   width: 100%;
-  background-image: url("../styles/img/texture.jpg");
+  background: rgba(173, 216, 230, 0.3);
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
@@ -676,7 +691,9 @@ bc-scanner {
   width: 27%;
   border: 1px ridge #d4d4d4;
   cursor: pointer;
-  background: gray; }
+  background: #595C80;
+  color: #f8f8f8;
+  font-family: "Josefin Sans", sans-serif; }
 
 .filler-wrapper {
   height: 46px;
@@ -1025,8 +1042,9 @@ body .auth0-lock-submit {
 .modal-wrapper-storage {
   display: flex;
   flex-direction: column;
-  height: 100%;
-  width: 100%; }
+  width: 500px;
+  border: 2px solid #B0AFB0;
+  border-radius: 5px; }
 
 .header-storage {
   height: 35px;
@@ -1036,18 +1054,19 @@ body .auth0-lock-submit {
   justify-content: space-between;
   align-items: center;
   padding-right: 10px;
-  background: lightblue; }
+  background: rgba(173, 216, 230, 0.3); }
 
 .header-text {
   height: 100%;
   display: inline;
-  line-height: 27px;
   font-size: 20px;
   font-weight: bold;
-  padding: 0px 20px 0px 10px;
+  padding: 7px 20px 0px 10px;
   border-top-right-radius: 20px;
   border-top-left-radius: 3px;
-  background: black; }
+  background: #2E5DAA;
+  color: #f8f8f8;
+  font-family: "Josefin Sans", sans-serif; }
 
 .closing-x {
   height: 100%;
@@ -1057,13 +1076,14 @@ body .auth0-lock-submit {
   text-align: right;
   font-weight: bold;
   cursor: pointer;
-  color: #333; }
+  color: #f8f8f8; }
 
 .form-wrapper {
   width: 100%;
   display: flex;
   flex-direction: column;
-  padding: 10px 0px; }
+  padding: 10px 0px 0px;
+  background: #e4e4e4; }
 
 .input-wrapper {
   height: 35px;
@@ -1090,7 +1110,7 @@ body .auth0-lock-submit {
 .modal-controls-wrapper {
   height: 30px;
   width: 100%;
-  background-image: url("../styles/img/texture.jpg");
+  background: rgba(173, 216, 230, 0.3);
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
@@ -1101,7 +1121,9 @@ body .auth0-lock-submit {
   width: 27%;
   border: 1px ridge #d4d4d4;
   cursor: pointer;
-  background: gray; }
+  background: #595C80;
+  color: #f8f8f8;
+  font-family: "Josefin Sans", sans-serif; }
 
 .modal-grid-wrapper {
   position: relative; }
@@ -1151,12 +1173,6 @@ body {
   justify-content: center;
   background: rgba(0, 0, 0, 0.6);
   padding-top: 100px; }
-
-.modalBox {
-  height: 500px;
-  width: 500px;
-  background: black;
-  position: relative; }
 
 .public-header-1 {
   z-index: 2000;
@@ -1214,7 +1230,7 @@ body {
 .dashboard-header-1 {
   z-index: 2000;
   background: #9c3d63;
-  border-bottom: 3px solid rgba(0, 0, 0, 0.3);
+  box-shadow: 0px 3px rgba(0, 0, 0, 0.3);
   width: 100%;
   height: 65px;
   display: flex;
@@ -1226,6 +1242,9 @@ body {
 
 .filtre--r {
   background-image: radial-gradient(circle farthest-corner at center, rgba(255, 255, 255, 0.2) 0%, transparent 20%); }
+
+.header-div {
+  margin-left: 20px; }
 
 .dh-1-a {
   height: 100%;
@@ -1265,14 +1284,13 @@ body {
 
 #dh3 {
   z-index: 2001;
-  margin: 0px 0px 0px 5px;
-  background: green; }
+  margin: 0px 0px 0px 5px; }
 
 #dh4 {
   font-size: 40px;
   z-index: 2001;
   color: #f8f8f8;
-  font-family: "Lobster Two", cursive; }
+  font-family: "Quicksand", sans-serif; }
 
 .nav-wrapper {
   z-index: 1000;
@@ -1309,7 +1327,8 @@ body {
 .nw-asset:hover {
   width: 70px;
   height: 70px;
-  background: #8ea148; }
+  background: #8ea148;
+  text-shadow: 2px 2px black; }
 
 #nwa1 {
   background: #118987; }
@@ -1388,6 +1407,15 @@ ul.rating {
   color: #f8f8f8;
   padding-top: 10px; }
 
+.topNavButton {
+  font-size: 22px !important;
+  color: #f8f8f8; }
+
+.topNavButton:hover {
+  font-size: 28px !important;
+  color: #f8f8f8;
+  text-shadow: 2px 2px black; }
+
 @import url("https://fonts.googleapis.com/css?family=Fresca|Josefin+Sans|Source+Code+Pro");
 @import url("https://fonts.googleapis.com/css?family=Lobster+Two");
 .modal-wrapper-trackby {
@@ -1404,28 +1432,29 @@ ul.rating {
   justify-content: space-between;
   align-items: center;
   padding-right: 10px;
-  background: lightblue; }
+  background: rgba(173, 216, 230, 0.3); }
 
 .header-text {
   height: 100%;
   display: inline;
-  line-height: 27px;
   font-size: 20px;
   font-weight: bold;
-  padding: 0px 20px 0px 10px;
+  padding: 7px 20px 0px 10px;
   border-top-right-radius: 20px;
   border-top-left-radius: 3px;
-  background: black; }
+  background: #2E5DAA;
+  color: #f8f8f8;
+  font-family: "Josefin Sans", sans-serif; }
 
 .closing-x {
-  height: 35px;
+  height: 100%;
   flex: .15;
   line-height: 30px;
   font-size: 20px;
   text-align: right;
   font-weight: bold;
   cursor: pointer;
-  color: #333; }
+  color: #f8f8f8; }
 
 .tb-1-c {
   flex: 1;
@@ -1481,7 +1510,7 @@ ul.rating {
 .tb-modal-footer {
   height: 30px;
   width: 100%;
-  background-image: url("../styles/img/texture.jpg");
+  background: rgba(173, 216, 230, 0.3);
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
@@ -1492,7 +1521,9 @@ ul.rating {
   width: 27%;
   border: 1px ridge #d4d4d4;
   cursor: pointer;
-  background: gray; }
+  background: #595C80;
+  color: #f8f8f8;
+  font-family: "Josefin Sans", sans-serif; }
 
 @import url("https://fonts.googleapis.com/css?family=Fresca|Josefin+Sans|Source+Code+Pro");
 @import url("https://fonts.googleapis.com/css?family=Lobster+Two");

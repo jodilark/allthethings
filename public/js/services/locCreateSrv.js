@@ -8,6 +8,6 @@ angular.module('app').service('locCreateSrv', function ($http) {
             url: '/api/locations',
             method: 'POST',
             data: data
-        })
+        }).then(response => alert('Location has been created.'))
     }
 })

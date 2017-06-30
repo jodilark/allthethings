@@ -32,7 +32,9 @@
         </section>
     </div>-->
     <div class="grid-container" id="manageItems">
-        <button ng-click="delete()" ng-disabled="enableDelete != false" class="items-delete">d</button>
+        <!--<div ng-click="delete()" ng-disabled="enableDelete != false" class="items-delete">
+            <i class="fa fa-trash" aria-hidden="true"></i>
+        </div>-->
         <div>
             <div id="manage-items-grid" ui-grid="gridOptions" class="manageItemsGrid" ui-grid-infinite-scroll ui-grid-selection ui-grid-edit ui-grid-resize-columns
                 ui-grid-move-columns ui-grid-pinning></div>

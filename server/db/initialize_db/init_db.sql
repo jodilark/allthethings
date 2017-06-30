@@ -169,6 +169,7 @@
 		id serial primary key
 		, loc_class_id int
 		, description varchar
+		, barcode varchar
 		, container_id int
 		, x_coordinate int
 		, y_coordinate int

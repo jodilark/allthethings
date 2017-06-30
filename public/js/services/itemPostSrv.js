@@ -10,6 +10,6 @@ angular.module('app').service('itemPostSrv', function ($http) {
             url: '/api/items',
             method: 'POST',
             data: data
-        })
+        }).then(response => alert('Item has been created.'))
     }
 })
