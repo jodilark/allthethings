@@ -4,55 +4,39 @@
 // =============== PAGE STYLES
 // ______:modal-headers
     .item-input {
-        height: 25px;
-        width: 100%;
+        @include modal-input;
     }
     .item-label {
-        margin-top: 10px;
+        @include modal-label;
+        width: 200px;
+    }
+    .item-label.ci-gridlabel {
+        @include modal-label;
+        width: 137px !important;
+        line-height: 19px;
         margin-left: 10px;
-        line-height: 25px;
-        width: 120px;
     }
     .create-item-wrapper {
-        position: relative;
-        display: flex;
-        flex-direction: column;
-        height: 100%;
-        width: 100%;
+        @include modal-wrapper-storage;
     }
     .scrollContainer {
-        height: 100%;
-        width: 100%;
-        overflow-y: scroll;
-        padding-top: 5px;
+        @include form-wrapper;
+        height: 471px;
+        display: block;
+        overflow-y: scroll !important;
     }
     .ci-1 {
         z-index: 1;
         @include modal-header-wrapper;
     }
     .ci-1-a {
-        height: 100%;
-        display: inline;
-        line-height: 27px;
-        font-size: 20px;
-        font-weight: bold;
-        padding: 0px 20px 0px 10px;
-        border-top-right-radius: 20px;
-        border-top-left-radius: 3px;
-        background: black;
+        @include modal-header-text;
     }
     .ci-1-b {
-        height: 100%;
-        flex: .15;
-        line-height: 30px;
-        font-size: 20px;
-        text-align: right;
-        font-weight: bold;
-        cursor: pointer;
-        color: #333;
+        @include modal-closin-x
     }
     .ci-2 {
-        @include ci-input-containers;
+        @include input-wrapper
     }
     bc-scanner {
         padding: 0px 0px !important;
@@ -68,8 +52,7 @@
         cursor: pointer;
     }
     .ci-3 {
-        @include ci-input-containers;
-        flex: 1;
+        @include input-wrapper
     }
     .ci-3-a {
         display: flex;
@@ -135,17 +118,11 @@
         height: 3px;
         background: red;
     }
-    .ci-4 {
-        @include ci-input-containers;
-    }
-    .ci-5 {
-        @include ci-input-containers;       
-    }
-    .ci-6 {
-        @include ci-input-containers;       
+    .tb-input-containers {
+        @include input-wrapper;
     }
     .ci-7 {
-        @include ci-input-containers;
+        @include input-wrapper;
         height: 45px;                
     }
     .ci-7-a {
@@ -166,9 +143,6 @@
         flex: 1;
         padding-left: 10px
     }
-    .ci-8 {
-        @include ci-input-containers;
-    }
     .ci-9 {
         height: 200px;
         display: flex;
@@ -177,60 +151,41 @@
         padding: 10px;
     }
     .ci-9-a {
-        width: 350px;
+        width: 312px;
         height: 100%;
     }
     #temp-grid {
-        width: 100%;
+        width: auto;
         height: 100%;
-        background: lightblue;
-    }
-    .ci-9-b {
-        line-height: 19px;
-        width: 95px;
-        margin-left: 10px;
+        background: rgba(173, 216, 230, .3);
     }
     .ci-11 {
-        height: 35px;
-        width: 100%;
-        display: flex;
-        flex-direction: row;
+        @include input-wrapper;
         justify-content: space-between;
-        align-items: center;
-        padding: 0px 10px;
     }
     .ci-12 {
-        height: 35px;
-        width: 100%;
-        display: flex;
-        flex-direction: row;
+        @include input-wrapper;
         justify-content: flex-start;
-        align-items: center;
-        padding: 0px 10px;
     }
+    .tb-input-containers.radio-wrapper {
+        @include input-wrapper;
+        justify-content: flex-start;
+    }
+    .tb-input-containers.tb-checkboxes {
+        @include input-wrapper;
+        justify-content: space-between;
+    }
+
     #ci-12-b {
         margin-left: 15px;
     }
-    .ci-13 {
-        height: 35px;
-        width: 100%;
-        display: flex;
-        flex-direction: row;
-        justify-content: flex-start;
-        align-items: center;
-        padding: 0px 10px;       
-    }
-    #ci-13-a {
-        margin-left: 36px;
+    #tb-radio-button {
+        margin-left: 61px;
     }
     .ci-14 {
-        height: 100%;
-        width: 100%;
-        display: flex;
-        flex-direction: row;
+        @include input-wrapper;
         justify-content: flex-start;
         align-items: flex-start;
-        padding: 0px 10px; 
         vertical-align: top;        
     }
     #temp-grid .ui-grid-viewport {
@@ -243,7 +198,7 @@
         margin: 0px 10px; 
     }
     #ci-24-b {
-       width: 169px; 
+       width: 315px; 
     }
     .modal-footer {
         @include modal-controls-wrapper;

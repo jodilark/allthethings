@@ -150,7 +150,7 @@ input, select {
   width: 100%; }
 
 .modal-label {
-  margin-top: 10px;
+  margin-top: 3px;
   margin-left: 10px;
   line-height: 25px;
   width: 156px; }
@@ -171,7 +171,8 @@ input, select {
   cursor: pointer;
   background: #595C80;
   color: #f8f8f8;
-  font-family: "Josefin Sans", sans-serif; }
+  font-family: "Josefin Sans", sans-serif;
+  font-weight: bold; }
 
 .modal-grid-wrapper {
   position: relative; }
@@ -189,23 +190,37 @@ input, select {
   width: 100%; }
 
 .item-label {
-  margin-top: 10px;
+  margin-top: 3px;
   margin-left: 10px;
   line-height: 25px;
-  width: 120px; }
+  width: 156px;
+  width: 200px; }
+
+.item-label.ci-gridlabel {
+  margin-top: 3px;
+  margin-left: 10px;
+  line-height: 25px;
+  width: 156px;
+  width: 137px !important;
+  line-height: 19px;
+  margin-left: 10px; }
 
 .create-item-wrapper {
-  position: relative;
   display: flex;
   flex-direction: column;
-  height: 100%;
-  width: 100%; }
+  width: 500px;
+  border: 2px solid #B0AFB0;
+  border-radius: 5px; }
 
 .scrollContainer {
-  height: 100%;
   width: 100%;
-  overflow-y: scroll;
-  padding-top: 5px; }
+  display: flex;
+  flex-direction: column;
+  padding: 10px 0px 0px;
+  background: #e4e4e4;
+  height: 471px;
+  display: block;
+  overflow-y: scroll !important; }
 
 .ci-1 {
   z-index: 1;
@@ -221,13 +236,14 @@ input, select {
 .ci-1-a {
   height: 100%;
   display: inline;
-  line-height: 27px;
   font-size: 20px;
   font-weight: bold;
-  padding: 0px 20px 0px 10px;
+  padding: 7px 20px 0px 10px;
   border-top-right-radius: 20px;
   border-top-left-radius: 3px;
-  background: black; }
+  background: #2E5DAA;
+  color: #f8f8f8;
+  font-family: "Josefin Sans", sans-serif; }
 
 .ci-1-b {
   height: 100%;
@@ -237,7 +253,7 @@ input, select {
   text-align: right;
   font-weight: bold;
   cursor: pointer;
-  color: #333; }
+  color: #f8f8f8; }
 
 .ci-2 {
   height: 35px;
@@ -268,8 +284,7 @@ bc-scanner {
   flex-direction: row;
   justify-content: flex-end;
   align-items: center;
-  padding: 0px 10px;
-  flex: 1; }
+  padding: 0px 10px; }
 
 .ci-3-a {
   display: flex;
@@ -335,25 +350,7 @@ bc-scanner {
   height: 3px;
   background: red; }
 
-.ci-4 {
-  height: 35px;
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
-  align-items: center;
-  padding: 0px 10px; }
-
-.ci-5 {
-  height: 35px;
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
-  align-items: center;
-  padding: 0px 10px; }
-
-.ci-6 {
+.tb-input-containers {
   height: 35px;
   width: 100%;
   display: flex;
@@ -390,15 +387,6 @@ bc-scanner {
   flex: 1;
   padding-left: 10px; }
 
-.ci-8 {
-  height: 35px;
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
-  align-items: center;
-  padding: 0px 10px; }
-
 .ci-9 {
   height: 200px;
   display: flex;
@@ -407,60 +395,70 @@ bc-scanner {
   padding: 10px; }
 
 .ci-9-a {
-  width: 350px;
+  width: 312px;
   height: 100%; }
 
 #temp-grid {
-  width: 100%;
+  width: auto;
   height: 100%;
-  background: lightblue; }
-
-.ci-9-b {
-  line-height: 19px;
-  width: 95px;
-  margin-left: 10px; }
+  background: rgba(173, 216, 230, 0.3); }
 
 .ci-11 {
   height: 35px;
   width: 100%;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
-  padding: 0px 10px; }
+  padding: 0px 10px;
+  justify-content: space-between; }
 
 .ci-12 {
   height: 35px;
   width: 100%;
   display: flex;
   flex-direction: row;
-  justify-content: flex-start;
+  justify-content: flex-end;
   align-items: center;
-  padding: 0px 10px; }
+  padding: 0px 10px;
+  justify-content: flex-start; }
 
-#ci-12-b {
-  margin-left: 15px; }
-
-.ci-13 {
+.tb-input-containers.radio-wrapper {
   height: 35px;
   width: 100%;
   display: flex;
   flex-direction: row;
-  justify-content: flex-start;
+  justify-content: flex-end;
   align-items: center;
-  padding: 0px 10px; }
+  padding: 0px 10px;
+  justify-content: flex-start; }
 
-#ci-13-a {
-  margin-left: 36px; }
-
-.ci-14 {
-  height: 100%;
+.tb-input-containers.tb-checkboxes {
+  height: 35px;
   width: 100%;
   display: flex;
   flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 0px 10px;
+  justify-content: space-between; }
+
+#ci-12-b {
+  margin-left: 15px; }
+
+#tb-radio-button {
+  margin-left: 61px; }
+
+.ci-14 {
+  height: 35px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 0px 10px;
   justify-content: flex-start;
   align-items: flex-start;
-  padding: 0px 10px;
   vertical-align: top; }
 
 #temp-grid .ui-grid-viewport {
@@ -473,7 +471,7 @@ bc-scanner {
   margin: 0px 10px; }
 
 #ci-24-b {
-  width: 169px; }
+  width: 315px; }
 
 .modal-footer {
   height: 30px;
@@ -491,7 +489,8 @@ bc-scanner {
   cursor: pointer;
   background: #595C80;
   color: #f8f8f8;
-  font-family: "Josefin Sans", sans-serif; }
+  font-family: "Josefin Sans", sans-serif;
+  font-weight: bold; }
 
 @import url("https://fonts.googleapis.com/css?family=Fresca|Josefin+Sans|Source+Code+Pro");
 @import url("https://fonts.googleapis.com/css?family=Lobster+Two");
@@ -558,7 +557,7 @@ bc-scanner {
   width: 100%; }
 
 .modal-label {
-  margin-top: 10px;
+  margin-top: 3px;
   margin-left: 10px;
   line-height: 25px;
   width: 156px; }
@@ -579,7 +578,8 @@ bc-scanner {
   cursor: pointer;
   background: #595C80;
   color: #f8f8f8;
-  font-family: "Josefin Sans", sans-serif; }
+  font-family: "Josefin Sans", sans-serif;
+  font-weight: bold; }
 
 .loc-coordinates-wrapper {
   display: flex;
@@ -671,8 +671,15 @@ bc-scanner {
   height: 25px;
   width: 100%; }
 
+.star-rating.modal-input {
+  height: 25px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end; }
+
 .modal-label {
-  margin-top: 10px;
+  margin-top: 3px;
   margin-left: 10px;
   line-height: 25px;
   width: 156px; }
@@ -693,7 +700,8 @@ bc-scanner {
   cursor: pointer;
   background: #595C80;
   color: #f8f8f8;
-  font-family: "Josefin Sans", sans-serif; }
+  font-family: "Josefin Sans", sans-serif;
+  font-weight: bold; }
 
 .filler-wrapper {
   height: 46px;
@@ -1102,7 +1110,7 @@ body .auth0-lock-submit {
   width: 100%; }
 
 .modal-label {
-  margin-top: 10px;
+  margin-top: 3px;
   margin-left: 10px;
   line-height: 25px;
   width: 156px; }
@@ -1123,7 +1131,8 @@ body .auth0-lock-submit {
   cursor: pointer;
   background: #595C80;
   color: #f8f8f8;
-  font-family: "Josefin Sans", sans-serif; }
+  font-family: "Josefin Sans", sans-serif;
+  font-weight: bold; }
 
 .modal-grid-wrapper {
   position: relative; }
@@ -1306,6 +1315,7 @@ body {
   height: 100%;
   width: 100%;
   margin: 20px 0px;
+  padding-top: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1421,8 +1431,9 @@ ul.rating {
 .modal-wrapper-trackby {
   display: flex;
   flex-direction: column;
-  height: 100%;
-  width: 100%; }
+  width: 500px;
+  border: 2px solid #B0AFB0;
+  border-radius: 5px; }
 
 .header-trackby {
   height: 35px;
@@ -1476,7 +1487,8 @@ ul.rating {
   width: 100%;
   display: flex;
   flex-direction: column;
-  padding: 5px 0px; }
+  padding: 10px 0px 0px;
+  background: #e4e4e4; }
 
 .trackby-label {
   margin-top: 10px;
@@ -1523,7 +1535,8 @@ ul.rating {
   cursor: pointer;
   background: #595C80;
   color: #f8f8f8;
-  font-family: "Josefin Sans", sans-serif; }
+  font-family: "Josefin Sans", sans-serif;
+  font-weight: bold; }
 
 @import url("https://fonts.googleapis.com/css?family=Fresca|Josefin+Sans|Source+Code+Pro");
 @import url("https://fonts.googleapis.com/css?family=Lobster+Two");

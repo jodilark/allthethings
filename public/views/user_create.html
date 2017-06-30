@@ -18,7 +18,8 @@
         <div class="header-text">Create a User</div>
         <div class="closing-x" ng-click="hideUserModal()">X</div>
     </div>
-    <form id="userCreateForm" class="form-wrapper">
+    <form id="userCreateForm" ng-submit="submit()">
+        <div class="form-wrapper">
         <div class="input-wrapper">
             <input type="text" class="modal-input" ng-model="userInfo.firstName" required />
             <div class="modal-label">First Name</div>
@@ -48,7 +49,7 @@
             <div class="modal-label">City</div>
         </div>
         <div class="input-wrapper">
-            <select class="modal-input" id="stateList" ng-options="state as state.name for state in stateName" ng-model="stateObj">
+            <select class="modal-input" id="stateList" ng-options="state as state.name for state in stateName" ng-model="stateObj" required>
                 <option id="stateList" value="" selected>State</option>
             </select>
             <div class="modal-label">State</div>
@@ -66,14 +67,15 @@
         <div class="input-wrapper">
             <div ng-init="rating = star.rating + 1"></div>
             <div class="star-rating modal-input" star-rating rating-value="rating" data-max="5" on-rating-selected="rateFunction(rating)"></div>
-            <div class="modal-label">Renter Rating</div>
+            <div class="modal-label">Rent Score</div>
         </div>
         <div class="filler-wrapper">
-            <label><input type="checkbox" ng-model="userStatus" ng-change="deactivateUserChecked()">Deactivate User</label>
+            <label><input type="checkbox" ng-model="userStatus" ng-change="deactivateUserChecked()">Deactivate</label>
         </div>
-        <div class="modal-controls-wrapper">
-            <input type="submit" value="Create" class="modal-controls" id="addData" ng-click="submit()">
-            <input type="reset" value="Clear" class="modal-controls">
         </div>
+            <div class="modal-controls-wrapper">
+                <input type="submit" value="Create" class="modal-controls" id="addData">
+                <input type="reset" value="Clear" class="modal-controls">
+            </div>
     </form>
 </div>

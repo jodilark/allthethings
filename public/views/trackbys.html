@@ -24,7 +24,8 @@
         <div class="header-text">Trackbys</div>
         <div class="closing-x" ng-click="hideTrackbyModal()">X</div>
     </div> 
-    <form class="tb-form-wrapper" id="trackbyForm" ng-submit="createTrackBy()">
+    <form id="trackbyForm" ng-submit="createTrackBy()">
+        <div class="tb-form-wrapper">
         <div class="trackby-input-wrappers">
             <input class="trackby-input" id="tba2" type="text" ng-model="trackByObj.trackby_name" />
             <div class="trackby-label" id="tba1">Name</div>
@@ -36,6 +37,7 @@
         <div class="trackby-input-wrappers" id="lastWrapper-trackby">
             <input class="trackby-input" id="tba6" type="text" ng-model="trackByObj.trackby_value"/>
             <div class="trackby-label" id="tba5">Value</div>
+        </div>
         </div>
     <div class="tb-modal-footer">
         <input class="tb-mf-button-1" type="submit" value="Create" />

@@ -13,17 +13,19 @@
         <div class="header-text">Storage Types</div>
         <div class="closing-x" ng-click="hideStorageModal()">X</div>
     </div>
-    <form id="classCreateForm" class="form-wrapper">
+    <form id="classCreateForm" ng-submit="createLocClassObj()">
+        <div class="form-wrapper">
         <div class="input-wrapper">
-            <input type="text" class="modal-input" ng-model="locClassObj.name"/>
+            <input type="text" class="modal-input" ng-model="locClassObj.name" required/>
             <div class="modal-label">Name</div>
         </div>
         <div class="input-wrapper last-input-wrapper">
             <input type="text" class="modal-input" ng-model="locClassObj.description"/>
             <div class="modal-label">Description</div>
         </div>
+        </div>
         <div class="modal-controls-wrapper">
-            <input type="submit" value="Submit" class="modal-controls" id="addData" ng-click="createLocClassObj()"/>
+            <input type="submit" value="Submit" class="modal-controls" id="addData"/>
             <input type="reset" value="Clear" class="modal-controls">
         </div>
     </form>

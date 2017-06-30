@@ -4,10 +4,7 @@
 // =============== PAGE STYLES
 // _____:main-modal-wrapper
     .modal-wrapper-trackby {
-        display: flex;
-        flex-direction: column;
-        height: 100%;
-        width: 100%;
+        @include modal-wrapper-storage;
     }
 
 // ______:modal-headers
@@ -43,10 +40,7 @@
 
 // ........... fixit
     .tb-form-wrapper {
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        padding: 5px 0px;
+        @include form-wrapper;
     }
     .trackby-label {
         margin-top: 10px;

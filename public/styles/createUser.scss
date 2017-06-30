@@ -34,6 +34,12 @@
     .modal-input {
         @include modal-input;       
     }
+    .star-rating.modal-input {
+        @include modal-input; 
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;      
+    }
     .modal-label {
         @include modal-label;       
     }

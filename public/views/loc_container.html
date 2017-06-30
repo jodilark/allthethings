@@ -11,13 +11,15 @@
         <div class="header-text">Container Types</div>
         <div class="closing-x" ng-click="hideContainerModal()">X</div>
     </div>
-    <form id="containerCreateForm" class="form-wrapper">
-        <div class="input-wrapper last-input-wrapper">
-            <input type="text" class="modal-input" ng-model="container.name">
-            <div class="modal-label">Description</div>
+    <form id="containerCreateForm" ng-submit="createContainer()">
+        <div class="form-wrapper">
+            <div class="input-wrapper last-input-wrapper">
+                <input type="text" class="modal-input" ng-model="container.name" required>
+                <div class="modal-label">Description</div>
+            </div>
         </div>
         <div class="modal-controls-wrapper">
-        <input type="submit" value="Create" class="modal-controls" id="addData" ng-click="createContainer()">
+            <input type="submit" value="Create" class="modal-controls" id="addData">
             <input type="reset" value="Clear" class="modal-controls">
         </div>
     </form>

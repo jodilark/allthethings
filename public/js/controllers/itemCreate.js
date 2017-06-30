@@ -117,7 +117,7 @@ angular.module('app').controller('itemCreate', function ($scope, $interval, bcSe
         , enableFiltering: true
         , columnDefs: [
             // { name: 'id', enableCellEdit: false, width: 50 }, 
-            { name: 'loc_desc', displayName: 'Description' }, { name: 'loc_class_name', displayName: 'Storage Type' }, { name: 'loc_container', displayName: 'Container' }
+            { name: 'loc_desc', displayName: 'Description' }, { name: 'loc_container', displayName: 'Container' }
         ]
         , onRegisterApi: (gridApi) => {
             gridApi.selection.on.rowSelectionChanged($scope, function (row) {
