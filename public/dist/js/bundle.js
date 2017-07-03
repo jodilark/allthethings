@@ -1330,7 +1330,7 @@ angular.module('app').directive('bcScanner', function () {
                     $scope.showBarcodeWindow = false;
                 },
                 configureScanner: function configureScanner(selector) {
-                    var scanner = Quagga.decoder({ readers: ['ean_reader'] }).locator({ patchSize: 'medium' }).fromSource({
+                    var scanner = Quagga.decoder({ readers: ['ean_reader', 'upc_reader'] }).locator({ patchSize: 'medium' }).fromSource({
                         target: selector,
                         constraints: {
                             width: 600,

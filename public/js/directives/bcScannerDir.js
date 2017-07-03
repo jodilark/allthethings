@@ -78,7 +78,7 @@ angular.module('app').directive('bcScanner',
                     },
                     configureScanner: function (selector) {
                         var scanner = Quagga
-                            .decoder({ readers: ['ean_reader'] })
+                            .decoder({ readers: ['ean_reader', 'upc_reader'] })
                             .locator({ patchSize: 'medium' })
                             .fromSource({
                                 target: selector,
