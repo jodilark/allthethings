@@ -495,6 +495,10 @@ bc-scanner {
 .fa-camera-retro {
   color: #f8f8f8; }
 
+a #cbw1 {
+  display: block;
+  z-index: 10; }
+
 @import url("https://fonts.googleapis.com/css?family=Fresca|Josefin+Sans|Source+Code+Pro");
 @import url("https://fonts.googleapis.com/css?family=Lobster+Two");
 .modal-wrapper-location {
@@ -1019,11 +1023,12 @@ bc-scanner {
   text-shadow: 2px 2px black;
   cursor: pointer; }
 
-a {
+a#cw4 {
+  display: block;
   text-transform: uppercase;
   color: white !important;
   font-family: "Josefin Sans", sans-serif !important;
-  text-decoration: hidden; }
+  text-decoration: none !important; }
 
 #key-features {
   line-height: 40px; }
@@ -1041,6 +1046,9 @@ ul.key-features-list {
 ul.item-features-list {
   line-height: 30px;
   margin-left: 40px; }
+
+.contactlinker {
+  display: block; }
 
 @import url("https://fonts.googleapis.com/css?family=Fresca|Josefin+Sans|Source+Code+Pro");
 @import url("https://fonts.googleapis.com/css?family=Lobster+Two");
@@ -1279,6 +1287,13 @@ body {
   background: rgba(0, 0, 0, 0.6);
   padding-top: 100px; }
 
+.headerlogo {
+  background: url(../styles/img/attlogo.png);
+  height: 40px;
+  width: 40px;
+  background-size: cover;
+  margin-right: 15px; }
+
 .public-header-1 {
   z-index: 2000;
   width: 100%;
@@ -1297,7 +1312,8 @@ body {
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
-  margin-left: 20px; }
+  margin-left: 20px;
+  padding-left: 50px; }
 
 .public-header-1-b {
   height: 100%;
@@ -1321,9 +1337,14 @@ body {
   height: 30px;
   background: lightblue; }
 
-#t1 {
+.t1 {
   height: 45px;
-  width: 200px; }
+  width: 400px;
+  font-family: 'Lobster Two', cursive;
+  font-size: 42px;
+  color: #f8f8f8;
+  line-height: 65px;
+  margin-bottom: 21px; }
 
 #ph-login {
   margin: 0px 5px; }

@@ -293,11 +293,12 @@
     text-shadow: 2px 2px black;
     cursor: pointer;
   }
-    a {
+    a#cw4{
+        display:block;
         text-transform: uppercase;
         color: white !important;
         font-family: $breadcrumb-font !important;
-        text-decoration: hidden;
+        text-decoration: none !important;
     }
 
 #key-features {
@@ -320,4 +321,7 @@ ul.key-features-list {
 ul.item-features-list {
     line-height: 30px;
     margin-left: 40px;
+}
+.contactlinker {
+    display:block;
 }

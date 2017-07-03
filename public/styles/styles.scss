@@ -49,6 +49,14 @@ body {
   //   border-radius: 5px;
   // }
 
+//______:header logo
+  .headerlogo {
+    background: url(../styles/img/attlogo.png);
+    height: 40px;
+    width: 40px;
+    background-size: cover;
+    margin-right: 15px;
+  }
 
 // _____: public header
   .public-header-1 {
@@ -71,6 +79,7 @@ body {
     justify-content: flex-start;
     align-items: center;
     margin-left: 20px;
+    padding-left: 50px;
   }
 
   .public-header-1-b {
@@ -97,9 +106,14 @@ body {
     background: lightblue;
   }
 
-  #t1 {
+  .t1 {
     height: 45px;
-    width: 200px;
+    width: 400px;
+    font-family: 'Lobster Two', cursive;
+    font-size: 42px;
+    color: #f8f8f8;
+    line-height: 65px;
+    margin-bottom: 21px;
   }
 
   #ph-login {

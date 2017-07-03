@@ -35,7 +35,8 @@
     <!--╚══════════════════════════════════════╝-->
     <div class="dashboard-header-1" ng-hide='loggedIn'>
         <div class="public-header-1-a">
-            <div class="test-asset" id="t1"></div>
+            <div class="headerlogo"></div>
+            <div class="t1">All The Things</div>
         </div>
         <div class="public-header-1-b">
             <div class="public-header-1-b-i">
@@ -44,7 +45,7 @@
                         <i class="fa fa-sign-in topNavButton" aria-hidden="true" ></i>
                     </a>
                 </div>
-                <div class="header-div" title="Contact">
+                <div class="header-div" title="Contact" onClick="document.getElementById('cw4').scrollIntoView();">
                     <i class="fa fa-laptop topNavButton" aria-hidden="true"></i>
                 </div>
             </div>
@@ -56,8 +57,9 @@
     <!--╚══════════════════════════════════════╝-->
     <div ng-hide='!loggedIn'>
         <div class="dashboard-header-1 filtre--r">
-            <div class="dh-1-a">
-                <div class="dh-test-asset" id="dh1" ui-sref="dashboard" ng-click="watchLocation('#!/dashboard')"></div>
+            <div class="public-header-1-a">
+            <div class="headerlogo"></div>
+                <div class="t1" ui-sref="dashboard" ng-click="watchLocation('#!/dashboard')">All The Things</div>
             </div>
             <div class="dh-1-c">
                 <p class="dh-test-asset" id="dh4">{{pageTitle}}</p>
@@ -157,6 +159,7 @@
     <div class="main-view-container">
         <ui-view></ui-view>
     </div>
+    <div id="emptyDiv"></div>
 
     <!-- ========== SCRIPTS-->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.js"></script>
