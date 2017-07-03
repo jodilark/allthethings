@@ -3,12 +3,20 @@
 
 // =============== PAGE STYLES
 // ............... public home
+.home-main-wrapper {
+    background: url('../styles/img/texture.jpg') !important;
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
+}
 // _____: title
     .home-body-wrapper {
         height:500px;
         width: 100%;
         padding: 20px 20px;
         margin-top:63px;
+        background: url('../styles/img/cleanSpace2.jpeg');
+        background-size: cover;
+        background-attachment: fixed;
     }
     .home-title-1 {
         width: 100%;
@@ -27,23 +35,54 @@
     .home-test-asset {
         width: 40px;
         height: 40px;
+
     }
     #ht1 {
-        background: lightblue;
+        // background: lightblue;
+    }
+    .home-section-title {
         width: 100%;
-        color: black;
         text-align: center;
+        font-family: $breadcrumb-font;
         font-size: 155px;
-        line-height: 355px;
+        font-weight: bold;
+        line-height: 295px;
+        color: #f8f8f8;
+        text-shadow: 2px 2px black;
+        flex: 1;    
+    }
+    #lwa2.home-section-title {
+        width: 100%;
+        text-align: center;
+        font-family: $breadcrumb-font;
+        font-size: 128px;
+        font-weight: bold;
+        line-height: 178px;
+        color: #f8f8f8;
+        text-shadow: 2px 2px black;
+        flex: 1;    
+    }
+    #ft2.home-section-title {
+        width: 100%;
+        text-align: center;
+        font-family: $breadcrumb-font;
+        font-size: 128px;
+        font-weight: bold;
+        line-height: 178px;
+        color: #f8f8f8;
+        text-shadow: 2px 2px black;
         flex: 1;    
     }
     #ht2 {
-        background: lightgreen;
+        font-family: $breadcrumb-font;
+        background: rgba(0, 0, 0, .5);
+        color: #f8f8f8;
         height: 150px;
         flex: .5;
-        color: black;
         font-size: 20px;
         margin: 0px 50px;
+        padding: 30px;
+        width: auto;
     }
 // _____:find things
     .find-body-wrapper {
@@ -58,7 +97,15 @@
         display: flex;
         justify-content: center;
         align-content: center;
+        background: url('../styles/img/homeSlice.jpg');
+        background-size: cover;
+        background-attachment: fixed;
     }
+    .clip-circle {
+        clip-path: circle(174px at center);
+        /* OLD VALUE example: circle(245px, 140px, 50px); */
+        /* Yep, even the new clip-path has deprecated stuff. */
+    }   
     .ft-1-a {
         display: flex;
         flex-direction: row;
@@ -83,42 +130,48 @@
         flex:1;
         display: flex;
         flex-direction: column;
-        justify-content: center;
+        justify-content: space-around !important;
         align-content: center;
+        padding: 0px 50px;
     }
     .ft-1-a-ii-1 {
-        flex: 1;
         width: 100%;
+        text-align: center;
+        font-family: $breadcrumb-font;
+        font-size: 155px;
+        font-weight: bold;
+        color: #f8f8f8;
+        text-shadow: 2px 2px black;
     }
     .ft-1-a-ii-2 {
-        flex: 1;
-        width: 100%;
+        font-family: $breadcrumb-font;
+        background: rgba(0, 0, 0, .5);
+        color: #f8f8f8;
+        font-size: 20px;
+        padding: 30px;
     }
     .find-test-asset {
         width: 100%;
         height: 100%;
     }
     #ft1 {
-        background: lightblue;
+        background: url(../styles/img/modifiedCorgi.png);
         width: 100%;
-        color: black;
-        flex: 1; 
-        border-radius: 50%;   
-    }
-    #ft2 {
-        background: lightgreen;
         flex: 1;
-        color: black;
-        font-size: 155px;
-        vertical-align: center;
-        line-height: 222px;
+        border-radius: 50%;
+        background-size: cover;
+        background-repeat: no-repeat;
+        border: 2px groove gray; 
     }
-    #ft3 {
-        background: lightcoral;
-        flex: 1;
-        color: black;
-        font-size: 20px;
-    }
+    // #ft2 {
+    //     background: lightgreen;
+    //     flex: 1;
+    //     color: black;
+    //     font-size: 155px;
+    //     vertical-align: center;
+    //     line-height: 222px;
+    // }
+
 
 // _____:loss
     .loss-wrapper {
@@ -129,23 +182,57 @@
         justify-content: center;
         align-items: center;
         padding: 20px;
+        margin: 0px 20px 20px;
+        background: url('https://s3.amazonaws.com/rocketstockassets/uploads/After-Effects-Fire-Example1.gif');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
     }
     .lw-1 {
         flex: 1;
         width: $wrapper-widths;
         position: relative;
+        background: url('../styles/img/fireHome.jpg');
+        background-size: cover;
+        box-shadow: 10px 10px 10px rgba(0, 0, 0, .5);
+        background-attachment: fixed;
     }
     .lw-1-a {
         width: 500px;
         height: 355px;
-        margin: 50px 0px 0px 50px;
+        margin: 152px 0px 0px 50px !important;
+    }
+    .desc-text {
+        font-family: $breadcrumb-font;
+        background: rgba(0, 0, 0, .5);
+        color: #f8f8f8;
+        flex: .5;
+        font-size: 20px;
+        margin: 50px;
+        padding: 30px;
+        height: 355px;
+        width: 500px;
+    }
+    #ft3.desc-text {
+        font-family: $breadcrumb-font;
+        background: rgba(0, 0, 0, .5);
+        color: #f8f8f8;
+        flex: .5;
+        font-size: 20px;
+        margin: 0px;
+        padding: 10px;
+        height: 104px;
+        width: 500px;
     }
     .lw-1-b {
         width: 750px;
         height: 175px;
-        // margin: -581px 0px 0px 550px;
-        // margin: -475px 0px 0px 550px;
-        @include home-loss-tilt-end;
+        position: absolute;
+        right: 0px;
+        bottom: 243px;
+        transform: rotate(45deg);
+        font-size: 125px;
+        line-height: 175px;
     }
     .lw-1-c {
         width: 100%;
@@ -161,9 +248,6 @@
     #lwa1 {
         background: lightblue;
     }
-    #lwa2 {
-        background: lightcoral;
-    }
     #lwa3 {
         background: lightgreen;
     }
@@ -176,6 +260,8 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;    
+        background: $primary-color;
+        box-shadow: 3px 0px rgba(0, 0, 0, .3);
     }
     .cbw-1-a{
         display: flex;
@@ -186,8 +272,8 @@
         width: 400px;
     }
     .cbw-1-b{
-        border-top: 1px solid blue;
-        flex: 1;
+        border-top: 1px solid white;
+        flex: .5;
         width: 600px;
         display: flex;
         justify-content: center;
@@ -197,15 +283,19 @@
         width: 40px;
         height: 40px;
     }
-    #cbw1{
-        background: lightblue;
-    }
-    #cbw2{
-        background: lightcoral;
-    }
-    #cbw3{
-        background: lightgreen;
-    }
-    #cbw4{
-        background: lightyellow;
+  .socialLink {
+    font-size: 37px !important;
+    color: #f8f8f8;
+  }
+  .socialLink:hover {
+    font-size: 43px !important;
+    color: #f8f8f8;
+    text-shadow: 2px 2px black;
+    cursor: pointer;
+  }
+    a {
+        text-transform: uppercase;
+        color: white !important;
+        font-family: $breadcrumb-font !important;
+        text-decoration: hidden;
     }
