@@ -274,7 +274,7 @@ bc-scanner {
 .ci-2-b {
   height: 25px;
   width: 30px;
-  background: lightblue;
+  background: #595C80;
   cursor: pointer; }
 
 .ci-3 {
@@ -491,6 +491,9 @@ bc-scanner {
   color: #f8f8f8;
   font-family: "Josefin Sans", sans-serif;
   font-weight: bold; }
+
+.fa-camera-retro {
+  color: #f8f8f8; }
 
 @import url("https://fonts.googleapis.com/css?family=Fresca|Josefin+Sans|Source+Code+Pro");
 @import url("https://fonts.googleapis.com/css?family=Lobster+Two");
@@ -751,7 +754,7 @@ bc-scanner {
   background-repeat: no-repeat !important; }
 
 .home-body-wrapper {
-  height: 500px;
+  height: 900px;
   width: 100%;
   padding: 20px 20px;
   margin-top: 63px;
@@ -935,7 +938,7 @@ bc-scanner {
   font-size: 20px;
   margin: 50px;
   padding: 30px;
-  height: 355px;
+  height: 380px;
   width: 500px; }
 
 #ft3.desc-text {
@@ -1021,6 +1024,23 @@ a {
   color: white !important;
   font-family: "Josefin Sans", sans-serif !important;
   text-decoration: hidden; }
+
+#key-features {
+  line-height: 40px; }
+
+ul.key-features-list {
+  margin-left: 20px;
+  line-height: 40px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between; }
+
+.item-features {
+  line-height: 40px; }
+
+ul.item-features-list {
+  line-height: 30px;
+  margin-left: 40px; }
 
 @import url("https://fonts.googleapis.com/css?family=Fresca|Josefin+Sans|Source+Code+Pro");
 @import url("https://fonts.googleapis.com/css?family=Lobster+Two");
