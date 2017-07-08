@@ -19,6 +19,7 @@
 	CREATE TABLE IF NOT EXISTS auth
 	(
 		id serial primary key
+		, user_id int
         ,code varchar
 	);
 	INSERT INTO auth (code) VALUES ('F4KJ3F');
@@ -27,6 +28,7 @@
 	CREATE TABLE IF NOT EXISTS features
 	(
 		id serial primary key
+		, user_id int
 		, description varchar
 	);
     INSERT INTO features
@@ -47,6 +49,7 @@
 	CREATE TABLE IF NOT EXISTS declutter
 	(
 		id serial primary key
+		, user_id int
 		, time_frame_days int
 		, time_frame_action varchar
 	);
@@ -62,6 +65,7 @@
     CREATE TABLE IF NOT EXISTS settings
     (
         id serial primary key
+		, user_id int
         , sentimental_rental_threshold int
 		, location_id int
         , declutter_id int
@@ -76,6 +80,7 @@
 	CREATE TABLE IF NOT EXISTS users
 	(
 		id serial primary key
+		, user_id int
 		, first_name varchar
 		, last_name varchar
 		, phone numeric
@@ -167,6 +172,7 @@
 	CREATE TABLE IF NOT EXISTS locations
 	(
 		id serial primary key
+		, user_id int
 		, loc_class_id int
 		, description varchar
 		, barcode varchar
@@ -195,6 +201,7 @@
 	CREATE TABLE IF NOT EXISTS trackbys
 	(
 		id serial primary key
+		, user_id int
 		, trackby_name varchar
 		, trackby_value varchar
 		, trackby_category varchar
@@ -208,6 +215,7 @@
 	CREATE TABLE IF NOT EXISTS containers
 	(
 		id serial primary key
+		, user_id int
 		, name varchar
 	);
     -- INSERT INTO containers
@@ -219,6 +227,7 @@
 	CREATE TABLE IF NOT EXISTS loc_classes
 	(
 		id serial primary key
+		, user_id int
 		, name varchar
 		, description varchar(500)
 	);
@@ -234,6 +243,7 @@
 	CREATE TABLE IF NOT EXISTS country
 	(
 		id serial primary key
+		, user_id int
 		, code varchar
 		, name varchar
 	);
@@ -243,6 +253,7 @@
 	CREATE TABLE IF NOT EXISTS state
 	(
 		id serial primary key
+		, user_id int
 		, code varchar
 		, name varchar
 	);
@@ -310,6 +321,7 @@
 	CREATE TABLE IF NOT EXISTS rental
 	(
 		id serial primary key
+		, user_id int
 		, item_owner_id int
 		, renter_user_id int
 		, rent_start_time_date timestamp
