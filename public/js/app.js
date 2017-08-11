@@ -18,7 +18,8 @@ angular.module('app', ['ui.router', 'ui.grid', 'ui.grid.selection', 'ui.grid.edi
         $stateProvider
             .state('home', {
                 templateUrl: '../views/home.html',
-                url: '/'
+                url: '/',
+                controller: 'mainCtrl'
             })
             .state('dashboard', {
                 templateUrl: '../views/dashboard.html',

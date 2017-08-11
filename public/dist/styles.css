@@ -1053,6 +1053,57 @@ ul.item-features-list {
 .contactlinker {
   display: block; }
 
+.portfolio-notes-wrapper {
+  z-index: 100000;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  bottom: 10px;
+  left: 10px;
+  background: #222;
+  border: 2px solid white;
+  border-radius: 3px;
+  padding: 10px;
+  height: 300px;
+  width: 890px;
+  color: white;
+  box-shadow: 8px 8px 8px rgba(0, 0, 0, 0.5); }
+
+.notes-title {
+  display: inline-block; }
+
+.notes-text {
+  color: white;
+  flex: 1;
+  width: 100%;
+  padding: 20px 0px; }
+
+.notes-text li {
+  list-style: none; }
+
+.closingX {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  color: white;
+  cursor: pointer; }
+
+.minimized-notes {
+  z-index: 100000;
+  display: inline-block;
+  position: fixed;
+  bottom: 10px;
+  left: 10px;
+  background: rgba(0, 0, 0, 0.9);
+  padding: 10px;
+  color: white;
+  border: 2px solid white;
+  border-radius: 3px;
+  opacity: 0.5;
+  cursor: pointer; }
+
 @import url("https://fonts.googleapis.com/css?family=Fresca|Josefin+Sans|Source+Code+Pro");
 @import url("https://fonts.googleapis.com/css?family=Lobster+Two");
 .page-wrapper-items {
