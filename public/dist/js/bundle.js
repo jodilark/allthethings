@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('app', ['ui.router', 'ui.grid', 'ui.grid.selection', 'ui.grid.edit', 'ui.grid.resizeColumns', 'ui.grid.moveColumns', 'ui.grid.pinning', 'ui.grid.infiniteScroll']).config(function ($stateProvider, $urlRouterProvider) {
-    $urlRouterProvider.otherwise('/', ""
+    $urlRouterProvider.otherwise('/', "");
     // .......................  authorization
     // var authentication = {
     //     authenticate: ($state, checkUserSrv) => {
@@ -16,9 +16,10 @@ angular.module('app', ['ui.router', 'ui.grid', 'ui.grid.selection', 'ui.grid.edi
     //         })
     //     }
     // }
-    );$stateProvider.state('home', {
+    $stateProvider.state('home', {
         templateUrl: '../views/home.html',
-        url: '/'
+        url: '/',
+        controller: 'mainCtrl'
     }).state('dashboard', {
         templateUrl: '../views/dashboard.html',
         url: '/dashboard'
@@ -28,19 +29,19 @@ angular.module('app', ['ui.router', 'ui.grid', 'ui.grid.selection', 'ui.grid.edi
         url: '/user_create_new',
         controller: 'userCreate'
         // resolve: authentication
-    }
+    })
     // .state('user_create', {
     //     templateUrl: '../views/user_create.html',
     //     url: '/user_create',
     //     controller: 'userCreate',
     //     // resolve: authentication
     // })
-    ).state('user_manage', {
+    .state('user_manage', {
         templateUrl: '../views/user_manage.html',
         url: '/user_manage',
         controller: 'userManage'
         // resolve: authentication
-    }
+    })
     // .state('location_create', {
     //     templateUrl: '../views/location_create.html',
     //     url: '/location_create',
@@ -59,7 +60,7 @@ angular.module('app', ['ui.router', 'ui.grid', 'ui.grid.selection', 'ui.grid.edi
     //     controller: 'locClass',
     //     // resolve: authentication
     // })
-    ).state('location_manage', {
+    .state('location_manage', {
         templateUrl: '../views/location_manage.html',
         url: '/location_manage',
         controller: 'locManage'
@@ -74,14 +75,14 @@ angular.module('app', ['ui.router', 'ui.grid', 'ui.grid.selection', 'ui.grid.edi
         url: '/settings',
         controller: 'settings'
         // resolve: authentication
-    }
+    })
     // .state('item_create', { // MOVE INTO MODAL
     //     templateUrl: '../views/item_create.html',
     //     url: '/item_create',
     //     controller: 'itemCreate',
     //     // resolve: authentication
     // })
-    ).state('item_manage', { // MOVE INTO MODAL
+    .state('item_manage', { // MOVE INTO MODAL
         templateUrl: '../views/item_manage.html',
         url: '/item_manage',
         controller: 'itemManage'
@@ -107,11 +108,11 @@ angular.module('app').controller('itemCreate', function ($scope, $interval, bcSe
 
     // »»»»»»»»»»»»»»»»»»»║ CLEAR FORM
     $scope.clearForm = function () {
-        return document.getElementById("itemCreateForm").reset
+        return document.getElementById("itemCreateForm").reset();
+    };
 
-        // test barcode from service
-        ();
-    };$scope.getBC = function () {
+    // test barcode from service
+    $scope.getBC = function () {
         $scope.barcode = bcService.upc;
         console.log($scope.barcode);
     };
@@ -142,9 +143,9 @@ angular.module('app').controller('itemCreate', function ($scope, $interval, bcSe
             $scope.userId.id = response.data.id;
         });
     };
-    $scope.currentUser
+    $scope.currentUser();
     // .................... original package checkbox
-    ();$scope.originalPackaging = function () {
+    $scope.originalPackaging = function () {
         return $scope.itemCreateObj.has_package = $scope.packageStatus;
     };
 
@@ -185,19 +186,19 @@ angular.module('app').controller('itemCreate', function ($scope, $interval, bcSe
             return $scope.locations = response.data;
         });
     };
-    $scope.getLocations
+    $scope.getLocations();
 
     // .................... get custom list of locations 
-    ();$scope.getLocations = function () {
+    $scope.getLocations = function () {
         return locationsListSrv.getLocationsCustomList().then(function (response) {
             var locGrid = response.data;
             $scope.gridOptions.data = locGrid;
         });
     };
-    $scope.getLocations
+    $scope.getLocations();
 
     // .................... get default location
-    ();$scope.getDefaultLoc = function () {
+    $scope.getDefaultLoc = function () {
         return settingsSrv.getDefaultLocation().then(function (response) {
             $scope.loc = response.data[0].description;
             $scope.locid = response.data[0].location_id;
@@ -205,27 +206,27 @@ angular.module('app').controller('itemCreate', function ($scope, $interval, bcSe
             $scope.itemCreateObj.location_id = $scope.locid;
         });
     };
-    $scope.getDefaultLoc
+    $scope.getDefaultLoc();
 
     // »»»»»»»»»»»»»»»»»»»║ GET A LIST OF ALL TRACKBYS
-    ();$scope.gettrackbys = function () {
+    $scope.gettrackbys = function () {
         return trackByGetSrv.getTrackByList().then(function (response) {
             // console.log(response.data)
             $scope.trackbys = response.data;
         });
     };
-    $scope.gettrackbys
+    $scope.gettrackbys();
 
     // »»»»»»»»»»»»»»»»»»»║ GET USERS LIST
-    ();$scope.getUsers = function () {
+    $scope.getUsers = function () {
         return userListSrv.getCustomUserList().then(function (response) {
             return $scope.users = response.data;
         });
     };
-    $scope.getUsers
+    $scope.getUsers();
 
     // .................... columns and data
-    ();$scope.gridOptions = {
+    $scope.gridOptions = {
         enableRowSelection: true,
         enableRowHeaderSelection: true,
         multiSelect: true,
@@ -264,9 +265,9 @@ angular.module('app').controller('itemCreate', function ($scope, $interval, bcSe
         }
         $scope.itemCreateObj.trackbys = $scope.trackbyValues;
         $scope.itemCreateObj.upc = $scope.barcode;
-        $scope.clearForm
+        $scope.clearForm();
         // console.log(itemsObj)//this is the object that will be sent to the server
-        ();itemPostSrv.createItem(itemsObj);
+        itemPostSrv.createItem(itemsObj);
     };
 });
 'use strict';
@@ -294,11 +295,11 @@ angular.module('app').controller('itemManage', function ($scope, bcService, $int
             return $scope.gridOptions.data = response.data;
         });
     };
-    $scope.getGridData
+    $scope.getGridData();
 
     // .................... get list of users
 
-    ();$scope.getUserList = function () {
+    $scope.getUserList = function () {
         return userListSrv.getUserList().then(function (response) {
             rtnUsers = response.data;
             var droplist = function droplist(rIndex) {
@@ -310,11 +311,11 @@ angular.module('app').controller('itemManage', function ($scope, bcService, $int
             rtnUsers.map(droplist);
         });
     };
-    $scope.getUserList
+    $scope.getUserList();
 
     // .................... get list of Locaitons
 
-    ();$scope.getLocaitonList = function () {
+    $scope.getLocaitonList = function () {
         return locationsListSrv.getLocationsList().then(function (response) {
             rtnLocs = response.data;
             var droplist = function droplist(rIndex) {
@@ -326,10 +327,10 @@ angular.module('app').controller('itemManage', function ($scope, bcService, $int
             rtnLocs.map(droplist);
         });
     };
-    $scope.getLocaitonList
+    $scope.getLocaitonList();
 
     // .................... columns and data
-    ();var minW = 75;
+    var minW = 75;
     var maxW = 500;
     var wid = 150;
 
@@ -371,10 +372,10 @@ angular.module('app').controller('itemManage', function ($scope, bcService, $int
                 $scope.rowObj = row.entity;
                 $scope.enableDelete = false;
                 $scope.selected === true ? $scope.enableDelete = false : $scope.enableDelete = true;
-            }
+            });
 
             // ...........   update the location on lost focus, tab, or enter
-            );gridApi.edit.on.afterCellEdit($scope, function (rowEntity) {
+            gridApi.edit.on.afterCellEdit($scope, function (rowEntity) {
                 $scope.updateCont = rowEntity;
                 var rei = rowEntity.id;
                 // ............. validation for owner, location, qty
@@ -407,111 +408,109 @@ angular.module('app').controller('itemManage', function ($scope, bcService, $int
 
         // »»»»»»»»»»»»»»»»»»»║  UPDATE ITEMS
     };$scope.update = function (id, updateObj) {
-        return itemPutSrv.updateItem(id, updateObj
-
-        // // .................... variables
-        // $scope.barcode
-        // $scope.storeBarcode = () => bcService.storeBarcode($scope.barcode)
-
-        // // .................... quagga barcode scanner
-        // var Quagga = window.Quagga;
-        // var resultsArr = []
-        // var counter = resultsArr.length
-        // var App = {
-        //     _lastResult: null,
-        //     init: function () {
-        //         this.attachListeners();
-        //     },
-        //     activateScanner: function () {
-        //         var scanner = this.configureScanner('.overlay__content'),
-        //             onDetected = function (result) {
-        //                 resultsArr.push(result.codeResult.code)
-        //                 counter = resultsArr.length
-        //                 // console.log("On Detected :", resultsArr)
-        //                 // console.log("counter = ", counter)
-        //                 if (counter === 10) {
-        //                     var mc = mostCommon(resultsArr)
-        //                     console.log("most common", mc)
-        //                     $scope.barcode = mc
-        //                     $scope.storeBarcode()
-        //                     $scope.$apply()
-        //                     $scope.stoppy()
-        //                     $scope.showBarcodeWindow = false
-        //                     $scope.$apply()
-        //                     snd.play()
-        //                 }
-        //             }.bind(this),
-        //             stop = function () {
-        //                 scanner.stop();  // should also clear all event-listeners?
-        //                 scanner.removeEventListener('detected', onDetected);
-        //                 this.hideOverlay();
-        //                 this.attachListeners();
-        //             }.bind(this);
-
-        //         this.showOverlay(stop);
-        //         console.log("activateScanner");
-        //         scanner.addEventListener('detected', onDetected).start();
-        //     },
-        //     showOverlay: function (cancelCb) {
-        //         $scope.showBarcodeWindow = true
-        //         $scope.$apply()
-        //         document.querySelector('.container ')
-        //             .classList.add('hide');
-        //         document.querySelector('.overlay--inline')
-        //             .classList.add('show');
-        //         $scope.stoppy = () => {
-        //             cancelCb();
-        //         };
-        //     },
-        //     attachListeners: function () {
-        //         var button = document.querySelector('button.scan'),
-        //             self = this;
-
-        //         button.addEventListener("click", function clickListener(e) {
-        //             e.preventDefault();
-        //             button.removeEventListener("click", clickListener);
-        //             self.activateScanner();
-        //         });
-        //     },
-        //     hideOverlay: function () {
-        //         document.querySelector('.container ')
-        //             .classList.remove('hide');
-        //         document.querySelector('.overlay--inline')
-        //             .classList.remove('show');
-        //         $scope.showBarcodeWindow = false
-        //     },
-        //     configureScanner: function (selector) {
-        //         var scanner = Quagga
-        //             .decoder({ readers: ['ean_reader'] })
-        //             .locator({ patchSize: 'medium' })
-        //             .fromSource({
-        //                 target: selector,
-        //                 constraints: {
-        //                     width: 600,
-        //                     height: 600,
-        //                     facingMode: "environment"
-        //                 }
-        //             });
-        //         return scanner;
-        //     }
-        // };
-        // App.init();
-
-        // // .................... take results array and get the average
-        // const mostCommon = (arr) => {
-        //     return arr.sort((a, b) =>
-        //         arr.filter(v => v === a).length
-        //         - arr.filter(v => v === b).length
-        //     ).pop()
-        // }
-        // // .................... play a sound
-        // var snd = new Audio("../audio/cameraOne.wav")
-
-        // // .................... hide / show playback window
-        // $scope.showBarcodeWindow = false
-
-        );
+        return itemPutSrv.updateItem(id, updateObj);
     };
+
+    // // .................... variables
+    // $scope.barcode
+    // $scope.storeBarcode = () => bcService.storeBarcode($scope.barcode)
+
+    // // .................... quagga barcode scanner
+    // var Quagga = window.Quagga;
+    // var resultsArr = []
+    // var counter = resultsArr.length
+    // var App = {
+    //     _lastResult: null,
+    //     init: function () {
+    //         this.attachListeners();
+    //     },
+    //     activateScanner: function () {
+    //         var scanner = this.configureScanner('.overlay__content'),
+    //             onDetected = function (result) {
+    //                 resultsArr.push(result.codeResult.code)
+    //                 counter = resultsArr.length
+    //                 // console.log("On Detected :", resultsArr)
+    //                 // console.log("counter = ", counter)
+    //                 if (counter === 10) {
+    //                     var mc = mostCommon(resultsArr)
+    //                     console.log("most common", mc)
+    //                     $scope.barcode = mc
+    //                     $scope.storeBarcode()
+    //                     $scope.$apply()
+    //                     $scope.stoppy()
+    //                     $scope.showBarcodeWindow = false
+    //                     $scope.$apply()
+    //                     snd.play()
+    //                 }
+    //             }.bind(this),
+    //             stop = function () {
+    //                 scanner.stop();  // should also clear all event-listeners?
+    //                 scanner.removeEventListener('detected', onDetected);
+    //                 this.hideOverlay();
+    //                 this.attachListeners();
+    //             }.bind(this);
+
+    //         this.showOverlay(stop);
+    //         console.log("activateScanner");
+    //         scanner.addEventListener('detected', onDetected).start();
+    //     },
+    //     showOverlay: function (cancelCb) {
+    //         $scope.showBarcodeWindow = true
+    //         $scope.$apply()
+    //         document.querySelector('.container ')
+    //             .classList.add('hide');
+    //         document.querySelector('.overlay--inline')
+    //             .classList.add('show');
+    //         $scope.stoppy = () => {
+    //             cancelCb();
+    //         };
+    //     },
+    //     attachListeners: function () {
+    //         var button = document.querySelector('button.scan'),
+    //             self = this;
+
+    //         button.addEventListener("click", function clickListener(e) {
+    //             e.preventDefault();
+    //             button.removeEventListener("click", clickListener);
+    //             self.activateScanner();
+    //         });
+    //     },
+    //     hideOverlay: function () {
+    //         document.querySelector('.container ')
+    //             .classList.remove('hide');
+    //         document.querySelector('.overlay--inline')
+    //             .classList.remove('show');
+    //         $scope.showBarcodeWindow = false
+    //     },
+    //     configureScanner: function (selector) {
+    //         var scanner = Quagga
+    //             .decoder({ readers: ['ean_reader'] })
+    //             .locator({ patchSize: 'medium' })
+    //             .fromSource({
+    //                 target: selector,
+    //                 constraints: {
+    //                     width: 600,
+    //                     height: 600,
+    //                     facingMode: "environment"
+    //                 }
+    //             });
+    //         return scanner;
+    //     }
+    // };
+    // App.init();
+
+    // // .................... take results array and get the average
+    // const mostCommon = (arr) => {
+    //     return arr.sort((a, b) =>
+    //         arr.filter(v => v === a).length
+    //         - arr.filter(v => v === b).length
+    //     ).pop()
+    // }
+    // // .................... play a sound
+    // var snd = new Audio("../audio/cameraOne.wav")
+
+    // // .................... hide / show playback window
+    // $scope.showBarcodeWindow = false
 });
 'use strict';
 
@@ -532,21 +531,21 @@ angular.module('app').controller('locClass', function ($scope, locClassSrv, uiGr
 
     // // »»»»»»»»»»»»»»»»»»»║ CLEAR FORM
     $scope.clearForm = function () {
-        return document.getElementById("classCreateForm").reset
+        return document.getElementById("classCreateForm").reset();
+    };
 
-        // // »»»»»»»»»»»»»»»»»»»║ LOCATION CLASSIFICATION MANIPULATION
-        // .................... get list of location classes and grid information
-        ();
-    };$scope.getLocClasses = function () {
+    // // »»»»»»»»»»»»»»»»»»»║ LOCATION CLASSIFICATION MANIPULATION
+    // .................... get list of location classes and grid information
+    $scope.getLocClasses = function () {
         return locClassSrv.getLocClassesList().then(function (response) {
             $scope.locClasses = response.data;
             $scope.gridOptions.data = response.data;
         });
     };
-    $scope.getLocClasses
+    $scope.getLocClasses();
 
     // // .................... location classes types
-    ();$scope.locClassObj = {};
+    $scope.locClassObj = {};
     $scope.createLocClassObj = function () {
         $scope.gridOptions.data.push({
             "name": $scope.locClassObj.name,
@@ -573,10 +572,10 @@ angular.module('app').controller('locClass', function ($scope, locClassSrv, uiGr
                 $scope.rowObj = row.entity;
                 $scope.enableDelete = false;
                 $scope.selected === true ? $scope.enableDelete = false : $scope.enableDelete = true;
-            }
+            });
 
             // ...........   update the loc class on lost focus, tab, or enter
-            );gridApi.edit.on.afterCellEdit($scope, function (rowEntity) {
+            gridApi.edit.on.afterCellEdit($scope, function (rowEntity) {
                 $scope.updateCont = rowEntity;
                 $scope.update($scope.updateCont);
             });
@@ -619,21 +618,21 @@ angular.module('app').controller('locContainer', function ($scope, $interval, co
 
     // »»»»»»»»»»»»»»»»»»»║ CLEAR FORM
     $scope.clearForm = function () {
-        return document.getElementById("containerCreateForm").reset
+        return document.getElementById("containerCreateForm").reset();
+    };
 
-        // »»»»»»»»»»»»»»»»»»»║ CONTAINER MANIPULATION
-        // .................... get list of container types and grid information
-        ();
-    };$scope.getContainers = function () {
+    // »»»»»»»»»»»»»»»»»»»║ CONTAINER MANIPULATION
+    // .................... get list of container types and grid information
+    $scope.getContainers = function () {
         return containerSrv.getContainerList().then(function (response) {
             $scope.containers = response.data;
             $scope.gridOptions.data = response.data;
         });
     };
-    $scope.getContainers
+    $scope.getContainers();
 
     // .................... create container types
-    ();$scope.container = {};
+    $scope.container = {};
     $scope.createContainer = function () {
         $scope.gridOptions.data.push({
             "name": $scope.container.name
@@ -661,10 +660,10 @@ angular.module('app').controller('locContainer', function ($scope, $interval, co
                 $scope.rowObj = row.entity;
                 $scope.enableDelete = false;
                 $scope.selected === true ? $scope.enableDelete = false : $scope.enableDelete = true;
-            }
+            });
 
             // ...........   update the user on lost focus, tab, or enter
-            );gridApi.edit.on.afterCellEdit($scope, function (rowEntity) {
+            gridApi.edit.on.afterCellEdit($scope, function (rowEntity) {
                 $scope.updateCont = rowEntity;
                 $scope.update($scope.updateCont);
             });
@@ -710,36 +709,36 @@ angular.module('app').controller('locCreate', function ($scope, locCreateSrv, co
 
     // »»»»»»»»»»»»»»»»»»»║ CLEAR FORM
     $scope.clearForm = function () {
-        return document.getElementById("createLocationForm").reset
+        return document.getElementById("createLocationForm").reset();
+    };
 
-        // »»»»»»»»»»»»»»»»»»»║  GET CONTAINER LIST 
-        ();
-    };$scope.getContainers = function () {
+    // »»»»»»»»»»»»»»»»»»»║  GET CONTAINER LIST 
+    $scope.getContainers = function () {
         return containerSrv.getContainerList().then(function (response) {
             return $scope.containers = response.data;
         });
     };
-    $scope.getContainers
+    $scope.getContainers();
 
     // »»»»»»»»»»»»»»»»»»»║  GET LOCATION CLASSIFICATION LIST
-    ();$scope.getLocClasses = function () {
+    $scope.getLocClasses = function () {
         return locClassSrv.getLocClassesList().then(function (response) {
             return $scope.locClasses = response.data;
         });
     };
-    $scope.getLocClasses
+    $scope.getLocClasses();
 
     // »»»»»»»»»»»»»»»»»»»║  GET LOCATION LIST
-    ();$scope.getLocations = function () {
+    $scope.getLocations = function () {
         return locationsListSrv.getLocationsList().then(function (response) {
             return $scope.locations = response.data;
         });
     };
-    $scope.getLocations
+    $scope.getLocations();
 
     // »»»»»»»»»»»»»»»»»»»║  CREATE A NEW LOCATION
     //  .................... objects used to post
-    ();$scope.locClassObj = [];
+    $scope.locClassObj = [];
     $scope.containerObj = [];
     $scope.locationParentObj = [];
     $scope.locObj = {};
@@ -791,10 +790,10 @@ angular.module('app').controller('locManage', function ($scope, bcService, locat
             $scope.gridOptions.data = response.data;
         });
     };
-    $scope.getLocations
+    $scope.getLocations();
 
     // .................... columns and data
-    ();$scope.gridOptions = {
+    $scope.gridOptions = {
         enableRowSelection: true,
         enableRowHeaderSelection: true,
         multiSelect: false,
@@ -809,10 +808,10 @@ angular.module('app').controller('locManage', function ($scope, bcService, locat
                 $scope.rowObj = row.entity;
                 $scope.enableDelete = false;
                 $scope.selected === true ? $scope.enableDelete = false : $scope.enableDelete = true;
-            }
+            });
 
             // ...........   update the location on lost focus, tab, or enter
-            );gridApi.edit.on.afterCellEdit($scope, function (rowEntity) {
+            gridApi.edit.on.afterCellEdit($scope, function (rowEntity) {
                 $scope.updateCont = rowEntity;
                 // ............. drop containers and classes text from entity obj
                 var gridObj = { container_id: rowEntity.container_id, id: rowEntity.id, loc_class_id: rowEntity.loc_class_id, loc_desc: rowEntity.loc_desc, parent_location_id: rowEntity.parent_location_id, x_coordinate: rowEntity.x_coordinate, y_coordinate: rowEntity.y_coordinate, z_coordinate: rowEntity.z_coordinate
@@ -823,11 +822,11 @@ angular.module('app').controller('locManage', function ($scope, bcService, locat
 
         // »»»»»»»»»»»»»»»»»»»║  UPDATE LOCATIONS
     };$scope.update = function (updateObj) {
-        return locationUpdateSrv.submitLocationInfo(updateObj
+        return locationUpdateSrv.submitLocationInfo(updateObj);
+    };
 
-        // »»»»»»»»»»»»»»»»»»»║  DELETE LOCATIONS
-        );
-    };$scope.delete = function () {
+    // »»»»»»»»»»»»»»»»»»»║  DELETE LOCATIONS
+    $scope.delete = function () {
         var gridData = $scope.gridOptions.data;
         var cId = $scope.rowObj.id;
         if ($scope.selected === true) {
@@ -847,6 +846,21 @@ angular.module('app').controller('mainCtrl', function ($scope, $interval, authSe
     // »»»»»»»»»»»»»»»»»»»║ TESTS
     $scope.controllerTest = 'Controller Engaged!!!';
 
+    //port notes
+    $scope.portNotes = false;
+    $scope.toggleNotes = function (_) {
+        return $scope.portNotes = !$scope.portNotes;
+    };
+    //port object
+    $scope.portText = [{
+        title: "Developer's Notes",
+        section1Title: "Instructions:",
+        section1Text: "Login to site by using the login (arrow) button at the top right of the page. Anonymous Credentials are provided on the login form.",
+        section2Title: "About this page:",
+        liOne: "• Custom logo",
+        liTwo: "• Parallax effect through css"
+    }];
+
     $scope.loggedIn = false;
 
     $scope.login = function () {
@@ -860,11 +874,11 @@ angular.module('app').controller('mainCtrl', function ($scope, $interval, authSe
     // .......................  checks to see if the user is logged in
     checkUserSrv.getUser().then(function (response) {
         return $scope.loggedIn = true;
-    }
+    });
 
     //modal hide/show controls
     //________FUNCTION
-    );$scope.showStorageModal = function () {
+    $scope.showStorageModal = function () {
         modalService.refreshWindow();
         $scope.modalShownStorage = true;
     };
@@ -932,20 +946,20 @@ angular.module('app').controller('settings', function ($scope, uiGridConstants, 
             return $scope.locations = response.data;
         });
     };
-    $scope.getLocations
+    $scope.getLocations();
 
     // .................... get default location
-    ();$scope.getDefaultLoc = function () {
+    $scope.getDefaultLoc = function () {
         return settingsSrv.getDefaultLocation().then(function (response) {
             $scope.loc = response.data[0].description;
             $scope.locid = response.data[0].id;
             $scope.defaultLocation = $scope.loc;
         });
     };
-    $scope.getDefaultLoc
+    $scope.getDefaultLoc();
 
     // .................... will convert to update default location
-    ();$scope.updateDefault = function () {
+    $scope.updateDefault = function () {
         var dl = $scope.defaultLocation;
         if (typeof dl === 'string') {
             // console.log(dl)
@@ -954,8 +968,8 @@ angular.module('app').controller('settings', function ($scope, uiGridConstants, 
             // console.log(dl.description)
             sendArr.d_location_id = dl.id;
         }
-        console.log(sendArr //this is what we will send to the db PUT
-        );settingsSrv.updateDefaultLocation(sendArr);
+        console.log(sendArr); //this is what we will send to the db PUT
+        settingsSrv.updateDefaultLocation(sendArr);
     };
 });
 'use strict';
@@ -980,22 +994,22 @@ angular.module('app').controller('trackBy', function ($scope, $interval, modalSe
 
     // »»»»»»»»»»»»»»»»»»»║ CLEAR FORM
     $scope.clearForm = function () {
-        return document.getElementById("trackbyForm").reset
+        return document.getElementById("trackbyForm").reset();
+    };
 
-        // »»»»»»»»»»»»»»»»»»»║ TRACKBY MANIPULATION
-        // .................... get list of trackby types and grid information
-        ();
-    };$scope.gettrackbys = function () {
+    // »»»»»»»»»»»»»»»»»»»║ TRACKBY MANIPULATION
+    // .................... get list of trackby types and grid information
+    $scope.gettrackbys = function () {
         return trackByGetSrv.getTrackByList().then(function (response) {
             $scope.trackbys = response.data;
             $scope.gridOptions.data = response.data;
             // console.log(`gridOptions.data = ${JSON.stringify(response.data)}`)
         });
     };
-    $scope.gettrackbys
+    $scope.gettrackbys();
 
     // .................... create trackby types
-    ();$scope.trackByObj = {};
+    $scope.trackByObj = {};
     $scope.createTrackBy = function () {
         $scope.gridOptions.data.push({
             "trackby_name": $scope.trackByObj.trackby_name,
@@ -1025,10 +1039,10 @@ angular.module('app').controller('trackBy', function ($scope, $interval, modalSe
                 $scope.rowObj = row.entity;
                 $scope.enableDelete = false;
                 $scope.selected === true ? $scope.enableDelete = false : $scope.enableDelete = true;
-            }
+            });
 
             // ...........   update the user on lost focus, tab, or enter
-            );gridApi.edit.on.afterCellEdit($scope, function (rowEntity) {
+            gridApi.edit.on.afterCellEdit($scope, function (rowEntity) {
                 $scope.updateCont = rowEntity;
                 $scope.update($scope.updateCont);
             });
@@ -1082,24 +1096,24 @@ angular.module('app').controller('userCreate', function ($scope, stateListSrv, c
             return $scope.stateName = response.data;
         });
     };
-    $scope.states
+    $scope.states();
 
     // »»»»»»»»»»»»»»»»»»»║  GET COUNTRY LIST
-    ();$scope.country = function () {
+    $scope.country = function () {
         return countryListSrv.getcountryList().then(function (response) {
             return $scope.countryName = response.data;
         });
     };
-    $scope.country
+    $scope.country();
 
     // »»»»»»»»»»»»»»»»»»»║ CLEAR FORM
-    ();$scope.clearForm = function () {
-        return document.getElementById("userCreateForm").reset
+    $scope.clearForm = function () {
+        return document.getElementById("userCreateForm").reset();
+    };
 
-        // »»»»»»»»»»»»»»»»»»»║ SUBMIT USER FORM DATA
-        // .................... user object to submit   
-        ();
-    };$scope.userInfo = { "country_id": 1, "inactive": false
+    // »»»»»»»»»»»»»»»»»»»║ SUBMIT USER FORM DATA
+    // .................... user object to submit   
+    $scope.userInfo = { "country_id": 1, "inactive": false
 
         // .................... sets rent rating
     };$scope.rating = 5;
@@ -1170,18 +1184,18 @@ angular.module('app').controller('userManage', function ($scope, uiGridConstants
             return $scope.stateName = response.data;
         });
     };
-    $scope.states
+    $scope.states();
 
     // »»»»»»»»»»»»»»»»»»»║  GET COUNTRY LIST
-    ();$scope.country = function () {
+    $scope.country = function () {
         return countryListSrv.getcountryList().then(function (response) {
             return $scope.countryName = response.data;
         });
     };
-    $scope.country
+    $scope.country();
 
     // »»»»»»»»»»»»»»»»»»»║  COLUMNS AND DATA
-    ();var minW = 75;
+    var minW = 75;
     var maxW = 500;
     var wid = 150;
 
@@ -1212,10 +1226,10 @@ angular.module('app').controller('userManage', function ($scope, uiGridConstants
             return $scope.gridOptions.data = response.data;
         });
     };
-    $scope.getUsers
+    $scope.getUsers();
 
     // »»»»»»»»»»»»»»»»»»»║ UPDATE USER
-    ();$scope.update = function (updateObj) {
+    $scope.update = function (updateObj) {
         var uId = updateObj.id;
         var expectedObj = {
             "firstName": updateObj.first_name,
@@ -1263,11 +1277,11 @@ angular.module('app').directive('bcScanner', function () {
             // .................... variables
             $scope.barcode;
             $scope.storeBarcode = function () {
-                return bcService.storeBarcode($scope.barcode
+                return bcService.storeBarcode($scope.barcode);
+            };
 
-                // .................... quagga barcode scanner
-                );
-            };var Quagga = window.Quagga;
+            // .................... quagga barcode scanner
+            var Quagga = window.Quagga;
             var resultsArr = [];
             var counter = resultsArr.length;
             var App = {
@@ -1414,6 +1428,14 @@ angular.module('app').directive('modalUserCreateDir', function () {
         templateUrl: '../views/user_create.html',
         scope: {},
         controller: 'userCreate'
+    };
+});
+'use strict';
+
+angular.module('app').directive('portNotes', function () {
+    return {
+        restrict: 'E',
+        templateUrl: '../views/portNotes.html'
     };
 });
 'use strict';
@@ -1796,11 +1818,11 @@ angular.module('app').service('postUserInfoSrv', function ($http) {
 angular.module('app').service('settingsSrv', function ($http) {
     // ...................  get default location
     this.getDefaultLocation = function () {
-        return $http.get('/api/settings/default_location'
+        return $http.get('/api/settings/default_location');
+    };
 
-        // ...................  update default location
-        );
-    };this.updateDefaultLocation = function (data) {
+    // ...................  update default location
+    this.updateDefaultLocation = function (data) {
         console.log('sending data');
         console.log(data);
         $http({

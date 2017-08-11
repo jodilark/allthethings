@@ -1,0 +1,23 @@
+<!--╔══════════════════════════════════════╗-->
+<!--║          Portfolio Notes             ║-->
+<!--╚══════════════════════════════════════╝-->
+<div class='portfolio-notes-wrapper' ng-hide='portNotes'>
+    <div class='notes-title'>
+        {{portText[0].title}}
+    </div>
+    <div class='notes-text'>
+        <p>{{portText[0].section1Title}}</p>
+        <br/>
+        <p>{{portText[0].section1Text}}</p>
+        <br/>
+        <br/>
+        <p>{{portText[0].section2Title}}</p>
+        <br/>
+        <ul>
+            <li>{{portText[0].liOne}}</li>
+            <li>{{portText[0].liTwo}}</li>
+        </ul>
+    </div>
+    <div class='closingX' ng-click="toggleNotes()">X</div>
+</div>
+<div class='minimized-notes' ng-show='portNotes' ng-click="toggleNotes()">Dev Notes</div>

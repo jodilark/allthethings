@@ -2,6 +2,20 @@ angular.module('app').controller('mainCtrl', function ($scope, $interval, authSe
     // »»»»»»»»»»»»»»»»»»»║ TESTS
     $scope.controllerTest = 'Controller Engaged!!!'
 
+    //port notes
+    $scope.portNotes = false;
+    $scope.toggleNotes = _ => $scope.portNotes = !$scope.portNotes
+    //port object
+    $scope.portText = [
+        {
+            title: "Developer's Notes"
+            , section1Title: "Instructions:"
+            , section1Text:"Login to site by using the login (arrow) button at the top right of the page. Anonymous Credentials are provided on the login form." 
+            , section2Title: "About this page:"
+            , liOne: "• Custom logo"
+            , liTwo: "• Parallax effect through css"
+        }
+    ]
 
     $scope.loggedIn = false;
 
@@ -38,7 +52,7 @@ angular.module('app').controller('mainCtrl', function ($scope, $interval, authSe
     }
     $scope.showLocationModal = () => $scope.modalShownLocation = true
     $scope.showUserModal = () => $scope.modalShownUser = true
-    
+
 
 
 

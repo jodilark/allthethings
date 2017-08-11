@@ -41,3 +41,32 @@
         </div>
     </div>
 </div>
+
+<!--╔══════════════════════════════════════╗-->
+<!--║          Portfolio Notes             ║-->
+<!--╚══════════════════════════════════════╝-->
+<div class='portfolio-notes-wrapper' ng-hide='portNotes'>
+    <div class='notes-title'>
+        Developer's Notes
+    </div>
+    <div class='notes-text'>
+        <p>Instructions:</p>
+        <br/>
+        <p>This is a test database. Feel free to create, delete, update to you heart's content.</p>
+        <br/>
+        <br/>
+        <p>About:</p>
+        <br/>
+        <ul>
+            <li>The grids have multiple capabilities including: resizing, reordering, sorting, filtering, locking, hiding, and showing.</li>
+            <li>Known issues:</li>
+            <ul> 
+                <li>• Settings view isn't implemented into modal yet</li>
+                <li>• Sometimes the database gets too many connections and data will not load. If this happens refresh the page until the data populates again</li>
+                <li>• Barcode scanner will only read basic barcodes.</li>
+            </ul>
+        </ul>
+    </div>
+    <div class='closingX' ng-click="toggleNotes()">X</div>
+</div>
+<div class='minimized-notes' ng-show='portNotes' ng-click="toggleNotes()">Dev Notes</div>
