@@ -204,4 +204,5 @@ app.put('/api/settings/default_location', settingsCtrl.updateDefaultLocation)
 
 
 //  »»»»»»»»»»»»»»»»»»»║   TESTS
-app.listen(port, () => console.log(`listening on port ${port}`))
+// app.listen(port, () => console.log(`listening on port ${port}`))
+app.listen(process.env.PORT || port, () => console.log(`listening on port ${port}`));

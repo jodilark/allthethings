@@ -28,7 +28,9 @@ angular.module('app').controller('mainCtrl', function ($scope, $interval, authSe
         authService.logout()
     }
     // .......................  checks to see if the user is logged in
-    checkUserSrv.getUser().then((response) => $scope.loggedIn = true)
+    checkUserSrv.getUser().then((response) => {
+        console.log('called')
+        $scope.loggedIn = true})
 
     //modal hide/show controls
     //________FUNCTION

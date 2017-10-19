@@ -18,8 +18,8 @@ angular.module('app', ['ui.router', 'ui.grid', 'ui.grid.selection', 'ui.grid.edi
     // }
     $stateProvider.state('home', {
         templateUrl: '../views/home.html',
-        url: '/',
-        controller: 'mainCtrl'
+        url: '/'
+        // controller: 'mainCtrl'
     }).state('dashboard', {
         templateUrl: '../views/dashboard.html',
         url: '/dashboard'
@@ -143,7 +143,7 @@ angular.module('app').controller('itemCreate', function ($scope, $interval, bcSe
             $scope.userId.id = response.data.id;
         });
     };
-    $scope.currentUser();
+    // $scope.currentUser()
     // .................... original package checkbox
     $scope.originalPackaging = function () {
         return $scope.itemCreateObj.has_package = $scope.packageStatus;
@@ -873,7 +873,8 @@ angular.module('app').controller('mainCtrl', function ($scope, $interval, authSe
     };
     // .......................  checks to see if the user is logged in
     checkUserSrv.getUser().then(function (response) {
-        return $scope.loggedIn = true;
+        console.log('called');
+        $scope.loggedIn = true;
     });
 
     //modal hide/show controls
@@ -1527,9 +1528,10 @@ angular.module('app').service('bcService', function ($http) {
 
 angular.module('app').service('checkUserSrv', function ($http) {
 
-  this.getUser = function () {
-    return $http.get('/auth/me');
-  };
+    this.getUser = function () {
+        console.log('called checkUserSrv');
+        return $http.get('/auth/me');
+    };
 });
 'use strict';
 

@@ -47,7 +47,7 @@ angular.module('app').controller('itemCreate', function ($scope, $interval, bcSe
         $scope.itemCreateObj.owner_id = response.data.id
         $scope.userId.id = response.data.id
     })
-    $scope.currentUser()
+    // $scope.currentUser()
     // .................... original package checkbox
     $scope.originalPackaging = () => $scope.itemCreateObj.has_package = $scope.packageStatus
 
