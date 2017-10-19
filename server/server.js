@@ -22,7 +22,8 @@ const itemsCtrl = require('./controllers/itemsCtrl')
 
 
 //  »»»»»»»»»»»»»»»»»»»║   OTHER VARIABLES
-const port = config.port
+// const port = config.port
+const port = 8080
 
 //  »»»»»»»»»»»»»»»»»»»║   MIDDLEWARE
 const app = express()
