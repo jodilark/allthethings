@@ -98,7 +98,7 @@
     -- INSERT INTO users
     -- (first_name, last_name , phone , email , address1 , address2 , city , state_id , country_id , zip , renter_rating , inactive , auth_id)
     -- VALUES
-    -- ('Jodi', 'Parker', 8019496842, 'jodilparker@gmail.com', '6445 south orange sky court', '', 'West Jordan', 52, 1, 84081, 5, false, 1)
+    -- ('Jodi', 'Parker', 8015551234, 'me@myemail.com', '123 oceanside', '', 'CaliforniaCity', 5, 1, 90266, 5, false, 1)
 	-- ;
     -- UPDATE users
     -- SET first_name = 'servo'
